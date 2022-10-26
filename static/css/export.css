@@ -1,0 +1,4 @@
+iframe[id^='youtube-player'] {
+    aspect-ratio: 16/9;
+    height: auto;
+}
