@@ -49,3 +49,22 @@ Music is a big part of my life. Here's a log of concerts I've attended.
 | Oct 7 | of Montreal & Locate S1 |
 | Aug 27 | Peter Hook |
 | Aug 17 | Blondie |
+
+---
+
+## Photos
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/concerts/ride-2024.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+        <div class="caption">The Charlatans UK & RIDE — Jan 18, 2024</div>
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/concerts/jonathan-richman-2024.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+        <div class="caption">Jonathan Richman — Mar 8, 2024</div>
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/concerts/echo-bunnymen-2024.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+        <div class="caption">Echo and the Bunnymen — May 17, 2024</div>
+    </div>
+</div>
