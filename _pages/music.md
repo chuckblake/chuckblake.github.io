@@ -9,6 +9,13 @@ nav_order: 3
 
 Music is a big part of my life. Here's a log of concerts I've attended.
 
+## Upcoming
+
+| Date | Artist | Venue |
+|------|--------|-------|
+| Jun 26, 2026 | Human League, Soft Cell & Alison Moyet | Radio City Music Hall |
+| Sep 5, 2026 | Peter Hook & The Light | Brooklyn Paramount |
+
 ## 2025
 
 | Date | Artist |
