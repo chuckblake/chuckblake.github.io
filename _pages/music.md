@@ -1,7 +1,7 @@
 ---
 layout: page
-title: concerts
-permalink: /concerts/
+title: music
+permalink: /music/
 description: Shows I've been to
 nav: true
 nav_order: 3
