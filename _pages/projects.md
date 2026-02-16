@@ -5,7 +5,6 @@ permalink: /projects/
 description: Things I'm building
 nav: true
 nav_order: 2
-display_categories: []
 horizontal: false
 ---
 
