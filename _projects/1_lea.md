@@ -7,7 +7,7 @@ importance: 1
 category: work
 ---
 
-[LEA](https://getlea.ai) is an AI-powered platform that helps wealth management firms extract structured data from complex financial documents.
+[LEA](https://getlea.io) is an AI-powered platform that helps wealth management firms extract structured data from complex financial documents.
 
 We automate the painful process of organizing client documents, extracting key data points, and pushing clean information into CRMs and planning platforms.
 

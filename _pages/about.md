@@ -20,7 +20,7 @@ latest_posts:
   enabled: false
 ---
 
-I'm the CTO and co-founder of [LEA](https://getlea.ai) — an AI-powered platform helping wealth management firms extract and organize data from complex financial documents.
+I'm the CTO and co-founder of [LEA](https://getlea.io) — an AI-powered platform helping wealth management firms extract and organize data from complex financial documents.
 
 I've spent my career at startups, wearing every hat from engineering to product to marketing to ops. I like building things from scratch.
 
