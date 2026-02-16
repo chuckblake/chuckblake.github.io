@@ -11,7 +11,7 @@ profile:
   more_info:
 
 selected_papers: false
-social: true
+social: false  # temporarily disabled - jekyll-socials plugin issue
 
 announcements:
   enabled: false
