@@ -7,8 +7,6 @@ nav: true
 nav_order: 3
 ---
 
-Music is a big part of my life. Here's a log of concerts I've attended.
-
 ## Upcoming
 
 | Date | Artist | Venue |
