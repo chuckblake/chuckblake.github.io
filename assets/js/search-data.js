@@ -43,6 +43,11 @@ ninja.data = [{
           description: "Sister site to GetMusic.fm",
           section: "Projects",handler: () => {
               window.location.href = "/projects/4_indiecrates/";
+            },},{id: "projects-glance",
+          title: 'Glance',
+          description: "Mission control for AI agents",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/5_glance/";
             },},{
         id: 'social-email',
         title: 'email',
