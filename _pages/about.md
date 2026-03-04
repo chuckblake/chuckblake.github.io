@@ -27,3 +27,6 @@ I've spent my career at startups, wearing every hat from engineering to product 
 On the side, I run the [GetMusic.fm](https://getmusic.fm) ecosystem — tools that help independent artists promote their music on Bandcamp. I also make electronic music as [Corvico](https://corvico.bandcamp.com).
 
 Brooklyn-based. Always building something.
+
+[LinkedIn](https://www.linkedin.com/in/chuckblake/)
+
