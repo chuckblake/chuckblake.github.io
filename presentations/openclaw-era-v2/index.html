@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Started with OpenClaw — ERA March 2026</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #007aff;
+    --blue-light: #e8f2ff;
+    --black: #0d0d0d;
+    --gray: #6b7280;
+    --gray-light: #f4f6f8;
+    --white: #ffffff;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.06);
+    --radius: 16px;
+    --font: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+
+  html, body {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    background: #e8ecf0;
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Progress bar */
+  #progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 4px;
+    background: var(--blue);
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+    z-index: 100;
+    border-radius: 0 2px 2px 0;
+  }
+
+  /* Slide counter */
+  #counter {
+    position: fixed;
+    bottom: 24px; right: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray);
+    letter-spacing: 0.04em;
+    z-index: 100;
+  }
+
+  /* Nav arrows */
+  .nav-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--white);
+    border: none;
+    border-radius: 50%;
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    color: var(--black);
+    font-size: 18px;
+    transition: box-shadow 0.2s, transform 0.2s;
+    z-index: 100;
+    opacity: 0.7;
+  }
+  .nav-arrow:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.18); opacity: 1; transform: translateY(-50%) scale(1.05); }
+  #nav-prev { left: 20px; }
+  #nav-next { right: 20px; }
+
+  /* Slide container */
+  #deck {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .slide {
+    display: none;
+    width: min(880px, 94vw);
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 52px 60px;
+    min-height: min(520px, 88vh);
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    animation: slideIn 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  .slide.active { display: flex; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Typography */
+  .slide-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 16px;
+  }
+
+  h1.title {
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 800;
+    color: var(--black);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  h2.slide-title {
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: 700;
+    color: var(--blue);
+    line-height: 1.2;
+    margin-bottom: 28px;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-size: clamp(15px, 2vw, 19px);
+    color: var(--gray);
+    font-weight: 400;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .byline {
+    font-size: 14px;
+    color: var(--gray);
+    font-weight: 500;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  ul li {
+    padding: 8px 0 8px 22px;
+    position: relative;
+    font-size: clamp(14px, 1.8vw, 17px);
+    color: var(--black);
+    line-height: 1.5;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  ul li:last-child { border-bottom: none; }
+  ul li::before {
+    content: "●";
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 8px;
+    top: 12px;
+  }
+
+  ol {
+    padding-left: 0;
+    counter-reset: steps;
+  }
+  ol li {
+    counter-increment: steps;
+    padding: 9px 0 9px 36px;
+    position: relative;
+    font-size: clamp(14px, 1.8vw, 17px);
+    color: var(--black);
+    line-height: 1.5;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  ol li:last-child { border-bottom: none; }
+  ol li::before {
+    content: counter(steps);
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 24px; height: 24px;
+    background: var(--blue);
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .callout {
+    background: var(--blue-light);
+    border-left: 3px solid var(--blue);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 20px;
+    font-size: clamp(13px, 1.6vw, 15px);
+    color: #1a3a6b;
+    line-height: 1.5;
+  }
+  .callout code {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    background: rgba(0,122,255,0.12);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  .quote {
+    font-size: clamp(15px, 2vw, 19px);
+    font-style: italic;
+    color: var(--black);
+    border-left: 3px solid var(--blue);
+    padding-left: 20px;
+    margin: 20px 0;
+    line-height: 1.6;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 4px;
+  }
+
+  .card {
+    background: var(--gray-light);
+    border-radius: 10px;
+    padding: 18px;
+  }
+  .card h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .card p, .card li {
+    font-size: 13px;
+    color: #374151;
+    line-height: 1.6;
+  }
+  .card li { border-bottom: none !important; }
+  .card li::before { top: 8px !important; }
+
+  .access-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: clamp(13px, 1.7vw, 15px);
+  }
+  .access-row:last-child { border-bottom: none; }
+  .access-dot { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .access-text { line-height: 1.5; color: var(--black); }
+
+  .failures {
+    background: #fff8f0;
+    border: 1px solid #fcd4b0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: #7c3a00;
+  }
+
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .resource-link {
+    background: var(--gray-light);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-weight: 600;
+    color: var(--blue);
+    font-size: clamp(14px, 1.7vw, 16px);
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .resource-link:hover { border-color: var(--blue); background: var(--blue-light); }
+
+  code.inline {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    background: #f3f4f6;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.88em;
+    color: #1d4ed8;
+  }
+
+  p.body {
+    font-size: clamp(14px, 1.8vw, 17px);
+    color: var(--black);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .slide { padding: 32px 24px; }
+    .two-col { grid-template-columns: 1fr; gap: 12px; }
+    .resource-grid { grid-template-columns: 1fr; }
+    .nav-arrow { width: 36px; height: 36px; font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<div id="counter">1 / 10</div>
+
+<button class="nav-arrow" id="nav-prev" aria-label="Previous">&#8592;</button>
+<button class="nav-arrow" id="nav-next" aria-label="Next">&#8594;</button>
+
+<div id="deck">
+
+  <!-- Slide 1: Title -->
+  <div class="slide active">
+    <div class="slide-tag">ERA · March 2026</div>
+    <h1 class="title">Getting Started with OpenClaw</h1>
+    <p class="subtitle">or: How I Spent My Weekends Arguing with a Config File</p>
+    <div class="byline">Chuck Blake — ERA, March 2026</div>
+  </div>
+
+  <!-- Slide 2: What is OpenClaw -->
+  <div class="slide">
+    <h2 class="slide-title">What is OpenClaw?</h2>
+    <ul>
+      <li>Local AI agent framework — runs on <strong>YOUR</strong> machine</li>
+      <li>Connects to Telegram, Signal, Discord, etc.</li>
+      <li>Always-on: memory, tools, and real actions</li>
+      <li>Think: chief of staff, not a chatbot</li>
+      <li>Why local: your data, your vault, your rules</li>
+    </ul>
+  </div>
+
+  <!-- Slide 3: Getting Started -->
+  <div class="slide">
+    <h2 class="slide-title">Getting Started</h2>
+    <p class="body" style="margin-bottom:16px;font-weight:600;">30-minute path:</p>
+    <ol>
+      <li>Install OpenClaw</li>
+      <li>Create Telegram bot (BotFather — 2 min)</li>
+      <li>Connect to OpenClaw</li>
+      <li>Write SOUL.md — who is this agent?</li>
+      <li>Have your first conversation</li>
+    </ol>
+    <div class="callout">
+      ⚠️ <strong>Hidden gotcha:</strong> default idle timeout = 2 hours<br>
+      Fix: <code>thread: { mode: "idle", idleMinutes: 5760 }</code>
+    </div>
+  </div>
+
+  <!-- Slide 4: Memory Architecture -->
+  <div class="slide">
+    <h2 class="slide-title">Memory Architecture</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Four Layers</h3>
+        <ul>
+          <li><code class="inline">IDENTITY.md</code> — who am I?</li>
+          <li><code class="inline">errors.md</code> — mistakes to avoid</li>
+          <li><code class="inline">MEMORY.md</code> — Chuck's world</li>
+          <li>Daily log — what happened today?</li>
+          <li>+ Mem0 / Qdrant vector DB</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Two-Stage Retrieval</h3>
+        <ul>
+          <li>Boot → 20 most recent (recency)</li>
+          <li>Per question → semantic search</li>
+        </ul>
+        <h3 style="margin-top:14px;">100% Local</h3>
+        <ul>
+          <li>nomic-embed-text</li>
+          <li>qwen3.5:9b</li>
+          <li>Qdrant in Docker</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 5: Secrets Management -->
+  <div class="slide">
+    <h2 class="slide-title">Secrets Management</h2>
+    <ul>
+      <li>Gomez has his own 1Password vault (can't see personal vault)</li>
+      <li>Service account token — read-only, scoped</li>
+      <li><code class="inline">agent-vault</code> = local cache (fast, avoids API hammering)</li>
+      <li>Pattern: <strong>least privilege, scoped, no shared credentials</strong></li>
+    </ul>
+  </div>
+
+  <!-- Slide 6: Skills + Scripts -->
+  <div class="slide">
+    <h2 class="slide-title">Skills + Scripted Components</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Skills (~75 total)</h3>
+        <ul>
+          <li>good-morning</li>
+          <li>deploy</li>
+          <li>pdad-do-next</li>
+          <li>omnifocus-process-inbox</li>
+        </ul>
+        <p style="margin-top:10px;font-size:12px;color:#6b7280;">Instruction sets that load on demand</p>
+      </div>
+      <div class="card">
+        <h3>Scripts</h3>
+        <ul>
+          <li>morning_briefing.py</li>
+          <li>health_log.py</li>
+          <li>omnifocus_reset_planned.sh</li>
+          <li>op-wrapper.sh</li>
+        </ul>
+        <p style="margin-top:10px;font-size:12px;color:#6b7280;">Reliable primitives the agent calls</p>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:24px;">"Agent orchestrates — scripts execute."</div>
+  </div>
+
+  <!-- Slide 7: How Much Access -->
+  <div class="slide">
+    <h2 class="slide-title">How Much Access?</h2>
+    <div class="access-row">
+      <span class="access-dot">🟢</span>
+      <div class="access-text"><strong>Read-only bus</strong> — prod events → Slack → agent reads only. Zero risk.</div>
+    </div>
+    <div class="access-row">
+      <span class="access-dot">🟡</span>
+      <div class="access-text"><strong>Read-only production</strong> — log access, can analyze, can't change.</div>
+    </div>
+    <div class="access-row">
+      <span class="access-dot">🔴</span>
+      <div class="access-text"><strong>Full scoped access</strong> — GitHub App (per repo), Heroku, 1Password vault, OmniFocus.</div>
+    </div>
+    <div class="quote">"Start small. Expand after trust."</div>
+  </div>
+
+  <!-- Slide 8: Lessons Learned -->
+  <div class="slide">
+    <h2 class="slide-title">Lessons Learned</h2>
+    <ol>
+      <li>Start small — many cycles of tweaking</li>
+      <li>Scripts for consistent output</li>
+      <li>Programmatic enforcement &gt; prompt guidance</li>
+      <li>Self-diagnosis → self-correction → compound improvement</li>
+    </ol>
+    <div class="quote">"If your system can't refine itself based on what went wrong last week, you're just running the same broken process faster."</div>
+    <div class="failures">
+      <strong>Real failures:</strong> JSON config crash · ghost ✅ without verifying · sub-agent recreating deleted crons · R14 flood from 287 re-queued jobs
+    </div>
+  </div>
+
+  <!-- Slide 9: Where It's Going -->
+  <div class="slide">
+    <h2 class="slide-title">Where It's Going</h2>
+    <ul>
+      <li>Whistler: autonomous coding sub-agent</li>
+      <li>PDAD loop: mostly autonomous product development</li>
+      <li>Daily ops on autopilot</li>
+      <li>Vision: agent handles operational layer → I focus on <strong>judgment</strong></li>
+    </ul>
+  </div>
+
+  <!-- Slide 10: Resources -->
+  <div class="slide">
+    <h2 class="slide-title">Resources</h2>
+    <div class="resource-grid">
+      <div class="resource-link">openclaw.ai</div>
+      <div class="resource-link">clawhub.com</div>
+      <div class="resource-link">anthropic.skilljar.com</div>
+      <div class="resource-link" style="grid-column:1/-1;font-size:13px;">chuckblake.com/presentations/openclaw-era-2026/</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const counter = document.getElementById('counter');
+  const progressBar = document.getElementById('progress-bar');
+  let current = 0;
+  const total = slides.length;
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(n, total - 1));
+    slides[current].classList.add('active');
+    counter.textContent = (current + 1) + ' / ' + total;
+    progressBar.style.width = ((current + 1) / total * 100) + '%';
+  }
+
+  document.getElementById('nav-prev').addEventListener('click', e => { e.stopPropagation(); goTo(current - 1); });
+  document.getElementById('nav-next').addEventListener('click', e => { e.stopPropagation(); goTo(current + 1); });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') goTo(current + 1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1);
+  });
+
+  document.getElementById('deck').addEventListener('click', () => goTo(current + 1));
+
+  // Touch/swipe
+  let touchStartX = 0;
+  document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) dx < 0 ? goTo(current + 1) : goTo(current - 1);
+  }, { passive: true });
+
+  // Init
+  goTo(0);
+</script>
+</body>
+</html>

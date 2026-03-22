@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Started with OpenClaw — ERA March 2026</title>
+<style>
+  @import url('data:text/css,');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --green: #00ff41;
+    --amber: #ffb000;
+    --white: #ffffff;
+    --dim-green: #00b82e;
+    --muted: #3a7a3a;
+    --font: "Courier New", Courier, monospace;
+  }
+
+  html, body {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--green);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* CRT scanline effect */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.15) 2px,
+      rgba(0,0,0,0.15) 4px
+    );
+    pointer-events: none;
+    z-index: 1000;
+    animation: scanroll 8s linear infinite;
+  }
+
+  /* Subtle vignette */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.6) 100%);
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  @keyframes scanroll {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 40px; }
+  }
+
+  /* Cursor blink */
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 10px; height: 1.1em;
+    background: var(--amber);
+    vertical-align: text-bottom;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+  }
+
+  /* Counter */
+  #counter {
+    position: fixed;
+    bottom: 20px; right: 28px;
+    font-family: var(--font);
+    font-size: 12px;
+    color: var(--muted);
+    z-index: 1001;
+    letter-spacing: 0.08em;
+  }
+
+  /* Nav */
+  .nav-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: 1px solid var(--muted);
+    color: var(--muted);
+    font-family: var(--font);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 12px;
+    z-index: 1001;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .nav-arrow:hover { color: var(--green); border-color: var(--green); }
+  #nav-prev { left: 12px; }
+  #nav-next { right: 12px; }
+
+  /* Deck */
+  #deck {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px 80px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .slide {
+    display: none;
+    width: min(900px, 92vw);
+    flex-direction: column;
+    justify-content: center;
+    animation: termIn 0.25s ease;
+  }
+  .slide.active { display: flex; }
+
+  @keyframes termIn {
+    from { opacity: 0; transform: translateX(-8px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Prompt line */
+  .prompt-line {
+    color: var(--dim-green);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+
+  /* Title */
+  h1.title {
+    font-size: clamp(24px, 3.5vw, 42px);
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  .title-sub {
+    font-size: clamp(14px, 1.8vw, 18px);
+    color: var(--green);
+    margin-bottom: 20px;
+    opacity: 0.8;
+  }
+  .title-meta {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid #1a2e1a;
+  }
+
+  /* Slide heading */
+  h2.slide-title {
+    font-size: clamp(18px, 2.5vw, 30px);
+    color: var(--white);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+  h2.slide-title .prompt {
+    color: var(--green);
+    margin-right: 8px;
+  }
+  h2.slide-title .cmd {
+    color: var(--white);
+  }
+
+  /* List items */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  ul li {
+    font-size: clamp(13px, 1.7vw, 17px);
+    color: var(--green);
+    line-height: 1.6;
+    padding: 5px 0 5px 24px;
+    position: relative;
+  }
+  ul li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: var(--dim-green);
+    font-weight: bold;
+  }
+  ul li strong {
+    color: var(--white);
+  }
+
+  ol {
+    list-style: none;
+    padding: 0;
+    counter-reset: steps;
+  }
+  ol li {
+    counter-increment: steps;
+    font-size: clamp(13px, 1.7vw, 17px);
+    color: var(--green);
+    line-height: 1.6;
+    padding: 5px 0 5px 36px;
+    position: relative;
+  }
+  ol li::before {
+    content: "[" counter(steps) "]";
+    position: absolute;
+    left: 0;
+    color: var(--amber);
+    font-size: 12px;
+    top: 7px;
+  }
+
+  .callout {
+    border: 1px solid #3a3000;
+    background: #0f0e00;
+    padding: 12px 16px;
+    margin-top: 18px;
+    font-size: clamp(12px, 1.5vw, 14px);
+    color: var(--amber);
+    line-height: 1.5;
+  }
+  .callout::before {
+    content: "! WARNING";
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: #ff6600;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .callout code {
+    color: #ffdd66;
+    background: #1a1500;
+    padding: 2px 5px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .col-block h3 {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--amber);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #1a2e1a;
+  }
+  .col-block ul li { font-size: clamp(12px, 1.5vw, 14px); }
+
+  .output-block {
+    background: #050505;
+    border: 1px solid #1a3a1a;
+    padding: 14px 18px;
+    margin-top: 16px;
+    font-size: clamp(12px, 1.5vw, 14px);
+    line-height: 1.7;
+  }
+  .output-block .key { color: var(--amber); }
+  .output-block .val { color: var(--green); }
+
+  .access-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #0e200e;
+    font-size: clamp(13px, 1.7vw, 16px);
+    color: var(--green);
+    line-height: 1.5;
+  }
+  .access-row:last-child { border-bottom: none; }
+  .access-label {
+    min-width: 12px;
+    flex-shrink: 0;
+    font-size: 14px;
+  }
+
+  .terminal-quote {
+    border-left: 2px solid var(--dim-green);
+    padding: 10px 16px;
+    margin: 16px 0;
+    font-size: clamp(13px, 1.8vw, 17px);
+    color: var(--white);
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .terminal-quote::before { content: '"'; }
+  .terminal-quote::after { content: '"'; }
+
+  .error-log {
+    background: #100000;
+    border: 1px solid #3a0000;
+    padding: 10px 16px;
+    margin-top: 14px;
+    font-size: 12px;
+    color: #ff5555;
+    line-height: 1.6;
+  }
+  .error-log::before {
+    content: "STDERR";
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: #cc0000;
+    margin-bottom: 4px;
+  }
+
+  .resource-list {
+    list-style: none;
+    padding: 0;
+  }
+  .resource-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #0e200e;
+    font-size: clamp(15px, 2vw, 20px);
+    color: var(--green);
+  }
+  .resource-list li:last-child { border-bottom: none; }
+  .resource-list li::before {
+    content: "→ ";
+    color: var(--amber);
+  }
+
+  code.inline {
+    color: #ffdd66;
+    background: #0f0f00;
+    padding: 1px 5px;
+    font-size: 0.9em;
+  }
+
+  /* Flicker effect on load */
+  @keyframes flicker {
+    0% { opacity: 0.95; }
+    5% { opacity: 0.85; }
+    10% { opacity: 0.98; }
+    15% { opacity: 0.9; }
+    20% { opacity: 1; }
+    100% { opacity: 1; }
+  }
+  html { animation: flicker 0.5s ease-in; }
+
+  @media (max-width: 600px) {
+    #deck { padding: 28px 16px; }
+    .two-col { grid-template-columns: 1fr; gap: 16px; }
+    .nav-arrow { padding: 6px 10px; font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="counter">01 / 10</div>
+<button class="nav-arrow" id="nav-prev" aria-label="Previous">&lt;</button>
+<button class="nav-arrow" id="nav-next" aria-label="Next">&gt;</button>
+
+<div id="deck">
+
+  <!-- Slide 1: Title -->
+  <div class="slide active">
+    <div class="prompt-line">gomez@localhost:~$ ./present --topic openclaw --venue ERA</div>
+    <h1 class="title">Getting Started with OpenClaw<span class="cursor"></span></h1>
+    <p class="title-sub">or: How I Spent My Weekends Arguing with a Config File</p>
+    <div class="title-meta">Chuck Blake // ERA // March 2026</div>
+  </div>
+
+  <!-- Slide 2: What is OpenClaw -->
+  <div class="slide">
+    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">what_is_openclaw</span></h2>
+    <ul>
+      <li>Local AI agent framework — runs on <strong>YOUR</strong> machine</li>
+      <li>Connects to Telegram, Signal, Discord, etc.</li>
+      <li>Always-on: memory, tools, and real actions</li>
+      <li>Think: <strong>chief of staff</strong>, not a chatbot</li>
+      <li>Why local: your data, your vault, your rules</li>
+    </ul>
+  </div>
+
+  <!-- Slide 3: Getting Started -->
+  <div class="slide">
+    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">getting_started --time 30min</span></h2>
+    <ol>
+      <li>Install OpenClaw</li>
+      <li>Create Telegram bot (BotFather — 2 min)</li>
+      <li>Connect to OpenClaw</li>
+      <li>Write SOUL.md — who is this agent?</li>
+      <li>Have your first conversation</li>
+    </ol>
+    <div class="callout">
+      default idle timeout = 2 hours<br>
+      Fix: <code>thread: { mode: "idle", idleMinutes: 5760 }</code>
+    </div>
+  </div>
+
+  <!-- Slide 4: Memory Architecture -->
+  <div class="slide">
+    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">cat memory/ARCHITECTURE.md</span></h2>
+    <div class="two-col">
+      <div class="col-block">
+        <h3>// FOUR LAYERS</h3>
+        <ul>
+          <li><code class="inline">IDENTITY.md</code> — who am I?</li>
+          <li><code class="inline">errors.md</code> — mistakes to avoid</li>
+          <li><code class="inline">MEMORY.md</code> — Chuck's world</li>
+          <li>Daily log — what happened today?</li>
+          <li>+ Mem0 / Qdrant vector DB</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <h3>// RETRIEVAL</h3>
+        <ul>
+          <li>Boot → 20 most recent</li>
+          <li>Per question → semantic search</li>
+        </ul>
+        <h3 style="margin-top:16px;">// LOCAL STACK</h3>
+        <ul>
+          <li>nomic-embed-text</li>
+          <li>qwen3.5:9b</li>
+          <li>Qdrant in Docker</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 5: Secrets Management -->
+  <div class="slide">
+    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">secrets --show-pattern</span></h2>
+    <ul>
+      <li>Gomez has his own 1Password vault — <strong>can't see personal vault</strong></li>
+      <li>Service account token — read-only, scoped</li>
+      <li><code class="inline">agent-vault</code> = local cache (fast, avoids API hammering)</li>
+      <li>Pattern: <strong>least privilege, scoped, no shared credentials</strong></li>
+    </ul>
+  </div>
+
+  <!-- Slide 6: Skills + Scripts -->
+  <div class="slide">
+    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">ls skills/ scripts/</span></h2>
+    <div class="two-col">
+      <div class="col-block">
+        <h3>// SKILLS (~75 total)</h3>
+        <ul>
+          <li>good-morning</li>
+          <li>deploy</li>
+          <li>pdad-do-next</li>
+          <li>omnifocus-process-inbox</li>
+          <li style="color:var(--muted);">...71 more</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <h3>// SCRIPTS</h3>
+        <ul>
+          <li>morning_briefing.py</li>
+          <li>health_log.py</li>
+          <li>omnifocus_reset_planned.sh</li>
+          <li>op-wrapper.sh</li>
+        </ul>
+      </div>
+    </div>
+    <div class="terminal-quote" style="margin-top:20px;">Agent orchestrates — scripts execute.</div>
+  </div>
+
+  <!-- Slide 7: How Much Access -->
+  <div class="slide">
+    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">sudo --how-much</span></h2>
+    <div class="access-row">
+      <span class="access-label">🟢</span>
+      <div><strong style="color:var(--white);">READ-ONLY BUS</strong> — prod events → Slack → agent reads only. Zero risk.</div>
+    </div>
+    <div class="access-row">
+      <span class="access-label">🟡</span>
+      <div><strong style="color:var(--white);">READ-ONLY PROD</strong> — log access, can analyze, can't change.</div>
+    </div>
+    <div class="access-row">
+      <span class="access-label">🔴</span>
+      <div><strong style="color:var(--white);">FULL SCOPED</strong> — GitHub App (per repo), Heroku, 1Password vault, OmniFocus.</div>
+    </div>
+    <div class="terminal-quote"  style="margin-top:16px;">Start small. Expand after trust.</div>
+  </div>
+
+  <!-- Slide 8: Lessons Learned -->
+  <div class="slide">
+    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">grep -r "lesson" logs/</span></h2>
+    <ol>
+      <li>Start small — many cycles of tweaking</li>
+      <li>Scripts for consistent output</li>
+      <li>Programmatic enforcement &gt; prompt guidance</li>
+      <li>Self-diagnosis → self-correction → compound improvement</li>
+    </ol>
+    <div class="terminal-quote"  style="margin-top:16px;">If your system can't refine itself based on what went wrong last week, you're just running the same broken process faster.</div>
+    <div class="error-log">
+      JSON config crash · ghost ✅ without verifying · sub-agent recreating deleted crons · R14 flood from 287 re-queued jobs
+    </div>
+  </div>
+
+  <!-- Slide 9: Where It's Going -->
+  <div class="slide">
+    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">roadmap --future</span></h2>
+    <ul>
+      <li>Whistler: autonomous coding sub-agent</li>
+      <li>PDAD loop: mostly autonomous product development</li>
+      <li>Daily ops on autopilot</li>
+      <li>Vision: agent handles operational layer → I focus on <strong>judgment</strong></li>
+    </ul>
+  </div>
+
+  <!-- Slide 10: Resources -->
+  <div class="slide">
+    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">cat resources.txt</span></h2>
+    <ul class="resource-list">
+      <li>openclaw.ai</li>
+      <li>clawhub.com</li>
+      <li>anthropic.skilljar.com</li>
+      <li style="font-size:13px;color:var(--muted);">chuckblake.com/presentations/openclaw-era-2026/</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const counter = document.getElementById('counter');
+  let current = 0;
+  const total = slides.length;
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(n, total - 1));
+    slides[current].classList.add('active');
+    counter.textContent = pad(current + 1) + ' / ' + pad(total);
+  }
+
+  document.getElementById('nav-prev').addEventListener('click', e => { e.stopPropagation(); goTo(current - 1); });
+  document.getElementById('nav-next').addEventListener('click', e => { e.stopPropagation(); goTo(current + 1); });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') goTo(current + 1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1);
+  });
+
+  document.getElementById('deck').addEventListener('click', () => goTo(current + 1));
+
+  let touchStartX = 0;
+  document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) dx < 0 ? goTo(current + 1) : goTo(current - 1);
+  }, { passive: true });
+
+  goTo(0);
+</script>
+</body>
+</html>
