@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: CTO & co-founder. Startup operator. Music maker.
+subtitle: Startup operator. Music maker.
 
 profile:
   align: right
@@ -20,9 +20,7 @@ latest_posts:
   enabled: false
 ---
 
-I'm the CTO and co-founder of [LEA](https://getlea.ai) — an AI-powered platform helping wealth management firms extract and organize data from complex financial documents.
-
-I've spent my career at startups, wearing every hat from engineering to product to marketing to ops. I like building things from scratch.
+I've spent my career at startups, wearing every hat from engineering to product to marketing to ops. Most recently CTO at [LEA](https://getlea.io). I like building things from scratch.
 
 On the side, I run the [GetMusic.fm](https://getmusic.fm) ecosystem — tools that help independent artists promote their music on Bandcamp. I also make electronic music as [Corvoco](https://corvoco.bandcamp.com).
 
