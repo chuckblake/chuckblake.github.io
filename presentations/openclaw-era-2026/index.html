@@ -61,7 +61,7 @@
     position: absolute; inset: 0;
     display: flex; flex-direction: column;
     justify-content: center; align-items: flex-start;
-    padding: clamp(40px, 6vw, 80px) clamp(40px, 8vw, 120px);
+    padding: clamp(28px, 4vw, 56px) clamp(40px, 7vw, 100px) 80px;
     opacity: 0;
     transform: translateX(60px);
     transition: opacity 0.35s ease, transform 0.35s ease;
@@ -121,17 +121,17 @@
   }
 
   h1 {
-    font-size: clamp(32px, 5vw, 62px);
-    font-weight: 700; line-height: 1.1;
-    letter-spacing: -0.02em;
+    font-size: clamp(48px, 8vw, 100px);
+    font-weight: 800; line-height: 1.0;
+    letter-spacing: -0.03em;
     color: var(--text);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
   h2 {
-    font-size: clamp(24px, 3.5vw, 44px);
-    font-weight: 700; line-height: 1.15;
-    letter-spacing: -0.015em;
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em;
     color: var(--text);
     margin-bottom: 28px;
   }
@@ -341,12 +341,36 @@
 
   .slide > * { position: relative; z-index: 1; }
 
+  /* ── Social footer ── */
+  #social-footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 48px;
+    display: flex; align-items: center;
+    padding: 0 clamp(40px, 7vw, 100px);
+    border-top: 1px solid var(--border);
+    gap: 20px;
+    z-index: 10;
+  }
+  .social-link {
+    display: flex; align-items: center; gap: 6px;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .social-link:hover { color: var(--accent); }
+  .social-link svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+  .social-spacer { flex: 1; }
+
   /* ── Responsive ── */
   @media (max-width: 600px) {
-    .slide { padding: 48px 28px 80px; }
+    .slide { padding: 36px 24px 80px; }
     .mem-grid { grid-template-columns: 1fr 1fr; }
     .nav-dots { display: none; }
     #slide-counter { font-size: 12px; top: 14px; right: 16px; }
+    #social-footer { padding: 0 24px; }
   }
 </style>
 </head>
@@ -539,6 +563,20 @@
     <div class="nav-dots" id="dots"></div>
     <button class="nav-btn" id="next-btn">›</button>
   </div>
+
+  <div id="social-footer">
+    <a class="social-link" href="https://x.com/chuckblake" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.265 5.638 5.9-5.638Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      @chuckblake
+    </a>
+    <a class="social-link" href="https://linkedin.com/in/chuckblake" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      /in/chuckblake
+    </a>
+    <div class="social-spacer"></div>
+    <span class="social-link" style="cursor:default;">ERA · March 2026</span>
+  </div>
+
 </div>
 
 <script>
