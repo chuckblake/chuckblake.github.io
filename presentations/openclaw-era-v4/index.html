@@ -28,35 +28,11 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* CRT scanline effect */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.15) 2px,
-      rgba(0,0,0,0.15) 4px
-    );
-    pointer-events: none;
-    z-index: 1000;
-    animation: scanroll 8s linear infinite;
-  }
+  /* CRT effect removed */
 
-  /* Subtle vignette */
-  body::after {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.6) 100%);
-    pointer-events: none;
-    z-index: 999;
-  }
+  
 
-  @keyframes scanroll {
-    0% { background-position: 0 0; }
+  
     100% { background-position: 0 40px; }
   }
 
@@ -66,14 +42,7 @@
     50% { opacity: 0; }
   }
 
-  .cursor {
-    display: inline-block;
-    width: 10px; height: 1.1em;
-    background: var(--amber);
-    vertical-align: text-bottom;
-    margin-left: 2px;
-    animation: blink 1s step-end infinite;
-  }
+  
 
   /* Counter */
   #counter {
@@ -190,13 +159,8 @@
     color: var(--white);
     margin-bottom: 32px;
     line-height: 1.15;
-  }
-  h2.slide-title .prompt {
-    color: var(--green);
-    margin-right: 10px;
-  }
-  h2.slide-title .cmd {
-    color: var(--white);
+    border-left: 3px solid var(--green);
+    padding-left: 18px;
   }
 
   /* List items */
@@ -366,15 +330,14 @@
   }
 
   /* Flicker effect on load */
-  @keyframes flicker {
-    0% { opacity: 0.95; }
+  
     5% { opacity: 0.85; }
     10% { opacity: 0.98; }
     15% { opacity: 0.9; }
     20% { opacity: 1; }
     100% { opacity: 1; }
   }
-  html { animation: flicker 0.5s ease-in; }
+  html {  }
 
   @media (max-width: 600px) {
     #deck { padding: 28px 16px; }
@@ -406,15 +369,14 @@
 
   <!-- Slide 1: Title -->
   <div class="slide active">
-    <div class="prompt-line">gomez@localhost:~$ ./present --topic openclaw --venue ERA</div>
-    <h1 class="title">Getting Started with OpenClaw<span class="cursor"></span></h1>
+    <h1 class="title">Getting Started with OpenClaw</h1>
     <p class="title-sub">or: How I Spent My Weekends Arguing with a Config File</p>
     <div class="title-meta">Chuck Blake // ERA // March 2026</div>
   </div>
 
   <!-- Slide 2: What is OpenClaw -->
   <div class="slide">
-    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">what_is_openclaw</span></h2>
+    <h2 class="slide-title">What is OpenClaw?</h2>
     <ul>
       <li>Local AI agent framework — runs on <strong>YOUR</strong> machine</li>
       <li>Connects to Telegram, Signal, Discord, etc.</li>
@@ -426,7 +388,7 @@
 
   <!-- Slide 3: Getting Started -->
   <div class="slide">
-    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">getting_started --time 30min</span></h2>
+    <h2 class="slide-title">Getting Started</h2>
     <ol>
       <li>Install OpenClaw</li>
       <li>Create Telegram bot (BotFather — 2 min)</li>
@@ -442,7 +404,7 @@
 
   <!-- Slide 4: Memory Architecture -->
   <div class="slide">
-    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">cat memory/ARCHITECTURE.md</span></h2>
+    <h2 class="slide-title">How Memory Works</h2>
     <div class="two-col">
       <div class="col-block">
         <h3>// FOUR LAYERS</h3>
@@ -472,7 +434,7 @@
 
   <!-- Slide 5: Secrets Management -->
   <div class="slide">
-    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">secrets --show-pattern</span></h2>
+    <h2 class="slide-title">Managing Secrets</h2>
     <ul>
       <li>Gomez has his own 1Password vault — <strong>can't see personal vault</strong></li>
       <li>Service account token — read-only, scoped</li>
@@ -483,7 +445,7 @@
 
   <!-- Slide 6: Skills + Scripts -->
   <div class="slide">
-    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">ls skills/ scripts/</span></h2>
+    <h2 class="slide-title">Skills + Scripts</h2>
     <div class="two-col">
       <div class="col-block">
         <h3>// SKILLS (~75 total)</h3>
@@ -510,7 +472,7 @@
 
   <!-- Slide 7: How Much Access -->
   <div class="slide">
-    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">sudo --how-much</span></h2>
+    <h2 class="slide-title">How Much Access?</h2>
     <div class="access-row">
       <span class="access-label">🟢</span>
       <div><strong style="color:var(--white);">READ-ONLY BUS</strong> — prod events → Slack → agent reads only. Zero risk.</div>
@@ -528,7 +490,7 @@
 
   <!-- Slide 8: Lessons Learned -->
   <div class="slide">
-    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">grep -r "lesson" logs/</span></h2>
+    <h2 class="slide-title">Lessons Learned</h2>
     <ol>
       <li>Start small — many cycles of tweaking</li>
       <li>Scripts for consistent output</li>
@@ -543,7 +505,7 @@
 
   <!-- Slide 9: Where It's Going -->
   <div class="slide">
-    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">roadmap --future</span></h2>
+    <h2 class="slide-title">Where It's Going</h2>
     <ul>
       <li>Whistler: autonomous coding sub-agent</li>
       <li>PDAD loop: mostly autonomous product development</li>
@@ -554,7 +516,7 @@
 
   <!-- Slide 10: Resources -->
   <div class="slide">
-    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">cat resources.txt</span></h2>
+    <h2 class="slide-title">Resources</h2>
     <ul class="resource-list">
       <li>openclaw.ai</li>
       <li>clawhub.com</li>
@@ -565,7 +527,7 @@
 
   <!-- Slide 11: Find Me -->
   <div class="slide">
-    <h2 class="slide-title"><span class="prompt">$</span><span class="cmd">whoami --links</span></h2>
+    <h2 class="slide-title">Find Me</h2>
     <div style="display:flex;gap:60px;align-items:flex-start;flex-wrap:wrap;">
       <div style="display:flex;flex-direction:column;gap:20px;flex:1;min-width:280px;">
         <a href="https://chuckblake.com" target="_blank" style="text-decoration:none;display:flex;flex-direction:column;gap:4px;">
