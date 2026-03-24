@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make AI Work For You — ERA March 2026</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --green: #00ff41;
+    --amber: #ffb000;
+    --white: #ffffff;
+    --dim-green: #00b82e;
+    --muted: #3a7a3a;
+    --font: "Courier New", Courier, monospace;
+  }
+
+  html, body {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--green);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Counter */
+  #counter {
+    position: fixed;
+    bottom: 20px; right: 28px;
+    font-family: var(--font);
+    font-size: 14px;
+    color: var(--dim-green);
+    z-index: 1001;
+    letter-spacing: 0.08em;
+  }
+
+  /* Nav */
+  .nav-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: 1px solid var(--muted);
+    color: var(--muted);
+    font-family: var(--font);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 12px;
+    z-index: 1001;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .nav-arrow:hover { color: var(--green); border-color: var(--green); }
+  #nav-prev { left: 12px; }
+  #nav-next { right: 12px; }
+
+  /* Social footer */
+  #social-footer {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 40px;
+    display: flex; align-items: center;
+    padding: 0 120px;
+    border-top: 1px solid #1a2e1a;
+    z-index: 1001;
+    gap: 24px;
+    background: rgba(10,10,10,0.85);
+  }
+  .s-link {
+    display: flex; align-items: center; gap: 6px;
+    text-decoration: none;
+    color: var(--muted);
+    font-family: var(--font);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    transition: color 0.15s;
+  }
+  .s-link:hover { color: var(--green); }
+  .s-link svg { width: 12px; height: 12px; fill: currentColor; flex-shrink: 0; }
+  .s-spacer { flex: 1; }
+
+  /* Deck */
+  #deck {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    padding: 60px 120px 80px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .slide {
+    display: none;
+    width: min(1100px, 90vw);
+    flex-direction: column;
+    justify-content: center;
+    animation: termIn 0.25s ease;
+    overflow: hidden;
+    max-height: 80vh;
+  }
+  .slide.active { display: flex; }
+
+  @keyframes termIn {
+    from { opacity: 0; transform: translateX(-8px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Prompt line */
+  .prompt-line {
+    color: var(--dim-green);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+
+  /* Title */
+  h1.title {
+    font-size: clamp(36px, 5.5vw, 68px);
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 12px;
+    font-weight: bold;
+  }
+  .title-sub {
+    font-size: clamp(16px, 2.2vw, 24px);
+    color: var(--green);
+    margin-bottom: 20px;
+    opacity: 0.8;
+    font-style: italic;
+  }
+  .title-meta {
+    font-size: 15px;
+    color: var(--muted);
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 1px solid #1a2e1a;
+  }
+
+  /* Slide heading */
+  h2.slide-title {
+    font-size: clamp(26px, 3.8vw, 48px);
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.15;
+    border-left: 3px solid var(--green);
+    padding-left: 18px;
+  }
+  .slide-sub {
+    font-size: clamp(14px, 1.8vw, 20px);
+    color: var(--green);
+    opacity: 0.75;
+    font-style: italic;
+    margin-bottom: 24px;
+    padding-left: 21px;
+  }
+
+  /* List items */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  ul li {
+    font-size: clamp(16px, 2.2vw, 24px);
+    color: #e8e8e8;
+    line-height: 1.7;
+    padding: 6px 0 6px 30px;
+    position: relative;
+  }
+  ul li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: var(--dim-green);
+    font-weight: bold;
+  }
+  ul li strong {
+    color: var(--white);
+  }
+
+  ol {
+    list-style: none;
+    padding: 0;
+    counter-reset: steps;
+  }
+  ol li {
+    counter-increment: steps;
+    font-size: clamp(16px, 2.2vw, 24px);
+    color: #e8e8e8;
+    line-height: 1.7;
+    padding: 6px 0 6px 40px;
+    position: relative;
+  }
+  ol li::before {
+    content: "[" counter(steps) "]";
+    position: absolute;
+    left: 0;
+    color: var(--amber);
+    font-size: 14px;
+    top: 10px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .col-block h3 {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--amber);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #1a2e1a;
+  }
+  .col-block ul li { font-size: clamp(14px, 1.7vw, 18px); color: #e8e8e8; }
+  .col-block p {
+    font-size: clamp(13px, 1.6vw, 17px);
+    color: #e8e8e8;
+    line-height: 1.7;
+    margin-top: 8px;
+  }
+
+  .terminal-quote {
+    border-left: 2px solid var(--dim-green);
+    padding: 10px 16px;
+    margin: 16px 0;
+    font-size: clamp(13px, 1.8vw, 17px);
+    color: var(--white);
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .terminal-quote::before { content: '"'; }
+  .terminal-quote::after { content: '"'; }
+
+  .terminal-quote-lg {
+    border-left: 3px solid var(--green);
+    padding: 14px 20px;
+    margin: 20px 0;
+    font-size: clamp(16px, 2.2vw, 26px);
+    color: var(--white);
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .terminal-quote-lg::before { content: '"'; }
+  .terminal-quote-lg::after { content: '"'; }
+
+  .error-log {
+    background: #100000;
+    border: 1px solid #3a0000;
+    padding: 10px 16px;
+    margin-top: 14px;
+    font-size: clamp(11px, 1.4vw, 13px);
+    color: #ff5555;
+    line-height: 1.6;
+  }
+  .error-log::before {
+    content: "STDERR";
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: #cc0000;
+    margin-bottom: 4px;
+  }
+
+  /* Image placeholder */
+  .img-placeholder {
+    background: #1a2e1a;
+    border: 2px dashed var(--dim-green);
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 16px 0 6px;
+    gap: 10px;
+  }
+  .img-placeholder .img-label {
+    font-size: clamp(13px, 1.6vw, 16px);
+    color: var(--green);
+    letter-spacing: 0.08em;
+  }
+  .img-note {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  .find-me-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 8px;
+  }
+  .find-me-list li {
+    font-size: clamp(18px, 2.4vw, 28px);
+    color: var(--green);
+    line-height: 2;
+    padding: 4px 0 4px 30px;
+    position: relative;
+  }
+  .find-me-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--amber);
+  }
+  .find-me-list li strong {
+    color: var(--white);
+  }
+
+  .bottom-quote {
+    border-top: 1px solid #1a2e1a;
+    padding-top: 18px;
+    margin-top: 20px;
+    font-size: clamp(14px, 1.8vw, 18px);
+    color: var(--white);
+    font-style: italic;
+    line-height: 1.6;
+  }
+  .bottom-quote::before { content: '"'; }
+  .bottom-quote::after { content: '"'; }
+
+  code.inline {
+    color: #ffdd66;
+    background: #0f0f00;
+    padding: 1px 5px;
+    font-size: 0.9em;
+  }
+
+  @media (max-width: 600px) {
+    #deck { padding: 28px 16px; }
+    .two-col { grid-template-columns: 1fr; gap: 16px; }
+    .nav-arrow { padding: 6px 10px; font-size: 14px; }
+    #social-footer { padding: 0 60px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="counter">01 / 11</div>
+<button class="nav-arrow" id="nav-prev" aria-label="Previous">&lt;</button>
+<button class="nav-arrow" id="nav-next" aria-label="Next">&gt;</button>
+
+<div id="social-footer">
+  <a class="s-link" href="https://x.com/chuckblake" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.265 5.638 5.9-5.638Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    @chuckblake
+  </a>
+  <a class="s-link" href="https://linkedin.com/in/chuckblake" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    /in/chuckblake
+  </a>
+  <div class="s-spacer"></div>
+  <span class="s-link" style="cursor:default;">ERA &middot; March 2026</span>
+</div>
+
+<div id="deck">
+
+  <!-- Slide 1: Title -->
+  <div class="slide active">
+    <div class="prompt-line">$ ./openclaw present --venue era --date 2026-03-24</div>
+    <h1 class="title">Make AI Work For You</h1>
+    <p class="title-sub">or: How I Stopped Prompting and Started Delegating</p>
+    <div class="title-meta">Chuck Blake // ERA // March 2026</div>
+  </div>
+
+  <!-- Slide 2: The Problem -->
+  <div class="slide">
+    <h2 class="slide-title">You Are Either Drowning Or Ignoring It</h2>
+    <p class="slide-sub">There is a third option</p>
+    <ul>
+      <li>AI is moving at an inhuman pace</li>
+      <li>Most people: <strong>infinite tabs, no workflow</strong></li>
+      <li>Others: "I tried ChatGPT once"</li>
+      <li>Neither is working</li>
+    </ul>
+    <div class="img-placeholder">
+      <span class="img-label">[ IMAGE: drowning-or-ignoring ]</span>
+    </div>
+    <p class="img-note">Split screen: chaotic browser tabs on left, person ignoring laptop on right. Hand-drawn / editorial style.</p>
+    <div class="terminal-quote">The goal is not to use more AI. The goal is to get more done.</div>
+  </div>
+
+  <!-- Slide 3: What I Built -->
+  <div class="slide">
+    <h2 class="slide-title">A Personal AI Chief of Staff</h2>
+    <p class="slide-sub">Not a chatbot. A chatbot answers questions. A chief of staff gets things done.</p>
+    <ul>
+      <li>Runs on my machine — <strong>my data, my rules</strong></li>
+      <li>Connected to Telegram, my calendar, my code, my tasks</li>
+      <li>Always on — memory, tools, real actions</li>
+      <li>Has his own name (Gomez), his own vault, his own rules</li>
+    </ul>
+    <div class="img-placeholder">
+      <span class="img-label">[ IMAGE: gomez-diagram ]</span>
+    </div>
+    <p class="img-note">Simple diagram: Chuck &rarr; Telegram &rarr; Gomez &rarr; Tools (GitHub, OmniFocus, Email, Heroku)</p>
+  </div>
+
+  <!-- Slide 4: What Actually Happened -->
+  <div class="slide">
+    <h2 class="slide-title">It Did Not Go Perfectly</h2>
+    <p class="slide-sub">Shocking, I know</p>
+    <ul>
+      <li>Built too many systems at once — none of them solid</li>
+      <li>It confidently marked things "done" that were not done</li>
+      <li>A sub-agent recreated a cron job I had just killed</li>
+      <li>Morning briefing fired at 5pm</li>
+    </ul>
+    <div class="error-log">
+      R14 — Memory quota exceeded (287 accidentally re-queued jobs)
+    </div>
+    <div class="terminal-quote" style="margin-top:14px;">The recurring theme: I built something, it seemed to work, I moved on. It was not working.</div>
+  </div>
+
+  <!-- Slide 5: Thing 1 — Curated Inputs -->
+  <div class="slide">
+    <h2 class="slide-title">Thing 1: What You Feed It Matters More Than The Model</h2>
+    <p class="slide-sub">Garbage in, confident garbage out</p>
+    <ul>
+      <li>Raw prompts get generic output</li>
+      <li>Curated context (your vault, your errors, your preferences) gets <strong>your</strong> output</li>
+      <li>Build a personal knowledge base — notes, highlights, decisions</li>
+      <li>The model is a commodity. <strong>Your context is the moat.</strong></li>
+    </ul>
+    <div class="img-placeholder">
+      <span class="img-label">[ IMAGE: inputs-diagram ]</span>
+    </div>
+    <p class="img-note">Funnel: Readwise highlights + personal notes + errors.md &rarr; AI &rarr; personalized output</p>
+  </div>
+
+  <!-- Slide 6: Thing 2 — Skills -->
+  <div class="slide">
+    <h2 class="slide-title">Thing 2: Build Once, Use Forever</h2>
+    <p class="slide-sub">The difference between a tool and a system</p>
+    <ul>
+      <li>A skill is a reusable instruction set for a specific task</li>
+      <li><code class="inline">good-morning</code>, <code class="inline">deploy</code>, <code class="inline">process-inbox</code>, <code class="inline">grill-me</code>...</li>
+      <li>Not model-specific — works across Claude, GPT, whatever is next</li>
+      <li>~75 skills in my setup. Each one took 20 min to build. Each one saves hours.</li>
+    </ul>
+    <div class="terminal-quote">Agent orchestrates — scripts execute.</div>
+  </div>
+
+  <!-- Slide 7: Thing 3 — Memory -->
+  <div class="slide">
+    <h2 class="slide-title">Thing 3: Your Thinking, Made Portable</h2>
+    <p class="slide-sub">If it is not written down, it does not exist</p>
+    <ul>
+      <li>Four layers: identity, errors, long-term memory, daily log</li>
+      <li>Semantic search via local vector DB (Mem0 + Qdrant)</li>
+      <li>Key insight: this is <strong>YOUR</strong> thinking, not the model's</li>
+      <li>When the next AI platform comes — you bring your memory with you</li>
+    </ul>
+    <div class="terminal-quote">The agent wakes up fresh every session. The files are the memory.</div>
+  </div>
+
+  <!-- Slide 8: Thing 4 — Evals -->
+  <div class="slide">
+    <h2 class="slide-title">Thing 4: The Difference Between Vibes And Knowing</h2>
+    <p class="slide-sub">You cannot improve what you cannot measure</p>
+    <ul>
+      <li>An eval is a test for AI output</li>
+      <li>Without evals: improving by feel ("seems better?")</li>
+      <li>With evals: you have a score. You can iterate, regress, ship with confidence.</li>
+      <li>Autoresearch: runs a skill 50x, scores output, mutates the prompt, keeps improvements</li>
+    </ul>
+    <div class="terminal-quote">You cannot improve what you cannot measure. This is true for software. It is especially true for AI.</div>
+  </div>
+
+  <!-- Slide 9: Thing 5 — Factory Mindset -->
+  <div class="slide">
+    <h2 class="slide-title">Thing 5: Are You Running The Factory Or Working On The Line?</h2>
+    <p class="slide-sub">Warhol did not apologize for running a studio</p>
+    <div class="two-col" style="margin-top:8px;">
+      <div class="col-block">
+        <h3>FORD'S FACTORY</h3>
+        <p>Model T: 12 hrs &rarr; 93 min.</p>
+        <p>Interchangeable parts.</p>
+        <p>Human as <strong>plant manager</strong>.</p>
+      </div>
+      <div class="col-block">
+        <h3>WARHOL'S FACTORY</h3>
+        <p>Vision from Warhol.</p>
+        <p>Assistants executed.</p>
+        <p>He made the production system <strong>the aesthetic</strong>.</p>
+      </div>
+    </div>
+    <div class="terminal-quote" style="margin-top:20px;">The bottleneck used to be execution. Now it is judgment. That is the right problem to have.</div>
+  </div>
+
+  <!-- Slide 10: Close -->
+  <div class="slide">
+    <h2 class="slide-title">Make AI Work For You</h2>
+    <p class="slide-sub">One thing you can do this week</p>
+    <ol>
+      <li>Pick ONE repetitive task you do every week</li>
+      <li>Write down exactly how you do it (step by step)</li>
+      <li>That is your first skill</li>
+      <li>The system grows from there</li>
+    </ol>
+    <div class="terminal-quote-lg">AI is moving fast. Most people are drowning or ignoring it. You now have a third option.</div>
+    <div class="title-meta">chuckblake.com/presentations/openclaw-era-v5/</div>
+  </div>
+
+  <!-- Slide 11: Find Me -->
+  <div class="slide">
+    <h2 class="slide-title">Find Me</h2>
+    <p class="slide-sub">I am probably already on your machine</p>
+    <ul class="find-me-list">
+      <li><strong>Website:</strong> chuckblake.com</li>
+      <li><strong>X:</strong> @chuckblake</li>
+      <li><strong>LinkedIn:</strong> /in/chuckblake</li>
+      <li><strong>Slides:</strong> chuckblake.com/presentations/openclaw-era-v5/</li>
+    </ul>
+  </div>
+
+</div><!-- #deck -->
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const counter = document.getElementById('counter');
+  const total = slides.length;
+  let current = 0;
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function show(idx) {
+    slides[current].classList.remove('active');
+    current = (idx + total) % total;
+    slides[current].classList.add('active');
+    counter.textContent = pad(current + 1) + ' / ' + pad(total);
+  }
+
+  document.getElementById('nav-next').addEventListener('click', () => show(current + 1));
+  document.getElementById('nav-prev').addEventListener('click', () => show(current - 1));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+      e.preventDefault(); show(current + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault(); show(current - 1);
+    }
+  });
+
+  // Touch/swipe
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) show(current + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+</script>
+</body>
+</html>
