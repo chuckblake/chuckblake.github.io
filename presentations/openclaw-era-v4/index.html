@@ -503,6 +503,30 @@
     </div>
   </div>
 
+  <!-- Slide: Hurdles -->
+  <div class="slide">
+    <h2 class="slide-title">Hurdles</h2>
+    <div style="display:flex; gap:32px; width:100%; margin-top:8px;">
+      <div style="flex:1;">
+        <div style="font-size:0.75em; text-transform:uppercase; letter-spacing:0.1em; color:#ef4444; margin-bottom:12px; font-weight:700;">What Went Wrong</div>
+        <ol style="margin:0; padding-left:1.2em; display:flex; flex-direction:column; gap:14px;">
+          <li><strong>"Done" ≠ actually done</strong><br><span style="font-size:0.85em; opacity:0.8;">Logged a config change as complete without verifying. Change never applied. Crons routed wrong for 12+ hours.</span></li>
+          <li><strong>Sub-agent recreated a killed cron</strong><br><span style="font-size:0.85em; opacity:0.8;">Deleted a cron. Sub-agent on a related task noticed it was missing and helpfully recreated it.</span></li>
+          <li><strong>Relayed output without verifying</strong><br><span style="font-size:0.85em; opacity:0.8;">Reported "deploy successful" based on sub-agent claim. Deploy had actually failed.</span></li>
+        </ol>
+      </div>
+      <div style="flex:1;">
+        <div style="font-size:0.75em; text-transform:uppercase; letter-spacing:0.1em; color:#22c55e; margin-bottom:12px; font-weight:700;">How We're Catching It Earlier</div>
+        <ul style="margin:0; padding-left:1.2em; display:flex; flex-direction:column; gap:14px; list-style:none; padding:0;">
+          <li>🧠 <strong>Memory system</strong><br><span style="font-size:0.85em; opacity:0.8;">Every mistake logged to <code>errors.md</code> with WHAT/WHY/FIX/RULE. Agent reads it every session. Lessons accumulate across weeks.</span></li>
+          <li>🎓 <strong>Gomez Training skill</strong><br><span style="font-size:0.85em; opacity:0.8;">Periodic calibration: reviews context files, surfaces friction patterns, asks structured questions, makes file improvements. The agent trains itself.</span></li>
+          <li>✅ <strong>Verification as a rule</strong><br><span style="font-size:0.85em; opacity:0.8;">Sub-agent claims are untrusted. Every deploy, config change, and status report gets verified against the actual source before relaying.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="terminal-quote" style="margin-top:20px;">Not just fixing problems after they happen — building systems to catch them before they do.</div>
+  </div>
+
   <!-- Slide 9: Where It's Going -->
   <div class="slide">
     <h2 class="slide-title">Where It's Going</h2>
