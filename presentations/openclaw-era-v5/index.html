@@ -363,7 +363,7 @@
     /in/chuckblake
   </a>
   <div class="s-spacer"></div>
-  <span class="s-link" style="cursor:default;">ERA &middot; March 2026</span>
+  <span class="s-link" style="cursor:default;">ERA &middot; March 2026 &mdash; <span id="slide-num">1</span></span>
 </div>
 
 <div id="deck">
@@ -542,6 +542,8 @@
     current = (idx + total) % total;
     slides[current].classList.add('active');
     counter.textContent = pad(current + 1) + ' / ' + pad(total);
+    const slideNum = document.getElementById('slide-num');
+    if (slideNum) slideNum.textContent = current + 1;
   }
 
   document.getElementById('nav-next').addEventListener('click', () => show(current + 1));
