@@ -25,7 +25,7 @@ Tonight I want to share five ideas that came out of that. These are as much remi
 
 But here's the question I keep asking myself: is my business actually moving faster? Or am I just doing the same things in a slightly more interesting way?
 
-The rabbit hole is real. It's very easy to spend three hours trying to get a prompt just right and call it productivity. I've done it.
+The rabbit hole is real. It's very easy to spend three hours trying to get a prompt just right and call it productivity. I've done it. That's the activity/progress trap — feels productive, isn't.
 
 The thing I have to constantly remind myself — and I mean constantly — is that the goal isn't to use more AI. The goal is to get more done."
 
@@ -59,7 +59,12 @@ The recurring theme was: I built something, it seemed to work, I moved on. It wa
 
 "So out of all that chaos, here are the five things I keep coming back to. These aren't a framework — I'm not that organized. They're just the five areas where I've been putting my energy, and where I've seen the most return."
 
-*Read through the list. Briefly, one line each.*
+*Walk through each one with a line:*
+- **Memory** — give your AI a memory it can rely on
+- **Context** — organize your personal context into a searchable vault
+- **Skills** — build reusable skills, not one-off prompts
+- **Evals** — replace vibes with a score
+- **Principles** — scale your taste, not your attention
 
 ---
 
