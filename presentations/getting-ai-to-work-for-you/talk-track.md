@@ -3,13 +3,13 @@
 
 ---
 
-## Slide 1a — Title (headline only)
+## Slide 1 — Title (headline only)
 
 *Let it land. Pause before speaking.*
 
 ---
 
-## Slide 1b — Title with subheading + Mac mini photo
+## Slide 2 — Title + subheading + Mac mini photo
 
 "This is Gomez. He runs on that Mac mini in my office. He has opinions about how I should be doing things, and honestly? He's usually right.
 
@@ -19,7 +19,7 @@ Tonight I want to share five ideas that came out of that. These are as much remi
 
 ---
 
-## Slide 2 — Everyone's Using AI
+## Slide 3 — Everyone's Using AI
 
 "Every single person in this room has used AI in the last week. Probably more than once.
 
@@ -31,7 +31,7 @@ The thing I have to constantly remind myself — and I mean constantly — is th
 
 ---
 
-## Slide 3 — A Personal AI Chief of Staff
+## Slide 4 — A Personal AI Chief of Staff
 
 "So what did I actually build?
 
@@ -41,7 +41,7 @@ He runs locally on my machine — my data never leaves my control. He's connecte
 
 ---
 
-## Slide 4 — It Did Not Go Perfectly
+## Slide 5 — It Did Not Go Perfectly
 
 "I want to be honest with you about how this went, because I think the failure story is actually the useful part.
 
@@ -49,13 +49,13 @@ I built too many things at once. None of them were solid.
 
 He confidently marked tasks as done that were not done. A sub-agent I had running recreated a cron job I had just killed — so I had two of the same job firing. My morning briefing was going out at 5pm.
 
-And my personal favorite: I accidentally crashed the server with 287 re-queued jobs.
+And my personal favorite: I crashed the server with 287 re-queued jobs.
 
 The recurring theme was: I built something, it seemed to work, I moved on. It was not working."
 
 ---
 
-## Slide 4b — Five Ideas
+## Slide 6 — Five Ideas
 
 "So out of all that chaos, here are the five things I keep coming back to. These aren't a framework — I'm not that organized. They're just the five areas where I've been putting my energy, and where I've seen the most return."
 
@@ -68,7 +68,7 @@ The recurring theme was: I built something, it seemed to work, I moved on. It wa
 
 ---
 
-## Slide 5 — 1. Memory
+## Slide 7 — 1. Memory
 
 "Every AI session starts fresh. The model has no idea who you are, what you were working on yesterday, or what mistakes it made last week.
 
@@ -78,7 +78,7 @@ I have four layers: an identity file, an errors log, a long-term memory file, an
 
 ---
 
-## Slide 5b — How Memory Works
+## Slide 8 — How Memory Works
 
 "Here's how it actually flows.
 
@@ -90,7 +90,7 @@ And then every time a session starts, the agent boots by loading all of that in 
 
 ---
 
-## Slide 6 — 2. Context
+## Slide 9 — 2. Context
 
 "Memory is about what the agent knows over time. Context is about what you feed it right now.
 
@@ -100,7 +100,7 @@ The model is a commodity. Everyone has access to the same Claude, the same GPT. 
 
 ---
 
-## Slide 6b — What's In The Vault
+## Slide 10 — What's In The Vault
 
 "My context lives in an Obsidian vault — a personal knowledge base I've been building for years.
 
@@ -110,7 +110,7 @@ When I ask Gomez something about a specific person or project, he's not guessing
 
 ---
 
-## Slide 7 — 3. Skills
+## Slide 11 — 3. Skills
 
 "A skill is a reusable instruction set for a specific task.
 
@@ -122,7 +122,7 @@ And here's the key thing: they're not model-specific. When Claude gets replaced 
 
 ---
 
-## Slide 7b — Skills in Practice
+## Slide 12 — Skills in Practice
 
 "Every skill follows the same pattern: the LLM decides, the script executes.
 
@@ -134,7 +134,7 @@ The LLM is good at judgment. Scripts are good at reliability. Keep them in their
 
 ---
 
-## Slide 8 — 4. Evals
+## Slide 13 — 4. Evals
 
 "This one took me the longest to appreciate.
 
@@ -142,11 +142,11 @@ An eval is a test for AI output. Binary questions — yes or no — that you run
 
 Without evals, you're improving by feel. 'That seemed better, I think?' With evals, you have a score. You can iterate, you can catch regressions, you can ship with confidence.
 
-I have a skill called Autoresearch that does this automatically — runs a skill dozens of times, scores the output, mutates the prompt, and keeps the improvements."
+I have a skill called Autoresearch that does this automatically — runs a skill repeatedly, scores the output, mutates the prompt, and keeps the improvements."
 
 ---
 
-## Slide 8b — What An Eval Actually Looks Like
+## Slide 14 — What An Eval Actually Looks Like
 
 "Here's what the eval for my morning briefing looks like. Six questions, all binary.
 
@@ -158,7 +158,7 @@ No vibes. Just a score."
 
 ---
 
-## Slide 9 — 5. Principles
+## Slide 15 — 5. Principles
 
 "The last idea is the one I think about most when I'm building.
 
@@ -170,7 +170,7 @@ That's the goal. Not to be in every loop — but to have your judgment embedded 
 
 ---
 
-## Slide 9b — What A Principle Looks Like In The Repo
+## Slide 16 — What A Principle Looks Like In The Repo
 
 "Concretely: principles live in a file in the repo called CLAUDE.md. The coding agent reads it at the start of every session — exactly the way Gomez reads his identity file.
 
@@ -182,7 +182,7 @@ That's my judgment, scaled."
 
 ---
 
-## Slide 10 — Your Context Is The Moat
+## Slide 17 — Close
 
 "I'll leave you with this.
 
@@ -194,7 +194,7 @@ The model is replaceable. The system you build around it is yours."
 
 ---
 
-## Slide 11 — Find Me
+## Slide 18 — Find Me
 
 "Happy to keep talking about any of this.
 
