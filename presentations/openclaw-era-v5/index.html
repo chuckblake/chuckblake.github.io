@@ -368,11 +368,20 @@
 
 <div id="deck">
 
-  <!-- Slide 1: Title -->
+  <!-- Slide 1a: Title — headline only -->
   <div class="slide active">
+    <h1 class="title">Five Principles for Getting More Done With AI</h1>
+    <div class="title-meta">Chuck Blake // ERA // March 2026</div>
+  </div>
 
+  <!-- Slide 1b: Title — OR subheading + Mac mini photo -->
+  <div class="slide">
     <h1 class="title">Five Principles for Getting More Done With AI</h1>
     <p class="title-sub">or: How I Spent a Completely Normal Amount of Time Arguing With a Mac mini</p>
+    <div style="margin-top:24px;display:flex;align-items:center;gap:32px;">
+      <img src="images/gomez-mac-mini.jpg" style="width:260px;height:200px;object-fit:cover;border-radius:8px;border:2px solid var(--green);">
+      <div style="color:var(--muted);font-size:13px;font-style:italic;line-height:1.8;">This is Gomez.<br>He lives on that Mac mini.<br>He has opinions.</div>
+    </div>
     <div class="title-meta">Chuck Blake // ERA // March 2026</div>
   </div>
 
@@ -385,13 +394,13 @@
         <li>You've used it this week. Probably more than once.</li>
         <li>But is your business actually moving faster?</li>
         <li>The rabbit hole is real — easy to confuse <strong>activity with progress</strong></li>
-        <li>Using AI isn't the goal. <strong>Getting more done is.</strong></li>
+        <li>I have to remind myself of this <strong>constantly.</strong></li>
       </ul>
       <div style="text-align:center;flex-shrink:0;">
         <img src="images/alice-falling.jpg" style="width:200px;height:200px;object-fit:cover;border-radius:50%;border:2px solid var(--green);">
       </div>
     </div>
-    <div class="terminal-quote" style="margin-top:20px;">The goal is not to use more AI. The goal is to get more done.</div>
+    <div class="terminal-quote" style="margin-top:20px;">These are as much reminders for me as they are takeaways for you. I'm still figuring this out too. The goal is not to use more AI. The goal is to get more done.</div>
   </div>
 
   <!-- Slide 3: What I Built -->
@@ -426,9 +435,22 @@
     <div class="terminal-quote" style="margin-top:14px;">The recurring theme: I built something, it seemed to work, I moved on. It was not working.</div>
   </div>
 
-  <!-- Slide 5: Thing 1 — Curated Inputs -->
+  <!-- Slide 5: 1. Memory -->
   <div class="slide">
-    <h2 class="slide-title">1. Context — What You Feed It Matters More Than The Model</h2>
+    <h2 class="slide-title">1. Memory — Your Thinking, Made Portable</h2>
+    <p class="slide-sub">If it is not written down, it does not exist</p>
+    <ul>
+      <li>Four layers: identity, errors, long-term memory, daily log</li>
+      <li>Semantic search via local vector DB (Mem0 + Qdrant)</li>
+      <li>Key insight: this is <strong>YOUR</strong> thinking, not the model's</li>
+      <li>When the next AI platform comes — you bring your memory with you</li>
+    </ul>
+    <div class="terminal-quote">The agent wakes up fresh every session. The files are the memory.</div>
+  </div>
+
+  <!-- Slide 6: 2. Context -->
+  <div class="slide">
+    <h2 class="slide-title">2. Context — What You Feed It Matters More Than The Model</h2>
     <p class="slide-sub">Garbage in, confident garbage out</p>
     <ul>
       <li>Raw prompts get generic output</li>
@@ -442,9 +464,9 @@
     <p class="img-note">Funnel: Readwise highlights + personal notes + errors.md &rarr; AI &rarr; personalized output</p>
   </div>
 
-  <!-- Slide 6: Thing 2 — Skills -->
+  <!-- Slide 7: 3. Skills -->
   <div class="slide">
-    <h2 class="slide-title">2. Skills — Build Once, Use Forever</h2>
+    <h2 class="slide-title">3. Skills — Build Once, Use Forever</h2>
     <p class="slide-sub">The difference between a tool and a system</p>
     <ul>
       <li>A skill is a reusable instruction set for a specific task</li>
@@ -455,65 +477,52 @@
     <div class="terminal-quote">Agent orchestrates — scripts execute.</div>
   </div>
 
-  <!-- Slide 6b: Skills in Practice -->
+  <!-- Slide 7b: Skills in Practice -->
   <div class="slide">
     <h2 class="slide-title">Skills in Practice</h2>
     <p class="slide-sub">Same pattern every time: LLM decides, script executes</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:12px;">
 
       <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:10px;overflow:hidden;">
-        <div style="background:#0f2a0f;padding:12px 16px;border-bottom:1px solid var(--dim-green);">
-          <div style="color:var(--green);font-size:13px;font-weight:700;letter-spacing:0.1em;">GOOD-MORNING</div>
+        <div style="background:#0f2a0f;padding:14px 18px;border-bottom:1px solid var(--dim-green);">
+          <div style="color:var(--green);font-size:15px;font-weight:700;letter-spacing:0.1em;">GOOD-MORNING</div>
         </div>
-        <div style="padding:14px 16px;">
-          <div style="color:var(--dim-green);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">🧠 LLM</div>
-          <div style="color:#ccc;font-size:13px;line-height:1.6;margin-bottom:12px;">Asks health questions conversationally. Interprets your answers. Processes OmniFocus inbox.</div>
-          <div style="color:var(--dim-green);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">⚙️ Script</div>
-          <div style="color:#aaa;font-size:13px;line-height:1.6;"><code style="color:var(--green);font-size:11px;">health_log.py</code> saves data. <code style="color:var(--green);font-size:11px;">morning_briefing.py</code> builds + sends email. Same format every day.</div>
+        <div style="padding:18px 20px;">
+          <div style="color:var(--dim-green);font-size:12px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">🧠 LLM</div>
+          <div style="color:#ccc;font-size:16px;line-height:1.7;margin-bottom:16px;">Ask health questions conversationally</div>
+          <div style="color:var(--dim-green);font-size:12px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">⚙️ Script</div>
+          <div style="color:#aaa;font-size:16px;line-height:1.7;">Health log</div>
         </div>
       </div>
 
       <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:10px;overflow:hidden;">
-        <div style="background:#0f2a0f;padding:12px 16px;border-bottom:1px solid var(--dim-green);">
-          <div style="color:var(--green);font-size:13px;font-weight:700;letter-spacing:0.1em;">DEPLOY</div>
+        <div style="background:#0f2a0f;padding:14px 18px;border-bottom:1px solid var(--dim-green);">
+          <div style="color:var(--green);font-size:15px;font-weight:700;letter-spacing:0.1em;">DEPLOY</div>
         </div>
-        <div style="padding:14px 16px;">
-          <div style="color:var(--dim-green);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">🧠 LLM</div>
-          <div style="color:#ccc;font-size:13px;line-height:1.6;margin-bottom:12px;">Decides sequence. Watches CI. Reads logs. Verifies deploy succeeded.</div>
-          <div style="color:var(--dim-green);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">⚙️ Script</div>
-          <div style="color:#aaa;font-size:13px;line-height:1.6;">Git commands. GitHub token auth. Heroku API calls. Version bump. All deterministic.</div>
+        <div style="padding:18px 20px;">
+          <div style="color:var(--dim-green);font-size:12px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">🧠 LLM</div>
+          <div style="color:#ccc;font-size:16px;line-height:1.7;margin-bottom:16px;">Decides sequence. Watches CI. Reads logs. Verifies deploy succeeded.</div>
+          <div style="color:var(--dim-green);font-size:12px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">⚙️ Script</div>
+          <div style="color:#aaa;font-size:16px;line-height:1.7;">Git commands. GitHub token auth. Heroku API calls. Version bump.</div>
         </div>
       </div>
 
       <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:10px;overflow:hidden;">
-        <div style="background:#0f2a0f;padding:12px 16px;border-bottom:1px solid var(--dim-green);">
-          <div style="color:var(--green);font-size:13px;font-weight:700;letter-spacing:0.1em;">PROCESS-INBOX</div>
+        <div style="background:#0f2a0f;padding:14px 18px;border-bottom:1px solid var(--dim-green);">
+          <div style="color:var(--green);font-size:15px;font-weight:700;letter-spacing:0.1em;">PROCESS-INBOX</div>
         </div>
-        <div style="padding:14px 16px;">
-          <div style="color:var(--dim-green);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">🧠 LLM</div>
-          <div style="color:#ccc;font-size:13px;line-height:1.6;margin-bottom:12px;">Reads inbox items. Suggests GTD names, projects, dates. Reads your replies.</div>
-          <div style="color:var(--dim-green);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">⚙️ Script</div>
-          <div style="color:#aaa;font-size:13px;line-height:1.6;">MCP calls write to OmniFocus. AppleScript sets planned dates. No hallucination in the execution layer.</div>
+        <div style="padding:18px 20px;">
+          <div style="color:var(--dim-green);font-size:12px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">🧠 LLM</div>
+          <div style="color:#ccc;font-size:16px;line-height:1.7;margin-bottom:16px;">Suggest GTD task names</div>
+          <div style="color:var(--dim-green);font-size:12px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">⚙️ Script</div>
+          <div style="color:#aaa;font-size:16px;line-height:1.7;">MCP calls right to OmniFocus</div>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- Slide 7: Thing 3 — Memory -->
-  <div class="slide">
-    <h2 class="slide-title">3. Memory — Your Thinking, Made Portable</h2>
-    <p class="slide-sub">If it is not written down, it does not exist</p>
-    <ul>
-      <li>Four layers: identity, errors, long-term memory, daily log</li>
-      <li>Semantic search via local vector DB (Mem0 + Qdrant)</li>
-      <li>Key insight: this is <strong>YOUR</strong> thinking, not the model's</li>
-      <li>When the next AI platform comes — you bring your memory with you</li>
-    </ul>
-    <div class="terminal-quote">The agent wakes up fresh every session. The files are the memory.</div>
-  </div>
-
-  <!-- Slide 8: Thing 4 — Evals -->
+  <!-- Slide 8: 4. Evals -->
   <div class="slide">
     <h2 class="slide-title">4. Evals — The Difference Between Vibes And Knowing</h2>
     <p class="slide-sub">You cannot improve what you cannot measure</p>
@@ -526,7 +535,7 @@
     <div class="terminal-quote">You cannot improve what you cannot measure. This is true for software. It is especially true for AI.</div>
   </div>
 
-  <!-- Slide 9: Thing 5 — Factory Mindset -->
+  <!-- Slide 9: 5. Principles -->
   <div class="slide">
     <h2 class="slide-title">5. Principles — Are You Running The Factory Or Working On The Line?</h2>
     <p class="slide-sub">Two models of delegation. One of them scales.</p>
