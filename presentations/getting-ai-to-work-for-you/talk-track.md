@@ -41,17 +41,15 @@ He runs locally on my machine — my data never leaves my control. He's connecte
 
 ---
 
-## Slide 5 — It Did Not Go Perfectly
+## Slide 5 — Built on OpenClaw
 
-"I want to be honest with you about how this went, because I think the failure story is actually the useful part.
+"Everything I'm going to show you runs on OpenClaw — an open source local AI agent platform. It runs on my machine, connects to my tools, and is where all of this lives.
 
-I built too many things at once. None of them were solid.
+I want to be honest: it did not go perfectly. I've crashed servers. I've had briefings fire at 5pm. I've had sub-agents recreate cron jobs I'd just killed.
 
-He confidently marked tasks as done that were not done. A sub-agent I had running recreated a cron job I had just killed — so I had two of the same job firing. My morning briefing was going out at 5pm.
+The recurring theme was: I built something, it seemed to work, I moved on. It was not working.
 
-And my personal favorite: I crashed the server with 287 re-queued jobs.
-
-The recurring theme was: I built something, it seemed to work, I moved on. It was not working."
+These five ideas are what I keep coming back to — the things I'm actively working on to make the system actually function."
 
 ---
 
@@ -189,6 +187,8 @@ That's my judgment, scaled."
 Everyone in this room has access to the same AI. GPT, Claude, Gemini, whatever comes out next month. The model is a commodity.
 
 What nobody else has is your memory, your context, your judgment embedded in your system. That gap compounds. Every skill you build, every correction you log, every principle you commit — it gets wider.
+
+And none of this is OpenClaw-specific. Build your memory in files. Build your context in a vault. Build your skills as text. Any platform that reads them inherits your system. You own it.
 
 The model is replaceable. The system you build around it is yours."
 
