@@ -461,6 +461,63 @@
     <div class="terminal-quote">The agent wakes up fresh every session. The files are the memory.</div>
   </div>
 
+  <!-- Slide 5b: Memory — How It Works -->
+  <div class="slide">
+    <h2 class="slide-title">How Memory Works</h2>
+    <p class="slide-sub">Four layers, two systems, one portable brain</p>
+
+    <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;align-items:center;margin-top:16px;">
+
+      <!-- Column 1: Inputs -->
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:8px;padding:12px 14px;">
+          <div style="color:var(--amber);font-size:10px;letter-spacing:0.1em;margin-bottom:4px;">EVERY SESSION</div>
+          <div style="color:var(--white);font-size:14px;font-weight:bold;">Daily Log</div>
+          <div style="color:#aaa;font-size:12px;margin-top:4px;">Raw notes — what happened, what was decided</div>
+        </div>
+        <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:8px;padding:12px 14px;">
+          <div style="color:var(--amber);font-size:10px;letter-spacing:0.1em;margin-bottom:4px;">AS IT HAPPENS</div>
+          <div style="color:var(--white);font-size:14px;font-weight:bold;">errors.md</div>
+          <div style="color:#aaa;font-size:12px;margin-top:4px;">Mistakes logged in real time. Don't repeat.</div>
+        </div>
+        <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:8px;padding:12px 14px;">
+          <div style="color:var(--amber);font-size:10px;letter-spacing:0.1em;margin-bottom:4px;">STABLE</div>
+          <div style="color:var(--white);font-size:14px;font-weight:bold;">IDENTITY.md</div>
+          <div style="color:#aaa;font-size:12px;margin-top:4px;">Who I am, how I communicate, hard rules</div>
+        </div>
+      </div>
+
+      <!-- Arrow 1 -->
+      <div style="text-align:center;padding:0 16px;color:var(--dim-green);font-size:20px;">→</div>
+
+      <!-- Column 2: Long-term -->
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="background:#0a1f0a;border:2px solid var(--green);border-radius:8px;padding:14px 16px;">
+          <div style="color:var(--amber);font-size:10px;letter-spacing:0.1em;margin-bottom:4px;">WEEKLY DISTILLATION</div>
+          <div style="color:var(--white);font-size:15px;font-weight:bold;">MEMORY.md</div>
+          <div style="color:#aaa;font-size:12px;margin-top:4px;">Curated long-term memory — decisions, patterns, preferences</div>
+        </div>
+        <div style="background:#0a1f0a;border:2px solid var(--green);border-radius:8px;padding:14px 16px;">
+          <div style="color:var(--amber);font-size:10px;letter-spacing:0.1em;margin-bottom:4px;">ONGOING</div>
+          <div style="color:var(--white);font-size:15px;font-weight:bold;">Mem0 + Qdrant</div>
+          <div style="color:#aaa;font-size:12px;margin-top:4px;">Semantic vector search — finds relevant context by meaning</div>
+        </div>
+      </div>
+
+      <!-- Arrow 2 -->
+      <div style="text-align:center;padding:0 16px;color:var(--dim-green);font-size:20px;">→</div>
+
+      <!-- Column 3: Boot -->
+      <div style="background:#0f2a0f;border:1px solid var(--dim-green);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="color:var(--amber);font-size:10px;letter-spacing:0.1em;margin-bottom:4px;">EVERY BOOT</div>
+        <div style="color:var(--white);font-size:15px;font-weight:bold;">Agent loads context</div>
+        <div style="color:#aaa;font-size:12px;margin-top:6px;line-height:1.6;">Identity → errors → long-term memory → today's log → semantic search</div>
+        <div style="color:var(--green);font-size:12px;margin-top:10px;font-style:italic;">Wakes up knowing who it is and what matters</div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Slide 6: Context -->
   <div class="slide">
     <h2 class="slide-title">2. Context</h2>
