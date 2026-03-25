@@ -460,6 +460,51 @@
     <div class="terminal-quote">Agent orchestrates — scripts execute.</div>
   </div>
 
+  <!-- Slide 6b: Skills in Practice -->
+  <div class="slide">
+    <h2 class="slide-title">Skills in Practice</h2>
+    <p class="slide-sub">Same pattern every time: LLM decides, script executes</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px;">
+
+      <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:10px;overflow:hidden;">
+        <div style="background:#0f2a0f;padding:12px 16px;border-bottom:1px solid var(--dim-green);">
+          <div style="color:var(--green);font-size:13px;font-weight:700;letter-spacing:0.1em;">GOOD-MORNING</div>
+        </div>
+        <div style="padding:14px 16px;">
+          <div style="color:var(--dim-green);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">🧠 LLM</div>
+          <div style="color:#ccc;font-size:13px;line-height:1.6;margin-bottom:12px;">Asks health questions conversationally. Interprets your answers. Processes OmniFocus inbox.</div>
+          <div style="color:var(--dim-green);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">⚙️ Script</div>
+          <div style="color:#aaa;font-size:13px;line-height:1.6;"><code style="color:var(--green);font-size:11px;">health_log.py</code> saves data. <code style="color:var(--green);font-size:11px;">morning_briefing.py</code> builds + sends email. Same format every day.</div>
+        </div>
+      </div>
+
+      <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:10px;overflow:hidden;">
+        <div style="background:#0f2a0f;padding:12px 16px;border-bottom:1px solid var(--dim-green);">
+          <div style="color:var(--green);font-size:13px;font-weight:700;letter-spacing:0.1em;">DEPLOY</div>
+        </div>
+        <div style="padding:14px 16px;">
+          <div style="color:var(--dim-green);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">🧠 LLM</div>
+          <div style="color:#ccc;font-size:13px;line-height:1.6;margin-bottom:12px;">Decides sequence. Watches CI. Reads logs. Verifies deploy succeeded.</div>
+          <div style="color:var(--dim-green);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">⚙️ Script</div>
+          <div style="color:#aaa;font-size:13px;line-height:1.6;">Git commands. GitHub token auth. Heroku API calls. Version bump. All deterministic.</div>
+        </div>
+      </div>
+
+      <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:10px;overflow:hidden;">
+        <div style="background:#0f2a0f;padding:12px 16px;border-bottom:1px solid var(--dim-green);">
+          <div style="color:var(--green);font-size:13px;font-weight:700;letter-spacing:0.1em;">PROCESS-INBOX</div>
+        </div>
+        <div style="padding:14px 16px;">
+          <div style="color:var(--dim-green);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">🧠 LLM</div>
+          <div style="color:#ccc;font-size:13px;line-height:1.6;margin-bottom:12px;">Reads inbox items. Suggests GTD names, projects, dates. Reads your replies.</div>
+          <div style="color:var(--dim-green);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">⚙️ Script</div>
+          <div style="color:#aaa;font-size:13px;line-height:1.6;">MCP calls write to OmniFocus. AppleScript sets planned dates. No hallucination in the execution layer.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Slide 7: Thing 3 — Memory -->
   <div class="slide">
     <h2 class="slide-title">Thing 3: Your Thinking, Made Portable</h2>
