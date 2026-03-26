@@ -3,7 +3,7 @@ layout: page
 title: IndieCrates
 description: Create and share Bandcamp playlists
 img: 
-importance: 3
+importance: 2
 category: current
 ---
 
