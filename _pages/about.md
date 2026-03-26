@@ -6,7 +6,7 @@ subtitle: Startup operator. Music maker.
 
 profile:
   align: right
-  image: prof_pic_color.png
+  image: prof_pic.jpg
   image_circular: false
   more_info:
 
