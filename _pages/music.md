@@ -7,47 +7,106 @@ nav: true
 nav_order: 3
 ---
 
+<style>
+.shows-table {
+  width: 100%;
+  max-width: 640px;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+.shows-table th {
+  text-align: left;
+  padding: 4px 12px 4px 0;
+  border-bottom: 1px solid #444;
+  font-weight: 600;
+  width: auto;
+}
+.shows-table td {
+  padding: 5px 12px 5px 0;
+  vertical-align: top;
+}
+.shows-table .col-date  { width: 110px; }
+.shows-table .col-artist { width: 260px; }
+.shows-table .col-venue  { width: auto; }
+</style>
+
 ## Upcoming
 
-| Date | Artist | Venue |
-|------|--------|-------|
-| Jun 26, 2026 | Human League, Soft Cell & Alison Moyet | Radio City Music Hall |
-| Sep 5, 2026 | Peter Hook & The Light | Brooklyn Paramount |
+<table class="shows-table">
+  <thead><tr>
+    <th class="col-date">Date</th>
+    <th class="col-artist">Artist</th>
+    <th class="col-venue">Venue</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>Jun 26, 2026</td><td>Human League, Soft Cell &amp; Alison Moyet</td><td>Radio City Music Hall</td></tr>
+    <tr><td>Sep 5, 2026</td><td>Peter Hook &amp; The Light</td><td>Brooklyn Paramount</td></tr>
+  </tbody>
+</table>
 
 ## 2025
 
-| Date | Artist | Venue |
-|------|--------|-------|
-| Sep 13 | New York Modular Society 6th Anniversary | — |
-| Aug 1 | Yacht Rock Revue | — |
+<table class="shows-table">
+  <thead><tr>
+    <th class="col-date">Date</th>
+    <th class="col-artist">Artist</th>
+    <th class="col-venue">Venue</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>Sep 13</td><td>New York Modular Society 6th Anniversary</td><td>—</td></tr>
+    <tr><td>Aug 1</td><td>Yacht Rock Revue</td><td>—</td></tr>
+  </tbody>
+</table>
 
 ## 2024
 
-| Date | Artist | Venue |
-|------|--------|-------|
-| Oct 22 | Air | — |
-| Oct 8 | Johnny Marr & James | — |
-| Sep 29 | Herbie Hancock | — |
-| Jun 23 | Massane | — |
-| Jun 4 | of Montreal | — |
-| May 31 | Heavenly | — |
-| May 17 | Echo and the Bunnymen | — |
-| Mar 8 | Jonathan Richman | — |
-| Jan 18 | The Charlatans UK & RIDE | — |
+<table class="shows-table">
+  <thead><tr>
+    <th class="col-date">Date</th>
+    <th class="col-artist">Artist</th>
+    <th class="col-venue">Venue</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>Oct 22</td><td>Air</td><td>—</td></tr>
+    <tr><td>Oct 8</td><td>Johnny Marr &amp; James</td><td>—</td></tr>
+    <tr><td>Sep 29</td><td>Herbie Hancock</td><td>—</td></tr>
+    <tr><td>Jun 23</td><td>Massane</td><td>—</td></tr>
+    <tr><td>Jun 4</td><td>of Montreal</td><td>—</td></tr>
+    <tr><td>May 31</td><td>Heavenly</td><td>—</td></tr>
+    <tr><td>May 17</td><td>Echo and the Bunnymen</td><td>—</td></tr>
+    <tr><td>Mar 8</td><td>Jonathan Richman</td><td>—</td></tr>
+    <tr><td>Jan 18</td><td>The Charlatans UK &amp; RIDE</td><td>—</td></tr>
+  </tbody>
+</table>
 
 ## 2023
 
-| Date | Artist | Venue |
-|------|--------|-------|
-| Sep 18 | of Montreal | — |
+<table class="shows-table">
+  <thead><tr>
+    <th class="col-date">Date</th>
+    <th class="col-artist">Artist</th>
+    <th class="col-venue">Venue</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>Sep 18</td><td>of Montreal</td><td>—</td></tr>
+  </tbody>
+</table>
 
 ## 2022
 
-| Date | Artist | Venue |
-|------|--------|-------|
-| Oct 7 | of Montreal & Locate S1 | — |
-| Aug 27 | Peter Hook | — |
-| Aug 17 | Blondie | — |
+<table class="shows-table">
+  <thead><tr>
+    <th class="col-date">Date</th>
+    <th class="col-artist">Artist</th>
+    <th class="col-venue">Venue</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>Oct 7</td><td>of Montreal &amp; Locate S1</td><td>—</td></tr>
+    <tr><td>Aug 27</td><td>Peter Hook</td><td>—</td></tr>
+    <tr><td>Aug 17</td><td>Blondie</td><td>—</td></tr>
+  </tbody>
+</table>
 
 ---
 
