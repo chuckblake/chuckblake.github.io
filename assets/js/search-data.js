@@ -48,6 +48,11 @@ ninja.data = [{
           description: "Agent-first work queue and issue tracker",
           section: "Projects",handler: () => {
               window.location.href = "/projects/5_glance/";
+            },},{id: "projects-email-insights",
+          title: 'Email Insights',
+          description: "Email marketing analytics and research tool",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/6_emailinsights/";
             },},{
         id: 'social-email',
         title: 'email',
