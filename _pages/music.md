@@ -18,6 +18,7 @@ nav_order: 3
 
 | Date | Artist | Venue |
 |------|--------|-------|
+| Sep 13 | New York Modular Society 6th Anniversary | — |
 | Aug 1 | Yacht Rock Revue | — |
 
 ## 2024
