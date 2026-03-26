@@ -2,7 +2,7 @@
 layout: page
 title: GetMusic.fm
 description: Helping artists promote music on Bandcamp
-img: projects/getmusic.png
+img: 
 importance: 1
 category: current
 ---
