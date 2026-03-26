@@ -497,6 +497,30 @@
     </div>
   </div>
 
+  <!-- Slide 6c: Example Memory -->
+  <div class="slide">
+    <h2 class="slide-title">Example: Memory</h2>
+    <div style="background:#0d0d0d;border:1px solid #333;border-radius:10px;overflow:hidden;margin-top:16px;font-family:'Courier New',monospace;">
+      <div style="background:#1a1a1a;padding:10px 16px;display:flex;gap:8px;align-items:center;border-bottom:1px solid #333;">
+        <span style="width:12px;height:12px;border-radius:50%;background:#ff5f57;display:inline-block;"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#febc2e;display:inline-block;"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#28c840;display:inline-block;"></span>
+      </div>
+      <div style="padding:20px 24px;font-size:clamp(11px,1.3vw,14px);line-height:1.8;color:#e8e8e8;">
+        <div style="margin-bottom:14px;"><span style="color:#e8503a;">📌</span>  <span style="color:#aaa;letter-spacing:0.1em;">SECTION</span><br>Every session, Gomez queries his local vector DB with the<br>session topic. These are memories retrieved before any<br>conversation started.</div>
+        <div style="margin-bottom:14px;"><span style="color:#888;">⚙️</span>  <span style="color:#aaa;letter-spacing:0.1em;">COMMAND</span><br><span style="color:#e8e8e8;">python3 mem0_session_start.py "ERA presentation"</span></div>
+        <div><span style="color:#5b9bd5;">📤</span>  <span style="color:#aaa;letter-spacing:0.1em;">OUTPUT</span><br>
+          <span style="color:#e8e8e8;">• Giving a presentation this week for ERA about OpenClaw<br>
+          • Found value in reflecting on the work and what transfers<br>
+          • Stores presentation files in master branch of chuckblake.github.io<br>
+          • Hates Slack<br>
+          • Uses GitHub<br>
+          • Never builds PPTX — always edits HTML directly for presentations</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Slide 7: Context -->
   <div class="slide">
     <h2 class="slide-title">2. Context</h2>
@@ -555,6 +579,25 @@
       </div>
     </div>
     <div class="terminal-quote" style="margin-top:14px;">This is not a notes app. It is the context layer that makes every AI interaction personal.</div>
+  </div>
+
+  <!-- Slide 7c: Example Context -->
+  <div class="slide">
+    <h2 class="slide-title">Example: Context</h2>
+    <div style="background:#0d0d0d;border:1px solid #333;border-radius:10px;overflow:hidden;margin-top:16px;font-family:'Courier New',monospace;">
+      <div style="background:#1a1a1a;padding:10px 16px;display:flex;gap:8px;align-items:center;border-bottom:1px solid #333;">
+        <span style="width:12px;height:12px;border-radius:50%;background:#ff5f57;display:inline-block;"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#febc2e;display:inline-block;"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#28c840;display:inline-block;"></span>
+      </div>
+      <div style="padding:20px 24px;font-size:clamp(11px,1.3vw,14px);line-height:1.8;color:#e8e8e8;">
+        <div style="margin-bottom:14px;"><span style="color:#e8503a;">📌</span>  <span style="color:#aaa;letter-spacing:0.1em;">SECTION</span><br>Personal knowledge vault — looking up a contact in<br>chuck-vault. Same question, every time: if I onboarded<br>a new assistant tomorrow, what would they need to know?<br>That's what goes in here.</div>
+        <div style="margin-bottom:14px;"><span style="color:#888;">⚙️</span>  <span style="color:#aaa;letter-spacing:0.1em;">COMMAND</span><br><span style="color:#e8e8e8;">search chuck-vault → "What is Murat's degree in?"</span></div>
+        <div><span style="color:#5b9bd5;">📤</span>  <span style="color:#aaa;letter-spacing:0.1em;">OUTPUT</span><br>
+          <span style="color:#e8e8e8;">MS Computer Science — Neural Networks + Machine Learning.<br>ERA co-founder. 400+ investments since 2011. $10B+ portfolio.<br>Chuck is presenting to him on March 27.</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Slide 8: Skills -->
@@ -661,6 +704,33 @@
       </div>
     </div>
     <div class="terminal-quote" style="margin-top:14px;">Each question is binary. Score = questions passed ÷ total. Baseline was 33%. Four mutations later: 100%.</div>
+  </div>
+
+  <!-- Slide 9c: Example Evals -->
+  <div class="slide">
+    <h2 class="slide-title">Example: Evals</h2>
+    <div style="background:#0d0d0d;border:1px solid #333;border-radius:10px;overflow:hidden;margin-top:16px;font-family:'Courier New',monospace;">
+      <div style="background:#1a1a1a;padding:10px 16px;display:flex;gap:8px;align-items:center;border-bottom:1px solid #333;">
+        <span style="width:12px;height:12px;border-radius:50%;background:#ff5f57;display:inline-block;"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#febc2e;display:inline-block;"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#28c840;display:inline-block;"></span>
+      </div>
+      <div style="padding:20px 24px;font-size:clamp(11px,1.3vw,14px);line-height:1.8;color:#e8e8e8;">
+        <div style="margin-bottom:14px;"><span style="color:#e8503a;">📌</span>  <span style="color:#aaa;letter-spacing:0.1em;">SECTION</span><br>Evals let you measure AI output and improve it<br>systematically — not by feel. Autoresearch runs a skill<br>repeatedly, scores output, mutates the prompt, keeps improvements.<br>This is a real run on the morning-briefing skill.</div>
+        <div style="margin-bottom:14px;"><span style="color:#888;">⚙️</span>  <span style="color:#aaa;letter-spacing:0.1em;">COMMAND</span><br><span style="color:#e8e8e8;">autoresearch → morning-briefing skill → 10 experiments</span></div>
+        <div><span style="color:#5b9bd5;">📤</span>  <span style="color:#aaa;letter-spacing:0.1em;">OUTPUT</span><br>
+          <span style="color:#aaa;">Experiment&nbsp;&nbsp;Score&nbsp;&nbsp;&nbsp;Change&nbsp;&nbsp;&nbsp;What changed</span><br>
+          <span style="color:#555;">──────────────────────────────────────────────</span><br>
+          <span style="color:#e8e8e8;">Baseline&nbsp;&nbsp;&nbsp;&nbsp;33.3%&nbsp;&nbsp;&nbsp;—&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Original skill, no changes</span><br>
+          <span style="color:#e8e8e8;">Exp 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50.0%&nbsp;&nbsp;&nbsp;↑ +17%&nbsp;&nbsp;&nbsp;Added explicit subject line format</span><br>
+          <span style="color:#e8e8e8;">Exp 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;66.7%&nbsp;&nbsp;&nbsp;↑ +17%&nbsp;&nbsp;&nbsp;Added tone rules — no filler openers</span><br>
+          <span style="color:#e8e8e8;">Exp 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;83.3%&nbsp;&nbsp;&nbsp;↑ +17%&nbsp;&nbsp;&nbsp;Added actionability requirement</span><br>
+          <span style="color:#28c840;">Exp 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100.0%&nbsp;&nbsp;↑ +17%&nbsp;&nbsp;&nbsp;Added error handling section</span><br>
+          <span style="color:#28c840;">Exp 5+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100.0%&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Further mutations held at 100%</span><br><br>
+          <span style="color:#28c840;">33% → 100% in 4 mutations. No vibes. Just a score.</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Slide 10: Principles -->
