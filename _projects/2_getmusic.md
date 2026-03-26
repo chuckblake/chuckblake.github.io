@@ -3,8 +3,8 @@ layout: page
 title: GetMusic.fm
 description: Helping artists promote music on Bandcamp
 img: 
-importance: 2
-category: side
+importance: 1
+category: current
 ---
 
 [GetMusic.fm](https://getmusic.fm) helps independent artists share free download codes for their Bandcamp releases.
