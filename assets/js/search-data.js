@@ -40,7 +40,7 @@ ninja.data = [{
               window.location.href = "/projects/3_sonicsift/";
             },},{id: "projects-indiecrates",
           title: 'IndieCrates',
-          description: "Sister site to GetMusic.fm",
+          description: "Create and share Bandcamp playlists",
           section: "Projects",handler: () => {
               window.location.href = "/projects/4_indiecrates/";
             },},{id: "projects-glance",
