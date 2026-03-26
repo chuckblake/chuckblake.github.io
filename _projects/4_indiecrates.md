@@ -1,12 +1,14 @@
 ---
 layout: page
 title: IndieCrates
-description: Sister site to GetMusic.fm
+description: Create and share Bandcamp playlists
 img: 
 importance: 3
 category: current
 ---
 
-[IndieCrates](https://indiecrates.com) is a companion site to GetMusic.fm, focused on curating and highlighting independent music.
+[IndieCrates](https://indiecrates.com) lets you create and share playlists of Bandcamp music.
 
-Part of the GetMusic ecosystem — building tools that help independent artists get discovered and fans find great music.
+Bandcamp is home to an enormous catalog of independent music, but has no native playlist feature. IndieCrates fills that gap — curate tracks from across the platform, share them with others, and discover what people are listening to.
+
+Part of the GetMusic ecosystem of tools for independent music fans and artists.
