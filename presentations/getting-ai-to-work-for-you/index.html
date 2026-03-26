@@ -398,7 +398,7 @@
   <!-- Slide 3: Bridge -->
   <div class="slide">
     <h2 class="slide-title">What I Learned</h2>
-    <p class="slide-sub">Five ideas. None of them are OpenClaw-specific.</p>
+    <p class="slide-sub">Three ideas. None of them are OpenClaw-specific.</p>
     <ul>
       <li>The model is a commodity</li>
       <li>The system you build around it is the only thing that compounds</li>
@@ -408,15 +408,13 @@
     <div class="terminal-quote" style="margin-top:14px;">The moat isn't the model. It's everything you wrap around it.</div>
   </div>
 
-  <!-- Slide 5: Five Ideas Overview -->
+  <!-- Slide 4: Three Ways to Build That System -->
   <div class="slide">
-    <h2 class="slide-title">Five Ways to Build That System</h2>
+    <h2 class="slide-title">Three Ways to Build That System</h2>
     <p class="slide-sub">Not a framework. Just what's been working.</p>
     <ol>
       <li><strong>Memory</strong></li>
       <li><strong>Context</strong></li>
-      <li><strong>Skills</strong></li>
-      <li><strong>Evals</strong></li>
       <li><strong>Principles</strong></li>
     </ol>
   </div>
@@ -600,142 +598,9 @@
     </div>
   </div>
 
-  <!-- Slide 8: Skills -->
-  <div class="slide">
-    <h2 class="slide-title">3. Skills</h2>
-    <p class="slide-sub">Build reusable skills, not one-off prompts</p>
-    <ul>
-      <li>A skill is a reusable instruction set for a specific task</li>
-      <li>Not model-specific — works across Claude, GPT, whatever is next</li>
-      <li>~75 skills in my setup. Each one took 20 min to build. Each one saves hours.</li>
-    </ul>
-    <div class="terminal-quote">Agent orchestrates — scripts execute.</div>
-  </div>
-
-  <!-- Slide 8b: Skills in Practice -->
-  <div class="slide">
-    <h2 class="slide-title">Skills in Practice</h2>
-    <p class="slide-sub">Same pattern every time: LLM decides, script executes</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:12px;">
-
-      <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:10px;overflow:hidden;">
-        <div style="background:#0f2a0f;padding:14px 18px;border-bottom:1px solid var(--dim-green);">
-          <div style="color:var(--green);font-size:15px;font-weight:700;letter-spacing:0.1em;">GOOD-MORNING</div>
-        </div>
-        <div style="padding:18px 20px;">
-          <div style="color:var(--dim-green);font-size:12px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">🧠 LLM</div>
-          <div style="color:#ccc;font-size:16px;line-height:1.7;margin-bottom:16px;">Ask health questions conversationally</div>
-          <div style="color:var(--dim-green);font-size:12px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">⚙️ Script</div>
-          <div style="color:#aaa;font-size:16px;line-height:1.7;">Health log</div>
-        </div>
-      </div>
-
-      <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:10px;overflow:hidden;">
-        <div style="background:#0f2a0f;padding:14px 18px;border-bottom:1px solid var(--dim-green);">
-          <div style="color:var(--green);font-size:15px;font-weight:700;letter-spacing:0.1em;">DEPLOY</div>
-        </div>
-        <div style="padding:18px 20px;">
-          <div style="color:var(--dim-green);font-size:12px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">🧠 LLM</div>
-          <div style="color:#ccc;font-size:16px;line-height:1.7;margin-bottom:16px;">Decides sequence. Watches CI. Reads logs. Verifies deploy succeeded.</div>
-          <div style="color:var(--dim-green);font-size:12px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">⚙️ Script</div>
-          <div style="color:#aaa;font-size:16px;line-height:1.7;">Git commands. GitHub token auth. Heroku API calls. Version bump.</div>
-        </div>
-      </div>
-
-      <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:10px;overflow:hidden;">
-        <div style="background:#0f2a0f;padding:14px 18px;border-bottom:1px solid var(--dim-green);">
-          <div style="color:var(--green);font-size:15px;font-weight:700;letter-spacing:0.1em;">PROCESS-INBOX</div>
-        </div>
-        <div style="padding:18px 20px;">
-          <div style="color:var(--dim-green);font-size:12px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">🧠 LLM</div>
-          <div style="color:#ccc;font-size:16px;line-height:1.7;margin-bottom:16px;">Suggest GTD task names</div>
-          <div style="color:var(--dim-green);font-size:12px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">⚙️ Script</div>
-          <div style="color:#aaa;font-size:16px;line-height:1.7;">MCP calls right to OmniFocus</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Slide 9: Evals -->
-  <div class="slide">
-    <h2 class="slide-title">4. Evals</h2>
-    <p class="slide-sub">Replace vibes with a score</p>
-    <ul>
-      <li>An eval is a test for AI output</li>
-      <li>Without evals: improving by feel ("seems better?")</li>
-      <li>Autoresearch: runs a skill repeatedly, scores output, mutates the prompt, keeps improvements</li>
-    </ul>
-    <div class="terminal-quote">You cannot improve what you cannot measure. This is true for software. It is especially true for AI.</div>
-  </div>
-
-  <!-- Slide 9b: Evals — The Questions -->
-  <div class="slide">
-    <h2 class="slide-title">What An Eval Actually Looks Like</h2>
-    <p class="slide-sub">Six yes/no questions. Run against every output. No subjectivity.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;">
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:8px;padding:12px 16px;">
-          <div style="color:var(--amber);font-size:10px;letter-spacing:0.1em;margin-bottom:6px;">EVAL 1</div>
-          <div style="color:var(--white);font-size:14px;">Does the output contain all 7 required sections?</div>
-        </div>
-        <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:8px;padding:12px 16px;">
-          <div style="color:var(--amber);font-size:10px;letter-spacing:0.1em;margin-bottom:6px;">EVAL 2</div>
-          <div style="color:var(--white);font-size:14px;">Is there any placeholder or error text visible?</div>
-        </div>
-        <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:8px;padding:12px 16px;">
-          <div style="color:var(--amber);font-size:10px;letter-spacing:0.1em;margin-bottom:6px;">EVAL 3</div>
-          <div style="color:var(--white);font-size:14px;">Does the subject line include today's date and a specific summary?</div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:8px;padding:12px 16px;">
-          <div style="color:var(--amber);font-size:10px;letter-spacing:0.1em;margin-bottom:6px;">EVAL 4</div>
-          <div style="color:var(--white);font-size:14px;">Is every item actionable — not just informational?</div>
-        </div>
-        <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:8px;padding:12px 16px;">
-          <div style="color:var(--amber);font-size:10px;letter-spacing:0.1em;margin-bottom:6px;">EVAL 5</div>
-          <div style="color:var(--white);font-size:14px;">Does the tone match — direct, no filler openers?</div>
-        </div>
-        <div style="background:#0d1a0d;border:1px solid var(--dim-green);border-radius:8px;padding:12px 16px;">
-          <div style="color:var(--amber);font-size:10px;letter-spacing:0.1em;margin-bottom:6px;">EVAL 6</div>
-          <div style="color:var(--white);font-size:14px;">Does the HTML render cleanly with no broken tags?</div>
-        </div>
-      </div>
-    </div>
-    <div class="terminal-quote" style="margin-top:14px;">Each question is binary. Score = questions passed ÷ total. Baseline was 33%. Four mutations later: 100%.</div>
-  </div>
-
-  <!-- Slide 9c: Example Evals -->
-  <div class="slide">
-    <h2 class="slide-title">Example: Evals</h2>
-    <div style="background:#0d0d0d;border:1px solid #333;border-radius:10px;overflow:hidden;margin-top:16px;font-family:'Courier New',monospace;">
-      <div style="background:#1a1a1a;padding:10px 16px;display:flex;gap:8px;align-items:center;border-bottom:1px solid #333;">
-        <span style="width:12px;height:12px;border-radius:50%;background:#ff5f57;display:inline-block;"></span>
-        <span style="width:12px;height:12px;border-radius:50%;background:#febc2e;display:inline-block;"></span>
-        <span style="width:12px;height:12px;border-radius:50%;background:#28c840;display:inline-block;"></span>
-      </div>
-      <div style="padding:20px 24px;font-size:clamp(11px,1.3vw,14px);line-height:1.8;color:#e8e8e8;">
-        <div style="margin-bottom:14px;"><span style="color:#e8503a;">📌</span>  <span style="color:#aaa;letter-spacing:0.1em;">SECTION</span><br>Evals let you measure AI output and improve it<br>systematically — not by feel. Autoresearch runs a skill<br>repeatedly, scores output, mutates the prompt, keeps improvements.<br>This is a real run on the morning-briefing skill.</div>
-        <div style="margin-bottom:14px;"><span style="color:#888;">⚙️</span>  <span style="color:#aaa;letter-spacing:0.1em;">COMMAND</span><br><span style="color:#e8e8e8;">autoresearch → morning-briefing skill → 10 experiments</span></div>
-        <div><span style="color:#5b9bd5;">📤</span>  <span style="color:#aaa;letter-spacing:0.1em;">OUTPUT</span><br>
-          <span style="color:#aaa;">Experiment&nbsp;&nbsp;Score&nbsp;&nbsp;&nbsp;Change&nbsp;&nbsp;&nbsp;What changed</span><br>
-          <span style="color:#555;">──────────────────────────────────────────────</span><br>
-          <span style="color:#e8e8e8;">Baseline&nbsp;&nbsp;&nbsp;&nbsp;33.3%&nbsp;&nbsp;&nbsp;—&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Original skill, no changes</span><br>
-          <span style="color:#e8e8e8;">Exp 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50.0%&nbsp;&nbsp;&nbsp;↑ +17%&nbsp;&nbsp;&nbsp;Added explicit subject line format</span><br>
-          <span style="color:#e8e8e8;">Exp 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;66.7%&nbsp;&nbsp;&nbsp;↑ +17%&nbsp;&nbsp;&nbsp;Added tone rules — no filler openers</span><br>
-          <span style="color:#e8e8e8;">Exp 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;83.3%&nbsp;&nbsp;&nbsp;↑ +17%&nbsp;&nbsp;&nbsp;Added actionability requirement</span><br>
-          <span style="color:#28c840;">Exp 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100.0%&nbsp;&nbsp;↑ +17%&nbsp;&nbsp;&nbsp;Added error handling section</span><br>
-          <span style="color:#28c840;">Exp 5+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100.0%&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Further mutations held at 100%</span><br><br>
-          <span style="color:#28c840;">33% → 100% in 4 mutations. No vibes. Just a score.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Slide 10: Principles -->
   <div class="slide">
-    <h2 class="slide-title">5. Principles</h2>
+    <h2 class="slide-title">3. Principles</h2>
     <p class="slide-sub">Scale your taste, not your attention</p>
     <ul>
       <li>Most people direct every AI interaction individually</li>
