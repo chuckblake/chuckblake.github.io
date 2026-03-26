@@ -1,0 +1,68 @@
+---
+layout: page
+title: music
+permalink: /music/
+description: Shows I've been to
+nav: true
+nav_order: 3
+---
+
+## Upcoming
+
+| Date | Artist | Venue |
+|------|--------|-------|
+| Jun 26, 2026 | Human League, Soft Cell & Alison Moyet | Radio City Music Hall |
+| Sep 5, 2026 | Peter Hook & The Light | Brooklyn Paramount |
+
+## 2025
+
+| Date | Artist |
+|------|--------|
+| Aug 1 | Yacht Rock Revue |
+
+## 2024
+
+| Date | Artist |
+|------|--------|
+| Oct 22 | Air |
+| Oct 8 | Johnny Marr & James |
+| Sep 29 | Herbie Hancock |
+| Jun 23 | Massane |
+| Jun 4 | of Montreal |
+| May 31 | Heavenly |
+| May 17 | Echo and the Bunnymen |
+| Mar 8 | Jonathan Richman |
+| Jan 18 | The Charlatans UK & RIDE |
+
+## 2023
+
+| Date | Artist |
+|------|--------|
+| Sep 18 | of Montreal |
+
+## 2022
+
+| Date | Artist |
+|------|--------|
+| Oct 7 | of Montreal & Locate S1 |
+| Aug 27 | Peter Hook |
+| Aug 17 | Blondie |
+
+---
+
+## Photos
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/concerts/ride-2024.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+        <div class="caption">The Charlatans UK & RIDE — Jan 18, 2024</div>
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/concerts/jonathan-richman-2024.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+        <div class="caption">Jonathan Richman — Mar 8, 2024</div>
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/concerts/echo-bunnymen-2024.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+        <div class="caption">Echo and the Bunnymen — May 17, 2024</div>
+    </div>
+</div>

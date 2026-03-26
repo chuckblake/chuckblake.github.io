@@ -27,4 +27,3 @@ On the side, I run the [GetMusic.fm](https://getmusic.fm) ecosystem — tools th
 Brooklyn-based. Always building something.
 
 [LinkedIn](https://www.linkedin.com/in/chuckblake/) · [X](https://x.com/chuckblake)
-
