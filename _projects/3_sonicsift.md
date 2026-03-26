@@ -2,7 +2,7 @@
 layout: page
 title: SonicSift
 description: Music news aggregator
-img: 
+img: projects/sonicsift.png
 importance: 3
 category: current
 ---
