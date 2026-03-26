@@ -35,7 +35,6 @@ A lot of people describe OpenClaw as chewing on glass. Painful, not always usefu
 
 **→ Models are coming and going**
 **→ Build around the model, not on top of it**
-**→ Files are portable — any platform inherits them**
 
 "Here's the thing I keep coming back to. Opus 4, Haiku, GPT, Codex — the models are coming and going. There's going to be a better model every few months. So I started asking: how do I build something valuable regardless of which model I'm running?
 
