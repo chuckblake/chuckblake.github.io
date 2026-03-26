@@ -1,203 +1,98 @@
-# Talk Track — Five Ideas for Getting AI to Work for You
-**Chuck Blake // ERA // March 2026**
+# Talk Track — The Moat Isn't the Model.
+ERA // March 2026
 
 ---
 
-## Slide 1 — Title (headline only)
+## Slide 1 — The Moat Isn't the Model.
 
-*Let it land. Pause before speaking.*
-
----
-
-## Slide 2 — Title + subheading + Mac mini photo
-
-"This is Gomez. He runs on that Mac mini in my office. He has opinions about how I should be doing things, and honestly? He's usually right.
-
-I've been building this for about a year — a personal AI system that actually gets things done for me. Not a chatbot I talk to. A system that runs, acts, remembers, and gets better over time.
-
-Tonight I want to share five ideas that came out of that. These are as much reminders for myself as takeaways for you. I'm still figuring this out. But some things are starting to work."
+"I want to start with a claim. The moat isn't the model. Everyone in this room has access to GPT, Claude, Gemini — the same tools, the same capabilities. So if the model is the same for everyone, where does the edge come from? That's what this talk is about. And to explain it, I need to introduce you to Gomez."
 
 ---
 
-## Slide 3 — Everyone's Using AI
+## Slide 2 — Meet Gomez.
 
-"Every single person in this room has used AI in the last week. Probably more than once.
-
-But here's the question I keep asking myself: is my business actually moving faster? Or am I just doing the same things in a slightly more interesting way?
-
-The rabbit hole is real. It's very easy to spend three hours trying to get a prompt just right and call it productivity. I've done it. That's the activity/progress trap — feels productive, isn't.
-
-The thing I have to constantly remind myself — and I mean constantly — is that the goal isn't to use more AI. The goal is to get more done."
+"Gomez is my AI chief of staff. He lives on a Mac mini in my apartment, connected to Telegram, my calendar, my code, my task manager. He has opinions. He is not always right. Building him was genuinely painful — there were weeks where I thought I was getting real work done and I wasn't. But that pain turned out to be useful."
 
 ---
 
-## Slide 4 — A Personal AI Chief of Staff
+## Slide 3 — What I Learned
 
-"So what did I actually build?
-
-I think of Gomez as a Chief of Staff. Not a chatbot. A chatbot answers questions when you ask them. A Chief of Staff shows up, knows what's going on, takes action, and reports back.
-
-He runs locally on my machine — my data never leaves my control. He's connected to my calendar, my task manager, my code, my email. He's always on. And he has memory — which is the part I want to dig into tonight."
+"The model is a commodity. It will be replaced — probably multiple times. GPT-4 was state of the art eighteen months ago. The system you build around the model is the only thing that compounds. Your memory, your context, your judgment baked in. I ended up with five ideas for building that system. None of them require OpenClaw. Build them in files, and any platform that reads those files inherits your system."
 
 ---
 
-## Slide 5 — Built on OpenClaw
+## Slide 4 — Five Ways to Build That System
 
-"Everything I'm going to show you runs on OpenClaw — an open source local AI agent platform. It runs on my machine, connects to my tools, and is where all of this lives.
-
-I want to be honest: it did not go perfectly. I've crashed servers. I've had briefings fire at 5pm. I've had sub-agents recreate cron jobs I'd just killed.
-
-The recurring theme was: I built something, it seemed to work, I moved on. It was not working.
-
-These five ideas are what I keep coming back to — the things I'm actively working on to make the system actually function."
+"The five ideas are: Memory, Context, Skills, Evals, and Principles. These aren't a framework — I'm not selling anything. They're just what's been working. Let me take them one at a time."
 
 ---
 
-## Slide 6 — Five Ideas
+## Slide 5 — 1. Memory
 
-"So out of all that chaos, here are the five things I keep coming back to. These aren't a framework — I'm not that organized. They're just the five areas where I've been putting my energy, and where I've seen the most return."
-
-*Walk through each one with a line:*
-- **Memory** — give your AI a memory it can rely on
-- **Context** — organize your personal context into a searchable vault
-- **Skills** — build reusable skills, not one-off prompts
-- **Evals** — replace vibes with a score
-- **Principles** — scale your taste, not your attention
+"The first problem I hit with Gomez was that he woke up fresh every session with no idea who I was or what we'd been working on. So I built a memory system. Identity — who he is and how to communicate. Errors — a log of every mistake so he doesn't repeat them. Long-term memory — distilled decisions and preferences. And a daily log of what actually happened. On top of that, a local vector database — Mem0 and Qdrant — so he can search memory by meaning, not just by keyword. The key insight: none of this is the model's thinking. It's mine. He's just the vehicle."
 
 ---
 
-## Slide 7 — 1. Memory
+## Slide 6 — How Memory Works
 
-"Every AI session starts fresh. The model has no idea who you are, what you were working on yesterday, or what mistakes it made last week.
-
-The only way to fix that is to build a memory system — files that persist, that get read at the start of every session, that make the agent feel like it knows you.
-
-I have four layers: an identity file, an errors log, a long-term memory file, and a daily log. And then a vector database that lets me search all of it semantically."
+"Here's how it flows. Raw inputs on the left — daily logs, mistake logs, identity rules. Those get distilled weekly into long-term memory and continuously into the vector database. Every time Gomez boots, he loads in sequence: who he is, what mistakes not to repeat, long-term context, today's log, semantic search. By the time he's ready to work, he's not starting from zero — he's starting from everything I've told him that matters. One portable brain, regardless of what model is running underneath."
 
 ---
 
-## Slide 8 — How Memory Works
+## Slide 7 — 2. Context
 
-"Here's how it actually flows.
-
-On the left: the raw inputs. Every session I'm logging what happened. Any mistake gets written to errors.md immediately — same session, no waiting. And my identity file is stable — it rarely changes.
-
-Those feed into the long-term layer. MEMORY.md is curated weekly — distilled lessons and decisions. Mem0 and Qdrant handle semantic search — so instead of keyword matching, it finds memories by meaning.
-
-And then every time a session starts, the agent boots by loading all of that in order. It wakes up knowing who it is and what matters. That's the demo I'll show in a minute."
+"Second idea: context. Generic prompts get generic output. The model has no idea who you are, what you've decided, what you care about. But if you give it curated personal context — your preferences, your history, your specific knowledge — the output starts to sound like you. Your context is the moat."
 
 ---
 
-## Slide 9 — 2. Context
+## Slide 8 — What's In The Vault
 
-"Memory is about what the agent knows over time. Context is about what you feed it right now.
-
-Raw prompts get generic output. That's because the model is drawing on everything it was trained on — the entire internet, basically. When you add your specific context — your notes, your errors, your preferences — you get output that actually sounds like you and fits your situation.
-
-The model is a commodity. Everyone has access to the same Claude, the same GPT. What nobody else has is your context. That's the moat."
+"I keep my context in an Obsidian vault — a structured knowledge base. People, journal, decisions, health logs, meeting notes, reading highlights, project context. The whole thing is indexed and vectorized with a tool called QMD — hybrid keyword and semantic search. The question I ask myself is: if I onboarded a new human assistant tomorrow, what would I need them to know? That's what goes in the vault."
 
 ---
 
-## Slide 10 — What's In The Vault
+## Slide 9 — 3. Skills
 
-"My context lives in an Obsidian vault — a personal knowledge base I've been building for years.
-
-People, journal, decisions, health data, meeting notes, reading highlights, project context — all of it in markdown files, all of it indexed and searchable via a tool called QMD.
-
-When I ask Gomez something about a specific person or project, he's not guessing. He's searching my vault. I'll show you exactly what that looks like."
+"Third idea: skills. The worst habit people have with AI is writing one-off prompts for everything. You do it once, get a good result, and the next time you need the same thing you start over. A skill is a reusable instruction set — a text file that tells the agent exactly how to do a specific task. Not model-specific. I have about 75 of them. Each one took maybe twenty minutes to write. Each one saves that time every time it runs. The pattern is always the same: the LLM decides and orchestrates, scripts execute the actual work."
 
 ---
 
-## Slide 11 — 3. Skills
+## Slide 10 — Skills in Practice
 
-"A skill is a reusable instruction set for a specific task.
-
-Not a prompt you type every time. A file. A system. Something you build once and use forever.
-
-I have about 75 skills right now — good morning, deploy, process inbox, grill me, era demo... Each one took maybe 20 minutes to build. Each one saves me hours over time.
-
-And here's the key thing: they're not model-specific. When Claude gets replaced by something better, my skills come with me."
+"Three examples. Good-morning: the LLM asks me health questions conversationally, a script logs the answers. Deploy: the LLM decides the sequence, watches CI, reads logs, verifies the deploy actually worked — while scripts handle git, tokens, Heroku API calls. Process-inbox: the LLM suggests GTD-style task names, scripts call OmniFocus directly. The intelligence is in the LLM. The reliability is in the scripts. You need both."
 
 ---
 
-## Slide 12 — Skills in Practice
+## Slide 11 — 4. Evals
 
-"Every skill follows the same pattern: the LLM decides, the script executes.
-
-Take process-inbox. The LLM reads my OmniFocus inbox, understands what each task actually means, and suggests a clean GTD-style action name. That's the judgment call — only a human or a well-trained AI can do that well.
-
-Then the script handles the execution. MCP calls write directly to OmniFocus. No copy-paste, no app switching, no hallucination in the execution layer.
-
-The LLM is good at judgment. Scripts are good at reliability. Keep them in their lanes."
+"Fourth idea: evals. This is the one most people skip, and it's why most people's AI setups quietly degrade over time. An eval is a test for AI output. Without evals you're improving by feel — 'this seems better?' That's not a feedback loop, that's a vibe. I use a tool called Autoresearch: it runs a skill repeatedly, scores the output against a set of binary questions, mutates the prompt, keeps improvements. You cannot improve what you cannot measure. This is true for software. It's especially true for AI."
 
 ---
 
-## Slide 13 — 4. Evals
+## Slide 12 — What An Eval Actually Looks Like
 
-"This one took me the longest to appreciate.
-
-An eval is a test for AI output. Binary questions — yes or no — that you run against every response the system generates.
-
-Without evals, you're improving by feel. 'That seemed better, I think?' With evals, you have a score. You can iterate, you can catch regressions, you can ship with confidence.
-
-I have a skill called Autoresearch that does this automatically — runs a skill repeatedly, scores the output, mutates the prompt, and keeps the improvements."
+"Here's a real example. Six yes/no questions for my morning briefing skill. Does it contain all seven required sections? Any placeholder text? Does the subject line include today's date? Is every item actionable, not just informational? Does the tone match — direct, no filler? Does the HTML render cleanly? Each question is binary. Score is questions passed over total. My baseline was 33%. Four prompt mutations later: 100%. That's the loop. Run it, score it, fix it, repeat."
 
 ---
 
-## Slide 14 — What An Eval Actually Looks Like
+## Slide 13 — 5. Principles
 
-"Here's what the eval for my morning briefing looks like. Six questions, all binary.
-
-Does it have all seven sections? Is there any placeholder text? Does the subject line have today's date and a specific summary? Is every item actionable? Is the tone right? Does the HTML render cleanly?
-
-That's it. Run those questions against every output, take the percentage that passes. Baseline was 33%. Four mutations later, it was 100%.
-
-No vibes. Just a score."
+"Fifth idea: principles. Most people direct every AI interaction individually. Every prompt is a new negotiation. That doesn't scale. Principles are a way to embed your judgment into the system itself so you stop being in every loop — your standards are. The bottleneck used to be execution. AI mostly solved that. Now the bottleneck is judgment. That's actually the right problem to have."
 
 ---
 
-## Slide 15 — 5. Principles
+## Slide 14 — What A Principle Looks Like In The Repo
 
-"The last idea is the one I think about most when I'm building.
-
-Ford's assembly line was incredibly efficient — but someone had to direct every step. The bottleneck was always the person at the top.
-
-Warhol ran the Factory differently. His taste was in the system. His collaborators could produce without him directing each individual piece. He scaled his judgment, not his presence.
-
-That's the goal. Not to be in every loop — but to have your judgment embedded in the system so it runs without you."
+"Here's a concrete example. I have a principle in CLAUDE.md — a file committed to every repo, read by the agent every session — that says: API-first. Any feature that exists in the UI must also exist in the API. All new endpoints require tests before merge. So when I ask Gomez to add bulk tag filtering to search, I just say 'add it.' His plan comes back: add the API endpoint, write the tests, build the UI against the API. I never mentioned the API. The principle did. Write it once. Every agent that touches that repo inherits your judgment."
 
 ---
 
-## Slide 16 — What A Principle Looks Like In The Repo
+## Slide 15 — The Model Is Replaceable. The System You Build Around It Is Yours.
 
-"Concretely: principles live in a file in the repo called CLAUDE.md. The coding agent reads it at the start of every session — exactly the way Gomez reads his identity file.
-
-I write the principle once. It gets committed to git. Every agent that touches the project inherits it.
-
-In this example: API-first. Any functionality in the UI must also exist in the API. When I ask the agent to add bulk tag filtering to a search page — I never mention the API. The agent builds the endpoint first, then the tests, then the UI. Because the principle told it to.
-
-That's my judgment, scaled."
+"So that's the thesis. Everyone has access to the same models. Nobody else has your memory, your context, your judgment baked into the system. That gap compounds. Every skill you build, every correction you log, every principle you commit — it widens. And because it all lives in files, it's yours permanently. OpenClaw could disappear tomorrow. Claude could get replaced next year. The files go with you. That's the moat."
 
 ---
 
-## Slide 17 — Close
+## Slide 16 — Find Me
 
-"I'll leave you with this.
-
-Everyone in this room has access to the same AI. GPT, Claude, Gemini, whatever comes out next month. The model is a commodity.
-
-What nobody else has is your memory, your context, your judgment embedded in your system. That gap compounds. Every skill you build, every correction you log, every principle you commit — it gets wider.
-
-And none of this is OpenClaw-specific. Build your memory in files. Build your context in a vault. Build your skills as text. Any platform that reads them inherits your system. You own it.
-
-The model is replaceable. The system you build around it is yours."
-
----
-
-## Slide 18 — Find Me
-
-"Happy to keep talking about any of this.
-
-chuckblake.com, @chuckblake on X, /in/chuckblake on LinkedIn. The slides are at the URL on screen — and if you want to see the demos live, just ask."
-
----
+"Happy to talk more about any of this. Slides are at that URL. Come find me."
