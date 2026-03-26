@@ -16,37 +16,37 @@ nav_order: 3
 
 ## 2025
 
-| Date | Artist |
-|------|--------|
-| Aug 1 | Yacht Rock Revue |
+| Date | Artist | Venue |
+|------|--------|-------|
+| Aug 1 | Yacht Rock Revue | — |
 
 ## 2024
 
-| Date | Artist |
-|------|--------|
-| Oct 22 | Air |
-| Oct 8 | Johnny Marr & James |
-| Sep 29 | Herbie Hancock |
-| Jun 23 | Massane |
-| Jun 4 | of Montreal |
-| May 31 | Heavenly |
-| May 17 | Echo and the Bunnymen |
-| Mar 8 | Jonathan Richman |
-| Jan 18 | The Charlatans UK & RIDE |
+| Date | Artist | Venue |
+|------|--------|-------|
+| Oct 22 | Air | — |
+| Oct 8 | Johnny Marr & James | — |
+| Sep 29 | Herbie Hancock | — |
+| Jun 23 | Massane | — |
+| Jun 4 | of Montreal | — |
+| May 31 | Heavenly | — |
+| May 17 | Echo and the Bunnymen | — |
+| Mar 8 | Jonathan Richman | — |
+| Jan 18 | The Charlatans UK & RIDE | — |
 
 ## 2023
 
-| Date | Artist |
-|------|--------|
-| Sep 18 | of Montreal |
+| Date | Artist | Venue |
+|------|--------|-------|
+| Sep 18 | of Montreal | — |
 
 ## 2022
 
-| Date | Artist |
-|------|--------|
-| Oct 7 | of Montreal & Locate S1 |
-| Aug 27 | Peter Hook |
-| Aug 17 | Blondie |
+| Date | Artist | Venue |
+|------|--------|-------|
+| Oct 7 | of Montreal & Locate S1 | — |
+| Aug 27 | Peter Hook | — |
+| Aug 17 | Blondie | — |
 
 ---
 
