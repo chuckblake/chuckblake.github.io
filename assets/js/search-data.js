@@ -16,12 +16,12 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "nav-concerts",
-          title: "concerts",
+        },{id: "nav-music",
+          title: "music",
           description: "Shows I&#39;ve been to",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/concerts/";
+            window.location.href = "/music/";
           },
         },{id: "projects-lea",
           title: 'LEA',
@@ -43,6 +43,11 @@ ninja.data = [{
           description: "Sister site to GetMusic.fm",
           section: "Projects",handler: () => {
               window.location.href = "/projects/4_indiecrates/";
+            },},{id: "projects-glance",
+          title: 'Glance',
+          description: "Agent-first work queue and issue tracker",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/5_glance/";
             },},{
         id: 'social-email',
         title: 'email',
