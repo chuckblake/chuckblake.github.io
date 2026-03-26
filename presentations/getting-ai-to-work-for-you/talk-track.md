@@ -31,14 +31,15 @@ A lot of people describe OpenClaw as chewing on glass. Painful, not always usefu
 
 ---
 
-## Slide 3 — What I Learned
+## Slide 3 — Building a System, Not Just Using a Tool
 
-**→ Models are coming and going**
-**→ Build around the model, not on top of it**
+**→ You install OpenClaw and you have a commodity**
+**→ You give it a soul — identity, personality, context, knowledge**
+**→ Every customization is what makes it yours**
 
-"Here's the thing I keep coming back to. Opus 4, Haiku, GPT, Codex — the models are coming and going. There's going to be a better model every few months. So I started asking: how do I build something valuable regardless of which model I'm running?
+"Here's what I realized. You install OpenClaw — or any agent harness — and what you have is a commodity. A model. Everyone has the same thing. But then you start customizing it. You give it an identity. You tell it who it's working for, how to communicate, what rules to follow. You feed it your context — your knowledge base, your notes, your preferences. You build skills for the specific things you need it to do.
 
-The answer is: build the system around the model, not on top of it. Build it in files — plain text that any platform can read. I don't expect OpenClaw to be the last system I use. Whether it's OpenClaw or Perplexity or Claude or whatever comes next — I want everything I've built to transfer. That's the whole point."
+And what happens is this generic commodity thing slowly becomes something unique. Something that knows you, works the way you work, reflects your judgment. The model doesn't know who you are. You have to tell it. That's the work — and that's the moat."
 
 ---
 

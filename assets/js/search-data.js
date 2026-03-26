@@ -40,7 +40,7 @@ ninja.data = [{
               window.location.href = "/projects/3_sonicsift/";
             },},{id: "projects-indiecrates",
           title: 'IndieCrates',
-          description: "Sister site to GetMusic.fm",
+          description: "Create and share Bandcamp playlists",
           section: "Projects",handler: () => {
               window.location.href = "/projects/4_indiecrates/";
             },},{id: "projects-glance",
@@ -48,6 +48,11 @@ ninja.data = [{
           description: "Agent-first work queue and issue tracker",
           section: "Projects",handler: () => {
               window.location.href = "/projects/5_glance/";
+            },},{id: "projects-email-insights",
+          title: 'Email Insights',
+          description: "Email marketing analytics and research tool",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/6_emailinsights/";
             },},{
         id: 'social-email',
         title: 'email',
