@@ -31,7 +31,7 @@ A lot of people describe OpenClaw as chewing on glass. Painful, not always usefu
 
 ---
 
-## Slide 3 — What I Learned
+## Slide 3 — Building a System, Not Just Using a Tool
 
 **→ You install OpenClaw and you have a commodity**
 **→ You give it a soul — identity, personality, context, knowledge**
