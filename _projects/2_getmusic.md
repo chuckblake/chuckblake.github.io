@@ -7,6 +7,8 @@ importance: 1
 category: current
 ---
 
+{% include figure.liquid loading="eager" path="assets/img/projects/getmusic.jpg" class="img-fluid rounded z-depth-1 mb-4" alt="GetMusic.fm homepage" %}
+
 [GetMusic.fm](https://getmusic.fm) helps independent artists share free download codes for their Bandcamp releases.
 
 Bandcamp gives artists download codes to promote their music, but there's no good way to distribute them at scale. GetMusic solves that — artists upload their codes, fans claim them, everyone wins.
