@@ -19,3 +19,5 @@ Most issue trackers were built for humans — Glance is built for the way modern
 - Dependency graph: agents understand what's blocked and what's ready
 
 Built out of frustration with tools that assume a human is always at the keyboard.
+
+{% include figure.liquid loading="eager" path="assets/img/projects/glance.jpg" class="img-fluid rounded z-depth-1 mt-4" alt="Glance work queue" %}
