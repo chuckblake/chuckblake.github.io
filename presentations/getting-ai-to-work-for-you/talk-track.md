@@ -5,9 +5,13 @@ ERA // March 2026
 
 ## Slide 1 — The Moat Isn't the Model.
 
-"Quick show of hands — who's used Claude?" [wait for hands] "Me too. I actually spent the last few months going pretty deep on it — built a whole system around it, named him Gomez, runs on a Mac mini in my apartment. Today I want to share what I learned from that. And the thing is — most of what I learned doesn't really care whether you're using Claude or GPT or whatever comes next. That's kind of the point.
+"Quick show of hands — who in this room uses OpenClaw?" [wait] "Okay. I want to talk to all of you — whether your hand is up or not.
 
-I'm Chuck Blake, by the way. I was CTO of an ERA company that I recently left. The moat isn't the model — let me explain what I mean."
+You are building companies during what might be the single most disorienting period in the history of technology. In the last twelve months, the tools changed faster than the strategies. The models got replaced before you finished learning them. The playbook everyone handed you in January was already wrong by March. And you still had to ship.
+
+That's insane. And honestly? That's an incredible position to be in — because the founders who figure out how to build *systems* that survive that chaos, not just use the tools that are hot right now, are going to have a real edge.
+
+That's what I want to talk about today. I'm Chuck Blake — I was CTO of an ERA company, recently left. I bought a Mac mini, built an AI agent named Gomez, and went deep. What I learned is this: the moat isn't the model."
 
 ---
 
