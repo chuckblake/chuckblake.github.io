@@ -1,13 +1,13 @@
-# Talk Track — The Moat Isn't the Model.
+# Talk Track — Building an AI System That Works for You
 ERA // March 2026
 
 ---
 
-## Slide 1 — The Moat Isn't the Model.
+## Slide 1 — Building an AI System That Works for You
 
 **→ Chaos of the cohort**
 **→ Tools changed faster than strategies**
-**→ Systems survive; tools don't**
+**→ The real work is building a system, not just using a tool**
 
 "I want to talk to all of you.
 
@@ -15,7 +15,7 @@ You are building companies during what might be the most disorienting period in 
 
 That's an incredible position to be in. Because the founders who figure out how to build systems that survive that chaos — not just use the tools that are hot right now — are going to have a real edge.
 
-That's what I want to talk about today. I'm Chuck Blake — I was CTO of an ERA company, recently left. I bought a Mac mini, built an AI agent named Gomez, and went deep. What I learned is this: the moat isn't the model."
+That's what I want to talk about today. I'm Chuck Blake — I was CTO of an ERA company, recently left. I bought a Mac mini, built an AI agent named Gomez, and went deep. And what I learned is that most people stop at the tool. They pick a model, prompt it, and move on. What I want to show you is what happens when you go one level deeper — when you build a system that actually works for you."
 
 ---
 
