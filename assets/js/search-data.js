@@ -23,6 +23,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/music/";
           },
+        },{id: "nav-publications",
+          title: "publications",
+          description: "Writing I&#39;ve done for other companies and publications.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/publications/";
+          },
         },{id: "projects-lea",
           title: 'LEA',
           description: "AI-powered document extraction for wealth management",
