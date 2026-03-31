@@ -52,7 +52,7 @@ Writing I've done for other companies and publications.
     <small>Originally published on AgencyDocs — December 11, 2020</small>
   </li>
   <li>
-    <strong>How to Build a Thriving Open-source Community</strong><br>
-    <small>Originally published on AgencyDocs — URL unavailable (page not found on agencydocs.co or agencyhabits.com)</small>
+    <a href="https://web.archive.org/web/20171128150131/https://blog.wallaroolabs.com/2017/11/how-to-build-a-thriving-open-source-community/" rel="nofollow" target="_blank"><strong>How to Build a Thriving Open-source Community</strong></a><br>
+    <small>Originally published on Wallaroo Labs Blog — November 20, 2017</small>
   </li>
 </ul>
