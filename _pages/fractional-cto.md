@@ -53,20 +53,27 @@ _styles: |
     margin: 2rem 0;
     border-left: 4px solid var(--global-theme-color);
   }
+  .ai-highlight {
+    background: linear-gradient(135deg, var(--global-card-bg-color) 0%, rgba(var(--global-theme-color-rgb), 0.05) 100%);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    border-left: 4px solid var(--global-theme-color);
+  }
 ---
 
 <div class="intro">
 
 I've been the technical co-founder who stayed up until 3am fixing production. The CTO who scaled a team from 2 to 20. The consultant who walked into chaos and left behind systems that actually work.
 
-Currently: running three production Rails apps and a multi-agent AI system across three model providers. Previously: CTO and co-founder at <a href="https://getlea.io">LEA</a>. Before that: engineering leadership roles at a half-dozen NYC startups.
+Currently: running three production Rails apps and a **multi-agent AI system** with 6 specialized agents across Anthropic, OpenAI, and Kimi. Agents handle coding, PR review, deployment, PM/triage, and operations — all orchestrated through a custom work queue system I built. Previously: CTO and co-founder at <a href="https://getlea.io">LEA</a>. Before that: engineering leadership at a half-dozen NYC startups.
 
 I don't do decks and roadmaps that sit in a drawer. I fix the thing that's actually broken.
 
 </div>
 
-<div class="highlight-box">
-<strong>What I actually do:</strong> Help early-stage startups make better technical decisions, ship faster, and avoid the expensive mistakes I've already made.
+<div class="ai-highlight">
+<strong>What makes me different:</strong> Most fractional CTOs can talk about AI. I <em>build</em> AI systems — production multi-agent architectures, autonomous deployment pipelines, memory systems with vector search (pgvector), and agent orchestration that actually ships code. If you want someone who's done the work, not just read the blog posts, that's me.
 </div>
 
 ## Who This Is For
@@ -75,8 +82,21 @@ I don't do decks and roadmaps that sit in a drawer. I fix the thing that's actua
 - **Non-technical founders** who need a technical brain they can trust
 - **Teams that are stuck** — slow releases, constant fires, technical debt crushing morale
 - **Companies about to scale** and realizing their architecture won't survive it
+- **Founders who want to leverage AI** but don't know where to start (or got burned by hype)
 
 ## What You Get
+
+<div class="service-block">
+<h2>AI Systems & Agent Architecture</h2>
+<ul>
+<li>Multi-agent system design — when to use one agent vs. many, how they coordinate</li>
+<li>Model selection across providers (Claude, GPT-4, Kimi) — what each does well</li>
+<li>Memory systems: structured (files) vs. semantic (embeddings/vector search)</li>
+<li>Prompt engineering that actually works — evaluation frameworks, iteration cycles</li>
+<li>Autonomous coding agents: Claude Code, Codex CLI, setup and guardrails</li>
+<li>Where AI saves real time vs. where it's theater — I'll tell you the truth</li>
+</ul>
+</div>
 
 <div class="service-block">
 <h2>Technical Strategy & Architecture</h2>
@@ -99,16 +119,6 @@ I don't do decks and roadmaps that sit in a drawer. I fix the thing that's actua
 </div>
 
 <div class="service-block">
-<h2>AI Integration & Strategy</h2>
-<ul>
-<li>Practical AI implementation (not hype)</li>
-<li>Agent architecture and multi-model systems</li>
-<li>Where AI actually saves time vs. where it's theater</li>
-<li>Prompt engineering and evaluation frameworks</li>
-</ul>
-</div>
-
-<div class="service-block">
 <h2>Hands-On Execution</h2>
 <ul>
 <li>Code review and standards that stick</li>
@@ -122,7 +132,7 @@ I don't do decks and roadmaps that sit in a drawer. I fix the thing that's actua
 
 **Advisory retainer** — Monthly engagement with scheduled calls and async Slack access. Best for ongoing guidance.
 
-**Project-based** — Deep dive into a specific problem: architecture overhaul, team restructure, technical due diligence. Fixed scope, fixed timeline.
+**Project-based** — Deep dive into a specific problem: AI integration, architecture overhaul, team restructure, technical due diligence. Fixed scope, fixed timeline.
 
 **Fractional CTO** — Embedded leadership 2-3 days/week. Running standups, reviewing code, making the calls. For teams that need leadership now but aren't ready for a full-time hire.
 
