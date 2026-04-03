@@ -4,14 +4,24 @@ title: music
 permalink: /music/
 description: Shows I've been to
 nav: true
-nav_order: 3
+nav_order: 4
 ---
 
 <style>
+.pub-section-header {
+  font-size: 1.3em;
+  font-weight: 700;
+  margin-top: 2.5em;
+  margin-bottom: 0.3em;
+  padding-bottom: 0.4em;
+  border-bottom: 2px solid var(--global-theme-color, #007aff);
+}
+.pub-section-header:first-of-type { margin-top: 1.5em; }
 .shows-table {
   width: 100%;
   max-width: 640px;
   border-collapse: collapse;
+  margin-top: 1em;
   margin-bottom: 2rem;
   font-size: 0.9rem;
 }
@@ -31,7 +41,7 @@ nav_order: 3
 .shows-table .col-venue  { width: auto; }
 </style>
 
-## Upcoming
+<h2 class="pub-section-header">Upcoming</h2>
 
 <table class="shows-table">
   <thead><tr>
@@ -45,7 +55,7 @@ nav_order: 3
   </tbody>
 </table>
 
-## 2025
+<h2 class="pub-section-header">2025</h2>
 
 <table class="shows-table">
   <thead><tr>
@@ -59,7 +69,7 @@ nav_order: 3
   </tbody>
 </table>
 
-## 2024
+<h2 class="pub-section-header">2024</h2>
 
 <table class="shows-table">
   <thead><tr>
@@ -80,7 +90,7 @@ nav_order: 3
   </tbody>
 </table>
 
-## 2023
+<h2 class="pub-section-header">2023</h2>
 
 <table class="shows-table">
   <thead><tr>
@@ -93,7 +103,7 @@ nav_order: 3
   </tbody>
 </table>
 
-## 2022
+<h2 class="pub-section-header">2022</h2>
 
 <table class="shows-table">
   <thead><tr>
@@ -108,9 +118,9 @@ nav_order: 3
   </tbody>
 </table>
 
----
+<hr class="pub-divider">
 
-## Photos
+<h2 class="pub-section-header">Photos</h2>
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
