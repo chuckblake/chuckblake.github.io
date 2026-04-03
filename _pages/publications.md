@@ -40,6 +40,11 @@ nav_order: 4
     <div class="pub-meta">YouTube · Talk</div>
   </li>
   <li>
+    <a href="https://chuckblake.com/presentations/getting-ai-to-work-for-you/" target="_blank">Getting AI to Work for You</a> 🎤
+    <div class="pub-summary">Presentation at ERA on practical AI integration — building agent systems, choosing models, and getting real productivity gains from AI tools.</div>
+    <div class="pub-meta">ERA · Presentation</div>
+  </li>
+  <li>
     <a href="https://x.com/chuckblake/status/2038681090488250749" target="_blank">The Memory System Behind My Local AI Chief of Staff</a>
     <div class="pub-summary">A deep dive into the four-layer memory architecture powering Gomez, my personal AI assistant — from daily logs to structured entity graphs.</div>
     <div class="pub-meta">X</div>
