@@ -16,7 +16,7 @@ nav_order: 4
 .pub-summary { font-size: 14px; color: #666; margin-top: 3px; line-height: 1.4; }
 </style>
 
-## AI
+## Artificial Intelligence
 
 <ul class="pub-list">
   <li>
