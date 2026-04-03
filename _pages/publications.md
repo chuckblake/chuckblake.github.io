@@ -8,15 +8,30 @@ nav_order: 4
 ---
 
 <style>
-.pub-list { list-style: none; padding-left: 0; }
-.pub-list li { margin-bottom: 14px; }
-.pub-list a { font-weight: 600; color: #1a1a1a; text-decoration: none; }
+.pub-section-header {
+  font-size: 1.3em;
+  font-weight: 700;
+  margin-top: 2.5em;
+  margin-bottom: 0.3em;
+  padding-bottom: 0.4em;
+  border-bottom: 2px solid var(--global-theme-color, #007aff);
+}
+.pub-section-header:first-of-type { margin-top: 1.5em; }
+.pub-list { list-style: none; padding-left: 0; margin-top: 1em; }
+.pub-list li {
+  margin-bottom: 1.4em;
+  padding-bottom: 1.4em;
+  border-bottom: 1px solid rgba(150, 150, 150, 0.15);
+}
+.pub-list li:last-child { border-bottom: none; }
+.pub-list a { font-weight: 600; font-size: 1.05em; text-decoration: none; }
 .pub-list a:hover { text-decoration: underline; }
-.pub-meta { font-size: 13px; color: #999; margin-top: 2px; }
-.pub-summary { font-size: 14px; color: #666; margin-top: 3px; line-height: 1.4; }
+.pub-summary { font-size: 0.9em; color: #888; margin-top: 6px; line-height: 1.5; }
+.pub-meta { font-size: 0.8em; color: #aaa; margin-top: 4px; letter-spacing: 0.02em; }
+.pub-divider { margin: 3em 0 0 0; border: none; border-top: 1px solid rgba(150, 150, 150, 0.3); }
 </style>
 
-## Artificial Intelligence
+<h2 class="pub-section-header">Artificial Intelligence</h2>
 
 <ul class="pub-list">
   <li>
@@ -26,7 +41,7 @@ nav_order: 4
   </li>
 </ul>
 
-## Developer Relations
+<h2 class="pub-section-header">Developer Relations</h2>
 
 <ul class="pub-list">
   <li>
@@ -61,7 +76,7 @@ nav_order: 4
   </li>
 </ul>
 
-## Productivity
+<h2 class="pub-section-header">Productivity</h2>
 
 <ul class="pub-list">
   <li>
@@ -76,7 +91,7 @@ nav_order: 4
   </li>
 </ul>
 
-## Business Operations
+<h2 class="pub-section-header">Business Operations</h2>
 
 <ul class="pub-list">
   <li>
@@ -86,9 +101,9 @@ nav_order: 4
   </li>
 </ul>
 
----
+<hr class="pub-divider">
 
-## Press & Coverage
+<h2 class="pub-section-header">Press &amp; Coverage</h2>
 
 <ul class="pub-list">
   <li>
