@@ -16,19 +16,19 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "nav-music",
-          title: "music",
-          description: "Shows I&#39;ve been to",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/music/";
-          },
         },{id: "nav-publications",
           title: "publications",
           description: "Writing, talks, and coverage.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/publications/";
+          },
+        },{id: "nav-music",
+          title: "music",
+          description: "Shows I&#39;ve been to",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/music/";
           },
         },{id: "projects-lea",
           title: 'LEA',
@@ -60,6 +60,11 @@ ninja.data = [{
           description: "Email marketing analytics and research tool",
           section: "Projects",handler: () => {
               window.location.href = "/projects/6_emailinsights/";
+            },},{id: "projects-recall-bridge",
+          title: 'Recall Bridge',
+          description: "A hosted AI memory layer",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/7_recallbridge/";
             },},{
         id: 'social-email',
         title: 'email',
