@@ -2,61 +2,86 @@
 layout: page
 title: publications
 permalink: /publications/
-description: Writing I've done for other companies and publications.
+description: Writing, talks, and coverage.
 nav: true
 nav_order: 4
 ---
 
-## Press & Coverage
+<style>
+.pub-list { list-style: none; padding-left: 0; }
+.pub-list li { margin-bottom: 14px; }
+.pub-list a { font-weight: 600; color: #1a1a1a; text-decoration: none; }
+.pub-list a:hover { text-decoration: underline; }
+.pub-meta { font-size: 13px; color: #999; margin-top: 2px; }
+</style>
 
-Articles and case studies about projects I've worked on.
+## AI
 
-<ul class="publications-list">
+<ul class="pub-list">
   <li>
-    <a href="https://reducto.ai/blog/lea-reducto-case-study" rel="nofollow" target="_blank"><strong>How LEA Uses Reducto to Deliver Document Intelligence to Enterprise Wealth Management Firms</strong></a><br>
-    <small>Reducto — March 2025</small>
+    <a href="https://x.com/chuckblake/status/2038681090488250749" target="_blank">The Memory System Behind My Local AI Chief of Staff</a>
+    <div class="pub-meta">X · March 2026</div>
   </li>
 </ul>
 
-## Publications
+## Developer Relations
 
-Writing I've done for other companies and publications.
+<ul class="pub-list">
+  <li>
+    <a href="https://web.archive.org/web/20171128150131/https://blog.wallaroolabs.com/2017/11/how-to-build-a-thriving-open-source-community/" target="_blank">How to Build a Thriving Open-source Community</a>
+    <div class="pub-meta">Wallaroo Labs · November 2017</div>
+  </li>
+  <li>
+    <a href="https://web.archive.org/web/20180614114725/https://blog.wallaroolabs.com/2018/06/real-time-streaming-pattern-preprocessing-for-sentiment-analysis/" target="_blank">Real-time Streaming Pattern: Preprocessing for Sentiment Analysis</a>
+    <div class="pub-meta">Wallaroo Labs · June 2018</div>
+  </li>
+  <li>
+    <a href="https://web.archive.org/web/20180628114607/https://blog.wallaroolabs.com/2018/06/real-time-streaming-pattern-triggering-alerts/" target="_blank">Real-time Streaming Pattern: Triggering Alerts</a>
+    <div class="pub-meta">Wallaroo Labs · June 2018</div>
+  </li>
+  <li>
+    <a href="https://web.archive.org/web/20201109004025/https://blog.wallaroolabs.com/2018/07/real-time-streaming-pattern-joining-event-streams/" target="_blank">Real-time Streaming Pattern: Joining Event Streams</a>
+    <div class="pub-meta">Wallaroo Labs · July 2018</div>
+  </li>
+  <li>
+    <a href="https://medium.com/@chuckblake/streaming-with-wallaroo-fast-algorithmic-trading-checks-85e5d8449a97" target="_blank">Streaming With Wallaroo: Fast Algorithmic Trading Checks</a>
+    <div class="pub-meta">Wallaroo Labs · May 2018</div>
+  </li>
+  <li>
+    Wallaroo in Action: Real-Time Electronic Trading Risk Checks
+    <div class="pub-meta">Wallaroo Labs · 2018</div>
+  </li>
+</ul>
 
-<ul class="publications-list">
+## Productivity
+
+<ul class="pub-list">
   <li>
-    <a href="https://agencydocs.co/blogs/agency-biz/creative-problem-solving-with-a-deck-of-cards" rel="nofollow" target="_blank"><strong>Creative Problem Solving With a Deck of Cards</strong></a><br>
-    <small>Originally published on AgencyDocs — March 19, 2021</small>
+    <a href="https://agencydocs.co/blogs/agency-biz/creative-problem-solving-with-a-deck-of-cards" target="_blank">Creative Problem Solving With a Deck of Cards</a>
+    <div class="pub-meta">AgencyDocs · March 2021</div>
   </li>
   <li>
-    <a href="https://agencydocs.co/blogs/agency-biz/using-notion-to-collaborate-and-have-fewer-meetings" rel="nofollow" target="_blank"><strong>Using Notion to Collaborate and Have Fewer Meetings</strong></a><br>
-    <small>Originally published on AgencyDocs — March 5, 2021</small>
+    <a href="https://agencydocs.co/blogs/agency-biz/using-notion-to-collaborate-and-have-fewer-meetings" target="_blank">Using Notion to Collaborate and Have Fewer Meetings</a>
+    <div class="pub-meta">AgencyDocs · March 2021</div>
   </li>
+</ul>
+
+## Business Operations
+
+<ul class="pub-list">
   <li>
-    <a href="https://agencydocs.co/blogs/agency-biz/effective-teamwork" rel="nofollow" target="_blank"><strong>Effective Teamwork</strong></a><br>
-    <small>Originally published on AgencyDocs — December 11, 2020</small>
+    <a href="https://agencydocs.co/blogs/agency-biz/effective-teamwork" target="_blank">Effective Teamwork</a>
+    <div class="pub-meta">AgencyDocs · December 2020</div>
   </li>
+</ul>
+
+---
+
+## Press & Coverage
+
+<ul class="pub-list">
   <li>
-    <a href="https://web.archive.org/web/20201109004025/https://blog.wallaroolabs.com/2018/07/real-time-streaming-pattern-joining-event-streams/" rel="nofollow" target="_blank"><strong>Real-time Streaming Pattern: Joining Event Streams</strong></a><br>
-    <small>Originally published on Wallaroo Labs Blog — July 2018</small>
-  </li>
-  <li>
-    <a href="https://web.archive.org/web/20180628114607/https://blog.wallaroolabs.com/2018/06/real-time-streaming-pattern-triggering-alerts/" rel="nofollow" target="_blank"><strong>Real-time Streaming Pattern: Triggering Alerts</strong></a><br>
-    <small>Originally published on Wallaroo Labs Blog — June 2018</small>
-  </li>
-  <li>
-    <a href="https://web.archive.org/web/20180614114725/https://blog.wallaroolabs.com/2018/06/real-time-streaming-pattern-preprocessing-for-sentiment-analysis/" rel="nofollow" target="_blank"><strong>Real-time Streaming Pattern: Preprocessing for Sentiment Analysis</strong></a><br>
-    <small>Originally published on Wallaroo Labs Blog — June 2018</small>
-  </li>
-  <li>
-    <a href="https://medium.com/@chuckblake/streaming-with-wallaroo-fast-algorithmic-trading-checks-85e5d8449a97" rel="nofollow" target="_blank"><strong>Streaming With Wallaroo: Fast Algorithmic Trading Checks</strong></a><br>
-    <small>Originally published on Wallaroo Labs Blog — May 23, 2018</small>
-  </li>
-  <li>
-    <strong>Wallaroo in Action: Real-Time Electronic Trading Risk Checks</strong><br>
-    <small>Originally published on Wallaroo Labs Blog — 2018 (link unavailable)</small>
-  </li>
-  <li>
-    <a href="https://web.archive.org/web/20171128150131/https://blog.wallaroolabs.com/2017/11/how-to-build-a-thriving-open-source-community/" rel="nofollow" target="_blank"><strong>How to Build a Thriving Open-source Community</strong></a><br>
-    <small>Originally published on Wallaroo Labs Blog — November 20, 2017</small>
+    <a href="https://reducto.ai/blog/lea-reducto-case-study" target="_blank">How LEA Uses Reducto to Deliver Document Intelligence to Enterprise Wealth Management Firms</a>
+    <div class="pub-meta">Reducto · March 2025</div>
   </li>
 </ul>
