@@ -7,6 +7,21 @@ nav: true
 nav_order: 4
 ---
 
+## Press & Coverage
+
+Articles and case studies about projects I've worked on.
+
+<ul class="publications-list">
+  <li>
+    <a href="https://reducto.ai/blog/lea-reducto-case-study" rel="nofollow" target="_blank"><strong>How LEA Uses Reducto to Deliver Document Intelligence to Enterprise Wealth Management Firms</strong></a><br>
+    <small>Reducto — March 2025</small>
+  </li>
+</ul>
+
+## Publications
+
+Writing I've done for other companies and publications.
+
 <ul class="publications-list">
   <li>
     <a href="https://agencydocs.co/blogs/agency-biz/creative-problem-solving-with-a-deck-of-cards" rel="nofollow" target="_blank"><strong>Creative Problem Solving With a Deck of Cards</strong></a><br>
