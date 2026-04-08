@@ -50,6 +50,7 @@ nav_order: 4
     <th class="col-venue">Venue</th>
   </tr></thead>
   <tbody>
+    <tr><td>May 30, 2026</td><td>They Might Be Giants</td><td>Brooklyn Steel</td></tr>
     <tr><td>Jun 26, 2026</td><td>Human League, Soft Cell &amp; Alison Moyet</td><td>Radio City Music Hall</td></tr>
     <tr><td>Sep 5, 2026</td><td>Peter Hook &amp; The Light</td><td>Brooklyn Paramount</td></tr>
   </tbody>
