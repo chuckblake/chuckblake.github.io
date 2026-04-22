@@ -99,6 +99,11 @@ nav_order: 3
     <div class="pub-summary">How Barrel, a 35-person remote agency, built a Notion wiki that centralized knowledge, standardized workflows, and cut down on meetings.</div>
     <div class="pub-meta">AgencyDocs · Article</div>
   </li>
+  <li>
+    <a href="https://agencydocs.co/blogs/agency-biz/easy-ways-to-implementthe-best-ideas-from-gtd" target="_blank">Easy Ways To Implement the Best Ideas From GTD</a>
+    <div class="pub-summary">How organizations can adopt David Allen's GTD system — using inbox triage, context lists, weekly reviews, and waiting-for tracking to reduce stress and improve focus.</div>
+    <div class="pub-meta">AgencyDocs · Article</div>
+  </li>
 </ul>
 
 <h2 class="pub-section-header">Business Operations</h2>
