@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    <title>Talk Track: 5 Product-Led Growth Loops Inside GetMusic</title>
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --green: #00ff41;
+        --amber: #ffb000;
+        --white: #ffffff;
+        --dim-green: #4dbb6a;
+        --muted: #7ec898;
+        --font: "Courier New", Courier, monospace;
+      }
+      body {
+        background: var(--bg);
+        color: #e8e8e8;
+        font-family: var(--font);
+        line-height: 1.7;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 28px 80px;
+      }
+      h1 {
+        color: var(--white);
+        font-size: 24px;
+        margin-bottom: 6px;
+      }
+      .subtitle {
+        color: var(--dim-green);
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+      .toc {
+        background: #0d1a0d;
+        border: 1px solid #1a2e1a;
+        border-radius: 6px;
+        padding: 16px 20px;
+        margin-bottom: 32px;
+      }
+      .toc h2 {
+        color: var(--amber);
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        margin: 0 0 10px;
+        text-transform: uppercase;
+      }
+      .toc ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .toc li {
+        margin: 4px 0;
+        padding: 0;
+        font-size: 14px;
+      }
+      .toc a {
+        color: var(--green);
+        text-decoration: none;
+      }
+      .toc a:hover {
+        color: var(--white);
+      }
+      .toc .num {
+        color: var(--amber);
+        display: inline-block;
+        width: 28px;
+      }
+      section {
+        margin-bottom: 36px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #1a2e1a;
+      }
+      h2 {
+        color: var(--white);
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+      .label {
+        color: var(--amber);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: -6px;
+        margin-top: 0;
+      }
+      p {
+        margin: 10px 0;
+        font-size: 15px;
+      }
+      blockquote {
+        margin: 16px 0;
+        padding: 10px 16px;
+        border-left: 2px solid var(--dim-green);
+        color: var(--white);
+        font-style: italic;
+        background: #0d1a0d;
+      }
+      ul,
+      ol {
+        padding-left: 24px;
+        margin: 10px 0;
+        font-size: 14px;
+      }
+      li {
+        margin: 6px 0;
+      }
+      strong {
+        color: var(--white);
+      }
+      em.time {
+        color: var(--dim-green);
+        font-size: 13px;
+      }
+      .say {
+        color: var(--muted);
+        font-style: italic;
+      }
+      code {
+        color: #ffdd66;
+        background: #0f0f00;
+        padding: 1px 5px;
+        font-size: 0.92em;
+      }
+      .back {
+        position: fixed;
+        top: 14px;
+        right: 18px;
+        font-size: 12px;
+      }
+      .back a {
+        color: var(--dim-green);
+        text-decoration: none;
+        border: 1px solid #1a2e1a;
+        padding: 4px 10px;
+        border-radius: 4px;
+        background: rgba(0, 0, 0, 0.8);
+      }
+      .back a:hover {
+        color: var(--green);
+        border-color: var(--green);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="back"><a href="index.html">&larr; index</a></div>
+
+    <h1>Talk Track: 5 Product-Led Growth Loops Inside GetMusic</h1>
+    <div class="subtitle">
+      AI Side-Project Showcase // June 2026 //
+      <a href="https://chuckblake.com/presentations/ai-side-project-showcase-getmusic/" target="_blank">Live slides</a>
+    </div>
+
+    <div class="toc">
+      <h2>Slides</h2>
+      <ul>
+        <li><span class="num">01</span> <a href="#s1">Title</a></li>
+        <li><span class="num">02</span> <a href="#s2">What GetMusic Does</a></li>
+        <li><span class="num">03</span> <a href="#s3">Opening Provocation</a></li>
+        <li><span class="num">04</span> <a href="#s4">The Dangerous Failure Is Silence</a></li>
+        <li><span class="num">05</span> <a href="#s5">Who Watches the Watchman?</a></li>
+        <li><span class="num">06</span> <a href="#s6">Product &rarr; Automation &rarr; AI Ops</a></li>
+        <li><span class="num">07</span> <a href="#s7">Loop 1: Uploads Become Distribution Moments</a></li>
+        <li><span class="num">08</span> <a href="#s8">Loop 2: Metadata Becomes Reach</a></li>
+        <li><span class="num">09</span> <a href="#s9">Loop 3: Notifications Create Reshares</a></li>
+        <li><span class="num">10</span> <a href="#s10">Loop 4: Spotlights Turn Artists Into Co-Marketers</a></li>
+        <li><span class="num">11</span> <a href="#s11">Loop 5: Satellites Extend Surface Area</a></li>
+        <li><span class="num">12</span> <a href="#s12">Where AI Actually Fits</a></li>
+        <li><span class="num">13</span> <a href="#s13">The Moat Is the Loop, Not the LLM</a></li>
+        <li><span class="num">14</span> <a href="#s14">Find Me</a></li>
+      </ul>
+    </div>
+
+    <section id="s1">
+      <div class="label">Slide 01</div>
+      <h2>5 Product-Led Growth Loops Inside GetMusic</h2>
+      <p class="say"><em class="time">No special intro needed. Let the title land. The subtitle does the setup work.</em></p>
+    </section>
+
+    <section id="s2">
+      <div class="label">Slide 02</div>
+      <h2>What GetMusic Does</h2>
+      <p class="say"><em class="time"></em></p>
+      <p>Quick context. GetMusic is a Bandcamp code distribution and discovery platform for independent music.</p>
+      <p>Bandcamp artists have download codes &mdash; basically gift cards for digital albums &mdash; that they want to get into the right hands.</p>
+      <p>Fans want discovery, not catalogs. They want someone to surface the right stuff.</p>
+      <p>
+        GetMusic sits in the middle: it distributes codes, organizes releases, promotes artists, and keeps recirculating the catalog so nothing gets
+        buried.
+      </p>
+      <p>
+        <strong>One important thing:</strong> I'm solo. No team, no employees. Everything I'm about to describe is run by me plus some Rails jobs.
+      </p>
+    </section>
+
+    <section id="s3">
+      <div class="label">Slide 03</div>
+      <h2>Opening Provocation: Most Side Projects Bolt Marketing On Afterward</h2>
+      <p class="say"><em class="time"></em></p>
+      <p>Most side projects have a product phase, then a separate "marketing phase." They ship, then they hustle.</p>
+      <p>
+        I think that split is a trap. If your product doesn't create its own distribution, you are permanently in hustle mode. And if you're a solo
+        founder, that means you lose.
+      </p>
+      <p>
+        <strong>The question I asked:</strong> What if normal product usage created the raw material for growth? Not a separate campaign. A system.
+      </p>
+    </section>
+
+    <section id="s4">
+      <div class="label">Slide 04</div>
+      <h2>The Dangerous Failure Is Silence</h2>
+      <p class="say"><em class="time"></em></p>
+      <p>Okay, before I show you how distribution is built in, I want to show you why I had to build it that way.</p>
+      <p>
+        GetMusic automates a lot: nightly Bandcamp scraping, payment reconciliation, weekly playlist assembly, winback emails. But the scariest
+        failure is not a crash. A crash screams. You see it.
+      </p>
+      <p>
+        The scariest failure is silence. A job that just stops running. You don't find out until weeks later, when an artist asks why their release
+        never went out.
+      </p>
+      <p>So I built a Scheduled Checks system. It watches every background job and shows me red, yellow, or green on a dashboard.</p>
+      <p>
+        <strong>The design decision that matters most:</strong> Health is never stored. It's computed live, every few minutes, from now versus the
+        last successful run.
+      </p>
+      <p>
+        If a job stops checking in, the dashboard turns red immediately. A dead thing can't raise its hand to say it died. So the system doesn't wait
+        for it.
+      </p>
+    </section>
+
+    <section id="s5">
+      <div class="label">Slide 05</div>
+      <h2>Who Watches the Watchman?</h2>
+      <p class="say"><em class="time"></em></p>
+      <p>
+        There's a paradox: the monitor monitors everything <strong>except itself</strong>. If the whole server dies, the internal watchdog dies too,
+        and it can't alert anyone.
+      </p>
+      <p>
+        So on every successful pass, the system pings an <strong>external dead-man's switch</strong> &mdash; Healthchecks.io. If that ping stops
+        arriving, the external service raises the alarm, independent of GetMusic's infrastructure.
+      </p>
+      <p>
+        <strong>The framing:</strong> These tables answer "did everything run well?" The external service answers "did the monitor itself even run?"
+      </p>
+      <p>
+        <strong>The daily digest</strong> fires even when everything is green &mdash; because silence is ambiguous. An explicit "all 14 checks
+        healthy" message proves the reporting chain is alive.
+      </p>
+      <p>
+        <strong>Adding a check is one line:</strong> <code>ScheduledCheck.run("nightly_scrape") { ... }</code>. Instrumenting new automation is
+        essentially free. The system compounds as I automate more.
+      </p>
+      <p>And the whole thing is observational only. It doesn't touch the existing jobs. It sits beside them and watches. Zero coupling, low risk.</p>
+    </section>
+
+    <section id="s6">
+      <div class="label">Slide 06</div>
+      <h2>Product &rarr; Automation &rarr; AI Ops</h2>
+      <p class="say"><em class="time">Three layers. Only one is AI.</em></p>
+      <ol>
+        <li>
+          <strong>Product layer.</strong> The product creates distribution opportunities: artist uploads, code drops, profiles, featured surfaces,
+          Spotlights, IndieCrates, radio matches. I didn't invent these with AI. I designed the product so these moments exist.
+        </li>
+        <li>
+          <strong>Automation layer.</strong> Background jobs, queues, scheduled posts, webhooks, notification triggers. Boring, but critical. Without
+          this, the AI outputs would just become more chores.
+        </li>
+        <li>
+          <strong>AI layer.</strong> The product creates structured inputs. AI turns them into language: summaries, social copy, tag descriptions,
+          playlist blurbs, featured posts, moderation checks.
+        </li>
+      </ol>
+      <blockquote>AI is not the growth strategy. AI makes the growth strategy operable by one person.</blockquote>
+    </section>
+
+    <section id="s7">
+      <div class="label">Slide 07</div>
+      <h2>Loop 1: Uploads Become Distribution Moments</h2>
+      <p class="say"><em class="time"></em></p>
+      <p>When an artist uploads a release on GetMusic, that upload is not the end of the workflow. It's the start.</p>
+      <p>
+        The release gets a page. Code distribution is set up. A summary is generated. Social posts are queued across six platforms. The release enters
+        the catalog for future recirculation.
+      </p>
+      <p>All of that is triggered from a single upload.</p>
+      <blockquote>
+        Design product actions so they create reusable assets. The upload is not the end &mdash; it is the start of the distribution loop.
+      </blockquote>
+    </section>
+
+    <section id="s8">
+      <div class="label">Slide 08</div>
+      <h2>Loop 2: Artist Metadata Becomes Attribution and Reach</h2>
+      <p class="say"><em class="time"></em></p>
+      <p>
+        When artists sign up, they add names, links, social handles, genres, locations. Most products store that in a database and forget about it.
+      </p>
+      <p>On GetMusic, that metadata becomes distribution infrastructure.</p>
+      <p>
+        When we post about an artist, we tag them. That tag gives them a reason to engage &mdash; like, reply, reshare. Every post becomes a
+        notification. And every notification is a potential amplification.
+      </p>
+      <blockquote>Every piece of user-provided metadata can become future distribution context.</blockquote>
+    </section>
+
+    <section id="s9">
+      <div class="label">Slide 09</div>
+      <h2>Loop 3: Notifications Create Reshare Moments</h2>
+      <p class="say"><em class="time"></em></p>
+      <p>Artists are notified when GetMusic features them: new release, popular pick, radio play, Spotlight feature.</p>
+      <p>
+        A notification is not just an operational update. It's a distribution trigger. It tells the artist at the exact moment they have something to
+        be proud of.
+      </p>
+      <p>They reshare. More fans see the post. More fans visit GetMusic. The catalog gets another hit.</p>
+      <blockquote>If the product creates a moment someone is proud of, tell them at the exact moment they are most likely to share it.</blockquote>
+    </section>
+
+    <section id="s10">
+      <div class="label">Slide 10</div>
+      <h2>Loop 4: Spotlights Turn Artists Into Co-Marketers</h2>
+      <p class="say"><em class="time"></em></p>
+      <p>Artists fill out a form: bio, origin story, creative process, latest release inspiration, fan engagement.</p>
+      <p>Then GetMusic turns those raw inputs into a polished feature story.</p>
+      <p>Because the artist wrote the raw material, they have emotional ownership. That ownership makes them more likely to share it.</p>
+      <p>
+        Both sides distribute: GetMusic publishes the story, the artist shares it to their audience. It's co-marketing without a co-marketing meeting.
+      </p>
+      <blockquote>
+        The artist is not just the subject of the content. They help create the raw material, which makes them more likely to distribute it.
+      </blockquote>
+    </section>
+
+    <section id="s11">
+      <div class="label">Slide 11</div>
+      <h2>Loop 5: Distribution Satellites Extend the Surface Area</h2>
+      <p class="say"><em class="time"></em></p>
+      <p>GetMusic is not just one release page. It's surrounded by satellites:</p>
+      <ul>
+        <li>IndieCrates &mdash; a weekly curated crate, weighted toward active artists</li>
+        <li>Radio Play &mdash; matches DJ tracklists to GetMusic catalog, creating credibility backlinks</li>
+        <li>Featured Posts, Popular Releases, Playlists, SonicSift</li>
+      </ul>
+      <p>Each surface gives a release another chance to be discovered, often months after the upload moment has passed.</p>
+      <blockquote>A release I onboarded two years ago can still be posted today, in copy I never wrote.</blockquote>
+    </section>
+
+    <section id="s12">
+      <div class="label">Slide 12</div>
+      <h2>Where AI Actually Fits</h2>
+      <p class="say"><em class="time"></em></p>
+      <p>This is the AI Side-Project Showcase, so let's be honest about where AI shows up.</p>
+      <p>
+        I don't have an editor, a social manager, a moderator, a curator, and a copywriter. I have product events, Rails jobs, prompts, and review
+        points.
+      </p>
+      <p><strong>Walk through the table briefly:</strong></p>
+      <ul>
+        <li>Release summaries: editorial intern</li>
+        <li>Social copy: six platform managers</li>
+        <li>Tag descriptions: genre copywriter</li>
+        <li>Playlist blurbs: newsletter writer</li>
+        <li>Featured posts: blogger</li>
+        <li>Offensive material: trust and safety reviewer</li>
+      </ul>
+      <p>All of it runs on Claude with prompts stored in the database. I tune copy without deploying code.</p>
+    </section>
+
+    <section id="s13">
+      <div class="label">Slide 13</div>
+      <h2>The Moat Is the Loop, Not the LLM</h2>
+      <p class="say"><em class="time"></em></p>
+      <p>Here's the honest truth: AI can help anyone build features faster. So code alone is not defensible.</p>
+      <p>What is defensible is the loop that turns every product action into a distribution moment.</p>
+      <p>
+        Releases, artists, spotlights, tags, playlists, radio matches, social posts &mdash; every one of them is a distribution node. The LLM helps
+        operate the machine. The machine only exists because the product was designed to produce it.
+      </p>
+      <blockquote>
+        Don't ask, "Where can I add AI?" Ask, "What repeated product events create useful raw material?" Then use AI to turn that raw material into
+        distribution.
+      </blockquote>
+    </section>
+
+    <section id="s14">
+      <div class="label">Slide 14</div>
+      <h2>Find Me</h2>
+      <p class="say"><em class="time"></em></p>
+      <p><strong>Website:</strong> chuckblake.com</p>
+      <p><strong>X:</strong> @chuckblake</p>
+      <p><strong>LinkedIn:</strong> /in/chuckblake</p>
+      <p><strong>Slides:</strong> chuckblake.com/presentations/ai-side-project-showcase-getmusic/</p>
+    </section>
+  </body>
+</html>

@@ -414,7 +414,7 @@
     </style>
   </head>
   <body>
-    <div id="counter" style="display: none">01 / 12</div>
+    <div id="counter" style="display: none">01 / 13</div>
     <button class="nav-arrow" id="nav-prev" aria-label="Previous">&lt;</button>
     <button class="nav-arrow" id="nav-next" aria-label="Next">&gt;</button>
 
@@ -447,20 +447,7 @@
         <div class="title-meta">Chuck Blake // AI Side-Project Showcase // June 2026</div>
       </div>
 
-      <!-- Slide 2: Opening Provocation -->
-      <div class="slide">
-        <h2 class="slide-title">Most Side Projects Bolt Marketing On Afterward</h2>
-        <p class="slide-sub">I tried to make distribution a product behavior.</p>
-        <ul>
-          <li>Artists upload releases &mdash; those uploads become <strong>promotional assets</strong></li>
-          <li>Product activity creates <strong>structured raw material</strong> for distribution</li>
-          <li>AI turns that raw material into copy, summaries, posts, and descriptions</li>
-          <li>The growth loop came first; AI just makes it <strong>operable by one person</strong></li>
-        </ul>
-        <div class="terminal-quote" style="margin-top: 16px">AI is not the growth strategy. AI makes the growth strategy operable by one person.</div>
-      </div>
-
-      <!-- Slide 3: What GetMusic Is -->
+      <!-- Slide 2: What GetMusic Is -->
       <div class="slide">
         <h2 class="slide-title">What GetMusic Does</h2>
         <p class="slide-sub">Bandcamp code distribution &amp; independent music discovery</p>
@@ -475,29 +462,65 @@
         </div>
       </div>
 
-      <!-- Slide 4: The Three-Layer Frame -->
+      <!-- Slide 3: Opening Provocation -->
+      <div class="slide">
+        <h2 class="slide-title">Most Side Projects Bolt Marketing On Afterward</h2>
+        <p class="slide-sub">I tried to make distribution a product behavior.</p>
+        <ul>
+          <li>Artists upload releases &mdash; those uploads become <strong>promotional assets</strong></li>
+          <li>Product activity creates <strong>structured raw material</strong> for distribution</li>
+          <li>AI turns that raw material into copy, summaries, posts, and descriptions</li>
+          <li>The growth loop came first; AI just makes it <strong>operable by one person</strong></li>
+        </ul>
+        <div class="terminal-quote" style="margin-top: 16px">AI is not the growth strategy. AI makes the growth strategy operable by one person.</div>
+      </div>
+
+      <!-- Slide 4: Scheduled Checks / The Dangerous Failure Is Silence -->
+      <div class="slide">
+        <h2 class="slide-title">The Dangerous Failure Is Silence</h2>
+        <p class="slide-sub">Building a system that watches the machines.</p>
+        <ul>
+          <li>As GetMusic automates more work, the scariest failure is <strong>not the crash</strong></li>
+          <li>A crash screams. A job that <strong>silently stops firing</strong> whispers nothing</li>
+          <li>Built a Scheduled Checks dashboard: red / yellow / green on every background job</li>
+          <li>Health is <strong>never stored</strong> &mdash; computed live from now vs. last run</li>
+        </ul>
+        <div class="terminal-quote" style="margin-top: 14px">
+          A dead thing can't raise its hand to say it died. So the system doesn't wait for it.
+        </div>
+      </div>
+
+      <!-- Slide 5: Scheduled Checks — Architecture -->
+      <div class="slide">
+        <h2 class="slide-title">Who Watches the Watchman?</h2>
+        <p class="slide-sub">If the whole server dies, the internal monitor dies with it.</p>
+        <ul>
+          <li>Every healthy 5-minute pass pings an <strong>external dead-man's switch</strong></li>
+          <li>If that ping stops: an outside service raises the alarm, independent of GetMusic</li>
+          <li>Daily digest fires even when everything is green &mdash; silence is ambiguous</li>
+          <li>Adding a new check: <code class="inline">ScheduledCheck.run("nightly_scrape") { ... }</code></li>
+        </ul>
+        <div class="terminal-quote" style="margin-top: 14px">
+          These tables answer "did everything run well?" The external service answers "did the monitor itself even run?"
+        </div>
+      </div>
+
+      <!-- Slide 6: The Three-Layer Frame -->
       <div class="slide">
         <h2 class="slide-title">Product &rarr; Automation &rarr; AI Ops</h2>
         <p class="slide-sub">Three layers. Only one of them is AI.</p>
         <div class="three-layer">
           <div class="layer">
             <h3>01 PRODUCT</h3>
-            <p>
-              Artist uploads, code drops, profiles, social handles, featured/popular surfaces, Spotlights, IndieCrates, radio matches, catalog pages
-            </p>
+            <p>Artist uploads, profiles, featured surfaces, Spotlights, IndieCrates, radio matches</p>
           </div>
           <div class="layer">
             <h3>02 AUTOMATION</h3>
-            <p>
-              Background jobs, queues, scheduled posts, Buffer/Make webhooks, notification triggers, approval workflows, cached 7-day featured posts
-            </p>
+            <p>Background jobs, queues, scheduled posts, notification triggers, approval workflows</p>
           </div>
           <div class="layer">
             <h3>03 AI OPS</h3>
-            <p>
-              Release summaries, social copy, tag descriptions, playlist blurbs, featured posts, Spotlight drafts, trust-and-safety checks,
-              recirculated catalog copy
-            </p>
+            <p>Release summaries, social copy, tag descriptions, playlist blurbs, trust-and-safety checks</p>
           </div>
         </div>
         <div class="terminal-quote" style="margin-top: 14px">
@@ -505,7 +528,7 @@
         </div>
       </div>
 
-      <!-- Slide 5: Loop 1 -->
+      <!-- Slide 7: Loop 1 -->
       <div class="slide">
         <h2 class="slide-title">Loop 1: Uploads Become Distribution Moments</h2>
         <p class="slide-sub">The upload is not the end. It's the start of the loop.</p>
@@ -520,7 +543,7 @@
         </div>
       </div>
 
-      <!-- Slide 6: Loop 2 -->
+      <!-- Slide 8: Loop 2 -->
       <div class="slide">
         <h2 class="slide-title">Loop 2: Artist Metadata Becomes Attribution and Reach</h2>
         <p class="slide-sub">Profile data is not just profile data. It's attribution infrastructure.</p>
@@ -533,7 +556,7 @@
         <div class="terminal-quote" style="margin-top: 14px">Every piece of user-provided metadata can become future distribution context.</div>
       </div>
 
-      <!-- Slide 7: Loop 3 -->
+      <!-- Slide 9: Loop 3 -->
       <div class="slide">
         <h2 class="slide-title">Loop 3: Notifications Create Reshare Moments</h2>
         <p class="slide-sub">Tell them at the exact moment they're most likely to share.</p>
@@ -548,7 +571,7 @@
         </div>
       </div>
 
-      <!-- Slide 8: Loop 4 -->
+      <!-- Slide 10: Loop 4 -->
       <div class="slide">
         <h2 class="slide-title">Loop 4: Spotlights Turn Artists Into Co-Marketers</h2>
         <p class="slide-sub">Ask for structured raw material, then turn it into something they want to distribute.</p>
@@ -563,7 +586,7 @@
         </div>
       </div>
 
-      <!-- Slide 9: Loop 5 -->
+      <!-- Slide 11: Loop 5 -->
       <div class="slide">
         <h2 class="slide-title">Loop 5: Distribution Satellites Extend the Surface Area</h2>
         <p class="slide-sub">Don't let product value expire at the initial transaction.</p>
@@ -578,7 +601,7 @@
         </div>
       </div>
 
-      <!-- Slide 10: Where AI Fits -->
+      <!-- Slide 12: Where AI Fits -->
       <div class="slide">
         <h2 class="slide-title">Where AI Actually Fits</h2>
         <p class="slide-sub">I don't have an editor, a social manager, a moderator, a curator, and a copywriter.</p>
@@ -615,7 +638,7 @@
         <div class="terminal-quote" style="margin-top: 14px">I have product events, Rails jobs, prompts, and review points.</div>
       </div>
 
-      <!-- Slide 11: Closing -->
+      <!-- Slide 13: Closing -->
       <div class="slide">
         <h2 class="slide-title">The Moat Is the Loop, Not the LLM</h2>
         <p class="slide-sub">What AI can help anyone build, AI can also help anyone copy.</p>
@@ -631,7 +654,7 @@
         </div>
       </div>
 
-      <!-- Slide 12: Find Me -->
+      <!-- Slide 14: Find Me -->
       <div class="slide">
         <h2 class="slide-title">Find Me</h2>
         <ul class="find-me-list">
