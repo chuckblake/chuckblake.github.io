@@ -35,6 +35,11 @@ nav_order: 3
 
 <ul class="pub-list">
   <li>
+    <a href="https://chuckblake.com/presentations/ai-side-project-showcase-getmusic/" target="_blank">5 Product-Led Growth Loops Inside GetMusic</a>
+    <div class="pub-summary">How a solo founder built product-led distribution — five growth loops where normal artist activity creates marketing assets, operated by AI.</div>
+    <div class="pub-meta">AI Side-Project Showcase · Presentation · June 2026</div>
+  </li>
+  <li>
     <a href="https://youtu.be/1rU4s37teBI" target="_blank">Commanding AI: Automating Docs, Reviews & Reports in Rails</a>
     <div class="pub-summary">Talk on integrating AI into a Rails production workflow — automating document processing, code reviews, and reporting with Claude and custom tooling.</div>
     <div class="pub-meta">YouTube · Talk</div>
