@@ -163,16 +163,15 @@
         <li><span class="num">02</span> <a href="#s2">What GetMusic Does</a></li>
         <li><span class="num">03</span> <a href="#s3">Opening Provocation</a></li>
         <li><span class="num">04</span> <a href="#s4">The Dangerous Failure Is Silence</a></li>
-        <li><span class="num">05</span> <a href="#s5">Who Watches the Watchman?</a></li>
-        <li><span class="num">06</span> <a href="#s6">Product &rarr; Automation &rarr; AI Ops</a></li>
-        <li><span class="num">07</span> <a href="#s7">Loop 1: Uploads Become Distribution Moments</a></li>
-        <li><span class="num">08</span> <a href="#s8">Loop 2: Metadata Becomes Reach</a></li>
-        <li><span class="num">09</span> <a href="#s9">Loop 3: Notifications Create Reshares</a></li>
-        <li><span class="num">10</span> <a href="#s10">Loop 4: Spotlights Turn Artists Into Co-Marketers</a></li>
-        <li><span class="num">11</span> <a href="#s11">Loop 5: Satellites Extend Surface Area</a></li>
-        <li><span class="num">12</span> <a href="#s12">Where AI Actually Fits</a></li>
-        <li><span class="num">13</span> <a href="#s13">The Moat Is the Loop, Not the LLM</a></li>
-        <li><span class="num">14</span> <a href="#s14">Find Me</a></li>
+        <li><span class="num">05</span> <a href="#s5">Product &rarr; Automation &rarr; AI Ops</a></li>
+        <li><span class="num">06</span> <a href="#s6">Loop 1: Uploads Become Distribution Moments</a></li>
+        <li><span class="num">07</span> <a href="#s7">Loop 2: Metadata Becomes Reach</a></li>
+        <li><span class="num">08</span> <a href="#s8">Loop 3: Notifications Create Reshares</a></li>
+        <li><span class="num">09</span> <a href="#s9">Loop 4: Spotlights Turn Artists Into Co-Marketers</a></li>
+        <li><span class="num">10</span> <a href="#s10">Loop 5: Satellites Extend Surface Area</a></li>
+        <li><span class="num">11</span> <a href="#s11">Where AI Actually Fits</a></li>
+        <li><span class="num">12</span> <a href="#s12">The Moat Is the Loop, Not the LLM</a></li>
+        <li><span class="num">13</span> <a href="#s13">Find Me</a></li>
       </ul>
     </div>
 
@@ -238,32 +237,6 @@
 
     <section id="s5">
       <div class="label">Slide 05</div>
-      <h2>Who Watches the Watchman?</h2>
-      <p class="say"><em class="time"></em></p>
-      <p>
-        There's a paradox: the monitor monitors everything <strong>except itself</strong>. If the whole server dies, the internal watchdog dies too,
-        and it can't alert anyone.
-      </p>
-      <p>
-        So on every successful pass, the system pings an <strong>external dead-man's switch</strong> &mdash; Healthchecks.io. If that ping stops
-        arriving, the external service raises the alarm, independent of GetMusic's infrastructure.
-      </p>
-      <p>
-        <strong>The framing:</strong> These tables answer "did everything run well?" The external service answers "did the monitor itself even run?"
-      </p>
-      <p>
-        <strong>The daily digest</strong> fires even when everything is green &mdash; because silence is ambiguous. An explicit "all 14 checks
-        healthy" message proves the reporting chain is alive.
-      </p>
-      <p>
-        <strong>Adding a check is one line:</strong> <code>ScheduledCheck.run("nightly_scrape") { ... }</code>. Instrumenting new automation is
-        essentially free. The system compounds as I automate more.
-      </p>
-      <p>And the whole thing is observational only. It doesn't touch the existing jobs. It sits beside them and watches. Zero coupling, low risk.</p>
-    </section>
-
-    <section id="s6">
-      <div class="label">Slide 06</div>
       <h2>Product &rarr; Automation &rarr; AI Ops</h2>
       <p class="say"><em class="time">Three layers. Only one is AI.</em></p>
       <ol>
@@ -283,8 +256,8 @@
       <blockquote>AI is not the growth strategy. AI makes the growth strategy operable by one person.</blockquote>
     </section>
 
-    <section id="s7">
-      <div class="label">Slide 07</div>
+    <section id="s6">
+      <div class="label">Slide 06</div>
       <h2>Loop 1: Uploads Become Distribution Moments</h2>
       <p class="say"><em class="time"></em></p>
       <p>When an artist uploads a release on GetMusic, that upload is not the end of the workflow. It's the start.</p>
@@ -298,8 +271,8 @@
       </blockquote>
     </section>
 
-    <section id="s8">
-      <div class="label">Slide 08</div>
+    <section id="s7">
+      <div class="label">Slide 07</div>
       <h2>Loop 2: Artist Metadata Becomes Attribution and Reach</h2>
       <p class="say"><em class="time"></em></p>
       <p>
@@ -313,8 +286,8 @@
       <blockquote>Every piece of user-provided metadata can become future distribution context.</blockquote>
     </section>
 
-    <section id="s9">
-      <div class="label">Slide 09</div>
+    <section id="s8">
+      <div class="label">Slide 08</div>
       <h2>Loop 3: Notifications Create Reshare Moments</h2>
       <p class="say"><em class="time"></em></p>
       <p>Artists are notified when GetMusic features them: new release, popular pick, radio play, Spotlight feature.</p>
@@ -326,8 +299,8 @@
       <blockquote>If the product creates a moment someone is proud of, tell them at the exact moment they are most likely to share it.</blockquote>
     </section>
 
-    <section id="s10">
-      <div class="label">Slide 10</div>
+    <section id="s9">
+      <div class="label">Slide 09</div>
       <h2>Loop 4: Spotlights Turn Artists Into Co-Marketers</h2>
       <p class="say"><em class="time"></em></p>
       <p>Artists fill out a form: bio, origin story, creative process, latest release inspiration, fan engagement.</p>
@@ -341,8 +314,8 @@
       </blockquote>
     </section>
 
-    <section id="s11">
-      <div class="label">Slide 11</div>
+    <section id="s10">
+      <div class="label">Slide 10</div>
       <h2>Loop 5: Distribution Satellites Extend the Surface Area</h2>
       <p class="say"><em class="time"></em></p>
       <p>GetMusic is not just one release page. It's surrounded by satellites:</p>
@@ -355,8 +328,8 @@
       <blockquote>A release I onboarded two years ago can still be posted today, in copy I never wrote.</blockquote>
     </section>
 
-    <section id="s12">
-      <div class="label">Slide 12</div>
+    <section id="s11">
+      <div class="label">Slide 11</div>
       <h2>Where AI Actually Fits</h2>
       <p class="say"><em class="time"></em></p>
       <p>This is the AI Side-Project Showcase, so let's be honest about where AI shows up.</p>
@@ -376,8 +349,8 @@
       <p>All of it runs on Claude with prompts stored in the database. I tune copy without deploying code.</p>
     </section>
 
-    <section id="s13">
-      <div class="label">Slide 13</div>
+    <section id="s12">
+      <div class="label">Slide 12</div>
       <h2>The Moat Is the Loop, Not the LLM</h2>
       <p class="say"><em class="time"></em></p>
       <p>Here's the honest truth: AI can help anyone build features faster. So code alone is not defensible.</p>
@@ -392,8 +365,8 @@
       </blockquote>
     </section>
 
-    <section id="s14">
-      <div class="label">Slide 14</div>
+    <section id="s13">
+      <div class="label">Slide 13</div>
       <h2>Find Me</h2>
       <p class="say"><em class="time"></em></p>
       <p><strong>Website:</strong> chuckblake.com</p>
