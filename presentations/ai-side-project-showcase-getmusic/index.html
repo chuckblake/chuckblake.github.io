@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5 Product-Led Growth Loops Inside GetMusic — AI Side-Project Showcase June 2026</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #0a0a0a;
+        --green: #00ff41;
+        --amber: #ffb000;
+        --white: #ffffff;
+        --dim-green: #4dbb6a;
+        --muted: #7ec898;
+        --font: "Courier New", Courier, monospace;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--bg);
+        font-family: var(--font);
+        color: var(--green);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* Counter */
+      #counter {
+        position: fixed;
+        bottom: 14px;
+        right: 28px;
+        font-family: var(--font);
+        font-size: 16px;
+        color: var(--green);
+        z-index: 1001;
+        letter-spacing: 0.12em;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 4px 12px;
+        border: 1px solid var(--dim-green);
+        border-radius: 4px;
+      }
+
+      /* Nav */
+      .nav-arrow {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: 1px solid var(--muted);
+        color: var(--muted);
+        font-family: var(--font);
+        font-size: 16px;
+        cursor: pointer;
+        padding: 8px 12px;
+        z-index: 1001;
+        transition:
+          color 0.15s,
+          border-color 0.15s;
+      }
+      .nav-arrow:hover {
+        color: var(--green);
+        border-color: var(--green);
+      }
+      #nav-prev {
+        left: 12px;
+      }
+      #nav-next {
+        right: 12px;
+      }
+
+      /* Social footer */
+      #social-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        padding: 0 120px;
+        border-top: 1px solid #1a2e1a;
+        z-index: 1001;
+        gap: 24px;
+        background: rgba(10, 10, 10, 0.85);
+      }
+      .s-link {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+        color: var(--muted);
+        font-family: var(--font);
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        transition: color 0.15s;
+      }
+      .s-link:hover {
+        color: var(--green);
+      }
+      .s-link svg {
+        width: 12px;
+        height: 12px;
+        fill: currentColor;
+        flex-shrink: 0;
+      }
+      .s-spacer {
+        flex: 1;
+      }
+
+      /* Deck */
+      #deck {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 120px 80px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .slide {
+        display: none;
+        width: min(1100px, 90vw);
+        flex-direction: column;
+        justify-content: center;
+        animation: termIn 0.25s ease;
+        overflow: hidden;
+        max-height: 80vh;
+      }
+      .slide.active {
+        display: flex;
+      }
+
+      @keyframes termIn {
+        from {
+          opacity: 0;
+          transform: translateX(-8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Prompt line */
+      .prompt-line {
+        color: var(--dim-green);
+        font-size: 15px;
+        letter-spacing: 0.08em;
+        margin-bottom: 12px;
+        opacity: 1;
+      }
+
+      /* Title */
+      h1.title {
+        font-size: clamp(36px, 5.5vw, 68px);
+        color: var(--white);
+        line-height: 1.15;
+        margin-bottom: 12px;
+        font-weight: bold;
+      }
+      .title-sub {
+        font-size: clamp(16px, 2.2vw, 24px);
+        color: var(--green);
+        margin-bottom: 20px;
+        opacity: 0.8;
+        font-style: italic;
+      }
+      .title-meta {
+        font-size: 15px;
+        color: var(--muted);
+        margin-top: 32px;
+        padding-top: 18px;
+        border-top: 1px solid #1a2e1a;
+      }
+
+      /* Slide heading */
+      h2.slide-title {
+        font-size: clamp(26px, 3.8vw, 48px);
+        color: var(--white);
+        margin-bottom: 10px;
+        line-height: 1.15;
+        border-left: 3px solid var(--green);
+        padding-left: 18px;
+      }
+      .slide-sub {
+        font-size: clamp(14px, 1.8vw, 20px);
+        color: var(--green);
+        opacity: 0.75;
+        font-style: italic;
+        margin-bottom: 24px;
+        padding-left: 21px;
+      }
+
+      /* List items */
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      ul li {
+        font-size: clamp(16px, 2.2vw, 24px);
+        color: #e8e8e8;
+        line-height: 1.7;
+        padding: 6px 0 6px 30px;
+        position: relative;
+      }
+      ul li::before {
+        content: ">";
+        position: absolute;
+        left: 0;
+        color: var(--dim-green);
+        font-weight: bold;
+      }
+      ul li strong {
+        color: var(--white);
+      }
+
+      ol {
+        list-style: none;
+        padding: 0;
+        counter-reset: steps;
+      }
+      ol li {
+        counter-increment: steps;
+        font-size: clamp(16px, 2.2vw, 24px);
+        color: #e8e8e8;
+        line-height: 1.7;
+        padding: 6px 0 6px 40px;
+        position: relative;
+      }
+      ol li::before {
+        content: "[" counter(steps) "]";
+        position: absolute;
+        left: 0;
+        color: var(--amber);
+        font-size: 14px;
+        top: 10px;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+
+      .col-block h3 {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        color: var(--amber);
+        margin-bottom: 10px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid #1a2e1a;
+      }
+      .col-block ul li {
+        font-size: clamp(14px, 1.7vw, 18px);
+        color: #e8e8e8;
+      }
+      .col-block p {
+        font-size: clamp(13px, 1.6vw, 17px);
+        color: #e8e8e8;
+        line-height: 1.7;
+        margin-top: 8px;
+      }
+
+      .terminal-quote {
+        border-left: 2px solid var(--dim-green);
+        padding: 10px 16px;
+        margin: 16px 0;
+        font-size: clamp(13px, 1.8vw, 17px);
+        color: var(--white);
+        font-style: italic;
+        line-height: 1.5;
+      }
+      .terminal-quote::before {
+        content: '"';
+      }
+      .terminal-quote::after {
+        content: '"';
+      }
+
+      .terminal-quote-lg {
+        border-left: 3px solid var(--green);
+        padding: 14px 20px;
+        margin: 20px 0;
+        font-size: clamp(16px, 2.2vw, 26px);
+        color: var(--white);
+        font-style: italic;
+        line-height: 1.5;
+      }
+      .terminal-quote-lg::before {
+        content: '"';
+      }
+      .terminal-quote-lg::after {
+        content: '"';
+      }
+
+      code.inline {
+        color: #ffdd66;
+        background: #0f0f00;
+        padding: 1px 5px;
+        font-size: 0.9em;
+      }
+
+      .meta-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 16px;
+        font-size: clamp(13px, 1.6vw, 17px);
+      }
+      .meta-table th {
+        text-align: left;
+        color: var(--amber);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        padding: 8px 12px;
+        border-bottom: 1px solid #1a2e1a;
+      }
+      .meta-table td {
+        color: #e8e8e8;
+        padding: 8px 12px;
+        line-height: 1.6;
+        border-bottom: 1px solid #0f1a0f;
+      }
+      .meta-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .three-layer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 16px;
+      }
+      .three-layer .layer {
+        background: #0d1a0d;
+        border: 1px solid var(--dim-green);
+        border-radius: 8px;
+        padding: 14px 16px;
+      }
+      .three-layer .layer h3 {
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        color: var(--amber);
+        margin-bottom: 8px;
+      }
+      .three-layer .layer p {
+        font-size: clamp(12px, 1.4vw, 14px);
+        color: #aaa;
+        line-height: 1.6;
+      }
+
+      .find-me-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 8px;
+      }
+      .find-me-list li {
+        font-size: clamp(18px, 2.4vw, 28px);
+        color: var(--green);
+        line-height: 2;
+        padding: 4px 0 4px 30px;
+        position: relative;
+      }
+      .find-me-list li::before {
+        content: "->";
+        position: absolute;
+        left: 0;
+        color: var(--amber);
+      }
+      .find-me-list li strong {
+        color: var(--white);
+      }
+
+      @media (max-width: 600px) {
+        #deck {
+          padding: 28px 16px;
+        }
+        .two-col {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        .nav-arrow {
+          padding: 6px 10px;
+          font-size: 14px;
+        }
+        #social-footer {
+          padding: 0 60px;
+        }
+        .three-layer {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="counter" style="display: none">01 / 12</div>
+    <button class="nav-arrow" id="nav-prev" aria-label="Previous">&lt;</button>
+    <button class="nav-arrow" id="nav-next" aria-label="Next">&gt;</button>
+
+    <div id="social-footer">
+      <a class="s-link" href="https://x.com/chuckblake" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.265 5.638 5.9-5.638Zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+          />
+        </svg>
+        @chuckblake
+      </a>
+      <a class="s-link" href="https://linkedin.com/in/chuckblake" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+          />
+        </svg>
+        /in/chuckblake
+      </a>
+      <div class="s-spacer"></div>
+      <span class="s-link" style="cursor: default">AI Side-Project Showcase &middot; June 2026 &mdash; <span id="slide-num">1</span></span>
+    </div>
+
+    <div id="deck">
+      <!-- Slide 1: Title -->
+      <div class="slide active">
+        <h1 class="title">5 Product-Led Growth Loops Inside GetMusic</h1>
+        <div class="title-sub">How AI helps a solo founder operate built-in distribution without a team</div>
+        <div class="title-meta">Chuck Blake // AI Side-Project Showcase // June 2026</div>
+      </div>
+
+      <!-- Slide 2: Opening Provocation -->
+      <div class="slide">
+        <h2 class="slide-title">Most Side Projects Bolt Marketing On Afterward</h2>
+        <p class="slide-sub">I tried to make distribution a product behavior.</p>
+        <ul>
+          <li>Artists upload releases &mdash; those uploads become <strong>promotional assets</strong></li>
+          <li>Product activity creates <strong>structured raw material</strong> for distribution</li>
+          <li>AI turns that raw material into copy, summaries, posts, and descriptions</li>
+          <li>The growth loop came first; AI just makes it <strong>operable by one person</strong></li>
+        </ul>
+        <div class="terminal-quote" style="margin-top: 16px">AI is not the growth strategy. AI makes the growth strategy operable by one person.</div>
+      </div>
+
+      <!-- Slide 3: What GetMusic Is -->
+      <div class="slide">
+        <h2 class="slide-title">What GetMusic Does</h2>
+        <p class="slide-sub">Bandcamp code distribution &amp; independent music discovery</p>
+        <ul>
+          <li>Bandcamp artists have <strong>download codes</strong> they want to distribute</li>
+          <li>Fans want music discovery, not just another feed</li>
+          <li>GetMusic distributes, organizes, promotes, and <strong>recirculates</strong> independent music</li>
+          <li>Solo-operated &mdash; one founder, zero employees</li>
+        </ul>
+        <div class="terminal-quote" style="margin-top: 16px">
+          The real story is not the product. It's the product-led distribution system built around it.
+        </div>
+      </div>
+
+      <!-- Slide 4: The Three-Layer Frame -->
+      <div class="slide">
+        <h2 class="slide-title">Product &rarr; Automation &rarr; AI Ops</h2>
+        <p class="slide-sub">Three layers. Only one of them is AI.</p>
+        <div class="three-layer">
+          <div class="layer">
+            <h3>01 PRODUCT</h3>
+            <p>
+              Artist uploads, code drops, profiles, social handles, featured/popular surfaces, Spotlights, IndieCrates, radio matches, catalog pages
+            </p>
+          </div>
+          <div class="layer">
+            <h3>02 AUTOMATION</h3>
+            <p>
+              Background jobs, queues, scheduled posts, Buffer/Make webhooks, notification triggers, approval workflows, cached 7-day featured posts
+            </p>
+          </div>
+          <div class="layer">
+            <h3>03 AI OPS</h3>
+            <p>
+              Release summaries, social copy, tag descriptions, playlist blurbs, featured posts, Spotlight drafts, trust-and-safety checks,
+              recirculated catalog copy
+            </p>
+          </div>
+        </div>
+        <div class="terminal-quote" style="margin-top: 14px">
+          AI is useful because the product creates structured moments for it to act on. The loop came first.
+        </div>
+      </div>
+
+      <!-- Slide 5: Loop 1 -->
+      <div class="slide">
+        <h2 class="slide-title">Loop 1: Uploads Become Distribution Moments</h2>
+        <p class="slide-sub">The upload is not the end. It's the start of the loop.</p>
+        <ul>
+          <li>One artist upload becomes <strong>multiple downstream assets</strong></li>
+          <li>Release page, summary, social posts, code distribution, catalog inclusion</li>
+          <li>And future recirculation &mdash; the release keeps getting surfaced</li>
+          <li>The product turns an event into <strong>reusable distribution raw material</strong></li>
+        </ul>
+        <div class="terminal-quote" style="margin-top: 14px">
+          The upload is not the end of the workflow. It is the start of the distribution loop.
+        </div>
+      </div>
+
+      <!-- Slide 6: Loop 2 -->
+      <div class="slide">
+        <h2 class="slide-title">Loop 2: Artist Metadata Becomes Attribution and Reach</h2>
+        <p class="slide-sub">Profile data is not just profile data. It's attribution infrastructure.</p>
+        <ul>
+          <li>Artists provide names, links, social handles, genres, locations, release metadata</li>
+          <li>That data is reused in posts, profiles, notifications, and discovery surfaces</li>
+          <li>When GetMusic posts about an artist, it <strong>tags them</strong></li>
+          <li>That gives the artist a reason to engage, like, reply, or reshare</li>
+        </ul>
+        <div class="terminal-quote" style="margin-top: 14px">Every piece of user-provided metadata can become future distribution context.</div>
+      </div>
+
+      <!-- Slide 7: Loop 3 -->
+      <div class="slide">
+        <h2 class="slide-title">Loop 3: Notifications Create Reshare Moments</h2>
+        <p class="slide-sub">Tell them at the exact moment they're most likely to share.</p>
+        <ul>
+          <li>Artists are notified when GetMusic features them: <strong>new release, popular pick, radio play, Spotlight</strong></li>
+          <li>A notification is both a service touchpoint and a <strong>distribution trigger</strong></li>
+          <li>If the product creates a moment someone is proud of, tell them</li>
+          <li>They reshare, which brings new fans back to GetMusic</li>
+        </ul>
+        <div class="terminal-quote" style="margin-top: 14px">
+          If the product creates a moment someone is proud of, tell them at the exact moment they are most likely to share it.
+        </div>
+      </div>
+
+      <!-- Slide 8: Loop 4 -->
+      <div class="slide">
+        <h2 class="slide-title">Loop 4: Spotlights Turn Artists Into Co-Marketers</h2>
+        <p class="slide-sub">Ask for structured raw material, then turn it into something they want to distribute.</p>
+        <ul>
+          <li>Artist self-serves a form: <strong>bio, origin story, creative process, fan engagement</strong></li>
+          <li>GetMusic turns those inputs into a <strong>publishable feature story</strong></li>
+          <li>Because the artist contributed, they have emotional ownership</li>
+          <li>That ownership makes them more likely to share</li>
+        </ul>
+        <div class="terminal-quote" style="margin-top: 14px">
+          The artist is not just the subject of the content. They help create the raw material, which makes them more likely to distribute it.
+        </div>
+      </div>
+
+      <!-- Slide 9: Loop 5 -->
+      <div class="slide">
+        <h2 class="slide-title">Loop 5: Distribution Satellites Extend the Surface Area</h2>
+        <p class="slide-sub">Don't let product value expire at the initial transaction.</p>
+        <ul>
+          <li>GetMusic is not only one release page</li>
+          <li>It builds surrounding surfaces: <strong>IndieCrates, radio pages, featured posts, popular releases, playlists, SonicSift</strong></li>
+          <li>Each surface gives a release <strong>another chance to be discovered</strong></li>
+          <li>A release onboarded two years ago can still be posted today</li>
+        </ul>
+        <div class="terminal-quote" style="margin-top: 14px">
+          A release I onboarded two years ago can still be posted today, in copy I never wrote.
+        </div>
+      </div>
+
+      <!-- Slide 10: Where AI Fits -->
+      <div class="slide">
+        <h2 class="slide-title">Where AI Actually Fits</h2>
+        <p class="slide-sub">I don't have an editor, a social manager, a moderator, a curator, and a copywriter.</p>
+        <table class="meta-table">
+          <tr>
+            <th>AI-Assisted Job</th>
+            <th>What It Replaces</th>
+          </tr>
+          <tr>
+            <td>Release summary generation</td>
+            <td>Editorial intern writing 2&ndash;3 sentence blurbs</td>
+          </tr>
+          <tr>
+            <td>Platform-specific social copy</td>
+            <td>Six social media managers &mdash; one per platform</td>
+          </tr>
+          <tr>
+            <td>Tag / genre page descriptions</td>
+            <td>Genre-page copywriter (Zagat-style HTML)</td>
+          </tr>
+          <tr>
+            <td>Playlist / newsletter blurbs</td>
+            <td>Newsletter writer for weekly crate descriptions</td>
+          </tr>
+          <tr>
+            <td>Featured post drafts</td>
+            <td>Blogger writing 150&ndash;250-word featured posts</td>
+          </tr>
+          <tr>
+            <td>Offensive material checks</td>
+            <td>Trust &amp; safety reviewer reading cover art</td>
+          </tr>
+        </table>
+        <div class="terminal-quote" style="margin-top: 14px">I have product events, Rails jobs, prompts, and review points.</div>
+      </div>
+
+      <!-- Slide 11: Closing -->
+      <div class="slide">
+        <h2 class="slide-title">The Moat Is the Loop, Not the LLM</h2>
+        <p class="slide-sub">What AI can help anyone build, AI can also help anyone copy.</p>
+        <ul>
+          <li>AI did not <strong>magically create</strong> GetMusic's growth</li>
+          <li>The product creates structured distribution events: releases, artists, spotlights, tags, playlists, social posts, radio matches</li>
+          <li>The loop came first; AI made the loop <strong>operable by one person</strong></li>
+          <li>If AI can help anyone build features faster, the defensible part is the loop around what you build</li>
+        </ul>
+        <div class="terminal-quote-lg">
+          Don't ask, "Where can I add AI?" Ask, "What repeated product events create useful raw material?" Then use AI to turn that raw material into
+          distribution.
+        </div>
+      </div>
+
+      <!-- Slide 12: Find Me -->
+      <div class="slide">
+        <h2 class="slide-title">Find Me</h2>
+        <ul class="find-me-list">
+          <li><strong>Website:</strong> chuckblake.com</li>
+          <li><strong>X:</strong> @chuckblake</li>
+          <li><strong>LinkedIn:</strong> /in/chuckblake</li>
+          <li><strong>Slides:</strong> chuckblake.com/presentations/ai-side-project-showcase-getmusic/</li>
+        </ul>
+      </div>
+    </div>
+    <!-- #deck -->
+
+    <script>
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const counter = document.getElementById("counter");
+      const total = slides.length;
+      let current = 0;
+
+      function pad(n) {
+        return String(n).padStart(2, "0");
+      }
+
+      function show(idx) {
+        slides[current].classList.remove("active");
+        current = (idx + total) % total;
+        slides[current].classList.add("active");
+        counter.textContent = pad(current + 1) + " / " + pad(total);
+        const slideNum = document.getElementById("slide-num");
+        if (slideNum) slideNum.textContent = current + 1;
+      }
+
+      document.getElementById("nav-next").addEventListener("click", () => show(current + 1));
+      document.getElementById("nav-prev").addEventListener("click", () => show(current - 1));
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " ") {
+          e.preventDefault();
+          show(current + 1);
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          e.preventDefault();
+          show(current - 1);
+        }
+      });
+
+      let touchStartX = 0;
+      document.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.touches[0].clientX;
+        },
+        { passive: true }
+      );
+      document.addEventListener(
+        "touchend",
+        (e) => {
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 40) show(current + (dx < 0 ? 1 : -1));
+        },
+        { passive: true }
+      );
+    </script>
+  </body>
+</html>
