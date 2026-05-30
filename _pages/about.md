@@ -11,7 +11,7 @@ profile:
   more_info:
 
 selected_papers: false
-social: false  # temporarily disabled - jekyll-socials plugin issue
+social: false # temporarily disabled - jekyll-socials plugin issue
 
 announcements:
   enabled: false
@@ -39,4 +39,3 @@ Check out my [writing and talks](/publications/) on AI systems, developer relati
 Brooklyn-based. Always building something.
 
 [LinkedIn](https://www.linkedin.com/in/chuckblake/) · [X](https://x.com/chuckblake) · [Email](mailto:chuck.blake@gmail.com)
-

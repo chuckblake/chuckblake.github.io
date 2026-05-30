@@ -2,7 +2,7 @@
 layout: page
 title: Email Insights
 description: Email marketing analytics and research tool
-img: 
+img:
 importance: 5
 category: past
 ---
@@ -10,6 +10,7 @@ category: past
 Email Insights was a SaaS tool for email marketers — a searchable database of marketing emails with analytics, benchmarks, and research tools to help teams understand what's working in their industry.
 
 **What it did:**
+
 - Indexed and categorized marketing emails across industries
 - Let users search, favorite, and analyze email campaigns
 - Surfaced subject line patterns, send frequency benchmarks, and design trends

@@ -2,7 +2,7 @@
 layout: page
 title: GetMusic.fm
 description: Helping artists promote music on Bandcamp
-img: 
+img:
 importance: 1
 category: current
 ---
@@ -12,6 +12,7 @@ category: current
 Bandcamp gives artists download codes to promote their music, but there's no good way to distribute them at scale. GetMusic solves that — artists upload their codes, fans claim them, everyone wins.
 
 **Features:**
+
 - Artists can upload and manage download codes
 - Fans can easily claim codes and discover new music
 - Simple, clean interface focused on the music

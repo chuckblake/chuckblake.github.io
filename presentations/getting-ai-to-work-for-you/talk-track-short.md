@@ -1,9 +1,11 @@
 # One-Pager Talk Track
+
 ERA // March 2026
 
 ---
 
 **Slide 1 — Building an AI System That Works for You**
+
 - CTO of an ERA company, recently left
 - Bought a Mac mini, built an agent named Gomez
 - Tools are moving faster than strategies
@@ -13,6 +15,7 @@ ERA // March 2026
 ---
 
 **Slide 2 — Meet Gomez**
+
 - OpenClaw, running locally on a Mac mini
 - Connected to Telegram, calendar, code, tasks
 - Honest: painful to build at first
@@ -21,6 +24,7 @@ ERA // March 2026
 ---
 
 **Slide 3 — Building a System, Not Just Using a Tool**
+
 - Install OpenClaw = commodity, same as everyone
 - Give it a soul: identity, personality, preferences
 - Every customization makes it uniquely yours
@@ -29,6 +33,7 @@ ERA // March 2026
 ---
 
 **Slide 4 — Three Ways to Build That System**
+
 - Memory
 - Context
 - Principles
@@ -36,6 +41,7 @@ ERA // March 2026
 ---
 
 **Slide 5 — 1. Memory**
+
 - Out of the box memory wasn't good enough
 - Built a layered system on top
 - Daily log, errors file, identity file
@@ -45,6 +51,7 @@ ERA // March 2026
 ---
 
 **Slide 6 — How Memory Works**
+
 - Raw inputs → long-term memory + vector DB
 - Boot sequence: identity → errors → memory → today's log → semantic search
 - All just markdown files — completely portable
@@ -52,6 +59,7 @@ ERA // March 2026
 ---
 
 **Slide 7 — Example: Memory**
+
 - Before I typed a word, he queried the vector DB
 - Already knew about this talk, my slides, how I work
 - Already knew I hate Slack
@@ -60,6 +68,7 @@ ERA // March 2026
 ---
 
 **Slide 8 — 2. Context**
+
 - Generic prompts → generic output
 - Personal context → personal output
 - Your knowledge base is the differentiator
@@ -68,6 +77,7 @@ ERA // March 2026
 ---
 
 **Slide 9 — What's In The Vault**
+
 - Obsidian vault: people, decisions, notes, journal, health
 - Readwise pulls in all reading + highlights
 - QMD: hybrid keyword + semantic search across all of it
@@ -76,6 +86,7 @@ ERA // March 2026
 ---
 
 **Slide 10 — Example: Context**
+
 - Asked: what is Murat's degree in?
 - Vault found the note, surfaced the answer
 - MS Computer Science, Neural Networks + ML
@@ -84,6 +95,7 @@ ERA // March 2026
 ---
 
 **Slide 11 — 3. Principles**
+
 - Directing every interaction doesn't scale
 - Embed your judgment into the system
 - Bottleneck shifted from execution to judgment
@@ -92,6 +104,7 @@ ERA // March 2026
 ---
 
 **Slide 12 — What A Principle Looks Like In The Repo**
+
 - CLAUDE.md committed to every repo
 - Agent reads it every session
 - Principle: API-first, tests before merge
@@ -101,6 +114,7 @@ ERA // March 2026
 ---
 
 **Slide 13 — The Model Is Replaceable. The System Is Yours.**
+
 - Same models, different systems — that's the whole game
 - Gap compounds: every correction, every principle widens it
 - Lives in files — platform doesn't matter
@@ -109,5 +123,6 @@ ERA // March 2026
 ---
 
 **Slide 14 — Find Me**
+
 - Slides at the URL
 - Happy to dig in

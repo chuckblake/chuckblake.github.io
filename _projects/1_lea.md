@@ -2,7 +2,7 @@
 layout: page
 title: LEA
 description: AI-powered document extraction for wealth management
-img: 
+img:
 importance: 1
 category: past
 ---
@@ -12,6 +12,7 @@ category: past
 LEA automates the painful process of organizing client documents, extracting key data points, and pushing clean information into CRMs and planning platforms.
 
 **What it does:**
+
 - Extract structured data from brokerage statements, tax documents, and estate plans
 - Automatically organize and categorize incoming documents
 - Push clean data directly into existing systems (CRMs, financial planning tools)

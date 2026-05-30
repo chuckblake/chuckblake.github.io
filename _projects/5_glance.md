@@ -2,7 +2,7 @@
 layout: page
 title: Glance
 description: Agent-first work queue and issue tracker
-img: 
+img:
 importance: 4
 category: current
 ---
@@ -12,6 +12,7 @@ category: current
 Most issue trackers were built for humans — Glance is built for the way modern teams actually work: with agents doing research, writing code, and shipping features alongside (or instead of) humans.
 
 **What makes it agent-first:**
+
 - Work queue as the core primitive — not boards, not sprints
 - Token-efficient context: agents get exactly what they need, nothing they don't
 - State machine model for tasks — agents can claim, lock, and close work programmatically
