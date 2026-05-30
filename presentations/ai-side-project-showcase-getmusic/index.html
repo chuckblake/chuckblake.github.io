@@ -392,6 +392,28 @@
         color: var(--white);
       }
 
+      .qr-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 24px;
+      }
+      .qr-container img {
+        width: min(240px, 50vw);
+        height: auto;
+        border: 2px solid var(--dim-green);
+        border-radius: 8px;
+        padding: 8px;
+        background: var(--bg);
+      }
+      .qr-label {
+        margin-top: 12px;
+        font-size: clamp(14px, 1.8vw, 18px);
+        color: var(--muted);
+        letter-spacing: 0.08em;
+      }
+
       @media (max-width: 600px) {
         #deck {
           padding: 28px 16px;
@@ -667,8 +689,11 @@
           <li><strong>Website:</strong> chuckblake.com</li>
           <li><strong>X:</strong> @chuckblake</li>
           <li><strong>LinkedIn:</strong> /in/chuckblake</li>
-          <li><strong>Slides:</strong> chuckblake.com/presentations/ai-side-project-showcase-getmusic/</li>
         </ul>
+        <div class="qr-container">
+          <img src="qr-chuckblake.svg" alt="QR code for chuckblake.com" />
+          <span class="qr-label">chuckblake.com</span>
+        </div>
       </div>
     </div>
     <!-- #deck -->
