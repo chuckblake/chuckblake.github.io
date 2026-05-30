@@ -29,7 +29,46 @@ nav_order: 3
 .pub-summary { font-size: 0.9em; color: #888; margin-top: 6px; line-height: 1.5; }
 .pub-meta { font-size: 0.8em; color: #aaa; margin-top: 4px; letter-spacing: 0.02em; }
 .pub-divider { margin: 3em 0 0 0; border: none; border-top: 1px solid rgba(150, 150, 150, 0.3); }
+.substack-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 1.5em 0 0.5em;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 102, 0, 0.4);
+  border-radius: 6px;
+  background: rgba(255, 102, 0, 0.06);
+  text-decoration: none;
+  color: var(--global-text-color, #333);
+  transition: background 0.15s, border-color 0.15s;
+}
+.substack-banner:hover {
+  background: rgba(255, 102, 0, 0.12);
+  border-color: rgba(255, 102, 0, 0.7);
+}
+.substack-banner svg {
+  width: 22px;
+  height: 22px;
+  fill: #ff6600;
+  flex-shrink: 0;
+}
+.substack-banner .substack-title {
+  font-weight: 600;
+  font-size: 1.05em;
+}
+.substack-banner .substack-desc {
+  font-size: 0.85em;
+  color: #888;
+  margin-left: auto;
+  white-space: nowrap;
+}
 </style>
+
+<a href="https://ingeneral.substack.com/" target="_blank" class="substack-banner">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.078v9.848l9.626 4.54 9.628-4.54V10.078H1.46zm18.67 1.836v.828l-7.65 3.602-1.35.636-1.35-.636-7.65-3.602v-.828h17.999z"/></svg>
+  <span class="substack-title">In General — my weekly writing on technology and operations</span>
+  <span class="substack-desc">Subscribe →</span>
+</a>
 
 <h2 class="pub-section-header">Artificial Intelligence</h2>
 
