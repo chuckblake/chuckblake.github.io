@@ -187,6 +187,42 @@
       .revenue-points strong {
         color: var(--accent);
       }
+      .release-frame {
+        gap: 18px;
+      }
+      .release-layout {
+        display: grid;
+        grid-template-columns: minmax(320px, 0.76fr) minmax(0, 1.24fr);
+        align-items: center;
+        gap: clamp(26px, 4vw, 56px);
+      }
+      .release-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+      .release-copy h2 {
+        font-size: clamp(42px, 5.8vw, 80px);
+      }
+      .release-shot {
+        margin: 0;
+        padding: 12px;
+        border: 2px solid var(--line);
+        border-radius: 24px;
+        background: var(--paper);
+        overflow: hidden;
+      }
+      .release-shot img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: min(64vh, 620px);
+        object-fit: contain;
+        border-radius: 16px;
+      }
+      .release-frame blockquote {
+        font-size: clamp(22px, 2.5vw, 36px);
+      }
       .split,
       .three-layer {
         display: grid;
@@ -321,7 +357,8 @@
         .split,
         .three-layer,
         .context-frame,
-        .revenue-layout {
+        .revenue-layout,
+        .release-layout {
           grid-template-columns: 1fr;
         }
         .context-logo {
@@ -387,6 +424,29 @@
         }
         .revenue-chart img {
           max-height: 36vh;
+        }
+        .release-frame {
+          gap: 10px;
+        }
+        .release-layout {
+          gap: 18px;
+        }
+        .release-copy {
+          gap: 14px;
+        }
+        .release-copy h2 {
+          font-size: clamp(38px, 5.2vw, 62px);
+        }
+        .release-shot {
+          padding: 8px;
+          border-radius: 18px;
+        }
+        .release-shot img {
+          max-height: 56vh;
+          border-radius: 12px;
+        }
+        .release-frame blockquote {
+          font-size: clamp(19px, 2vw, 27px);
         }
         .revenue-points {
           gap: 8px;
@@ -504,15 +564,17 @@
       </section>
 
       <section class="slide" data-slide="5">
-        <div class="frame">
-          <div class="kicker">Loop 1</div>
-          <h2>Uploads become distribution moments</h2>
-          <div class="flow">
-            <span>Artist upload</span><b>→</b><span>Release page</span><b>→</b><span>Generated summary</span><b>→</b><span>Social posts</span><b>→</b
-            ><span>Future recirculation</span>
+        <div class="frame release-frame">
+          <div class="release-layout">
+            <div class="release-copy">
+              <div class="kicker">Loop 1</div>
+              <h2>Uploads become distribution moments</h2>
+              <blockquote>The release page turns one artist upload into a reusable distribution asset.</blockquote>
+            </div>
+            <figure class="release-shot">
+              <img src="release-page-olio-flux-city.png" alt="GetMusic release page for Olio Flux, City" />
+            </figure>
           </div>
-          <blockquote>The upload is not the end of the workflow. It is the start of the distribution loop.</blockquote>
-          <p><strong>Transferable lesson:</strong> design product actions so they create reusable assets.</p>
         </div>
       </section>
 
