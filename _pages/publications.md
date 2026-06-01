@@ -65,6 +65,7 @@ nav_order: 3
 </style>
 
 {::nomarkdown}
+
 <div>
   <a href="https://ingeneral.substack.com/" target="_blank" class="substack-banner">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.078v9.848l9.626 4.54 9.628-4.54V10.078H1.46zm18.67 1.836v.828l-7.65 3.602-1.35.636-1.35-.636-7.65-3.602v-.828h17.999z"/></svg>
