@@ -129,6 +129,64 @@
         font-weight: 800;
         letter-spacing: -0.035em;
       }
+      .context-frame {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(180px, 300px);
+        align-items: center;
+        gap: clamp(26px, 5vw, 64px);
+      }
+      .context-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 22px;
+      }
+      .context-copy .big-list li {
+        font-size: clamp(20px, 2vw, 28px);
+      }
+      .context-logo {
+        width: min(300px, 26vw);
+        justify-self: center;
+      }
+      .context-logo img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .revenue-frame {
+        gap: 18px;
+      }
+      .revenue-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
+        align-items: center;
+        gap: clamp(24px, 4vw, 54px);
+      }
+      .revenue-chart {
+        margin: 0;
+      }
+      .revenue-chart img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: min(52vh, 430px);
+        object-fit: contain;
+      }
+      .revenue-points {
+        display: grid;
+        gap: 14px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      .revenue-points li {
+        font-size: clamp(18px, 1.85vw, 27px);
+        font-weight: 760;
+        letter-spacing: -0.035em;
+      }
+      .revenue-points strong {
+        color: var(--accent);
+      }
       .split,
       .three-layer {
         display: grid;
@@ -261,8 +319,14 @@
       }
       @media (max-width: 820px) {
         .split,
-        .three-layer {
+        .three-layer,
+        .context-frame,
+        .revenue-layout {
           grid-template-columns: 1fr;
+        }
+        .context-logo {
+          width: min(220px, 46vw);
+          justify-self: start;
         }
         .slide {
           padding: 34px 26px 70px;
@@ -310,6 +374,25 @@
         .three-layer > div {
           padding: 16px 20px;
           border-radius: 18px;
+        }
+        .context-frame,
+        .revenue-layout {
+          gap: 16px;
+        }
+        .context-logo {
+          width: min(250px, 24vw);
+        }
+        .revenue-frame {
+          gap: 10px;
+        }
+        .revenue-chart img {
+          max-height: 36vh;
+        }
+        .revenue-points {
+          gap: 8px;
+        }
+        .revenue-points li {
+          font-size: clamp(15px, 1.45vw, 20px);
         }
         .three-layer p {
           font-size: clamp(15px, 1.45vw, 20px);
@@ -360,18 +443,42 @@
       </section>
 
       <section class="slide" data-slide="2">
-        <div class="frame">
-          <div class="kicker">Context</div>
-          <h2>What GetMusic does</h2>
-          <ul class="big-list">
-            <li>Bandcamp artists have releases and codes they want people to discover.</li>
-            <li>Fans want music discovery, not just another feed.</li>
-            <li>GetMusic distributes, organizes, promotes, and recirculates independent music.</li>
-          </ul>
+        <div class="frame context-frame">
+          <div class="context-copy">
+            <div class="kicker">Context</div>
+            <h2>What GetMusic does</h2>
+            <ul class="big-list">
+              <li>Bandcamp artists have releases and codes they want people to discover.</li>
+              <li>Fans want music discovery, not just another feed.</li>
+              <li>GetMusic distributes, organizes, promotes, and recirculates indie music.</li>
+            </ul>
+          </div>
+          <div class="context-logo">
+            <img src="getmusic-logo.webp" alt="GetMusic octopus logo" />
+          </div>
         </div>
       </section>
 
       <section class="slide" data-slide="3">
+        <div class="frame revenue-frame">
+          <div class="kicker">Revenue proof</div>
+          <h2>Revenue: slow, volatile, upward</h2>
+          <p class="lede">Not a hockey stick. A proof of life.</p>
+          <div class="revenue-layout">
+            <figure class="revenue-chart">
+              <img src="revenue-by-month.png" alt="Revenue by month chart showing slow growth from November 2022 to May 2026" />
+            </figure>
+            <ul class="revenue-points">
+              <li>Started from near-zero, trending upward across <strong>3+ years</strong>.</li>
+              <li>No subscriptions or recurring billing — every dollar is <strong>usage-based</strong>.</li>
+              <li><strong>More than half</strong> of revenue comes from artists who have used it before.</li>
+            </ul>
+          </div>
+          <p class="note">The loops create retention without SaaS recurring billing.</p>
+        </div>
+      </section>
+
+      <section class="slide" data-slide="4">
         <div class="frame">
           <div class="kicker">Frame</div>
           <h2>Product loop first. Automation second. AI third.</h2>
@@ -396,7 +503,7 @@
         </div>
       </section>
 
-      <section class="slide" data-slide="4">
+      <section class="slide" data-slide="5">
         <div class="frame">
           <div class="kicker">Loop 1</div>
           <h2>Uploads become distribution moments</h2>
@@ -409,7 +516,7 @@
         </div>
       </section>
 
-      <section class="slide" data-slide="5">
+      <section class="slide" data-slide="6">
         <div class="frame">
           <div class="kicker">Loop 2</div>
           <h2>Artist metadata becomes attribution and reach</h2>
@@ -426,7 +533,7 @@
         </div>
       </section>
 
-      <section class="slide" data-slide="6">
+      <section class="slide" data-slide="7">
         <div class="frame">
           <div class="kicker">Loop 3</div>
           <h2>Notifications create re-share moments</h2>
@@ -439,7 +546,7 @@
         </div>
       </section>
 
-      <section class="slide" data-slide="7">
+      <section class="slide" data-slide="8">
         <div class="frame">
           <div class="kicker">Loop 4</div>
           <h2>Spotlights turn artists into co-marketers</h2>
@@ -459,7 +566,7 @@
         </div>
       </section>
 
-      <section class="slide" data-slide="8">
+      <section class="slide" data-slide="9">
         <div class="frame">
           <div class="kicker">Loop 5</div>
           <h2>Distribution satellites extend the surface area</h2>
@@ -471,7 +578,7 @@
         </div>
       </section>
 
-      <section class="slide" data-slide="9">
+      <section class="slide" data-slide="10">
         <div class="frame">
           <div class="kicker">AI ops layer</div>
           <h2>AI as the missing tiny team</h2>
@@ -512,7 +619,7 @@
         </div>
       </section>
 
-      <section class="slide" data-slide="10">
+      <section class="slide" data-slide="11">
         <div class="frame">
           <div class="kicker">Closing lesson</div>
           <h2>The moat is the loop, not the LLM.</h2>
