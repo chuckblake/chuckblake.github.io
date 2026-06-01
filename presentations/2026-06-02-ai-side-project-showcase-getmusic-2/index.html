@@ -238,30 +238,33 @@
         border-radius: 16px;
       }
       .profile-frame,
-      .notifications-frame {
+      .notifications-frame,
+      .spotlight-frame,
+      .satellite-frame {
         gap: clamp(14px, 2.4vh, 22px);
       }
       .profile-shot,
-      .notification-card {
+      .notification-card,
+      .stage-main,
+      .stage-overlay {
         margin: 0;
-        padding: 8px;
-        border: 2px solid var(--line);
-        border-radius: 24px;
-        background: var(--paper);
-        overflow: hidden;
       }
       .profile-shot img,
-      .notification-card img {
+      .notification-card img,
+      .stage-main img,
+      .stage-overlay img {
         display: block;
         width: 100%;
         object-position: top center;
-        border-radius: 16px;
+        border-radius: 18px;
       }
       .profile-shot img {
         height: min(56vh, 560px);
-        object-fit: cover;
+        object-fit: contain;
       }
-      .notifications-frame h2 {
+      .notifications-frame h2,
+      .spotlight-frame h2,
+      .satellite-frame h2 {
         max-width: none;
         font-size: clamp(42px, 5.6vw, 78px);
       }
@@ -275,6 +278,49 @@
         height: min(52vh, 520px);
         object-fit: contain;
         background: #fff;
+      }
+      .evidence-stage,
+      .evidence-pair {
+        width: 100%;
+      }
+      .evidence-stage {
+        position: relative;
+      }
+      .evidence-pair {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(180px, 0.28fr);
+        gap: clamp(18px, 2.8vw, 34px);
+        align-items: center;
+      }
+      .stage-main img {
+        height: min(58vh, 580px);
+        object-fit: cover;
+      }
+      .spotlight-frame .stage-main img {
+        object-fit: contain;
+        background: #151515;
+      }
+      .evidence-side {
+        margin: 0;
+      }
+      .evidence-side img {
+        display: block;
+        width: 100%;
+        max-height: min(54vh, 540px);
+        object-fit: contain;
+        border-radius: 18px;
+      }
+      .stage-overlay {
+        position: absolute;
+        right: clamp(18px, 3vw, 34px);
+        bottom: clamp(18px, 3vw, 34px);
+        width: min(29%, 330px);
+        border-radius: 18px;
+        background: #050505;
+        box-shadow: 0 18px 44px rgba(23, 19, 16, 0.32);
+      }
+      .stage-overlay img {
+        border-radius: 18px;
       }
       .split,
       .three-layer {
@@ -505,19 +551,18 @@
           border-radius: 12px;
         }
         .profile-frame,
-        .notifications-frame {
+        .notifications-frame,
+        .spotlight-frame,
+        .satellite-frame {
           gap: 12px;
         }
-        .profile-shot,
-        .notification-card {
-          padding: 7px;
-          border-radius: 18px;
-        }
         .profile-shot img {
-          height: 52vh;
+          height: 54vh;
           border-radius: 12px;
         }
-        .notifications-frame h2 {
+        .notifications-frame h2,
+        .spotlight-frame h2,
+        .satellite-frame h2 {
           font-size: clamp(36px, 5.1vw, 58px);
         }
         .notification-grid {
@@ -526,6 +571,27 @@
         .notification-card img {
           height: 44vh;
           border-radius: 12px;
+        }
+        .stage-main img {
+          height: 52vh;
+          border-radius: 12px;
+        }
+        .evidence-pair {
+          gap: 14px;
+          grid-template-columns: minmax(0, 1fr) minmax(150px, 0.3fr);
+        }
+        .evidence-side img {
+          max-height: 48vh;
+          border-radius: 12px;
+        }
+        .stage-overlay {
+          right: 18px;
+          bottom: 18px;
+          width: min(29%, 260px);
+          border-radius: 14px;
+        }
+        .stage-overlay img {
+          border-radius: 14px;
         }
         .revenue-points {
           gap: 8px;
@@ -692,34 +758,36 @@
       </section>
 
       <section class="slide" data-slide="8">
-        <div class="frame">
-          <div class="kicker">Loop 4</div>
-          <h2>Spotlights turn artists into co-marketers</h2>
-          <div class="split">
-            <div class="card">
-              <span class="label">Input</span>
-              <p>Bio, origin story, creative process, release inspiration, fan-engagement details.</p>
-            </div>
-            <div class="card">
-              <span class="label">Output</span>
-              <p>A polished feature the artist helped create and now has a reason to share.</p>
-            </div>
+        <div class="frame spotlight-frame">
+          <div class="release-title">
+            <div class="kicker">Loop 4</div>
+            <h2>Spotlights turn artists into co-marketers</h2>
           </div>
-          <p>
-            <strong>Transferable lesson:</strong> ask users for structured raw material, then turn it into something polished they want to distribute.
-          </p>
+          <div class="evidence-pair">
+            <figure class="stage-main">
+              <img src="spotlight-page-clarence.png" alt="GetMusic spotlight page for Clarence" />
+            </figure>
+            <figure class="evidence-side">
+              <img src="spotlight-thread-clarence.png" alt="GetMusic X thread promoting Clarence spotlight" />
+            </figure>
+          </div>
         </div>
       </section>
 
       <section class="slide" data-slide="9">
-        <div class="frame">
-          <div class="kicker">Loop 5</div>
-          <h2>Distribution satellites extend the surface area</h2>
-          <div class="satellites">
-            <span>IndieCrates</span><span>Radio pages</span><span>SonicSift</span><span>Featured posts</span><span>Popular releases</span
-            ><span>Playlists</span><span>Catalog recirculation</span>
+        <div class="frame satellite-frame">
+          <div class="release-title">
+            <div class="kicker">Loop 5</div>
+            <h2>IndieCrates extends the surface area</h2>
           </div>
-          <blockquote>A release I onboarded two years ago can still be posted today, in copy I never wrote.</blockquote>
+          <div class="evidence-pair">
+            <figure class="stage-main">
+              <img src="indiecrates-cinematic-playlist.png" alt="Indie Crates Cinematic playlist page" />
+            </figure>
+            <figure class="evidence-side">
+              <img src="indiecrates-cinematic-tweet.png" alt="GetMusic X post sharing Indie Crates Cinematic playlist" />
+            </figure>
+          </div>
         </div>
       </section>
 
