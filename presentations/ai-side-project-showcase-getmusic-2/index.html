@@ -215,7 +215,7 @@
       .release-page-shot img {
         display: block;
         width: 100%;
-        height: min(62vh, 620px);
+        height: min(56vh, 560px);
         object-fit: cover;
         object-position: top center;
         border-radius: 16px;
@@ -236,6 +236,45 @@
         width: 100%;
         height: auto;
         border-radius: 16px;
+      }
+      .profile-frame,
+      .notifications-frame {
+        gap: clamp(14px, 2.4vh, 22px);
+      }
+      .profile-shot,
+      .notification-card {
+        margin: 0;
+        padding: 8px;
+        border: 2px solid var(--line);
+        border-radius: 24px;
+        background: var(--paper);
+        overflow: hidden;
+      }
+      .profile-shot img,
+      .notification-card img {
+        display: block;
+        width: 100%;
+        object-position: top center;
+        border-radius: 16px;
+      }
+      .profile-shot img {
+        height: min(56vh, 560px);
+        object-fit: cover;
+      }
+      .notifications-frame h2 {
+        max-width: none;
+        font-size: clamp(42px, 5.6vw, 78px);
+      }
+      .notification-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        align-items: start;
+      }
+      .notification-card img {
+        height: min(52vh, 520px);
+        object-fit: contain;
+        background: #fff;
       }
       .split,
       .three-layer {
@@ -452,7 +491,7 @@
           border-radius: 18px;
         }
         .release-page-shot img {
-          height: 60vh;
+          height: 54vh;
           border-radius: 12px;
         }
         .tweet-shot {
@@ -463,6 +502,29 @@
           border-radius: 16px;
         }
         .tweet-shot img {
+          border-radius: 12px;
+        }
+        .profile-frame,
+        .notifications-frame {
+          gap: 12px;
+        }
+        .profile-shot,
+        .notification-card {
+          padding: 7px;
+          border-radius: 18px;
+        }
+        .profile-shot img {
+          height: 52vh;
+          border-radius: 12px;
+        }
+        .notifications-frame h2 {
+          font-size: clamp(36px, 5.1vw, 58px);
+        }
+        .notification-grid {
+          gap: 12px;
+        }
+        .notification-card img {
+          height: 44vh;
           border-radius: 12px;
         }
         .revenue-points {
@@ -584,7 +646,7 @@
         <div class="frame release-frame">
           <div class="release-title">
             <div class="kicker">Loop 1</div>
-            <h2>Uploads become distribution moments</h2>
+            <h2>Uploads -> Distribution</h2>
           </div>
           <div class="distribution-stage">
             <figure class="release-page-shot">
@@ -598,32 +660,34 @@
       </section>
 
       <section class="slide" data-slide="6">
-        <div class="frame">
-          <div class="kicker">Loop 2</div>
-          <h2>Artist metadata becomes attribution and reach</h2>
-          <ul class="tag-list">
-            <li>Names</li>
-            <li>Links</li>
-            <li>Social handles</li>
-            <li>Genres</li>
-            <li>Locations</li>
-            <li>Release metadata</li>
-          </ul>
-          <blockquote>The profile data is not just profile data. It is attribution infrastructure.</blockquote>
-          <p><strong>AI fit:</strong> clean up descriptions, adapt copy per channel, generate short blurbs from structured metadata.</p>
+        <div class="frame profile-frame">
+          <div class="release-title">
+            <div class="kicker">Loop 2</div>
+            <h2>Artist metadata becomes attribution and reach</h2>
+          </div>
+          <figure class="profile-shot">
+            <img src="artist-page-brian-lambert.png" alt="GetMusic artist page for Brian Lambert" />
+          </figure>
         </div>
       </section>
 
       <section class="slide" data-slide="7">
-        <div class="frame">
-          <div class="kicker">Loop 3</div>
-          <h2>Notifications create re-share moments</h2>
-          <div class="flow">
-            <span>Feature event</span><b>→</b><span>Artist notification</span><b>→</b><span>Social tag</span><b>→</b><span>Reshare</span>
+        <div class="frame notifications-frame">
+          <div class="release-title">
+            <div class="kicker">Loop 3</div>
+            <h2>Notifications create re-share moments</h2>
           </div>
-          <blockquote>
-            If the product creates a moment someone is proud of, tell them at the exact moment they are most likely to share it.
-          </blockquote>
+          <div class="notification-grid">
+            <figure class="notification-card">
+              <img src="notification-featured-willebrant-castel.png" alt="GetMusic featured this week artist notification" />
+            </figure>
+            <figure class="notification-card">
+              <img src="notification-artist-welcome.png" alt="GetMusic artist welcome notification" />
+            </figure>
+            <figure class="notification-card">
+              <img src="notification-airplay-lost-treasures.png" alt="GetMusic airplay notice notification" />
+            </figure>
+          </div>
         </div>
       </section>
 
