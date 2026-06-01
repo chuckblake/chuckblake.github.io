@@ -41,6 +41,9 @@ jobs:
             fi
             ./gh-md-toc --indent 2 --insert --no-backup --hide-footer $file
           done
+          if [[ -n "${ALL_CHANGED_FILES}" ]]; then
+            npx prettier --write ${ALL_CHANGED_FILES}
+          fi
           rm gh-md-toc
 
       - name: Commit changes
