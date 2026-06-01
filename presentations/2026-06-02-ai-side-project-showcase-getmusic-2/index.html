@@ -188,32 +188,53 @@
         color: var(--accent);
       }
       .release-frame {
-        gap: clamp(14px, 2.6vh, 24px);
+        gap: clamp(14px, 2.4vh, 22px);
       }
       .release-title {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
       }
       .release-title h2 {
         max-width: none;
-        font-size: clamp(44px, 6.2vw, 88px);
+        font-size: clamp(44px, 6vw, 82px);
       }
-      .release-shot {
+      .distribution-stage {
+        position: relative;
+        width: 100%;
+      }
+      .release-page-shot {
         width: 100%;
         margin: 0;
-        padding: 10px;
+        padding: 8px;
         border: 2px solid var(--line);
         border-radius: 24px;
         background: var(--paper);
         overflow: hidden;
       }
-      .release-shot img {
+      .release-page-shot img {
+        display: block;
+        width: 100%;
+        height: min(62vh, 620px);
+        object-fit: cover;
+        object-position: top center;
+        border-radius: 16px;
+      }
+      .tweet-shot {
+        position: absolute;
+        right: clamp(18px, 3vw, 34px);
+        bottom: clamp(18px, 3vw, 34px);
+        width: min(28%, 320px);
+        margin: 0;
+        padding: 6px;
+        border-radius: 22px;
+        background: #050505;
+        box-shadow: 0 18px 44px rgba(23, 19, 16, 0.32);
+      }
+      .tweet-shot img {
         display: block;
         width: 100%;
         height: auto;
-        max-height: min(68vh, 660px);
-        object-fit: contain;
         border-radius: 16px;
       }
       .split,
@@ -421,17 +442,27 @@
           gap: 12px;
         }
         .release-title {
-          gap: 8px;
+          gap: 6px;
         }
         .release-title h2 {
-          font-size: clamp(38px, 5.6vw, 62px);
+          font-size: clamp(36px, 5.2vw, 58px);
         }
-        .release-shot {
-          padding: 8px;
+        .release-page-shot {
+          padding: 7px;
           border-radius: 18px;
         }
-        .release-shot img {
-          max-height: 62vh;
+        .release-page-shot img {
+          height: 60vh;
+          border-radius: 12px;
+        }
+        .tweet-shot {
+          right: 18px;
+          bottom: 18px;
+          width: min(28%, 260px);
+          padding: 4px;
+          border-radius: 16px;
+        }
+        .tweet-shot img {
           border-radius: 12px;
         }
         .revenue-points {
@@ -555,9 +586,14 @@
             <div class="kicker">Loop 1</div>
             <h2>Uploads become distribution moments</h2>
           </div>
-          <figure class="release-shot">
-            <img src="release-page-olio-flux-city.png" alt="GetMusic release page for Olio Flux, City" />
-          </figure>
+          <div class="distribution-stage">
+            <figure class="release-page-shot">
+              <img src="release-page-tangients-void.png" alt="GetMusic release page for TANGIENTS, Void" />
+            </figure>
+            <figure class="tweet-shot">
+              <img src="tweet-tangients-void.png" alt="GetMusic X post promoting TANGIENTS, Void" />
+            </figure>
+          </div>
         </div>
       </section>
 
