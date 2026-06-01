@@ -188,25 +188,21 @@
         color: var(--accent);
       }
       .release-frame {
-        gap: 18px;
+        gap: clamp(14px, 2.6vh, 24px);
       }
-      .release-layout {
-        display: grid;
-        grid-template-columns: minmax(320px, 0.76fr) minmax(0, 1.24fr);
-        align-items: center;
-        gap: clamp(26px, 4vw, 56px);
-      }
-      .release-copy {
+      .release-title {
         display: flex;
         flex-direction: column;
-        gap: 22px;
+        gap: 10px;
       }
-      .release-copy h2 {
-        font-size: clamp(42px, 5.8vw, 80px);
+      .release-title h2 {
+        max-width: none;
+        font-size: clamp(44px, 6.2vw, 88px);
       }
       .release-shot {
+        width: 100%;
         margin: 0;
-        padding: 12px;
+        padding: 10px;
         border: 2px solid var(--line);
         border-radius: 24px;
         background: var(--paper);
@@ -216,12 +212,9 @@
         display: block;
         width: 100%;
         height: auto;
-        max-height: min(64vh, 620px);
+        max-height: min(68vh, 660px);
         object-fit: contain;
         border-radius: 16px;
-      }
-      .release-frame blockquote {
-        font-size: clamp(22px, 2.5vw, 36px);
       }
       .split,
       .three-layer {
@@ -357,8 +350,7 @@
         .split,
         .three-layer,
         .context-frame,
-        .revenue-layout,
-        .release-layout {
+        .revenue-layout {
           grid-template-columns: 1fr;
         }
         .context-logo {
@@ -426,27 +418,21 @@
           max-height: 36vh;
         }
         .release-frame {
-          gap: 10px;
+          gap: 12px;
         }
-        .release-layout {
-          gap: 18px;
+        .release-title {
+          gap: 8px;
         }
-        .release-copy {
-          gap: 14px;
-        }
-        .release-copy h2 {
-          font-size: clamp(38px, 5.2vw, 62px);
+        .release-title h2 {
+          font-size: clamp(38px, 5.6vw, 62px);
         }
         .release-shot {
           padding: 8px;
           border-radius: 18px;
         }
         .release-shot img {
-          max-height: 56vh;
+          max-height: 62vh;
           border-radius: 12px;
-        }
-        .release-frame blockquote {
-          font-size: clamp(19px, 2vw, 27px);
         }
         .revenue-points {
           gap: 8px;
@@ -565,16 +551,13 @@
 
       <section class="slide" data-slide="5">
         <div class="frame release-frame">
-          <div class="release-layout">
-            <div class="release-copy">
-              <div class="kicker">Loop 1</div>
-              <h2>Uploads become distribution moments</h2>
-              <blockquote>The release page turns one artist upload into a reusable distribution asset.</blockquote>
-            </div>
-            <figure class="release-shot">
-              <img src="release-page-olio-flux-city.png" alt="GetMusic release page for Olio Flux, City" />
-            </figure>
+          <div class="release-title">
+            <div class="kicker">Loop 1</div>
+            <h2>Uploads become distribution moments</h2>
           </div>
+          <figure class="release-shot">
+            <img src="release-page-olio-flux-city.png" alt="GetMusic release page for Olio Flux, City" />
+          </figure>
         </div>
       </section>
 
