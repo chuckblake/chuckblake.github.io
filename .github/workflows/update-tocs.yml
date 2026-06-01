@@ -28,6 +28,12 @@ jobs:
         with:
           files: ./*.md
 
+      - name: Setup Node.js ⚙️
+        uses: actions/setup-node@v4
+
+      - name: Install Node dependencies 💾
+        run: npm ci
+
       - name: Updated toc on all markdown changed files
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
