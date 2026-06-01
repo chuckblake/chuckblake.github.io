@@ -206,10 +206,7 @@
       .release-page-shot {
         width: 100%;
         margin: 0;
-        padding: 8px;
-        border: 2px solid var(--line);
         border-radius: 24px;
-        background: var(--paper);
         overflow: hidden;
       }
       .release-page-shot img {
@@ -226,9 +223,7 @@
         bottom: clamp(18px, 3vw, 34px);
         width: min(28%, 320px);
         margin: 0;
-        padding: 6px;
         border-radius: 22px;
-        background: #050505;
         box-shadow: 0 18px 44px rgba(23, 19, 16, 0.32);
       }
       .tweet-shot img {
@@ -296,9 +291,10 @@
         height: min(58vh, 580px);
         object-fit: cover;
       }
-      .spotlight-frame .stage-main img {
+      .spotlight-frame .stage-main img,
+      .satellite-frame .stage-main img {
         object-fit: contain;
-        background: #151515;
+        background: transparent;
       }
       .evidence-side {
         margin: 0;
@@ -370,6 +366,79 @@
       .three-layer p {
         color: var(--muted);
         font-size: clamp(18px, 1.75vw, 25px);
+      }
+      .jobs-frame {
+        gap: clamp(18px, 3vh, 30px);
+      }
+      .jobs-lede {
+        max-width: 1040px;
+        color: var(--muted);
+      }
+      .jobs-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        width: min(1080px, 100%);
+      }
+      .job-card {
+        min-height: 120px;
+        border-radius: 24px;
+        background: var(--paper);
+        border: 2px solid var(--line);
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        font-size: clamp(22px, 2.2vw, 34px);
+        line-height: 1.05;
+        font-weight: 900;
+        letter-spacing: -0.045em;
+      }
+      .find-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(220px, 340px);
+        align-items: center;
+        gap: clamp(28px, 5vw, 70px);
+      }
+      .find-me-list {
+        list-style: none;
+        display: grid;
+        gap: 14px;
+        padding: 0;
+        margin: 0;
+      }
+      .find-me-list li {
+        background: var(--paper);
+        border: 2px solid var(--line);
+        border-radius: 22px;
+        padding: 20px 24px;
+        color: var(--muted);
+        font-size: clamp(22px, 2.3vw, 34px);
+        line-height: 1.08;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+      }
+      .find-me-list strong {
+        color: var(--ink);
+      }
+      .qr-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+      }
+      .qr-container img {
+        width: min(320px, 30vw);
+        height: auto;
+        background: #fff;
+        border-radius: 18px;
+      }
+      .qr-label {
+        color: var(--muted);
+        font-size: clamp(16px, 1.6vw, 22px);
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
       .note {
         color: var(--sage);
@@ -456,7 +525,8 @@
         .split,
         .three-layer,
         .context-frame,
-        .revenue-layout {
+        .revenue-layout,
+        .find-layout {
           grid-template-columns: 1fr;
         }
         .context-logo {
@@ -469,6 +539,15 @@
         .footer {
           left: 22px;
           right: 22px;
+        }
+        .jobs-grid {
+          grid-template-columns: 1fr;
+        }
+        .qr-container {
+          align-items: flex-start;
+        }
+        .qr-container img {
+          width: min(260px, 55vw);
         }
       }
       @media (max-height: 700px) {
@@ -533,7 +612,6 @@
           font-size: clamp(36px, 5.2vw, 58px);
         }
         .release-page-shot {
-          padding: 7px;
           border-radius: 18px;
         }
         .release-page-shot img {
@@ -544,7 +622,6 @@
           right: 18px;
           bottom: 18px;
           width: min(28%, 260px);
-          padding: 4px;
           border-radius: 16px;
         }
         .tweet-shot img {
@@ -612,6 +689,23 @@
         td {
           padding: 9px 16px;
           font-size: clamp(15px, 1.45vw, 20px);
+        }
+        .jobs-grid {
+          gap: 10px;
+        }
+        .job-card {
+          min-height: 76px;
+          border-radius: 16px;
+          padding: 14px 18px;
+          font-size: clamp(17px, 1.55vw, 22px);
+        }
+        .find-me-list li {
+          border-radius: 16px;
+          padding: 13px 16px;
+          font-size: clamp(17px, 1.55vw, 22px);
+        }
+        .qr-container img {
+          width: min(210px, 22vw);
         }
         .controls {
           display: none;
@@ -765,7 +859,7 @@
           </div>
           <div class="evidence-pair">
             <figure class="stage-main">
-              <img src="spotlight-page-clarence.png" alt="GetMusic spotlight page for Clarence" />
+              <img src="spotlight-article-clarence.png" alt="Clarence spotlight article sections" />
             </figure>
             <figure class="evidence-side">
               <img src="spotlight-thread-clarence.png" alt="GetMusic X thread promoting Clarence spotlight" />
@@ -782,7 +876,7 @@
           </div>
           <div class="evidence-pair">
             <figure class="stage-main">
-              <img src="indiecrates-cinematic-playlist.png" alt="Indie Crates Cinematic playlist page" />
+              <img src="getmusic-tag-player-alternative.png" alt="GetMusic tag player and Alternative genre description" />
             </figure>
             <figure class="evidence-side">
               <img src="indiecrates-cinematic-tweet.png" alt="GetMusic X post sharing Indie Crates Cinematic playlist" />
@@ -792,43 +886,18 @@
       </section>
 
       <section class="slide" data-slide="10">
-        <div class="frame">
+        <div class="frame jobs-frame">
           <div class="kicker">AI ops layer</div>
           <h2>AI as the missing tiny team</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>AI-assisted job</th>
-                <th>What it replaces</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Release summaries</td>
-                <td>Editorial intern</td>
-              </tr>
-              <tr>
-                <td>Platform-specific posts</td>
-                <td>Social media manager</td>
-              </tr>
-              <tr>
-                <td>Tag / genre descriptions</td>
-                <td>Copywriter</td>
-              </tr>
-              <tr>
-                <td>Playlist descriptions</td>
-                <td>Curator / newsletter writer</td>
-              </tr>
-              <tr>
-                <td>Featured post drafts</td>
-                <td>Blogger</td>
-              </tr>
-              <tr>
-                <td>Offensive-material checks</td>
-                <td>Trust and safety reviewer</td>
-              </tr>
-            </tbody>
-          </table>
+          <p class="lede jobs-lede">Automations and AI-assisted jobs let me operate the site in 1–2 hours a week.</p>
+          <div class="jobs-grid" aria-label="AI-assisted jobs">
+            <div class="job-card">Release summaries</div>
+            <div class="job-card">Platform-specific posts</div>
+            <div class="job-card">Tag / genre descriptions</div>
+            <div class="job-card">Playlist descriptions</div>
+            <div class="job-card">Featured post drafts</div>
+            <div class="job-card">Offensive-material checks</div>
+          </div>
         </div>
       </section>
 
@@ -836,8 +905,25 @@
         <div class="frame">
           <div class="kicker">Closing lesson</div>
           <h2>The moat is the loop, not the LLM.</h2>
-          <p class="lede">AI became useful because the product creates structured distribution opportunities.</p>
           <div class="hero-line">If AI can help anyone build features faster, the defensible part is the loop around what the product does.</div>
+        </div>
+      </section>
+
+      <section class="slide" data-slide="12">
+        <div class="frame find-layout">
+          <div>
+            <div class="kicker">Find me</div>
+            <h2>Reach me after the talk</h2>
+            <ul class="find-me-list">
+              <li><strong>Website:</strong> chuckblake.com</li>
+              <li><strong>X:</strong> @chuckblake</li>
+              <li><strong>LinkedIn:</strong> /in/chuckblake</li>
+            </ul>
+          </div>
+          <div class="qr-container">
+            <img src="qr-chuckblake.svg" alt="QR code for chuckblake.com" />
+            <span class="qr-label">chuckblake.com</span>
+          </div>
         </div>
       </section>
     </main>
