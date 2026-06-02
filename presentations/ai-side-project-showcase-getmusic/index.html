@@ -63,6 +63,13 @@
         justify-content: center;
         gap: 22px;
       }
+      .title-frame {
+        gap: clamp(16px, 2.2vh, 22px);
+      }
+      .title-frame .hero-line {
+        max-width: 1000px;
+        font-size: clamp(24px, 3vw, 42px);
+      }
       .kicker {
         color: var(--accent);
         font-size: clamp(14px, 1.4vw, 18px);
@@ -948,10 +955,11 @@
   <body>
     <main class="deck">
       <section class="slide active" data-slide="1">
-        <div class="frame">
+        <div class="frame title-frame">
           <div class="kicker">AI Side-Project Showcase · June 2, 2026</div>
           <h1>5 GetMusic Growth Loops</h1>
-          <p class="lede">How AI helps a solo founder operate built-in distribution without a team.</p>
+          <p class="lede">Distribution is the part of side projects we all pretend we’ll figure out later.</p>
+          <div class="hero-line">That’s hope with a deploy button.</div>
         </div>
       </section>
 
