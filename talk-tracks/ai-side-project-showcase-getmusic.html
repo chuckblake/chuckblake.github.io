@@ -1,491 +1,517 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="googlebot" content="noindex, nofollow" />
     <title>Talk Track: 5 GetMusic Growth Loops</title>
     <style>
       :root {
-        --bg: #0a0a0a;
-        --panel: #0f1410;
-        --line: #1d3322;
-        --green: #00ff41;
-        --amber: #ffb000;
-        --white: #ffffff;
-        --dim-green: #4dbb6a;
-        --muted: #9fd5ad;
-        --body: #e8e8e8;
-        --font: "Courier New", Courier, monospace;
+        --bg: #ffffff;
+        --paper: #fbfaf7;
+        --ink: #171310;
+        --muted: #6f655c;
+        --line: #ded8cf;
+        --accent: #e75b2c;
+        --accent-soft: #fff0e9;
+        --sage: #748b6f;
       }
       * {
         box-sizing: border-box;
       }
-      html,
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         margin: 0;
-        padding: 0;
-        background: var(--bg);
-        color: var(--body);
-        font-family: var(--font);
-        line-height: 1.65;
-      }
-      body {
-        max-width: 980px;
-        margin: 0 auto;
-        padding: 42px 28px 90px;
-      }
-      h1,
-      h2,
-      h3 {
-        color: var(--white);
-        line-height: 1.15;
-      }
-      h1 {
-        font-size: clamp(26px, 4vw, 42px);
-        margin: 0 0 8px;
-      }
-      h2 {
-        font-size: clamp(22px, 3vw, 32px);
-        margin: 0 0 14px;
-      }
-      h3 {
-        color: var(--amber);
-        font-size: 13px;
-        letter-spacing: 0.13em;
-        margin: 22px 0 8px;
-        text-transform: uppercase;
-      }
-      p,
-      li {
-        font-size: 16px;
-      }
-      p {
-        margin: 10px 0;
+        min-height: 100vh;
+        background:
+          linear-gradient(90deg, rgba(231, 91, 44, 0.055) 0 1px, transparent 1px 100%),
+          linear-gradient(180deg, rgba(23, 19, 16, 0.035) 0 1px, transparent 1px 100%), var(--bg);
+        background-size: 72px 72px;
+        color: var(--ink);
+        font-family:
+          ui-sans-serif,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Inter",
+          "Helvetica Neue",
+          Arial,
+          sans-serif;
       }
       a {
-        color: var(--green);
-        text-decoration-color: var(--dim-green);
+        color: var(--ink);
+        text-decoration-color: var(--accent);
+        text-decoration-thickness: 0.12em;
         text-underline-offset: 0.18em;
+      }
+      .page {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: clamp(34px, 5vw, 72px) 0 92px;
       }
       .top-links {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin: 18px 0 28px;
+        margin: 0 0 22px;
       }
-      .top-links a,
-      .back a {
+      .top-links a {
         border: 1px solid var(--line);
         border-radius: 999px;
-        color: var(--green);
-        padding: 7px 12px;
+        background: rgba(255, 255, 255, 0.82);
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 850;
+        letter-spacing: -0.02em;
+        padding: 8px 13px;
         text-decoration: none;
       }
-      .back {
-        position: fixed;
-        top: 14px;
-        right: 18px;
-        font-size: 12px;
-      }
-      .back a {
-        background: rgba(0, 0, 0, 0.86);
-      }
-      .subtitle,
-      .meta,
-      .note {
-        color: var(--muted);
-      }
-      .subtitle {
-        font-size: 14px;
-        margin-bottom: 18px;
-      }
-      .overview,
-      .toc,
-      section {
-        background: var(--panel);
+      .hero,
+      .talk-slide {
         border: 1px solid var(--line);
-        border-radius: 10px;
+        border-radius: 28px;
+        background:
+          linear-gradient(90deg, rgba(231, 91, 44, 0.055) 0 1px, transparent 1px 100%),
+          linear-gradient(180deg, rgba(23, 19, 16, 0.035) 0 1px, transparent 1px 100%), var(--bg);
+        background-size: 72px 72px;
+        box-shadow: 0 20px 70px rgba(23, 19, 16, 0.08);
       }
-      .overview {
-        padding: 18px 20px;
-        margin-bottom: 24px;
+      .hero {
+        margin-bottom: 26px;
+        padding: clamp(34px, 5vw, 64px);
       }
-      .overview ul,
-      .toc ul {
-        margin: 8px 0 0;
+      .kicker {
+        color: var(--accent);
+        font-size: clamp(13px, 1.4vw, 18px);
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-weight: 850;
+      }
+      h1,
+      h2 {
+        margin: 0;
+        line-height: 0.96;
+        letter-spacing: -0.065em;
+        font-weight: 950;
+      }
+      h1 {
+        margin-top: 12px;
+        font-size: clamp(56px, 9vw, 118px);
+        max-width: 1080px;
+      }
+      h2 {
+        font-size: clamp(38px, 6.2vw, 82px);
+        max-width: 1040px;
+      }
+      .lede {
+        max-width: 920px;
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: clamp(24px, 3.2vw, 42px);
+        font-weight: 760;
+        letter-spacing: -0.045em;
+        line-height: 1.08;
+      }
+      .utility-note {
+        border-left: 10px solid var(--accent);
+        background: var(--accent-soft);
+        margin-top: 26px;
+        max-width: 920px;
+        padding: 18px 22px;
+        font-size: clamp(18px, 2vw, 28px);
+        font-weight: 850;
+        letter-spacing: -0.035em;
+        line-height: 1.12;
       }
       .toc {
-        padding: 18px 20px;
-        margin-bottom: 34px;
-      }
-      .toc h2 {
-        color: var(--amber);
-        font-size: 13px;
-        letter-spacing: 0.14em;
-        margin: 0 0 10px;
-        text-transform: uppercase;
-      }
-      .toc ul {
-        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 10px;
+        margin: 0 0 26px;
         padding: 0;
+        list-style: none;
       }
-      .toc li {
-        margin: 6px 0;
+      .toc a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 48px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.86);
+        color: var(--ink);
         font-size: 15px;
+        font-weight: 850;
+        letter-spacing: -0.025em;
+        padding: 9px 14px;
+        text-decoration: none;
       }
-      .toc .num {
-        color: var(--amber);
-        display: inline-block;
-        width: 34px;
+      .toc span {
+        color: var(--accent);
+        font-variant-numeric: tabular-nums;
       }
-      section {
-        margin-bottom: 26px;
-        padding: 22px 24px 26px;
+      .talk-slide {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: clamp(18px, 3vw, 34px);
+        min-height: min(660px, calc(100vh - 56px));
+        margin: 24px 0;
+        padding: clamp(34px, 5vw, 72px);
       }
-      .label {
-        color: var(--amber);
-        font-size: 12px;
-        letter-spacing: 0.12em;
-        margin-bottom: 6px;
-        text-transform: uppercase;
+      .slide-head {
+        display: grid;
+        gap: 12px;
       }
-      .slide-title {
-        color: var(--dim-green);
-        font-size: 14px;
-        margin-bottom: 12px;
-      }
-      .say {
-        border-left: 3px solid var(--green);
-        color: var(--white);
-        margin: 16px 0;
-        padding: 4px 0 4px 16px;
+      .slide-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
       }
       .time {
-        color: var(--amber);
-        font-weight: bold;
-      }
-      blockquote {
-        background: #071107;
-        border-left: 3px solid var(--dim-green);
-        color: var(--white);
-        margin: 14px 0;
-        padding: 10px 16px;
-      }
-      ul,
-      ol {
-        padding-left: 24px;
-      }
-      li {
-        margin: 7px 0;
-      }
-      strong {
-        color: var(--white);
-      }
-      .transition {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--paper);
         color: var(--muted);
-        font-style: italic;
+        font-size: 14px;
+        font-weight: 850;
+        letter-spacing: 0.04em;
+        padding: 7px 12px;
+        text-transform: uppercase;
+      }
+      .points {
+        display: grid;
+        gap: 14px;
+        max-width: 1050px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .points li {
+        border-left: 10px solid var(--accent);
+        border-radius: 0 18px 18px 0;
+        background: rgba(251, 250, 247, 0.92);
+        color: var(--ink);
+        font-size: clamp(20px, 2.35vw, 34px);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        line-height: 1.13;
+        padding: 14px 18px;
+      }
+      .points strong {
+        color: var(--accent);
+      }
+      .footer {
+        position: fixed;
+        right: 18px;
+        bottom: 14px;
+        left: 18px;
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 850;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        pointer-events: none;
+      }
+      @media (max-width: 760px) {
+        .page {
+          width: min(100% - 24px, 1180px);
+          padding-bottom: 70px;
+        }
+        h1 {
+          font-size: clamp(46px, 14vw, 82px);
+        }
+        h2 {
+          font-size: clamp(34px, 11vw, 62px);
+        }
+        .talk-slide {
+          min-height: auto;
+          border-radius: 22px;
+        }
+        .points li {
+          font-size: 20px;
+        }
+        .footer {
+          font-size: 11px;
+        }
       }
       @media print {
-        .back,
         .top-links,
-        .toc {
+        .toc,
+        .footer {
           display: none;
         }
-        body {
-          background: #fff;
-          color: #111;
-          max-width: none;
+        .page {
+          width: 100%;
+          padding: 0;
         }
-        section,
-        .overview {
+        .hero,
+        .talk-slide {
           break-inside: avoid;
-          border-color: #ccc;
-          background: #fff;
-        }
-        h1,
-        h2,
-        h3,
-        strong,
-        .say {
-          color: #111;
+          box-shadow: none;
+          margin: 0 0 18px;
+          min-height: auto;
         }
       }
     </style>
   </head>
   <body>
-    <div class="back"><a href="/talk-tracks/">&larr; talk tracks</a></div>
+    <main class="page">
+      <nav class="top-links" aria-label="Talk track links">
+        <a href="/talk-tracks/">← Talk tracks</a>
+        <a href="/presentations/ai-side-project-showcase-getmusic/">Live slides</a>
+        <a href="#slides">Slide bullets</a>
+      </nav>
 
-    <h1>Talk Track: 5 GetMusic Growth Loops</h1>
-    <div class="subtitle">AI Side-Project Showcase // June 2026 // private noindex speaker notes</div>
-    <div class="top-links">
-      <a href="/presentations/ai-side-project-showcase-getmusic/">Live slides</a>
-      <a href="#timing">Timing</a>
-      <a href="#s12">Closing</a>
-    </div>
+      <header class="hero">
+        <div class="kicker">AI Side-Project Showcase · June 2, 2026</div>
+        <h1>5 GetMusic Growth Loops</h1>
+        <p class="lede">Speaker prompts, not a script. Hit the bullets, then move.</p>
+        <div class="utility-note">Target: 10–12 minutes. Keep the emphasis on loops first, automation second, AI third.</div>
+      </header>
 
-    <div class="overview" id="timing">
-      <h2>Operating frame</h2>
-      <p>
-        <strong>Target length:</strong> 10&ndash;12 minutes. If the room is behind schedule, skip the second paragraph on slides 6&ndash;9 and keep
-        the loop takeaway.
-      </p>
-      <p>
-        <strong>Core thesis:</strong> AI did not invent GetMusic's growth. Product events create reusable distribution moments; automation catches
-        those events; AI turns the structured raw material into copy and review work a solo founder can operate.
-      </p>
-      <ul>
-        <li><strong>Avoid:</strong> making this sound like an AI magic trick or generic agent demo.</li>
-        <li><strong>Emphasize:</strong> loops, repeated product events, artist incentives, and why each surface compounds.</li>
-        <li><strong>Anchor:</strong> the revenue chart proves the loops are doing real work, even if the graph is messy.</li>
-      </ul>
-    </div>
-
-    <nav class="toc">
-      <h2>Slides</h2>
-      <ul>
-        <li><span class="num">01</span><a href="#s1">5 GetMusic Growth Loops</a></li>
-        <li><span class="num">02</span><a href="#s2">What GetMusic does</a></li>
-        <li><span class="num">03</span><a href="#s3">Revenue proof</a></li>
-        <li><span class="num">04</span><a href="#s4">Product loop first</a></li>
-        <li><span class="num">05</span><a href="#s5">Uploads -&gt; Distribution</a></li>
-        <li><span class="num">06</span><a href="#s6">Artist metadata becomes reach</a></li>
-        <li><span class="num">07</span><a href="#s7">Notifications create re-share moments</a></li>
-        <li><span class="num">08</span><a href="#s8">Spotlights turn artists into co-marketers</a></li>
-        <li><span class="num">09</span><a href="#s9">IndieCrates extends surface area</a></li>
-        <li><span class="num">10</span><a href="#s10">AI as the missing tiny team</a></li>
-        <li><span class="num">11</span><a href="#s11">The hard part is the loop</a></li>
-        <li><span class="num">12</span><a href="#s12">Thank You</a></li>
-      </ul>
-    </nav>
-
-    <section id="s1">
-      <div class="label">Slide 01 // 0:00&ndash;0:45</div>
-      <h2>5 GetMusic Growth Loops</h2>
-      <div class="slide-title">How AI helps a solo founder operate built-in distribution without a team.</div>
-      <p class="say">
-        I'm going to talk about GetMusic, which is a side project I've been running for independent music discovery and Bandcamp code distribution.
-      </p>
-      <p class="say">
-        The angle is not "AI built this for me." The angle is: if you're one person, you need the product itself to create distribution. Then AI can
-        help you operate those distribution loops without hiring a team.
-      </p>
-      <p>Set expectations early. This is about product design and operational leverage, not a tour of prompts.</p>
-      <p class="transition">Transition: first, give people enough GetMusic context to understand the loops.</p>
-    </section>
-
-    <section id="s2">
-      <div class="label">Slide 02 // 0:45&ndash;1:25</div>
-      <h2>What GetMusic does</h2>
-      <div class="slide-title">Bandcamp artists, music fans, discovery, and recirculation.</div>
-      <p class="say">
-        Quick context: Bandcamp artists often have download codes. Those codes are basically free digital album redemptions, and artists want them to
-        reach the right listeners.
-      </p>
-      <p class="say">
-        Fans want discovery, not another infinite feed. GetMusic sits in the middle: it distributes codes, organizes releases, promotes artists, and
-        keeps old catalog moving again instead of letting it disappear after launch week.
-      </p>
-      <p class="say">
-        The logo is cute, but the system is pretty pragmatic: artist uploads create assets, assets create surfaces, surfaces create reasons to share.
-      </p>
-      <blockquote>Important line: GetMusic is not just a code database. It is a distribution machine built around artist activity.</blockquote>
-      <p class="transition">Transition: before the mechanics, show that the loops are creating real dollars.</p>
-    </section>
-
-    <section id="s3">
-      <div class="label">Slide 03 // 1:25&ndash;2:15</div>
-      <h2>Revenue: slow, volatile, upward</h2>
-      <div class="slide-title">Not a hockey stick. A proof of life.</div>
-      <p class="say">I want to show revenue early because most side-project talks dodge the obvious question: is this actually working?</p>
-      <p class="say">
-        This is not a hockey stick. It's messy, slow, and volatile. But it is upward across more than three years. And there are no subscriptions or
-        recurring billing here. Every dollar is usage-based.
-      </p>
-      <p class="say">
-        The important part for me is that more than half of revenue comes from artists who have used it before. That means the product is not just
-        acquiring one-off transactions. It creates reasons for artists to come back.
-      </p>
-      <blockquote>
-        Use this as proof, not bragging. The graph says: loops can compound even when the business model is not SaaS recurring revenue.
-      </blockquote>
-      <p class="transition">Transition: now explain the frame behind the loops.</p>
-    </section>
-
-    <section id="s4">
-      <div class="label">Slide 04 // 2:15&ndash;3:05</div>
-      <h2>Product loop first. Automation second. AI third.</h2>
-      <div class="slide-title">Distribution, automation, AI ops.</div>
-      <p class="say">
-        This is the key frame for the whole talk. I think a lot of AI product conversations start in the wrong place. They ask, "Where can I add an
-        LLM?"
-      </p>
-      <p class="say">
-        I think the better question is: what repeated product events create useful raw material? In GetMusic, those events are uploads, profiles,
-        social handles, spotlights, catalog pages, radio links, and notifications.
-      </p>
-      <p class="say">
-        Automation handles the plumbing: jobs, queues, schedules, Buffer and Make flows, review workflows. AI is the ops layer on top. It writes
-        summaries, social copy, tag descriptions, playlist blurbs, and moderation checks from structured inputs.
-      </p>
-      <blockquote>The order matters. If the product does not create the loop, AI just creates more chores.</blockquote>
-      <p class="transition">Transition: walk through the five loops, starting with the simplest: an upload.</p>
-    </section>
-
-    <section id="s5">
-      <div class="label">Slide 05 // 3:05&ndash;4:00</div>
-      <h2>Loop 1: Uploads -&gt; Distribution</h2>
-      <div class="slide-title">A release upload becomes a release page and a promotional post.</div>
-      <p class="say">When an artist uploads a release, that upload is not the end of the workflow. It is the start of the distribution loop.</p>
-      <p class="say">
-        The release gets a page. The code distribution is set up. A summary can be generated. Social copy can be queued. The release enters the
-        catalog for future resurfacing.
-      </p>
-      <p class="say">
-        This is the first loop because it is the easiest one to miss. In many products, user input gets stored and forgotten. Here, the product action
-        creates a reusable asset.
-      </p>
-      <blockquote>Takeaway: design product actions so they create reusable distribution assets.</blockquote>
-      <p class="transition">Transition: the release is one asset. The artist profile is another.</p>
-    </section>
-
-    <section id="s6">
-      <div class="label">Slide 06 // 4:00&ndash;4:50</div>
-      <h2>Loop 2: Artist metadata becomes attribution and reach</h2>
-      <div class="slide-title">Artist profile data becomes distribution context.</div>
-      <p class="say">
-        Artists give GetMusic names, genres, links, social handles, locations, bios, and release context. Most products treat that as profile
-        decoration.
-      </p>
-      <p class="say">
-        For GetMusic, it becomes distribution infrastructure. If we know the artist's handle, the post can tag them. If we know the genre, the release
-        can appear in the right catalog surfaces. If we know the profile, the release is attached to an artist page that gives attribution and
-        context.
-      </p>
-      <p class="say">That attribution matters because artists are much more likely to engage when the product makes them visible, not anonymous.</p>
-      <blockquote>Every piece of user-provided metadata can become future distribution context.</blockquote>
-      <p class="transition">Transition: once you have attribution, notifications become growth triggers.</p>
-    </section>
-
-    <section id="s7">
-      <div class="label">Slide 07 // 4:50&ndash;5:40</div>
-      <h2>Loop 3: Notifications create re-share moments</h2>
-      <div class="slide-title">Operational updates become social triggers.</div>
-      <p class="say">
-        Artists get notified when GetMusic does something meaningful for them: welcomes them, features them, finds airplay, or includes them in a
-        promotional surface.
-      </p>
-      <p class="say">
-        A notification is not just an operational update. It tells the artist, "There is something here you might want to share." That turns internal
-        product events into external amplification moments.
-      </p>
-      <p class="say">
-        This loop is about timing. If you tell someone at the moment they have something to be proud of, they are far more likely to share it than if
-        you ask for promotion generically.
-      </p>
-      <blockquote>If the product creates a moment someone is proud of, tell them exactly when it happens.</blockquote>
-      <p class="transition">Transition: the strongest version of that is when the artist helps create the content themselves.</p>
-    </section>
-
-    <section id="s8">
-      <div class="label">Slide 08 // 5:40&ndash;6:35</div>
-      <h2>Loop 4: Spotlights turn artists into co-marketers</h2>
-      <div class="slide-title">Artist-provided answers become feature stories and social threads.</div>
-      <p class="say">
-        Spotlights are artist features built from structured interview answers. The artist supplies the raw material: origin story, creative process,
-        release context, what they want listeners to know.
-      </p>
-      <p class="say">
-        GetMusic turns that into a polished feature. Then the feature becomes social copy, a thread, and a page that the artist has a reason to share.
-      </p>
-      <p class="say">
-        The incentive is different from normal marketing. I'm not asking an artist to promote my platform in the abstract. I'm giving them a
-        well-presented story about their own work.
-      </p>
-      <blockquote>
-        The artist is not just the subject of the content. They helped create the raw material, which makes them more likely to distribute it.
-      </blockquote>
-      <p class="transition">Transition: the fifth loop is about extending beyond one obvious release page.</p>
-    </section>
-
-    <section id="s9">
-      <div class="label">Slide 09 // 6:35&ndash;7:25</div>
-      <h2>Loop 5: IndieCrates extends the surface area</h2>
-      <div class="slide-title">Tag pages, playlist pages, crates, and genre copy create more places for music to appear.</div>
-      <p class="say">
-        A release should not only live on its own page. It should show up wherever its context makes it relevant: tags, genre pages, playlists,
-        crates, radio matches, and other discovery surfaces.
-      </p>
-      <p class="say">
-        IndieCrates is one example of that. It gives GetMusic another surface where catalog can be recirculated. The screenshot here shows the same
-        principle through tag and player surfaces: structured catalog data becomes another discovery path.
-      </p>
-      <p class="say">
-        This is where AI helps a lot, because every surface needs language: descriptions, summaries, blurbs, and social posts. But the surface has to
-        exist first.
-      </p>
-      <blockquote>A release onboarded years ago can still create distribution today if the product keeps generating surfaces around it.</blockquote>
-      <p class="transition">Transition: after the five loops, explain the actual AI operating layer.</p>
-    </section>
-
-    <section id="s10">
-      <div class="label">Slide 10 // 7:25&ndash;8:40</div>
-      <h2>AI as the missing tiny team</h2>
-      <div class="slide-title">Automations and AI-assisted jobs let me operate the site in 1&ndash;2 hours a week.</div>
-      <p class="say">
-        This is where AI actually fits. I do not have an editor, social manager, genre copywriter, playlist writer, blogger, moderator, or
-        trust-and-safety reviewer.
-      </p>
-      <p class="say">
-        Instead, I have product events, Rails jobs, prompts, queues, and review points. AI handles the first draft or first pass for release
-        summaries, platform-specific posts, tag descriptions, playlist descriptions, featured post drafts, and offensive-material checks.
-      </p>
-      <p class="say">
-        The reason this works is not that the model is magic. It works because the product creates structured inputs: artist name, release title,
-        genres, Bandcamp metadata, profile links, quote fields, tag context, and the surface where the output will be used.
-      </p>
-      <blockquote>AI is useful here because it is operating inside a loop with clear inputs, outputs, and review boundaries.</blockquote>
-      <p class="transition">Transition: close with the strategic lesson.</p>
-    </section>
-
-    <section id="s11">
-      <div class="label">Slide 11 // 8:40&ndash;9:45</div>
-      <h2>The hard part is the loop, not the LLM.</h2>
-      <div class="slide-title">If AI helps everyone build features faster, defensibility moves to the system around the product.</div>
-      <p class="say">The biggest lesson from GetMusic is that the hard part is not calling the LLM. That keeps getting easier.</p>
-      <p class="say">
-        The hard part is designing the loop: what product event happens repeatedly, what raw material it creates, what automation catches it, what
-        surface it flows into, who has an incentive to share it, and how it comes back into the product.
-      </p>
-      <p class="say">
-        If AI can help anyone build features faster, the defensible part is the loop around what the product does. The LLM helps operate the system.
-        It does not replace the need to design the system.
-      </p>
-      <blockquote>Don't ask, "Where can I add AI?" Ask, "What repeated product events create useful raw material?"</blockquote>
-      <p class="transition">Transition: quick thank you, point people to slides and notes.</p>
-    </section>
-
-    <section id="s12">
-      <div class="label">Slide 12 // 9:45&ndash;10:15</div>
-      <h2>Thank You!</h2>
-      <div class="slide-title">Contact and reference links.</div>
-      <p class="say">
-        That's the talk. The slides are live at chuckblake.com, and the website link on this slide points to this talk track so I can find the notes
-        quickly.
-      </p>
-      <p class="say">If you want to talk about music, Rails, side projects, or building these kinds of loops into a product, grab me afterward.</p>
-      <ul>
+      <ol class="toc" id="slides" aria-label="Slides">
         <li>
-          <strong>Slides:</strong> <a href="/presentations/ai-side-project-showcase-getmusic/">/presentations/ai-side-project-showcase-getmusic/</a>
+          <a href="#s1"><span>01</span> Title</a>
         </li>
         <li>
-          <strong>Talk track:</strong>
-          <a href="/talk-tracks/ai-side-project-showcase-getmusic.html">/talk-tracks/ai-side-project-showcase-getmusic.html</a>
+          <a href="#s2"><span>02</span> What GetMusic does</a>
         </li>
-        <li><strong>X:</strong> @chuckblake</li>
-        <li><strong>LinkedIn:</strong> /in/chuckblake</li>
-      </ul>
-    </section>
+        <li>
+          <a href="#s3"><span>03</span> Revenue proof</a>
+        </li>
+        <li>
+          <a href="#s4"><span>04</span> Product loop first</a>
+        </li>
+        <li>
+          <a href="#s5"><span>05</span> Uploads → Distribution</a>
+        </li>
+        <li>
+          <a href="#s6"><span>06</span> Artist metadata</a>
+        </li>
+        <li>
+          <a href="#s7"><span>07</span> Notifications</a>
+        </li>
+        <li>
+          <a href="#s8"><span>08</span> Spotlights</a>
+        </li>
+        <li>
+          <a href="#s9"><span>09</span> IndieCrates</a>
+        </li>
+        <li>
+          <a href="#s10"><span>10</span> AI ops layer</a>
+        </li>
+        <li>
+          <a href="#s11"><span>11</span> Closing lesson</a>
+        </li>
+        <li>
+          <a href="#s12"><span>12</span> Thank you</a>
+        </li>
+      </ol>
+
+      <section class="talk-slide" id="s1">
+        <div class="slide-head">
+          <div class="slide-meta">
+            <div class="kicker">Slide 01</div>
+            <div class="time">0:00–0:45</div>
+          </div>
+          <h2>5 GetMusic Growth Loops</h2>
+        </div>
+        <ul class="points">
+          <li>Frame this as a side-project operating talk, not an AI demo.</li>
+          <li>Core claim: one person can run distribution if the product creates repeatable loops.</li>
+          <li>AI helps operate the loops; it does not create the growth strategy by itself.</li>
+          <li>Set expectation: five concrete GetMusic loops, then the operating layer underneath.</li>
+        </ul>
+      </section>
+
+      <section class="talk-slide" id="s2">
+        <div class="slide-head">
+          <div class="slide-meta">
+            <div class="kicker">Slide 02</div>
+            <div class="time">0:45–1:25</div>
+          </div>
+          <h2>What GetMusic does</h2>
+        </div>
+        <ul class="points">
+          <li>Bandcamp artists have download codes and releases they want listeners to find.</li>
+          <li>Fans want discovery without another infinite algorithmic feed.</li>
+          <li>GetMusic sits in the middle: distribute codes, organize releases, promote artists, recirculate catalog.</li>
+          <li>The important idea: artist activity creates assets, assets create surfaces, surfaces create reasons to share.</li>
+        </ul>
+      </section>
+
+      <section class="talk-slide" id="s3">
+        <div class="slide-head">
+          <div class="slide-meta">
+            <div class="kicker">Slide 03 · Revenue proof</div>
+            <div class="time">1:25–2:15</div>
+          </div>
+          <h2>Revenue: slow, volatile, upward</h2>
+        </div>
+        <ul class="points">
+          <li>Show revenue early to answer: <strong>is this actually working?</strong></li>
+          <li>Not a hockey stick: messy, slow, volatile, but upward across 3+ years.</li>
+          <li>No subscriptions or recurring billing; revenue is usage-based.</li>
+          <li>More than half comes from returning artists — proof the product creates reasons to come back.</li>
+          <li>Use this as credibility for the loops, not as a brag slide.</li>
+        </ul>
+      </section>
+
+      <section class="talk-slide" id="s4">
+        <div class="slide-head">
+          <div class="slide-meta">
+            <div class="kicker">Slide 04 · Frame</div>
+            <div class="time">2:15–3:05</div>
+          </div>
+          <h2>Product loop first. Automation second. AI third.</h2>
+        </div>
+        <ul class="points">
+          <li>Wrong starting question: “Where can I add an LLM?”</li>
+          <li>Better question: what repeated product events create useful raw material?</li>
+          <li>Distribution layer: uploads, profiles, handles, spotlights, catalog pages, radio links, notifications.</li>
+          <li>Automation catches the events; AI turns structured inputs into copy, summaries, review checks, and descriptions.</li>
+          <li>If the product does not create the loop, AI just creates more chores.</li>
+        </ul>
+      </section>
+
+      <section class="talk-slide" id="s5">
+        <div class="slide-head">
+          <div class="slide-meta">
+            <div class="kicker">Slide 05 · Loop 1</div>
+            <div class="time">3:05–4:00</div>
+          </div>
+          <h2>Uploads → Distribution</h2>
+        </div>
+        <ul class="points">
+          <li>An artist upload is not the end of the workflow; it is the start of distribution.</li>
+          <li>Upload creates a release page, code distribution, catalog entry, and social promotion opportunity.</li>
+          <li>The screenshot pair shows the loop: product page on one side, public post on the other.</li>
+          <li>Takeaway: design user actions so they create reusable distribution assets.</li>
+        </ul>
+      </section>
+
+      <section class="talk-slide" id="s6">
+        <div class="slide-head">
+          <div class="slide-meta">
+            <div class="kicker">Slide 06 · Loop 2</div>
+            <div class="time">4:00–4:50</div>
+          </div>
+          <h2>Artist metadata becomes attribution and reach</h2>
+        </div>
+        <ul class="points">
+          <li>Artist data is not profile decoration; it is distribution infrastructure.</li>
+          <li>Names, handles, genres, bios, and links decide where releases can appear and who can be tagged.</li>
+          <li>Attribution increases the chance artists engage because the product makes them visible.</li>
+          <li>Every useful metadata field should become future distribution context.</li>
+        </ul>
+      </section>
+
+      <section class="talk-slide" id="s7">
+        <div class="slide-head">
+          <div class="slide-meta">
+            <div class="kicker">Slide 07 · Loop 3</div>
+            <div class="time">4:50–5:40</div>
+          </div>
+          <h2>Notifications create re-share moments</h2>
+        </div>
+        <ul class="points">
+          <li>Notifications turn internal product events into external amplification moments.</li>
+          <li>Examples: welcome, featured artist, airplay notice, playlist inclusion.</li>
+          <li>Timing matters: tell artists when they have something to be proud of.</li>
+          <li>This works better than asking generically for promotion.</li>
+        </ul>
+      </section>
+
+      <section class="talk-slide" id="s8">
+        <div class="slide-head">
+          <div class="slide-meta">
+            <div class="kicker">Slide 08 · Loop 4</div>
+            <div class="time">5:40–6:35</div>
+          </div>
+          <h2>Spotlights turn artists into co-marketers</h2>
+        </div>
+        <ul class="points">
+          <li>Spotlights start from artist-provided answers: story, process, release context, intent.</li>
+          <li>GetMusic turns that structured material into a feature page and social thread.</li>
+          <li>The artist has a natural reason to share because the content is about their own work.</li>
+          <li>AI helps polish and package the material, but the incentive loop is the product design.</li>
+        </ul>
+      </section>
+
+      <section class="talk-slide" id="s9">
+        <div class="slide-head">
+          <div class="slide-meta">
+            <div class="kicker">Slide 09 · Loop 5</div>
+            <div class="time">6:35–7:25</div>
+          </div>
+          <h2>IndieCrates extends the surface area</h2>
+        </div>
+        <ul class="points">
+          <li>A release should not only live on its own page.</li>
+          <li>Catalog context lets music appear in tags, genre pages, playlists, crates, radio matches, and players.</li>
+          <li>IndieCrates is another surface where GetMusic catalog can recirculate.</li>
+          <li>AI is useful because every surface needs language: descriptions, blurbs, summaries, and posts.</li>
+          <li>The surface has to exist before AI can help fill it.</li>
+        </ul>
+      </section>
+
+      <section class="talk-slide" id="s10">
+        <div class="slide-head">
+          <div class="slide-meta">
+            <div class="kicker">Slide 10 · AI ops layer</div>
+            <div class="time">7:25–8:40</div>
+          </div>
+          <h2>AI as the missing tiny team</h2>
+        </div>
+        <ul class="points">
+          <li>No editor, social manager, genre copywriter, playlist writer, blogger, moderator, or reviewer.</li>
+          <li>Instead: product events, Rails jobs, prompts, queues, and review points.</li>
+          <li>AI handles first drafts and first-pass checks for summaries, posts, descriptions, featured drafts, and moderation.</li>
+          <li>The reason it works: structured inputs and bounded outputs.</li>
+          <li>Practical result: the site can be operated in roughly 1–2 hours a week.</li>
+        </ul>
+      </section>
+
+      <section class="talk-slide" id="s11">
+        <div class="slide-head">
+          <div class="slide-meta">
+            <div class="kicker">Slide 11 · Closing lesson</div>
+            <div class="time">8:40–9:45</div>
+          </div>
+          <h2>The hard part is the loop, not the LLM.</h2>
+        </div>
+        <ul class="points">
+          <li>Calling the model is getting easier and less defensible.</li>
+          <li>The hard part is designing the repeated event, raw material, surface, incentive, and return path.</li>
+          <li>AI operates the system; it does not replace the need to design the system.</li>
+          <li>Memorable close: do not ask “Where can I add AI?” Ask “What product events create useful raw material?”</li>
+        </ul>
+      </section>
+
+      <section class="talk-slide" id="s12">
+        <div class="slide-head">
+          <div class="slide-meta">
+            <div class="kicker">Slide 12 · Find me</div>
+            <div class="time">9:45–10:15</div>
+          </div>
+          <h2>Thank You!</h2>
+        </div>
+        <ul class="points">
+          <li>Point people to the QR code and chuckblake.com.</li>
+          <li>Mention slides and this bullet track are available from the final slide link.</li>
+          <li>Invite follow-up on music, Rails, side projects, or product-led growth loops.</li>
+          <li>End cleanly; do not add another mini-section here.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer"><span>GetMusic · AI Side-Project Showcase</span><span>Talk Track</span></footer>
   </body>
 </html>
