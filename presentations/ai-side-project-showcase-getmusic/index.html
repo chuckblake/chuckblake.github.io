@@ -233,7 +233,9 @@
         border-radius: 16px;
       }
       .profile-frame,
+      .artist-loop-frame,
       .notifications-frame,
+      .referral-frame,
       .spotlight-frame,
       .satellite-frame {
         gap: clamp(14px, 2.4vh, 22px);
@@ -257,7 +259,189 @@
         height: min(56vh, 560px);
         object-fit: contain;
       }
+      .artist-loop-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.56fr) minmax(280px, 0.44fr);
+        gap: clamp(16px, 2.4vw, 28px);
+        align-items: stretch;
+        width: 100%;
+      }
+      .artist-profile-panel,
+      .artist-side-card,
+      .referral-shot {
+        margin: 0;
+      }
+      .artist-side-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 18px;
+        background: #fff;
+      }
+      .artist-side-card figcaption {
+        position: absolute;
+        left: 12px;
+        top: 12px;
+        z-index: 1;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.72);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .artist-loop-grid img,
+      .referral-shot img {
+        display: block;
+        width: 100%;
+        object-position: top center;
+        border-radius: 18px;
+      }
+      .artist-profile-panel img {
+        height: min(54vh, 540px);
+        object-fit: contain;
+      }
+      .artist-side-stack {
+        display: grid;
+        grid-template-rows: 1fr 0.9fr;
+        gap: clamp(12px, 1.8vh, 18px);
+      }
+      .artist-side-card img {
+        height: clamp(165px, 28vh, 290px);
+        background: #fff;
+      }
+      .artist-feature-card img {
+        object-fit: cover;
+        object-position: top left;
+      }
+      .artist-thread-card img {
+        object-fit: cover;
+        object-position: top center;
+        background: #050505;
+      }
+      .artist-loop-frame .release-title h2 {
+        font-size: clamp(40px, 4.9vw, 68px);
+      }
+      .referral-shot img {
+        height: min(58vh, 580px);
+        object-fit: contain;
+        background: #fff;
+      }
+      .referral-demo {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+        gap: clamp(16px, 2.4vw, 30px);
+        align-items: stretch;
+        width: 100%;
+      }
+      .referral-steps {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .referral-step,
+      .referral-action-card {
+        background: #fff;
+        border: 2px solid var(--line);
+        border-radius: 24px;
+        box-shadow: 0 18px 44px rgba(23, 19, 16, 0.12);
+      }
+      .referral-step {
+        min-height: min(43vh, 380px);
+        padding: clamp(18px, 2vw, 26px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .referral-badge {
+        display: inline-flex;
+        width: clamp(46px, 4.5vw, 62px);
+        height: clamp(46px, 4.5vw, 62px);
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: #dff0d6;
+        color: #315f2a;
+        font-size: clamp(24px, 2.8vw, 38px);
+        font-weight: 950;
+      }
+      .referral-step h3 {
+        margin: 18px 0 8px;
+        font-size: clamp(23px, 2.25vw, 34px);
+        line-height: 0.98;
+        letter-spacing: -0.045em;
+      }
+      .referral-step p,
+      .referral-note {
+        color: var(--muted);
+        font-size: clamp(16px, 1.55vw, 23px);
+        line-height: 1.14;
+        font-weight: 720;
+        letter-spacing: -0.025em;
+      }
+      .referral-action-card {
+        padding: clamp(20px, 2.3vw, 30px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: clamp(12px, 1.8vh, 18px);
+      }
+      .referral-card-title {
+        font-size: clamp(24px, 2.6vw, 38px);
+        font-weight: 950;
+        letter-spacing: -0.055em;
+      }
+      .referral-link-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+        align-items: center;
+      }
+      .referral-url {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        padding: 14px 16px;
+        background: var(--paper);
+        font-size: clamp(16px, 1.45vw, 22px);
+        font-weight: 780;
+        letter-spacing: -0.025em;
+      }
+      .referral-copy,
+      .referral-tweet {
+        border-radius: 14px;
+        padding: 14px 18px;
+        font-size: clamp(16px, 1.45vw, 22px);
+        font-weight: 900;
+      }
+      .referral-copy {
+        background: var(--ink);
+        color: #fff;
+      }
+      .referral-tweet {
+        width: fit-content;
+        border: 2px solid var(--line);
+        background: #fff;
+      }
+      .referral-reward {
+        border-left: 9px solid var(--accent);
+        border-radius: 16px;
+        padding: 16px 18px;
+        background: var(--accent-soft);
+        font-size: clamp(26px, 3vw, 44px);
+        line-height: 1;
+        font-weight: 950;
+        letter-spacing: -0.06em;
+      }
+      .referral-frame .release-title h2 {
+        font-size: clamp(40px, 4.9vw, 68px);
+      }
+      .artist-loop-frame h2,
       .notifications-frame h2,
+      .referral-frame h2,
       .spotlight-frame h2,
       .satellite-frame h2 {
         max-width: none;
@@ -562,7 +746,7 @@
       }
       @media (max-height: 700px) {
         .slide {
-          padding: 26px 46px 64px;
+          padding: 26px 46px 56px;
         }
         .frame {
           gap: 14px;
@@ -638,7 +822,9 @@
           border-radius: 12px;
         }
         .profile-frame,
+        .artist-loop-frame,
         .notifications-frame,
+        .referral-frame,
         .spotlight-frame,
         .satellite-frame {
           gap: 12px;
@@ -647,7 +833,25 @@
           height: 54vh;
           border-radius: 12px;
         }
+        .artist-loop-grid {
+          grid-template-columns: minmax(0, 0.56fr) minmax(260px, 0.44fr);
+          gap: 12px;
+        }
+        .artist-profile-panel img,
+        .referral-shot img {
+          height: 52vh;
+          border-radius: 12px;
+        }
+        .artist-side-stack {
+          gap: 10px;
+        }
+        .artist-side-card img {
+          height: clamp(165px, 28vh, 290px);
+          border-radius: 12px;
+        }
+        .artist-loop-frame h2,
         .notifications-frame h2,
+        .referral-frame h2,
         .spotlight-frame h2,
         .satellite-frame h2 {
           font-size: clamp(36px, 5.1vw, 58px);
@@ -795,7 +999,7 @@
             <div>
               <span class="num">01</span>
               <h3>Distribution</h3>
-              <p>Uploads, profiles, social handles, spotlights, catalog pages, radio links, notifications.</p>
+              <p>Uploads, profiles, social handles, spotlights, referrals, catalog pages, radio links, notifications.</p>
             </div>
             <div>
               <span class="num">02</span>
@@ -812,10 +1016,34 @@
       </section>
 
       <section class="slide" data-slide="5">
-        <div class="frame release-frame">
+        <div class="frame artist-loop-frame">
           <div class="release-title">
             <div class="kicker">Loop 1</div>
-            <h2>Uploads -> Distribution</h2>
+            <h2>Artist inputs create attribution and sharing</h2>
+          </div>
+          <div class="artist-loop-grid">
+            <figure class="artist-profile-panel">
+              <img src="artist-page-brian-lambert.png" alt="GetMusic artist page for Brian Lambert" />
+            </figure>
+            <div class="artist-side-stack">
+              <figure class="artist-side-card artist-feature-card">
+                <figcaption>Spotlight story</figcaption>
+                <img src="spotlight-article-clarence.png" alt="Clarence spotlight article sections" />
+              </figure>
+              <figure class="artist-side-card artist-thread-card">
+                <figcaption>Shareable thread</figcaption>
+                <img src="spotlight-thread-clarence.png" alt="GetMusic X thread promoting Clarence spotlight" />
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-slide="6">
+        <div class="frame release-frame">
+          <div class="release-title">
+            <div class="kicker">Loop 2</div>
+            <h2>Uploads → Distribution</h2>
           </div>
           <div class="distribution-stage">
             <figure class="release-page-shot">
@@ -825,18 +1053,6 @@
               <img src="tweet-tangients-void.png" alt="GetMusic X post promoting TANGIENTS, Void" />
             </figure>
           </div>
-        </div>
-      </section>
-
-      <section class="slide" data-slide="6">
-        <div class="frame profile-frame">
-          <div class="release-title">
-            <div class="kicker">Loop 2</div>
-            <h2>Artist metadata becomes attribution and reach</h2>
-          </div>
-          <figure class="profile-shot">
-            <img src="artist-page-brian-lambert.png" alt="GetMusic artist page for Brian Lambert" />
-          </figure>
         </div>
       </section>
 
@@ -861,18 +1077,39 @@
       </section>
 
       <section class="slide" data-slide="8">
-        <div class="frame spotlight-frame">
+        <div class="frame referral-frame">
           <div class="release-title">
             <div class="kicker">Loop 4</div>
-            <h2>Spotlights turn artists into co-marketers</h2>
+            <h2>Referrals turn artist goodwill into signups</h2>
           </div>
-          <div class="evidence-pair">
-            <figure class="stage-main">
-              <img src="spotlight-article-clarence.png" alt="Clarence spotlight article sections" />
-            </figure>
-            <figure class="evidence-side">
-              <img src="spotlight-thread-clarence.png" alt="GetMusic X thread promoting Clarence spotlight" />
-            </figure>
+          <div class="referral-demo" aria-label="GetMusic referral program flow">
+            <div class="referral-steps">
+              <div class="referral-step">
+                <span class="referral-badge">1</span>
+                <h3>Share your link</h3>
+                <p>Send a unique GetMusic referral link to another artist.</p>
+              </div>
+              <div class="referral-step">
+                <span class="referral-badge">2</span>
+                <h3>They sign up</h3>
+                <p>The invited artist joins and uploads their first release.</p>
+              </div>
+              <div class="referral-step">
+                <span class="referral-badge">3</span>
+                <h3>You earn credits</h3>
+                <p>The reward is native: more release distribution.</p>
+              </div>
+            </div>
+            <div class="referral-action-card">
+              <div class="referral-card-title">Your referral link</div>
+              <div class="referral-link-row">
+                <div class="referral-url">getmusic.fm/landings/r/…</div>
+                <div class="referral-copy">Copy</div>
+              </div>
+              <div class="referral-tweet">Tweet</div>
+              <div class="referral-reward">$10 upload credit</div>
+              <p class="referral-note">The ask works because it is tied to the same thing artists already came for: getting their music in front of more people.</p>
+            </div>
           </div>
         </div>
       </section>
