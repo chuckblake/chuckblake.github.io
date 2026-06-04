@@ -52,7 +52,7 @@ ninja.data = [{
               window.location.href = "/projects/4_indiecrates/";
             },},{id: "projects-glance",
           title: 'Glance',
-          description: "Agent-first work queue and issue tracker",
+          description: "Expectation monitoring for automated work",
           section: "Projects",handler: () => {
               window.location.href = "/projects/5_glance/";
             },},{id: "projects-email-insights",
