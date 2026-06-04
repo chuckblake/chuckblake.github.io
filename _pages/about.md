@@ -34,7 +34,7 @@ Now I'm deep in AI. I run a multi-agent system with six AI agents across three m
 
 **What I'm building:**
 
-- [Glance](https://glnc.io) — an agent-first task management system where AI agents pick up work items, execute them, and advance through a pipeline alongside humans. Built in Rails, running in production.
+- [Glance](https://glnc.io) — expectation monitoring for automated work: scheduled checks, output expectations, alerts, and remediation work items for humans or AI agents. Built in Rails, running in production.
 - [Recall Bridge](https://recallbridge.ai) — a hosted AI memory layer that gives every AI tool you use access to one persistent, organized brain. Auto-classifies captures using GTD and PARA concepts. In development.
 - [GetMusic](https://getmusic.fm) and other music sites — tools that help independent artists promote their music on Bandcamp.
 

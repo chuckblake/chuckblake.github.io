@@ -1,24 +1,24 @@
 ---
 layout: page
 title: Glance
-description: Agent-first work queue and issue tracker
+description: Expectation monitoring for automated work
 img:
 importance: 4
 category: current
 ---
 
-[Glance](https://glnc.io) is a lightweight, agent-first work queue and issue tracker designed for teams building with AI.
+[Glance](https://glnc.io) is an expectation monitoring platform for automated work and AI-run operations.
 
-Most issue trackers were built for humans — Glance is built for the way modern teams actually work: with agents doing research, writing code, and shipping features alongside (or instead of) humans.
+It answers the operational question that uptime dashboards and issue trackers usually miss: did the thing that was supposed to happen actually happen? Glance lets teams define expectations for jobs, agents, queues, and business signals, then watches for silent failures like missed check-ins, low-output runs, stalled agents, or pipelines that quietly run dry.
 
-**What makes it agent-first:**
+**What Glance does now:**
 
-- Work queue as the core primitive — not boards, not sprints
-- Token-efficient context: agents get exactly what they need, nothing they don't
-- State machine model for tasks — agents can claim, lock, and close work programmatically
-- ICE scoring (Impact, Confidence, Effort) baked in as a queryable API
-- Dependency graph: agents understand what's blocked and what's ready
+- Tracks scheduled jobs and external automations through API-backed run reporting
+- Computes green/yellow/red status from cadence, failures, duration, and output expectations
+- Checks run metadata, such as whether an import produced enough records to count as healthy
+- Sends alerts and daily digests while supporting mute/disable/throttle controls
+- Connects failures to remediation work items so humans or agents can investigate and fix the problem
 
-Built out of frustration with tools that assume a human is always at the keyboard.
+The original agent-first work queue is still part of the product, but it has become the response loop: when reality stops matching expectations, Glance opens the work needed to bring the system back into shape.
 
-{% include figure.liquid loading="eager" path="assets/img/projects/glance.jpg" class="img-fluid rounded z-depth-1 mt-4" alt="Glance work queue" %}
+{% include figure.liquid loading="eager" path="assets/img/projects/glance.jpg" class="img-fluid rounded z-depth-1 mt-4" alt="Glance expectation monitoring dashboard" %}
