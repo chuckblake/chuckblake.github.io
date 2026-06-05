@@ -50,9 +50,21 @@ nav_order: 4
     <th class="col-venue">Venue</th>
   </tr></thead>
   <tbody>
-    <tr><td>May 30, 2026</td><td>They Might Be Giants</td><td>Brooklyn Steel</td></tr>
     <tr><td>Jun 26, 2026</td><td>Human League, Soft Cell &amp; Alison Moyet</td><td>Radio City Music Hall</td></tr>
     <tr><td>Sep 5, 2026</td><td>Peter Hook &amp; The Light</td><td>Brooklyn Paramount</td></tr>
+  </tbody>
+</table>
+
+<h2 class="pub-section-header">2026</h2>
+
+<table class="shows-table">
+  <thead><tr>
+    <th class="col-date">Date</th>
+    <th class="col-artist">Artist</th>
+    <th class="col-venue">Venue</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>May 30</td><td>They Might Be Giants</td><td>Brooklyn Steel</td></tr>
   </tbody>
 </table>
 
@@ -124,6 +136,10 @@ nav_order: 4
 <h2 class="pub-section-header">Photos</h2>
 
 <div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/concerts/they-might-be-giants-2026.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+        <div class="caption">They Might Be Giants — May 30, 2026</div>
+    </div>
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/concerts/ride-2024.png" class="img-fluid rounded z-depth-1" zoomable=true %}
         <div class="caption">The Charlatans UK & RIDE — Jan 18, 2024</div>
