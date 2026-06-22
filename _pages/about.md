@@ -28,6 +28,8 @@ latest_posts:
   }
 </style>
 
+Chuck Blake is a Brooklyn-based startup founder and fractional CTO who builds AI systems and developer tools. He created [GetMusic.fm](https://getmusic.fm), builds [Glance](https://glnc.io) and [Recall Bridge](https://recallbridge.ai), writes the newsletter [In General](https://ingeneral.substack.com/), and makes electronic music as [Corvoco](https://corvoco.bandcamp.com).
+
 I've spent my career at startups — engineering, product, marketing, ops — building things from scratch and making them work. Most recently CTO at [LEA](https://getlea.io), where I led the technical team and built document intelligence systems for enterprise wealth management.
 
 Now I'm deep in AI. I run a multi-agent system with six AI agents across three model providers (Anthropic, OpenAI, Kimi) that handle coding, deployment, PR review, and project management autonomously. It's not a demo — it's production infrastructure I use every day.

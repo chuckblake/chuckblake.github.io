@@ -66,9 +66,35 @@ max_width: 930px
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
 # see https://schema.org/docs/faq.html for more information
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
-serve_schema_org: false # Include Schema.org in the HTML head
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
+serve_schema_org: false # Generic WebSite schema; Person/ProfilePage schema is handled by person_schema below
 og_image: # The site-wide (default for all links) Open Graph preview image
+x_username: chuckblake # used for the twitter:site / twitter:creator card tags
+
+# -----------------------------------------------------------------------------
+# Person / ProfilePage structured data (JSON-LD)
+# -----------------------------------------------------------------------------
+# Emits Person + ProfilePage schema on the homepage so AI engines (ChatGPT,
+# Perplexity, Claude, Google AI) can resolve "Chuck Blake" to one entity.
+# The same_as array is the entity graph: every profile you control, linked back
+# to this page. Keep names/handles consistent across all of these.
+person_schema:
+  enabled: true
+  job_title: Founder & Fractional CTO
+  location: Brooklyn, New York, United States
+  description: >
+    Chuck Blake is a Brooklyn-based startup founder and fractional CTO who builds
+    AI systems and developer tools. He created GetMusic.fm, builds Glance (glnc.io)
+    and Recall Bridge, writes the newsletter In General, and makes electronic music
+    as Corvoco.
+  same_as:
+    - https://www.linkedin.com/in/chuckblake/
+    - https://x.com/chuckblake
+    - https://github.com/chuckblake
+    - https://ingeneral.substack.com/
+    - https://corvoco.bandcamp.com
+    - https://getmusic.fm
+    - https://www.crunchbase.com/person/chuck-blake
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
