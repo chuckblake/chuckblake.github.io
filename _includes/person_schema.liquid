@@ -1,0 +1,45 @@
+{% comment %}
+  Person + ProfilePage JSON-LD for entity disambiguation.
+  Driven by `person_schema` in _config.yml. Include on the homepage only.
+  The sameAs array links every profile the person controls back to this page,
+  letting AI/search engines map scattered mentions to one canonical entity.
+{% endcomment %}
+{% if site.person_schema.enabled %}
+  {% capture author_name %}{{ site.first_name }}{% if site.middle_name %} {{ site.middle_name }}{% endif %} {{ site.last_name }}{% endcapture %}
+  {% assign page_url = '/' | prepend: site.baseurl | prepend: site.url %}
+  {% assign person_id = page_url | append: '#person' %}
+  {% if site.person_schema.image %}
+    {% assign person_image = site.person_schema.image | prepend: '/assets/img/' | absolute_url %}
+  {% else %}
+    {% assign person_image = '/assets/img/prof_pic.jpg' | absolute_url %}
+  {% endif %}
+  <!-- Person / ProfilePage Schema.org -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": {{ person_id | jsonify }},
+          "name": {{ author_name | jsonify }},
+          "givenName": {{ site.first_name | jsonify }},
+          "familyName": {{ site.last_name | jsonify }},
+          "url": {{ page_url | jsonify }},
+          "image": {{ person_image | jsonify }},
+          {% if site.person_schema.job_title %}"jobTitle": {{ site.person_schema.job_title | jsonify }},{% endif %}
+          {% if site.person_schema.location %}"homeLocation": { "@type": "Place", "name": {{ site.person_schema.location | jsonify }} },{% endif %}
+          {% if site.person_schema.description %}"description": {{ site.person_schema.description | strip_newlines | strip | jsonify }},{% endif %}
+          {% if site.person_schema.same_as %}"sameAs": {{ site.person_schema.same_as | jsonify }},{% endif %}
+          "mainEntityOfPage": {{ page_url | jsonify }}
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": {{ page_url | append: '#profilepage' | jsonify }},
+          "url": {{ page_url | jsonify }},
+          "name": {{ author_name | jsonify }},
+          "mainEntity": { "@id": {{ person_id | jsonify }} }
+        }
+      ]
+    }
+  </script>
+{% endif %}
