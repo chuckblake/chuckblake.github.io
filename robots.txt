@@ -1,3 +1,59 @@
+# AI crawlers and assistants are explicitly welcome.
+# (talk-tracks are private speaker notes — kept out of all indexes.)
+
+User-agent: GPTBot
+Allow: /
+Disallow: /talk-tracks/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /talk-tracks/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /talk-tracks/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /talk-tracks/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /talk-tracks/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /talk-tracks/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /talk-tracks/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /talk-tracks/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /talk-tracks/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /talk-tracks/
+
+User-agent: CCBot
+Allow: /
+Disallow: /talk-tracks/
+
+User-agent: cohere-ai
+Allow: /
+Disallow: /talk-tracks/
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /talk-tracks/
+
+# Everyone else
 User-agent: *
 Disallow: /talk-tracks/
 
