@@ -26,7 +26,7 @@ Chuck Blake is a Brooklyn-based startup founder and fractional CTO who builds AI
 
 I've spent my career at startups — engineering, product, marketing, ops — building things from scratch and making them work. Most recently I was CTO and co-founder at [LEA](https://getlea.io), where a 3-person team built document intelligence systems that process thousands of financial documents a month for $10B+ wealth management firms — cutting their manual data entry in half while document volume tripled in nine months.
 
-Now I'm deep in AI. I run a multi-agent system with six AI agents across three model providers (Anthropic, OpenAI, Kimi) that handle coding, deployment, PR review, and project management autonomously. It's not a demo — it's production infrastructure I use every day, and I [write about how it works](/blog/).
+Now I'm deep in AI. I run a multi-agent system with six AI agents across three model providers (Anthropic, Codex, Kimi) that handle coding, deployment, PR review, and project management autonomously. It's not a demo — it's production infrastructure I use every day, and I [write about how it works](/blog/).
 
 **What I'm building:**
 

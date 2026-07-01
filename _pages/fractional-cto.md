@@ -139,7 +139,7 @@ _styles: |
 
 I've been the technical co-founder who stayed up until 3am fixing production. The operator who scaled a team from 2 to 20. The consultant who walked into chaos and left behind systems that actually work.
 
-Currently: running three production Rails apps and a **multi-agent AI system** with 6 specialized agents across Anthropic, OpenAI, and Kimi. Agents handle coding, PR review, deployment, PM/triage, and operations — all orchestrated through a custom work queue system I built. Previously: CTO and co-founder at <a href="https://getlea.io">LEA</a>. Before that: engineering leadership at a half-dozen NYC startups.
+Currently: running three production Rails apps and a **multi-agent AI system** with 6 specialized agents across Anthropic, Codex, and Kimi. Agents handle coding, PR review, deployment, PM/triage, and operations — all orchestrated through a custom work queue system I built. Previously: CTO and co-founder at <a href="https://getlea.io">LEA</a>. Before that: engineering leadership at a half-dozen NYC startups.
 
 I work with a small number of companies at a time — enough to go deep, not enough to need account managers.
 
