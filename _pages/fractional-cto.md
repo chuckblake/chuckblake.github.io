@@ -47,6 +47,32 @@ _styles: |
     line-height: 1.7;
     margin-bottom: 2.5rem;
   }
+  .hero-line {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 1.25rem;
+  }
+  .principles-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .principles-list li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.4rem;
+    position: relative;
+  }
+  .principles-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--global-theme-color);
+    font-weight: 700;
+  }
+  .cta-note {
+    font-size: 0.95rem;
+    color: #888;
+  }
   .highlight-box {
     background: var(--global-card-bg-color);
     padding: 1.5rem;
@@ -109,11 +135,13 @@ _styles: |
 
 <div class="intro">
 
+<p class="hero-line">Ship faster — with AI doing real work in your product, your codebase, and your operations.</p>
+
 I've been the technical co-founder who stayed up until 3am fixing production. The operator who scaled a team from 2 to 20. The consultant who walked into chaos and left behind systems that actually work.
 
 Currently: running three production Rails apps and a **multi-agent AI system** with 6 specialized agents across Anthropic, OpenAI, and Kimi. Agents handle coding, PR review, deployment, PM/triage, and operations — all orchestrated through a custom work queue system I built. Previously: CTO and co-founder at <a href="https://getlea.io">LEA</a>. Before that: engineering leadership at a half-dozen NYC startups.
 
-I don't do decks and roadmaps that sit in a drawer. I fix the thing that's actually broken.
+I work with a small number of companies at a time — enough to go deep, not enough to need account managers.
 
 </div>
 
@@ -141,6 +169,13 @@ At LEA, I built the document intelligence platform that enterprise wealth manage
 - **Teams that are stuck** — slow releases, constant fires, technical debt crushing morale
 - **Companies about to scale** and realizing their architecture won't survive it
 - **Founders who want to leverage AI** but don't know where to start (or got burned by hype)
+
+## Who This Is Not For
+
+- You want a slide deck to show the board
+- You're looking for a dev shop to throw tickets at
+- You want "AI" on the pitch deck more than in the product
+- You need a full-time CTO yesterday — though I'll help you hire one
 
 ## What You Get
 
@@ -188,16 +223,27 @@ At LEA, I built the document intelligence platform that enterprise wealth manage
 
 ## How It Works
 
-**Advisory retainer** — Monthly engagement with scheduled calls and async Slack access. Best for ongoing guidance.
+**Advisory retainer** — Monthly engagement with scheduled calls and async Slack access. Best for ongoing guidance. The context compounds: every month I know your team, your stack, and your history better — and the advice gets sharper.
 
 **Project-based** — Deep dive into a specific problem: AI integration, architecture overhaul, team restructure, technical due diligence. Fixed scope, fixed timeline.
 
-**Fractional CTO** — Embedded leadership 2-3 days/week. Running standups, reviewing code, making the calls. For teams that need leadership now but aren't ready for a full-time hire.
+**Fractional CTO** — Embedded leadership 2-3 days/week. Running standups, reviewing code, making the calls. For teams that need leadership now but aren't ready for a full-time hire. Denser than it sounds: no ramp-up, no hand-holding, no meetings about meetings.
+
+## How I Work
+
+<ul class="principles-list">
+<li>No decks and roadmaps that sit in a drawer. I fix the thing that's actually broken.</li>
+<li>Plain English over consultantese.</li>
+<li>Async by default. Calls when they're useful.</li>
+<li>Small changes that ship this week beat big plans that ship next quarter.</li>
+<li>If I'm not adding obvious value, fire me. No lock-ins, no hard feelings.</li>
+</ul>
 
 <div class="cta-section">
 <h2>Let's Talk</h2>
 <p>Tell me what you're building and where you're stuck.</p>
 <p><a href="https://calendly.com/chuck-blake" target="_blank" class="cta-button">Book a 30-minute intro call</a></p>
+<p class="cta-note">30 minutes. No pitch — just figuring out if there's a fit.</p>
 <p class="cta-email">or email <a href="mailto:chuck.blake@gmail.com">chuck.blake@gmail.com</a></p>
 <p>Brooklyn, NY · Available for remote or on-site in NYC</p>
 </div>
