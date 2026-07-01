@@ -9,19 +9,33 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-projects",
+  },{id: "nav-fractional-cto",
+          title: "fractional cto",
+          description: "Technical leadership for early-stage startups",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/fractional-cto/";
+          },
+        },{id: "nav-projects",
           title: "projects",
           description: "Things I&#39;m building",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "nav-publications",
-          title: "publications",
+        },{id: "nav-writing-amp-talks",
+          title: "writing &amp; talks",
           description: "Writing, talks, and coverage.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/publications/";
+          },
+        },{id: "nav-blog",
+          title: "blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
           },
         },{id: "nav-music",
           title: "music",
@@ -30,14 +44,36 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/music/";
           },
-        },{id: "projects-lea",
+        },{id: "post-trust-is-not-a-vibe",
+        
+          title: "Trust Is Not a Vibe",
+        
+        description: "If I want agents to do real work, I need expectations, receipts, and escalation. Otherwise I&#39;m not delegating — I&#39;m hoping.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/trust-is-not-a-vibe/";
+          
+        },
+      },{id: "post-managing-agents-is-management-again",
+        
+          title: "Managing Agents is Management Again",
+        
+        description: "AI agents don&#39;t remove management. They remove the places where weak management used to hide.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/managing-agents-is-management-again/";
+          
+        },
+      },{id: "projects-lea",
           title: 'LEA',
-          description: "AI-powered document extraction for wealth management",
+          description: "AI document intelligence for enterprise wealth management — CTO &amp; co-founder",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_lea/";
             },},{id: "projects-getmusic-fm",
           title: 'GetMusic.fm',
-          description: "Helping artists promote music on Bandcamp",
+          description: "Helping artists promote music on Bandcamp — AI-operated growth loops",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_getmusic/";
             },},{id: "projects-sonicsift",
@@ -52,17 +88,17 @@ ninja.data = [{
               window.location.href = "/projects/4_indiecrates/";
             },},{id: "projects-glance",
           title: 'Glance',
-          description: "Expectation monitoring for automated work",
+          description: "Expectation monitoring for automated work — built in Rails, running in production",
           section: "Projects",handler: () => {
               window.location.href = "/projects/5_glance/";
             },},{id: "projects-email-insights",
           title: 'Email Insights',
-          description: "Email marketing analytics and research tool",
+          description: "Email marketing analytics SaaS — one of my first Rails products (sunset 2016)",
           section: "Projects",handler: () => {
               window.location.href = "/projects/6_emailinsights/";
             },},{id: "projects-recall-bridge",
           title: 'Recall Bridge',
-          description: "A hosted AI memory layer",
+          description: "A hosted AI memory layer — one persistent brain for every AI tool you use",
           section: "Projects",handler: () => {
               window.location.href = "/projects/7_recallbridge/";
             },},{
