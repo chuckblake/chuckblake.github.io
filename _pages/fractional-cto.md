@@ -183,7 +183,7 @@ At LEA, I built the document intelligence platform that enterprise wealth manage
 <h2>AI Systems & Agent Architecture</h2>
 <ul>
 <li>Multi-agent system design — when to use one agent vs. many, how they coordinate</li>
-<li>Model selection across providers (Claude, GPT-4, Kimi) — what each does well</li>
+<li>Model selection across providers (Anthropic, Codex, Kimi, etc.) — what each does well</li>
 <li>Memory systems: structured (files) vs. semantic (embeddings/vector search)</li>
 <li>Prompt engineering that actually works — evaluation frameworks, iteration cycles</li>
 <li>Autonomous coding agents: Claude Code, Codex CLI, setup and guardrails</li>
