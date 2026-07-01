@@ -3,7 +3,8 @@ layout: page
 title: fractional cto
 permalink: /fractional-cto/
 description: Technical leadership for early-stage startups
-nav: false
+nav: true
+nav_order: 1
 _styles: |
   .service-block {
     margin-bottom: 2.5rem;
@@ -60,6 +61,50 @@ _styles: |
     margin: 2rem 0;
     border-left: 4px solid var(--global-theme-color);
   }
+  .stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .stat-card {
+    flex: 1 1 160px;
+    background: var(--global-card-bg-color);
+    padding: 1.25rem 1rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .stat-card .stat-number {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--global-theme-color);
+  }
+  .stat-card .stat-label {
+    display: block;
+    font-size: 0.85rem;
+    margin-top: 0.35rem;
+    line-height: 1.4;
+  }
+  .stat-source {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: -0.5rem;
+    margin-bottom: 2rem;
+  }
+  .cta-button {
+    display: inline-block;
+    background: var(--global-theme-color);
+    color: #fff !important;
+    padding: 0.7rem 1.6rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none !important;
+    margin: 0.5rem 0;
+  }
+  .cta-button:hover {
+    opacity: 0.9;
+  }
 ---
 
 <div class="intro">
@@ -75,6 +120,19 @@ I don't do decks and roadmaps that sit in a drawer. I fix the thing that's actua
 <div class="ai-highlight">
 <strong>What makes me different:</strong> Most fractional CTOs can talk about AI. I <em>build</em> AI systems — production multi-agent architectures, autonomous deployment pipelines, memory systems with vector search (pgvector), and agent orchestration that actually ships code. If you want someone who's done the work, not just read the blog posts, that's me.
 </div>
+
+## Results, Not Promises
+
+At LEA, I built the document intelligence platform that enterprise wealth management firms rely on:
+
+<div class="stats-row">
+<div class="stat-card"><span class="stat-number">50%</span><span class="stat-label">reduction in clients' manual data entry</span></div>
+<div class="stat-card"><span class="stat-number">$10B+</span><span class="stat-label">AUM firms served</span></div>
+<div class="stat-card"><span class="stat-number">3×</span><span class="stat-label">document volume growth in 9 months</span></div>
+<div class="stat-card"><span class="stat-number">3</span><span class="stat-label">person team that shipped it all</span></div>
+</div>
+
+<p class="stat-source">Source: <a href="https://reducto.ai/blog/lea-reducto-case-study" target="_blank">Reducto case study on LEA</a> — thousands of financial documents processed monthly, 65% quarter-over-quarter growth.</p>
 
 ## Who This Is For
 
@@ -139,6 +197,7 @@ I don't do decks and roadmaps that sit in a drawer. I fix the thing that's actua
 <div class="cta-section">
 <h2>Let's Talk</h2>
 <p>Tell me what you're building and where you're stuck.</p>
-<p class="cta-email"><a href="mailto:chuck.blake@gmail.com">chuck.blake@gmail.com</a></p>
+<p><a href="https://calendly.com/chuck-blake" target="_blank" class="cta-button">Book a 30-minute intro call</a></p>
+<p class="cta-email">or email <a href="mailto:chuck.blake@gmail.com">chuck.blake@gmail.com</a></p>
 <p>Brooklyn, NY · Available for remote or on-site in NYC</p>
 </div>

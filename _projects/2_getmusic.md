@@ -1,10 +1,10 @@
 ---
 layout: page
 title: GetMusic.fm
-description: Helping artists promote music on Bandcamp
-img:
+description: Helping artists promote music on Bandcamp — AI-operated growth loops
+img: assets/img/projects/getmusic.jpg
 importance: 1
-category: current
+category: music
 ---
 
 [GetMusic.fm](https://getmusic.fm) helps independent artists share free download codes for their Bandcamp releases.

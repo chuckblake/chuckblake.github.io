@@ -1,6 +1,6 @@
 ---
 layout: page
-title: publications
+title: writing & talks
 permalink: /publications/
 description: Writing, talks, and coverage.
 nav: true
@@ -109,59 +109,9 @@ nav_order: 3
     <div class="pub-meta">Wallaroo Labs · Article</div>
   </li>
   <li>
-    <a href="https://web.archive.org/web/20180614114725/https://blog.wallaroolabs.com/2018/06/real-time-streaming-pattern-preprocessing-for-sentiment-analysis/" target="_blank">Real-time Streaming Pattern: Preprocessing for Sentiment Analysis</a>
-    <div class="pub-summary">How to use the preprocessing pattern to clean and transform data streams — using sentiment analysis stop-word removal as a practical example.</div>
-    <div class="pub-meta">Wallaroo Labs · Article</div>
-  </li>
-  <li>
-    <a href="https://web.archive.org/web/20180628114607/https://blog.wallaroolabs.com/2018/06/real-time-streaming-pattern-triggering-alerts/" target="_blank">Real-time Streaming Pattern: Triggering Alerts</a>
-    <div class="pub-summary">Building event-triggered applications that monitor data streams and fire alerts when thresholds are breached — from CPU monitoring to fraud detection.</div>
-    <div class="pub-meta">Wallaroo Labs · Article</div>
-  </li>
-  <li>
-    <a href="https://web.archive.org/web/20201109004025/https://blog.wallaroolabs.com/2018/07/real-time-streaming-pattern-joining-event-streams/" target="_blank">Real-time Streaming Pattern: Joining Event Streams</a>
-    <div class="pub-summary">Merging multiple data pipelines to create new signals — with a customer loyalty example showing how to join click streams with customer profiles.</div>
-    <div class="pub-meta">Wallaroo Labs · Article</div>
-  </li>
-  <li>
     <a href="https://medium.com/@chuckblake/streaming-with-wallaroo-fast-algorithmic-trading-checks-85e5d8449a97" target="_blank">Streaming With Wallaroo: Fast Algorithmic Trading Checks</a>
     <div class="pub-summary">A walkthrough of Wallaroo's Market Spread example — demonstrating sub-millisecond risk checks for electronic trading using stateful stream processing.</div>
     <div class="pub-meta">Wallaroo Labs · Article</div>
-  </li>
-  <li>
-    Wallaroo in Action: Real-Time Electronic Trading Risk Checks
-    <div class="pub-summary">Case study on implementing real-time risk checks for electronic trading systems using Wallaroo's distributed stream processing framework.</div>
-    <div class="pub-meta">Wallaroo Labs · Article</div>
-  </li>
-</ul>
-
-<h2 class="pub-section-header">Productivity</h2>
-
-<ul class="pub-list">
-  <li>
-    <a href="https://agencydocs.co/blogs/agency-biz/creative-problem-solving-with-a-deck-of-cards" target="_blank">Creative Problem Solving With a Deck of Cards</a>
-    <div class="pub-summary">How Brian Eno's Oblique Strategies — a deck of lateral thinking prompts — can break creative blocks and spark unexpected solutions.</div>
-    <div class="pub-meta">AgencyDocs · Article</div>
-  </li>
-  <li>
-    <a href="https://agencydocs.co/blogs/agency-biz/using-notion-to-collaborate-and-have-fewer-meetings" target="_blank">Using Notion to Collaborate and Have Fewer Meetings</a>
-    <div class="pub-summary">How Barrel, a 35-person remote agency, built a Notion wiki that centralized knowledge, standardized workflows, and cut down on meetings.</div>
-    <div class="pub-meta">AgencyDocs · Article</div>
-  </li>
-  <li>
-    <a href="https://agencydocs.co/blogs/agency-biz/easy-ways-to-implementthe-best-ideas-from-gtd" target="_blank">Easy Ways To Implement the Best Ideas From GTD</a>
-    <div class="pub-summary">How organizations can adopt David Allen's GTD system — using inbox triage, context lists, weekly reviews, and waiting-for tracking to reduce stress and improve focus.</div>
-    <div class="pub-meta">AgencyDocs · Article</div>
-  </li>
-</ul>
-
-<h2 class="pub-section-header">Business Operations</h2>
-
-<ul class="pub-list">
-  <li>
-    <a href="https://agencydocs.co/blogs/agency-biz/effective-teamwork" target="_blank">Effective Teamwork</a>
-    <div class="pub-summary">Keys to building effective teams in distributed environments: clear vision, documented processes, and creating psychological safety for collaboration.</div>
-    <div class="pub-meta">AgencyDocs · Article</div>
   </li>
 </ul>
 

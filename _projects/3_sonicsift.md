@@ -2,9 +2,9 @@
 layout: page
 title: SonicSift
 description: Music news aggregator
-img:
+img: assets/img/projects/sonicsift.png
 importance: 3
-category: current
+category: music
 ---
 
 [SonicSift](https://www.sonicsift.com) is a music news aggregator that collects the best music journalism from across the web.
