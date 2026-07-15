@@ -66,7 +66,12 @@ ninja.data = [{
             window.location.href = "/blog/2026/managing-agents-is-management-again/";
           
         },
-      },{id: "projects-lea",
+      },{id: "projects-arwen",
+          title: 'Arwen',
+          description: "AI product work for high-volume social comment intelligence",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/0_arwen/";
+            },},{id: "projects-lea",
           title: 'LEA',
           description: "AI document intelligence for enterprise wealth management — CTO &amp; co-founder",
           section: "Projects",handler: () => {
@@ -101,6 +106,11 @@ ninja.data = [{
           description: "A hosted AI memory layer — one persistent brain for every AI tool you use",
           section: "Projects",handler: () => {
               window.location.href = "/projects/7_recallbridge/";
+            },},{id: "projects-corvoco",
+          title: 'Corvoco',
+          description: "Chill post-punk electronic music",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/8_corvoco/";
             },},{
         id: 'social-email',
         title: 'email',
