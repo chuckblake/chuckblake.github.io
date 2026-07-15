@@ -38,15 +38,38 @@ table {
 a,
 table.table a {
   color: var(--global-theme-color);
+  text-decoration-color: rgba(17, 109, 255, 0.28);
+  text-underline-offset: 0.18em;
 
   &:hover {
-    color: var(--global-theme-color);
+    color: var(--global-hover-color);
     text-decoration: underline;
+    text-decoration-color: currentColor;
   }
 
   &:hover:after :not(.nav-item.dropdown) {
     width: 100%;
   }
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: 0;
+}
+
+h1,
+.post-title {
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 650;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
 }
 
 .table-dark {
