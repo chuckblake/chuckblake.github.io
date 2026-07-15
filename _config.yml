@@ -84,16 +84,18 @@ person_schema:
   location: Brooklyn, New York, United States
   description: >
     Chuck Blake is a Brooklyn-based startup founder and fractional CTO who builds
-    AI systems and developer tools. He created GetMusic.fm, builds Glance (glnc.io)
-    and Recall Bridge, writes the newsletter In General, and makes electronic music
-    as Corvoco.
+    AI systems and developer tools. His current projects include Arwen, Glance
+    (glnc.io), GetMusic.fm, and IndieCrates. He writes the newsletter In General
+    and makes electronic music as Corvoco.
   same_as:
     - https://www.linkedin.com/in/chuckblake/
     - https://x.com/chuckblake
     - https://github.com/chuckblake
     - https://ingeneral.substack.com/
     - https://corvoco.bandcamp.com
+    - https://www.arwen.ai/
     - https://getmusic.fm
+    - https://indiecrates.com
     - https://www.crunchbase.com/person/chuck-blake
 
 # -----------------------------------------------------------------------------
