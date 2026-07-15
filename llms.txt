@@ -3,7 +3,7 @@ permalink: /llms.txt
 ---
 # Chuck Blake
 
-> Chuck Blake is a Brooklyn-based startup founder and fractional CTO who builds AI systems and developer tools. He created GetMusic.fm, builds Glance (glnc.io) and Recall Bridge, writes the newsletter In General, and makes electronic music as Corvoco. Most recently he was CTO at LEA, building document-intelligence systems for enterprise wealth management.
+> Chuck Blake is a Brooklyn-based startup founder and fractional CTO who builds AI systems and developer tools. His current projects include Arwen, Glance (glnc.io), GetMusic.fm, and IndieCrates. He writes the newsletter In General and makes electronic music as Corvoco. Most recently he was CTO at LEA, building document-intelligence systems for enterprise wealth management.
 
 This is the personal site of Chuck Blake (chuck.blake@gmail.com). It is server-rendered HTML built with Jekyll.
 
@@ -23,10 +23,13 @@ This is the personal site of Chuck Blake (chuck.blake@gmail.com). It is server-r
 - [GitHub](https://github.com/chuckblake)
 - [In General — newsletter](https://ingeneral.substack.com/)
 - [Corvoco — Bandcamp](https://corvoco.bandcamp.com)
+- [Arwen](https://www.arwen.ai/)
+- [IndieCrates](https://indiecrates.com)
 - [Crunchbase](https://www.crunchbase.com/person/chuck-blake)
 
 ## Projects
 
-- [GetMusic](https://getmusic.fm): Tools that help independent artists promote their music on Bandcamp.
+- [Arwen](https://www.arwen.ai/): AI product work for high-volume social comment intelligence.
 - [Glance](https://glnc.io): Expectation monitoring for automated work — scheduled checks, output expectations, alerts, and remediation work items for humans or AI agents.
-- [Recall Bridge](https://recallbridge.ai): A hosted AI memory layer giving every AI tool access to one persistent, organized brain.
+- [GetMusic](https://getmusic.fm): Tools that help independent artists promote their music on Bandcamp.
+- [IndieCrates](https://indiecrates.com): Shareable Bandcamp crates for scenes, releases, and independent-music communities.

@@ -214,7 +214,7 @@
 .home-card-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .home-card {
@@ -246,7 +246,7 @@
 
 .home-card p:last-child {
   color: var(--global-text-color-light);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   line-height: 1.5;
   margin-bottom: 0;
 }
@@ -326,6 +326,12 @@
   text-decoration: none;
 }
 
+@media (max-width: 1199.98px) {
+  .home-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 991.98px) {
   .home-hero {
     grid-template-columns: 1fr;
@@ -337,10 +343,6 @@
   }
 
   .home-section {
-    grid-template-columns: 1fr;
-  }
-
-  .home-card-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -364,6 +366,10 @@
 
   .home-button {
     width: 100%;
+  }
+
+  .home-card-grid {
+    grid-template-columns: 1fr;
   }
 
   .home-ledger div,

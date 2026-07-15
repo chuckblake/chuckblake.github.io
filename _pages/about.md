@@ -27,4 +27,4 @@ Most recently I was CTO and co-founder at [LEA](https://getlea.io), where a 3-pe
 
 Now I help founders make the same kind of progress without turning every technical question into a full-time executive hire. That usually means AI integration, architecture, engineering leadership, agent workflows, or the connective tissue between them.
 
-Outside of client work I build [Glance](https://glnc.io), [Recall Bridge](https://recallbridge.ai), and music tools including [GetMusic.fm](https://getmusic.fm). I write the newsletter [In General](https://ingeneral.substack.com/) and make electronic music as [Corvoco](https://corvoco.bandcamp.com).
+Current projects include [Arwen](https://www.arwen.ai/), [Glance](https://glnc.io), [GetMusic.fm](https://getmusic.fm), and [IndieCrates](https://indiecrates.com). I write the newsletter [In General](https://ingeneral.substack.com/) and make electronic music as [Corvoco](https://corvoco.bandcamp.com).

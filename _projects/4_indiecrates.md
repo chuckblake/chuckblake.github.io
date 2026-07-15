@@ -3,8 +3,8 @@ layout: page
 title: IndieCrates
 description: Create and share Bandcamp playlists
 img: assets/img/projects/indiecrates.jpg
-importance: 2
-category: music
+importance: 4
+category: current
 ---
 
 [IndieCrates](https://indiecrates.com) lets you create and share playlists of Bandcamp music.

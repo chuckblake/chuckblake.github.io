@@ -3,8 +3,8 @@ layout: page
 title: Recall Bridge
 description: A hosted AI memory layer — one persistent brain for every AI tool you use
 img:
-importance: 3
-category: work
+importance: 99
+category: lab
 ---
 
 **Recall Bridge** is a hosted AI memory layer. One brain for every AI tool you use — connect Claude, ChatGPT, Cursor, and any MCP-enabled AI to persistent, organized memory.
