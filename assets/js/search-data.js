@@ -68,7 +68,7 @@ ninja.data = [{
         },
       },{id: "projects-arwen",
           title: 'Arwen',
-          description: "AI product work for high-volume social comment intelligence",
+          description: "AI medical-bill review that helps patients stop overpaying",
           section: "Projects",handler: () => {
               window.location.href = "/projects/0_arwen/";
             },},{id: "projects-lea",
