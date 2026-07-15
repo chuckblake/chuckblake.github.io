@@ -380,3 +380,9 @@
     flex-direction: column;
   }
 }
+
+@media (max-width: 767.98px) {
+  .home-hero__portrait {
+    display: none;
+  }
+}
