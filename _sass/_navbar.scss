@@ -7,8 +7,11 @@
 .navbar {
   box-shadow: none;
   border-bottom: 1px solid var(--global-divider-color);
-  background-color: var(--global-bg-color);
-  opacity: 0.95;
+  background-color: color-mix(in srgb, var(--global-bg-color) 92%, transparent);
+  opacity: 1;
+  backdrop-filter: blur(16px);
+  padding-top: 0.95rem;
+  padding-bottom: 0.95rem;
 }
 
 .navbar .dropdown-menu,
@@ -57,19 +60,30 @@
 
   .navbar-brand {
     color: var(--global-text-color);
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 650;
+    letter-spacing: 0;
   }
 
   .navbar-nav .nav-item .nav-link {
     color: var(--global-text-color);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 0.45rem 0.75rem;
+    text-transform: lowercase;
 
     &:hover {
       color: var(--global-hover-color);
+      background: var(--global-surface-color);
     }
   }
 
   .navbar-nav .nav-item.active > .nav-link {
-    background-color: inherit;
-    font-weight: bolder;
+    background-color: var(--global-surface-color-strong);
+    font-weight: 800;
     color: var(--global-theme-color);
 
     &:hover {
@@ -158,11 +172,12 @@
 #light-toggle {
   padding: 0;
   border: 0;
-  background-color: inherit;
+  background-color: var(--global-surface-color);
   color: var(--global-text-color);
   /* Fix footprint to prevent navbar shifting when icon changes */
   width: 2rem;
   height: 2rem;
+  border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -187,4 +202,10 @@
   &:hover {
     color: var(--global-hover-color);
   }
+}
+
+#search-toggle .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }

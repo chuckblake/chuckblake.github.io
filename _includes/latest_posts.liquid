@@ -1,47 +1,51 @@
-<div class="news">
-  {% if page.latest_posts != blank %}
-    {% assign latest_posts_size = site.posts | size %}
-    <div
-      class="table-responsive"
-      {% if page.latest_posts.scrollable and latest_posts_size > 3 %}
-        style="max-height: 60vw"
-      {% endif %}
-    >
-      <table class="table table-sm table-borderless">
-        {% assign latest_posts = site.posts %}
-        {% if page.latest_posts.limit %}
-          {% assign latest_posts_limit = page.latest_posts.limit %}
-        {% else %}
-          {% assign latest_posts_limit = latest_posts_size %}
-        {% endif %}
-        {% for item in latest_posts limit: latest_posts_limit %}
-          <tr>
-            <th scope="row" style="width: 20%">{{ item.date | date: '%b %d, %Y' }}</th>
-            <td>
-              {% if item.redirect == blank %}
-                <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
-              {% elsif item.redirect contains '://' %}
-                <a class="news-title" href="{{ item.redirect }}" target="_blank">{{ item.title }}</a>
-                <svg width="2rem" height="2rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9"
-                    class="icon_svg-stroke"
-                    stroke="#999"
-                    stroke-width="1.5"
-                    fill="none"
-                    fill-rule="evenodd"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                </svg>
-              {% else %}
-                <a class="news-title" href="{{ item.redirect | relative_url }}">{{ item.title }}</a>
-              {% endif %}
-            </td>
-          </tr>
-        {% endfor %}
-      </table>
-    </div>
+<div class="latest-posts">
+  {% assign latest_posts_size = site.posts | size %}
+  {% if latest_posts_size > 0 %}
+    {% assign latest_posts = site.posts %}
+    {% if page.latest_posts.limit %}
+      {% assign latest_posts_limit = page.latest_posts.limit %}
+    {% else %}
+      {% assign latest_posts_limit = latest_posts_size %}
+    {% endif %}
+
+    {% for item in latest_posts limit: latest_posts_limit %}
+      <article class="latest-post">
+        <time datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: '%b %-d, %Y' }}</time>
+        <div class="latest-post__content">
+          {% if item.redirect == blank %}
+            <h3>
+              <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+            </h3>
+          {% elsif item.redirect contains '://' %}
+            <h3>
+              <a href="{{ item.redirect }}" target="_blank">{{ item.title }}</a>
+            </h3>
+          {% else %}
+            <h3>
+              <a href="{{ item.redirect | relative_url }}">{{ item.title }}</a>
+            </h3>
+          {% endif %}
+
+          {% if item.description %}
+            <p>{{ item.description }}</p>
+          {% endif %}
+
+          {% if item.tags.size > 0 %}
+            <ul class="latest-post__tags" aria-label="Tags for {{ item.title }}">
+              {% for tag in item.tags limit: 3 %}
+                <li>{{ tag }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <a
+          class="latest-post__arrow"
+          href="{% if item.redirect == blank %}{{ item.url | relative_url }}{% elsif item.redirect contains '://' %}{{ item.redirect }}{% else %}{{ item.redirect | relative_url }}{% endif %}"
+          aria-label="Read {{ item.title }}"
+          >&rarr;</a
+        >
+      </article>
+    {% endfor %}
   {% else %}
     <p>No posts so far...</p>
   {% endif %}

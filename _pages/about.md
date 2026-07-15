@@ -18,24 +18,13 @@ announcements:
 
 latest_posts:
   enabled: true
+  limit: 2
 ---
 
-Chuck Blake is a Brooklyn-based startup founder and fractional CTO who builds AI systems and developer tools. He created [GetMusic.fm](https://getmusic.fm), builds [Glance](https://glnc.io) and [Recall Bridge](https://recallbridge.ai), writes the newsletter [In General](https://ingeneral.substack.com/), and makes electronic music as [Corvoco](https://corvoco.bandcamp.com).
+I am a Brooklyn-based startup founder and fractional CTO. I work closest to the places where product judgment, engineering systems, and AI workflows meet.
 
-**I work with early-stage startups as a [fractional CTO and technical advisor](/fractional-cto/)** — AI integration, technical architecture, and engineering leadership. If you're building something and need a technical partner who's been through it, [book an intro call](https://calendly.com/chuck-blake) or [email me](mailto:chuck.blake@gmail.com).
+Most recently I was CTO and co-founder at [LEA](https://getlea.io), where a 3-person team built document intelligence systems for $10B+ wealth management firms. Document volume tripled in nine months while manual data entry was cut in half.
 
-I've spent my career at startups — engineering, product, marketing, ops — building things from scratch and making them work. Most recently I was CTO and co-founder at [LEA](https://getlea.io), where a 3-person team built document intelligence systems that process thousands of financial documents a month for $10B+ wealth management firms — cutting their manual data entry in half while document volume tripled in nine months.
+Now I help founders make the same kind of progress without turning every technical question into a full-time executive hire. That usually means AI integration, architecture, engineering leadership, agent workflows, or the connective tissue between them.
 
-Now I'm deep in AI. I run a multi-agent system with six AI agents across three model providers (Anthropic, Codex, Kimi) that handle coding, deployment, PR review, and project management autonomously. It's not a demo — it's production infrastructure I use every day, and I [write about how it works](/blog/).
-
-**What I'm building:**
-
-- [Glance](https://glnc.io) — expectation monitoring for automated work: scheduled checks, output expectations, alerts, and remediation work items for humans or AI agents. Built in Rails, running in production.
-- [Recall Bridge](https://recallbridge.ai) — a hosted AI memory layer that gives every AI tool you use access to one persistent, organized brain. Auto-classifies captures using GTD and PARA concepts. In development.
-- [GetMusic](https://getmusic.fm) and other music sites — tools that help independent artists promote their music on Bandcamp.
-
-Outside of work I make electronic music as [Corvoco](https://corvoco.bandcamp.com) and keep a [running log of shows](/music/).
-
-Check out my [writing and talks](/publications/) on AI systems, developer relations, and productivity.
-
-[Book a call](https://calendly.com/chuck-blake) · [LinkedIn](https://www.linkedin.com/in/chuckblake/) · [X](https://x.com/chuckblake) · [Email](mailto:chuck.blake@gmail.com)
+Outside of client work I build [Glance](https://glnc.io), [Recall Bridge](https://recallbridge.ai), and music tools including [GetMusic.fm](https://getmusic.fm). I write the newsletter [In General](https://ingeneral.substack.com/) and make electronic music as [Corvoco](https://corvoco.bandcamp.com).
