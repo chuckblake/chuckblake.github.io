@@ -23,13 +23,13 @@ This is the personal site of Chuck Blake (chuck.blake@gmail.com). It is server-r
 - [GitHub](https://github.com/chuckblake)
 - [In General — newsletter](https://ingeneral.substack.com/)
 - [Corvoco — Bandcamp](https://corvoco.bandcamp.com)
-- [Arwen](https://www.arwen.ai/)
+- [Arwen](https://arwensaves.com/)
 - [IndieCrates](https://indiecrates.com)
 - [Crunchbase](https://www.crunchbase.com/person/chuck-blake)
 
 ## Projects
 
-- [Arwen](https://www.arwen.ai/): AI product work for high-volume social comment intelligence.
+- [Arwen](https://arwensaves.com/): AI medical-bill review that helps patients check bills, insurance paperwork, and overcharges.
 - [Glance](https://glnc.io): Expectation monitoring for automated work — scheduled checks, output expectations, alerts, and remediation work items for humans or AI agents.
 - [GetMusic](https://getmusic.fm): Tools that help independent artists promote their music on Bandcamp.
 - [IndieCrates](https://indiecrates.com): Shareable Bandcamp crates for scenes, releases, and independent-music communities.

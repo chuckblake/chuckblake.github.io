@@ -1,20 +1,20 @@
 ---
 layout: page
 title: Arwen
-description: AI product work for high-volume social comment intelligence
+description: AI medical-bill review that helps patients stop overpaying
 img: assets/img/projects/arwen.jpg
 importance: 1
 category: current
 ---
 
-[Arwen](https://www.arwen.ai/) helps brands manage, understand, and act on social comments at scale.
+[Arwen](https://arwensaves.com/) helps patients check US medical bills for errors, review insurance paperwork, and pay the correct amount with more confidence.
 
-The product sits where public conversation, brand safety, customer insight, and AI-assisted operations meet: comments are not just risk to moderate, they are a live signal to understand and respond to.
+The product sits where AI, consumer healthcare, financial stress, and operational accuracy meet. The stakes are practical: people need plain-language help finding overcharges, understanding what changed, and knowing what to do next.
 
 **Current focus:**
 
-- AI product systems for comment understanding and action
-- Workflows where wrong answers carry brand and operational consequences
-- Practical product delivery across messy, high-volume social data
+- AI-assisted bill review for patients and families
+- Workflows for insurance paperwork, disputes, and payment confidence
+- Product systems where clarity, trust, and accuracy matter
 
 {% include figure.liquid loading="eager" path="assets/img/projects/arwen.jpg" class="img-fluid rounded z-depth-1 mt-4" alt="Arwen homepage" %}
