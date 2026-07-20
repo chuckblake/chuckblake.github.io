@@ -303,7 +303,7 @@
           <h2>Slide 1: the problem</h2>
           <div class="stage-direction">Stay on the slide. Do not open the product yet.</div>
           <blockquote>"Quick poll: how do you know your nightly automation did its job last night?"</blockquote>
-          <p>Pause. Let people answer. Then:</p>
+          <p>Take one answer. If nobody responds within three seconds, continue.</p>
           <blockquote>"I built Glance because I had 77 automations and no system of record for whether they actually did their jobs."</blockquote>
           <p>Say the one-liner. Then move straight into the real dashboard.</p>
         </div>
@@ -316,13 +316,14 @@
         <div class="beat-copy">
           <h2>Live: the real dashboard</h2>
           <div class="stage-direction">Use the dogfooding account with the real monitors. Do not tour the product.</div>
+          <blockquote>"This is my actual Glance account, watching the automations I rely on."</blockquote>
           <p>Point at only three things:</p>
           <ol>
             <li>A group that is green.</li>
             <li>One passing check's outcome receipt: metric, observed value, threshold, and timestamp.</li>
-            <li>The attention cards. Only work that needs a human belongs there.</li>
+            <li>The attention cards. They hold checks that need attention, whether the next actor is me or an agent.</li>
           </ol>
-          <blockquote>"A green checkmark is not enough. Every green state carries the receipt for why it is green."</blockquote>
+          <blockquote>"Open the receipt. It shows the metric, observed value, threshold, and timestamp behind this green check."</blockquote>
         </div>
       </section>
 
@@ -332,7 +333,9 @@
         </div>
         <div class="beat-copy">
           <h2>Live: break one outcome</h2>
-          <div class="stage-direction">Use the pre-staged demo check. Trigger the failure from the terminal with the rehearsed command.</div>
+          <div class="stage-direction">
+            Use the pre-staged demo check. Run the rehearsed command that produces the failing observation, then refresh until the check turns red.
+          </div>
           <p>Let the room watch the check go red. Open it and show:</p>
           <ul>
             <li>The expectation that was violated.</li>
@@ -340,10 +343,9 @@
             <li>The remediation playbook and inputs an agent can use.</li>
           </ul>
           <blockquote>
-            "Uptime monitoring asks whether the endpoint is up. Job monitoring asks whether the process ran. Glance asks whether the expected outcome
-            happened."
+            "Uptime tells me the endpoint answered. A job check tells me the process ran. Glance checks whether the expected outcome happened."
           </blockquote>
-          <blockquote>"Glance never fires an alert it cannot explain."</blockquote>
+          <blockquote>"This alert shows the missed expectation and the evidence behind the failure."</blockquote>
         </div>
       </section>
 
@@ -354,16 +356,17 @@
         <div class="beat-copy">
           <h2>Live: the agent closes the loop</h2>
           <div class="stage-direction">
-            Show the generated remediation work item. In the terminal, have the agent claim the next work item over the REST API.
+            Show the generated remediation work item. In the terminal, have the agent claim it over REST and run the rehearsed repair. Say what the
+            repair changes. Do not imply that claiming the item changes the check state.
           </div>
           <p>Keep the explanation short while the agent works:</p>
           <blockquote>
-            "The failure already carries the expectation, evidence, history, and playbook. The agent does not have to reconstruct the incident from a
-            vague page."
+            "The agent starts with the missed expectation, the evidence, and the playbook. It does not have to rebuild the context from an alert
+            message."
           </blockquote>
-          <p>When the check recovers, show the resolution receipt: the run that fixed it, the work item that was active, and the resolution note.</p>
-          <blockquote>"The incident closed itself, and I can audit exactly why."</blockquote>
-          <p>If the agent run is too slow or unpredictable, play the prepared 45-second capture. Do not improvise through a stalled terminal.</p>
+          <p>After the repaired automation produces a passing observation, show the run, the associated work item, and the resolution note.</p>
+          <blockquote>"The agent did the repair. Glance kept the evidence so I can audit what happened."</blockquote>
+          <p>If the agent has not claimed the item within ten seconds, switch to the prepared 45-second capture. Do not debug on stage.</p>
         </div>
       </section>
 
@@ -375,8 +378,8 @@
           <h2>Slides 2 and 3: category and ask</h2>
           <p>On slide 2:</p>
           <blockquote>
-            "Glance is outcome monitoring for automations plus a work queue AI agents claim over REST. It is not uptime monitoring, workflow
-            automation, or agent orchestration. It does not do the work. It makes automated work accountable."
+            "Glance monitors automation outcomes. When one fails, it puts the evidence and playbook in a work queue an agent can claim over REST. Your
+            existing tools still run the automation and the agent."
           </blockquote>
           <p>On slide 3:</p>
           <blockquote>
@@ -415,7 +418,7 @@
         <div class="qa-list">
           <div class="qa-item">
             <strong>How is this different from healthchecks.io?</strong>
-            They verify that the run happened. Glance verifies that the expected outcome happened, and silence counts as failure.
+            They verify that a job checked in. Glance checks the expected outcome, and a missed expected window counts as failure.
           </div>
           <div class="qa-item">
             <strong>Is this agent orchestration?</strong>
