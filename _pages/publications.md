@@ -79,6 +79,11 @@ nav_order: 3
 
 <ul class="pub-list">
   <li>
+    <a href="https://chuckblake.com/presentations/glance-outcome-monitoring/" target="_blank">Glance: Outcome Monitoring for Automated Work</a>
+    <div class="pub-summary">Five-minute live demo: Glance catches a missed business outcome, gives an AI agent the context to fix it, and records why the check returned green.</div>
+    <div class="pub-meta">Glance · Presentation · July 2026</div>
+  </li>
+  <li>
     <a href="https://chuckblake.com/presentations/ai-side-project-showcase-getmusic/" target="_blank">5 Product-Led Growth Loops Inside GetMusic</a>
     <div class="pub-summary">How a solo founder built product-led distribution — five growth loops where normal artist activity creates marketing assets, operated by AI.</div>
     <div class="pub-meta">AI Side-Project Showcase · Presentation · June 2026</div>
