@@ -162,6 +162,40 @@
         line-height: 1.5;
       }
 
+      .command-step {
+        display: grid;
+        grid-template-columns: minmax(110px, 0.32fr) minmax(0, 1fr);
+        gap: 16px;
+        align-items: center;
+        border: 1px solid #8f6427;
+        border-left: 7px solid var(--brand);
+        border-radius: 8px;
+        background: rgba(231, 163, 62, 0.1);
+        padding: 15px 17px;
+      }
+
+      .command-step .label {
+        color: var(--brand);
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .command-step code {
+        color: var(--ink);
+        font-family: var(--mono);
+        font-size: clamp(18px, 2vw, 24px);
+        font-weight: 800;
+      }
+
+      .command-step span:last-child {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
       p,
       li {
         font-size: 19px;
@@ -255,6 +289,11 @@
           grid-template-columns: 1fr;
         }
 
+        .command-step {
+          grid-template-columns: 1fr;
+          gap: 7px;
+        }
+
         .prep-grid {
           grid-template-columns: 1fr;
         }
@@ -292,7 +331,9 @@
         <div class="kicker">Five-minute Glance demo</div>
         <h1>One story, end to end</h1>
         <p class="lede">Spend no more than 90 seconds on slides. The rest belongs in the product and the terminal.</p>
-        <div class="one-liner">"Glance tells you when automated work didn't happen and hands the fix to an AI agent."</div>
+        <div class="one-liner">
+          "Glance tells you when work you expected didn't happen and surfaces the information plainly. That makes agent handoff simple."
+        </div>
       </header>
 
       <section class="beat" id="opening">
@@ -302,10 +343,10 @@
         <div class="beat-copy">
           <h2>Slide 1: the problem</h2>
           <div class="stage-direction">Stay on the slide. Do not open the product yet.</div>
-          <blockquote>"Quick poll: how do you know your nightly automation did its job last night?"</blockquote>
-          <p>Take one answer. If nobody responds within three seconds, continue.</p>
-          <blockquote>"I built Glance because I had 77 automations and no system of record for whether they actually did their jobs."</blockquote>
-          <p>Say the one-liner. Then move straight into the real dashboard.</p>
+          <blockquote>
+            "I built Glance because I had 77 automations and wanted a centralized system of record for whether they actually did their jobs."
+          </blockquote>
+          <p>Read the opening line above. Then move straight into the live dashboard.</p>
         </div>
       </section>
 
@@ -315,13 +356,19 @@
         </div>
         <div class="beat-copy">
           <h2>Live: the real dashboard</h2>
-          <div class="stage-direction">Use the dogfooding account with the real monitors. Do not tour the product.</div>
-          <blockquote>"This is my actual Glance account, watching the automations I rely on."</blockquote>
-          <p>Point at only three things:</p>
+          <div class="stage-direction">Switch to the dedicated demo account. Do not tour the product.</div>
+          <div class="command-step">
+            <div>
+              <div class="label">Run now</div>
+              <code>demo 1</code>
+            </div>
+            <span>Verify that all three monitors are green and the DEMO queue is empty.</span>
+          </div>
+          <blockquote>"This is the baseline: three automations are healthy, and there is no remediation work waiting."</blockquote>
+          <p>Point at only two things:</p>
           <ol>
             <li>A group that is green.</li>
             <li>One passing check's outcome receipt: metric, observed value, threshold, and timestamp.</li>
-            <li>The attention cards. They hold checks that need attention, whether the next actor is me or an agent.</li>
           </ol>
           <blockquote>"Open the receipt. It shows the metric, observed value, threshold, and timestamp behind this green check."</blockquote>
         </div>
@@ -333,8 +380,12 @@
         </div>
         <div class="beat-copy">
           <h2>Live: break one outcome</h2>
-          <div class="stage-direction">
-            Use the pre-staged demo check. Run the rehearsed command that produces the failing observation, then refresh until the check turns red.
+          <div class="command-step">
+            <div>
+              <div class="label">Run now</div>
+              <code>demo 2</code>
+            </div>
+            <span>Report technical success with a failed business outcome: only 12 of 128 records reach the storefront.</span>
           </div>
           <p>Let the room watch the check go red. Open it and show:</p>
           <ul>
@@ -355,15 +406,25 @@
         </div>
         <div class="beat-copy">
           <h2>Live: the agent closes the loop</h2>
-          <div class="stage-direction">
-            Show the generated remediation work item. In the terminal, have the agent claim it over REST and run the rehearsed repair. Say what the
-            repair changes. Do not imply that claiming the item changes the check state.
+          <div class="command-step">
+            <div>
+              <div class="label">Run now</div>
+              <code>demo 3</code>
+            </div>
+            <span>Have <code>demo-agent</code> claim the generated remediation item and receive the failure evidence and repair steps.</span>
           </div>
           <p>Keep the explanation short while the agent works:</p>
           <blockquote>
             "The agent starts with the missed expectation, the evidence, and the playbook. It does not have to rebuild the context from an alert
             message."
           </blockquote>
+          <div class="command-step">
+            <div>
+              <div class="label">Then run</div>
+              <code>demo 4</code>
+            </div>
+            <span>Restore all 128 records, return the monitor to green, and close the remediation item with a resolution receipt.</span>
+          </div>
           <p>After the repaired automation produces a passing observation, show the run, the associated work item, and the resolution note.</p>
           <blockquote>"The agent did the repair. Glance kept the evidence so I can audit what happened."</blockquote>
           <p>If the agent has not claimed the item within ten seconds, switch to the prepared 45-second capture. Do not debug on stage.</p>
@@ -395,10 +456,10 @@
           <article class="prep-card">
             <h3>Primary path</h3>
             <ul>
-              <li>Real dogfooding account already open.</li>
+              <li>Run <code>demo reset</code>, then <code>demo 1</code>, before the presentation.</li>
+              <li>Dedicated demo account already open.</li>
               <li>Green group expanded to the chosen receipt.</li>
-              <li>Demo check configured with a fast, reliable threshold.</li>
-              <li>Terminal commands in shell history.</li>
+              <li>Monitoring, DEMO queue, deck, and talk track open in separate tabs.</li>
             </ul>
           </article>
           <article class="prep-card">
@@ -408,8 +469,16 @@
               <li>45-second agent remediation capture queued locally.</li>
               <li>Static resolution receipt ready if the network fails.</li>
               <li>Never debug on stage.</li>
+              <li>If a step refuses to run, use <code>demo status</code>. Do not repeat a numbered step blindly.</li>
             </ul>
           </article>
+        </div>
+        <div class="command-step" style="margin-top: 18px">
+          <div>
+            <div class="label">After rehearsal or demo</div>
+            <code>demo reset</code>
+          </div>
+          <span>Restore the clean passing baseline. Run <code>demo 1</code> afterward to verify it.</span>
         </div>
       </section>
 
