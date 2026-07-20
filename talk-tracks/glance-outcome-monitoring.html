@@ -355,8 +355,8 @@
           <div class="time">0:45 to 1:30</div>
         </div>
         <div class="beat-copy">
-          <h2>Live: the real dashboard</h2>
-          <div class="stage-direction">Switch to the dedicated demo account. Do not tour the product.</div>
+          <h2>Live: establish the baseline</h2>
+          <div class="stage-direction">Switch to the dedicated demo account. Keep the monitoring dashboard on screen. Do not tour the product.</div>
           <div class="command-step">
             <div>
               <div class="label">Run now</div>
@@ -364,13 +364,15 @@
             </div>
             <span>Verify that all three monitors are green and the DEMO queue is empty.</span>
           </div>
-          <blockquote>"This is the baseline: three automations are healthy, and there is no remediation work waiting."</blockquote>
-          <p>Point at only two things:</p>
-          <ol>
-            <li>A group that is green.</li>
-            <li>One passing check's outcome receipt: metric, observed value, threshold, and timestamp.</li>
-          </ol>
-          <blockquote>"Open the receipt. It shows the metric, observed value, threshold, and timestamp behind this green check."</blockquote>
+          <blockquote>
+            "This is a dedicated Glance account with three automations. Right now all three are healthy, and there is no remediation work waiting."
+          </blockquote>
+          <p>Point to the green group, then open <strong>Nightly catalog sync</strong>.</p>
+          <blockquote>
+            "Green does not only mean the process ran. Open the check and you can see the outcome receipt: what Glance expected, what the automation
+            reported, the threshold it had to meet, and when the observation arrived. In this run, all 128 expected records reached the storefront."
+          </blockquote>
+          <blockquote>"Now I am going to make this fail in a way a normal uptime check would miss."</blockquote>
         </div>
       </section>
 
@@ -387,16 +389,25 @@
             </div>
             <span>Report technical success with a failed business outcome: only 12 of 128 records reach the storefront.</span>
           </div>
-          <p>Let the room watch the check go red. Open it and show:</p>
-          <ul>
-            <li>The expectation that was violated.</li>
-            <li>The observed evidence and run history.</li>
-            <li>The remediation playbook and inputs an agent can use.</li>
-          </ul>
           <blockquote>
-            "Uptime tells me the endpoint answered. A job check tells me the process ran. Glance checks whether the expected outcome happened."
+            "As far as the automation runner is concerned, this job succeeded. The process completed and the endpoint answered. But the result is
+            wrong: only 12 of 128 records reached the storefront."
           </blockquote>
-          <blockquote>"This alert shows the missed expectation and the evidence behind the failure."</blockquote>
+          <p>Return to the monitoring dashboard and let the room see <strong>Nightly catalog sync</strong> turn red. Open the failed check.</p>
+          <blockquote>
+            "Glance evaluates the outcome, not just the execution signal. The monitor is red because the run violated a specific expectation: 12
+            records arrived when 128 were expected."
+          </blockquote>
+          <p>
+            Point to the failed expectation, observed values, run history, and remediation steps. Then open the DEMO queue and show the new work item.
+          </p>
+          <blockquote>
+            "The failure already includes the evidence and the repair playbook. At the same time, Glance created a remediation item in the DEMO queue.
+            This is not a vague alert that someone or some agent has to translate before acting."
+          </blockquote>
+          <blockquote>
+            "Uptime tells me the endpoint answered. A job check tells me the process ran. Glance tells me whether the expected outcome happened."
+          </blockquote>
         </div>
       </section>
 
@@ -413,7 +424,11 @@
             </div>
             <span>Have <code>demo-agent</code> claim the generated remediation item and receive the failure evidence and repair steps.</span>
           </div>
-          <p>Keep the explanation short while the agent works:</p>
+          <blockquote>
+            "Now demo-agent asks Glance for the next work item it is allowed to handle. It claims this one, which gives us clear ownership and
+            prevents a second agent from picking up the same repair."
+          </blockquote>
+          <p>Show the claimed work item and point to the owner, failed expectation, evidence, and repair steps.</p>
           <blockquote>
             "The agent starts with the missed expectation, the evidence, and the playbook. It does not have to rebuild the context from an alert
             message."
@@ -425,9 +440,16 @@
             </div>
             <span>Restore all 128 records, return the monitor to green, and close the remediation item with a resolution receipt.</span>
           </div>
-          <p>After the repaired automation produces a passing observation, show the run, the associated work item, and the resolution note.</p>
-          <blockquote>"The agent did the repair. Glance kept the evidence so I can audit what happened."</blockquote>
-          <p>If the agent has not claimed the item within ten seconds, switch to the prepared 45-second capture. Do not debug on stage.</p>
+          <blockquote>
+            "The agent replays the missing records. The next observation reports 128 of 128, so the monitor returns to green. The agent closes the
+            work item, releases its claim, and leaves a resolution note."
+          </blockquote>
+          <p>Show the green monitor first. Then return to the work item and show the terminal state and resolution receipt.</p>
+          <blockquote>
+            "Glance did not run the repair. The existing automation and agent did that. Glance kept the accountability record: what failed, who
+            claimed it, what fixed it, and the evidence that the outcome recovered."
+          </blockquote>
+          <p>If the live step stalls for ten seconds, switch to the prepared 45-second capture. Do not debug on stage.</p>
         </div>
       </section>
 
@@ -437,16 +459,20 @@
         </div>
         <div class="beat-copy">
           <h2>Slides 2 and 3: category and ask</h2>
-          <p>On slide 2:</p>
+          <div class="stage-direction">Return to the deck and advance to slide 2.</div>
           <blockquote>
-            "Glance monitors automation outcomes. When one fails, it puts the evidence and playbook in a work queue an agent can claim over REST. Your
-            existing tools still run the automation and the agent."
+            "That is the category. Glance is outcome monitoring for automations, plus a remediation queue that AI agents can claim over REST. It is
+            not uptime monitoring, workflow automation, or agent orchestration. Your existing tools still run the automation and the agent. Glance
+            makes the work accountable."
           </blockquote>
-          <p>On slide 3:</p>
+          <p>Advance to slide 3 and point to <a href="https://glnc.io">glnc.io</a>.</p>
           <blockquote>
             "I am looking for operators with one automation whose failure actually costs them something. I will help you put it on Glance."
           </blockquote>
-          <p>Point to <a href="https://glnc.io">glnc.io</a>. Repeat the one-liner and stop.</p>
+          <blockquote>
+            "Glance tells you when work you expected didn't happen and surfaces the information plainly. That makes agent handoff simple."
+          </blockquote>
+          <p>Stop. Do not add another summary.</p>
         </div>
       </section>
 
