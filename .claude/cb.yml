@@ -1,0 +1,91 @@
+# .claude/cb.yml — per-repo cb workflow config (committed; NO secrets here).
+# Machine-local values (e.g. LINEAR_API_KEY and CB_VAULT_ROOT) live in ~/.claude/cb.env
+# (global, gitignored). Vault-rooted defaults use `${vault}`, resolved from CB_VAULT_ROOT.
+project: { key: WEB }
+backlog: { backend: markdown, dir: "${vault}/cb-dev/chuckblake.com/backlog" } # central Chuck Vault backlog
+worktree: { tool: plain, base: main } # plain | rails | superset | none
+worklog: { enabled: true, dest: "${vault}/worklogs" }
+# Per-run stage timing log (CBW-63): best-effort, fail-open JSONL — one file per issue/run at
+# `dest`, written OUTSIDE the repo, never committed. `cb:init` fills a portable per-project `dest`
+# below (CBW-70), so timing is collected out of the box. An empty `dest` (or `enabled: false`) is
+# still a silent no-op — and `lib/preflight` warns when a repo is enabled with an empty dest so the
+# gap is never silent. Filenames carry the project + issue, so several repos can share one dest dir.
+# Recommended pattern: `${vault}/cb-dev/<project>/logs`.
+timing: { enabled: true, dest: "${vault}/cb-dev/chuckblake.com/logs" }
+conventions: { enabled: false }
+ci: { provider: github } # github | none
+hooks: { branch_guard: true, worklog_stop: true, lfg_watchdog: true }
+
+# --- Multi-project Markdown backend (optional; e.g. a vault hosting several projects) ---
+# Replace the single-line `backlog:` above with a projects map. Each project gets its own
+# id prefix (key), directory, and cb-dev frontmatter defaults; cb:add-item routes by project
+# via CB_META and fills type/project/area/tags/themes. `statuses` overrides the default vocab.
+# Standard `dir` shape for a vault-hosted project is `${vault}/cb-dev/<project>/backlog` — issues
+# live in a `backlog/` subdirectory so the project folder stays free for other per-repo content
+# (notes, decisions, and the sibling `logs/` timing dir).
+# backlog:
+#   backend: markdown
+#   default_project: GetMusic
+#   statuses: [todo, planning, in-progress, in-review, blocked, done, archived]
+#   projects:
+#     GetMusic: { key: GM,  dir: "${vault}/cb-dev/GetMusic/backlog", frontmatter: { type: backlog-issue, project: GetMusic, tags: [backlog, development, getmusic] } }
+#     glnc.io:  { key: GLA, dir: "${vault}/cb-dev/glnc.io/backlog",  frontmatter: { type: backlog-issue, project: glnc.io,  tags: [backlog, development, glnc-io] } }
+
+# --- Optional skill config (all have built-in defaults; uncomment to override) ---
+# plans:     { dir: plans, archive_dir: .plans-archive }   # cb:end-of-day, cb:learn-build
+# docs:      { solutions: docs/solutions }                 # cb:end-of-day
+# learnings: { dir: docs/learnings }                       # cb:learn, cb:learn-build, cb:end-of-day
+# dossier:   { dir: docs/pr-reviews }                      # cb:pr-dossier, cb:done
+# strategy:  { path: PRODUCT_STRATEGY.md }                 # cb:pdad; markdown ICE scoring grounds in this file when present
+#                                                            # ICE frontmatter keys: ice, ice_impact, ice_confidence, ice_ease, ice_grounded
+# test:      { rspec_wrapper: auto }                       # cb:agent-rspec (auto|bundle|<path>)
+# sweep:     { window_days: 14 }                           # cb:backlog-sweep — archive done/canceled issues
+#            # whose file hasn't been git-touched in >= window_days into backlog/archive/ (markdown backend only)
+# plan:      { expected_model: '' }                        # cb:plan preflight (unset = defer to worktree.plan_agent preset)
+#            # value is a model id/display-name fragment (e.g. claude-opus-4-8, Opus 4.8) —
+#            # NOT a worktree.plan_agent preset name (different vocabulary, see worktree.tool above)
+# codex:     { mode: auto, implement_timeout: 1800, delegate_timeout: 120, review_timeout: 900 }
+#            # mode: auto = use Codex when present and fall back gracefully | always = error loudly when
+#            # Codex is missing/fails | never = run natively. Guards are shape-specific: implementation
+#            # defaults to 1800s; read-many-emit-small delegation defaults to 120s; the cb:done code-review
+#            # gate (codex-review — a whole-branch-diff read) defaults to 900s. Per helper, precedence is its
+#            # shape key > legacy shared codex.timeout > built-in default. codex.timeout remains honored as a
+#            # shared override for existing configs. With auto + no Codex, behavior remains native.
+#            # delegate_timeout sizing: cb:done's PR dossier is the heaviest delegate consumer (it emits a
+#            # whole HTML document, not a short summary). Repos that want that delegation should raise this
+#            # to ~300; at the 120s default it will usually time out and fall back to native generation.
+#            # CBW-57 — this key is GLOBAL: raising it raises the guard on EVERY foreground delegate consumer,
+#            # not just the dossier. So each such call site's Bash-harness ceiling must exceed the highest
+#            # value recommended here (both pin 360000ms today). Size a ceiling against the built-in default
+#            # instead and the harness kills the call before the helper's guard fires, destroying the graceful
+#            # exit-20 fallback receipt. test/skills_reference_integrity_test.rb enforces this — never raise
+#            # the recommendation above without raising the call sites with it.
+#            # review_timeout sizing is UNSETTLED: 900s was a 3x margin over a 331s measured review, but the
+#            # first real run still timed out with zero output. Treat 900 as provisional, not validated.
+# engines:   # CBW-89/CBW-90 — per-phase engine/model/effort matrix. Every field is optional. Precedence
+#            # per phase (highest first): per-invocation token (e.g. work:codex) > this per-repo config >
+#            # personal global (~/.claude/cb.global.yml, same engines: schema, machine-wide + uncommitted) >
+#            # built-in default; codex.mode: never still wins over all (forces engine: claude). An
+#            # unavailable engine/model at RUNTIME falls back DOWN that chain with a requested-vs-actual
+#            # receipt; a typo'd engine/model is caught before the phase runs. Effort passes through to each
+#            # engine's native knob (Claude effort levels; Codex model_reasoning_effort) — no normalization.
+#            # CBW-90 — the BUILT-IN default is OPINIONATED (a DELIBERATE change from CBW-89's empty-model,
+#            # byte-for-byte default): omitting the whole block now routes plan→claude/fable/high,
+#            # work→codex/gpt-5.6-codex/high, review→claude/opus. Set this block (or the global file) to
+#            # override per phase; run-timing records which layer won (token|config|global-default|built-in-default).
+#   plan:    { engine: claude, model: opus, effort: high }   # plan engine is claude-only for now
+#   work:    { engine: codex,  model: gpt-5.6-codex, effort: medium }
+#   review:  { engine: codex,  required: false }             # required: true → halt if the engine is unavailable
+# design:    { ui_paths: [app/views, app/javascript, app/components, app/assets] }  # cb:design
+# reporting:
+#   dir: docs                                              # cb:backlog-sequencing report dir
+#   weekly_prep: { out_dir: docs/weekly-prep }             # cb:weekly-prep
+#   notion:                                                # cb:daily-summary, cb:weekly-prep, cb:eng-prefix-ids
+#     enabled: false                                       # master gate — Notion skills no-op unless true
+#     work_log_page:            ''                         # source: work-log database/page id
+#     daily_summary_parent:     ''                         # destination parent page id
+#     eng_tracker_data_source:  ''                         # Engineering Tracker data-source id
+#     future_work_page:         ''                         # weekly-prep source
+#     scope_page:               ''                         # weekly-prep source
+#     scope_url:                ''                         # weekly-prep source (optional)
+reporting: { notion: { enabled: false } }
