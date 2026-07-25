@@ -1,0 +1,88 @@
+WEBVTT
+
+00:00.000 --> 00:07.900
+Okay, so I'm talking about Glance here, and I'm building this to help small teams keep track of the work that they're handing off to AI agents and their background jobs.
+
+00:07.900 --> 00:14.560
+And I think this is important because it's catching not only that jobs ran, but it's also checking that business expectations are met.
+
+00:14.700 --> 00:19.360
+So here I logged in, and I could see that I have some failing jobs here.
+
+00:19.560 --> 00:20.880
+So I have 98 are passing.
+
+00:21.100 --> 00:23.200
+I've acknowledged one warning and one failing.
+
+00:23.340 --> 00:26.820
+So if I dig into this, I could see these two that require my attention.
+
+00:26.820 --> 00:32.940
+So one, for my Psyched Music, it's telling me that the Buffer failed posts need to be cleared.
+
+00:33.320 --> 00:40.320
+So this is, I mean, I happen to know what this is, but it's saying that there was six failures and that this alert goes off when there's five or more.
+
+00:40.700 --> 00:43.060
+And it gives me, so it tells me exactly what's going on.
+
+00:43.180 --> 00:46.080
+I could actually see the remediation right here, what I need to do to fix it.
+
+00:46.140 --> 00:51.860
+And I could also just hit copy details, and it just gives me all the information about this monitor remediation and what's running it.
+
+00:51.880 --> 00:54.100
+So I could actually paste this into an agent to help me fix it.
+
+00:54.100 --> 01:00.180
+And if I jump in and look at the configuration here, I could actually see how it works.
+
+01:00.240 --> 01:08.820
+And basically, every time a job runs, a payload comes in, and I could configure whatever I want to look at based on that JSON payload that comes in with each of the checks.
+
+01:09.040 --> 01:16.840
+And I could set up different monitors to fail at different times, including whether a value is how it compares to what my expectation was.
+
+01:17.060 --> 01:19.200
+Or I could look at the average over some number of runs as well.
+
+01:19.200 --> 01:24.100
+So I could say, hey, I only want to make sure that this only has a total of five failures over the course of a week or something like that.
+
+01:24.420 --> 01:29.760
+And then once I'm happy with what's going on with the monitor, I could just acknowledge it, and it gets acknowledged and closed down.
+
+01:30.240 --> 01:30.740
+Here's another.
+
+01:31.180 --> 01:32.420
+Again, these are all demo ones I sent up.
+
+01:32.440 --> 01:36.800
+But here's another one where I actually have a job running that does a nightly refactor of the code base.
+
+01:37.100 --> 01:38.100
+And it failed for some reason.
+
+01:38.100 --> 01:46.240
+And the reason it's telling me it failed here is that it actually has a PR from a previous night that was sitting in GitHub waiting to be merged and wasn't merged.
+
+01:46.340 --> 01:48.780
+So I could actually use remediation to see what's going on.
+
+01:48.820 --> 01:50.440
+I could see that job is sitting right here.
+
+01:50.520 --> 01:53.700
+So I could go and merge that job, and then I could just acknowledge this alert as well.
+
+01:53.780 --> 01:56.420
+So now when I come into my dashboard, I see that everything's passing.
+
+01:56.680 --> 01:58.200
+And then this is, like, super easy to set up.
+
+01:58.200 --> 01:58.320
+So now I'm going to go and merge that job.

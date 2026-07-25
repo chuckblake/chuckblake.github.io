@@ -4,57 +4,85 @@
 User-agent: GPTBot
 Allow: /
 Disallow: /talk-tracks/
+Disallow: /betaworks-glance-4f7a9c/
+Disallow: /assets/video/bw-glance-4f7a9c/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /talk-tracks/
+Disallow: /betaworks-glance-4f7a9c/
+Disallow: /assets/video/bw-glance-4f7a9c/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /talk-tracks/
+Disallow: /betaworks-glance-4f7a9c/
+Disallow: /assets/video/bw-glance-4f7a9c/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /talk-tracks/
+Disallow: /betaworks-glance-4f7a9c/
+Disallow: /assets/video/bw-glance-4f7a9c/
 
 User-agent: Claude-Web
 Allow: /
 Disallow: /talk-tracks/
+Disallow: /betaworks-glance-4f7a9c/
+Disallow: /assets/video/bw-glance-4f7a9c/
 
 User-agent: anthropic-ai
 Allow: /
 Disallow: /talk-tracks/
+Disallow: /betaworks-glance-4f7a9c/
+Disallow: /assets/video/bw-glance-4f7a9c/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /talk-tracks/
+Disallow: /betaworks-glance-4f7a9c/
+Disallow: /assets/video/bw-glance-4f7a9c/
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /talk-tracks/
+Disallow: /betaworks-glance-4f7a9c/
+Disallow: /assets/video/bw-glance-4f7a9c/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /talk-tracks/
+Disallow: /betaworks-glance-4f7a9c/
+Disallow: /assets/video/bw-glance-4f7a9c/
 
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /talk-tracks/
+Disallow: /betaworks-glance-4f7a9c/
+Disallow: /assets/video/bw-glance-4f7a9c/
 
 User-agent: CCBot
 Allow: /
 Disallow: /talk-tracks/
+Disallow: /betaworks-glance-4f7a9c/
+Disallow: /assets/video/bw-glance-4f7a9c/
 
 User-agent: cohere-ai
 Allow: /
 Disallow: /talk-tracks/
+Disallow: /betaworks-glance-4f7a9c/
+Disallow: /assets/video/bw-glance-4f7a9c/
 
 User-agent: Amazonbot
 Allow: /
 Disallow: /talk-tracks/
+Disallow: /betaworks-glance-4f7a9c/
+Disallow: /assets/video/bw-glance-4f7a9c/
 
 # Everyone else
 User-agent: *
 Disallow: /talk-tracks/
+Disallow: /betaworks-glance-4f7a9c/
+Disallow: /assets/video/bw-glance-4f7a9c/
 
 Sitemap: https://chuckblake.com/sitemap.xml
