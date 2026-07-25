@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00.000 --> 00:07.720
+The two parts of the Betaworks thesis that resonated with me were the first one was building companies with AI at the core.
+
+00:07.720 --> 00:13.780
+And the second one was, you know, making work across humans and agents more legible and traceable.
+
+00:14.080 --> 00:18.000
+I think the first one is how I'm kind of approaching my company Glance.
+
+00:18.320 --> 00:27.840
+And some of the things that I'm doing with AI at the core is I am using a lot of workflow tooling in my development process.
+
+00:27.840 --> 00:31.900
+I talk about that more in the section on my technical stack.
+
+00:32.760 --> 00:46.080
+But I spend a good deal of my time on my tooling and working on my process and workflow to kind of be able to sort of build with agents as quickly as possible and build the highest quality software and also kind of keep track of like actually what is being built.
+
+00:47.040 --> 00:54.340
+And the second thing as far as like making work across humans and agents more legible and traceable, that's definitely what Glance is all about.
+
+00:54.340 --> 01:04.820
+Like I'm trying to, again, it came about because I was running a lot of different cron jobs and agents running different scripts on my, originally it was OpenClaw.
+
+01:04.920 --> 01:05.800
+Now I'm using Hermes.
+
+01:06.060 --> 01:10.700
+But I was like running all these cron jobs and things would kind of fail and I was losing track of what was going on.
+
+01:11.120 --> 01:13.140
+I was running things across like different machines.
+
+01:13.140 --> 01:20.420
+And I wanted to build like one view that made it easy for me to sort of like keep on top of all these different things that are running in the background.
+
+01:20.780 --> 01:27.000
+And I think that the more I was using this, the more comfortable I was just to throw more and more work at these agents.
+
+01:27.700 --> 01:37.280
+And using Glance, I'm able to sort of like keep on top of things and really sort of understand what's going on and use that information to troubleshoot and kind of keep on top of stuff.
+
+01:37.280 --> 01:48.320
+And it turns either worry or long amounts of time kind of like digging through processes and trying to figure out what's going on to just like making it very easy to see whether things are running or not.
+
+01:48.400 --> 01:52.360
+If something's not running, I could kind of get to the bottom of it quickly and fix it.
+
+01:52.500 --> 01:53.920
+So it's been great.
+
+01:54.040 --> 01:58.040
+So that's how the Betaworks thesis fits into what I'm working on.
