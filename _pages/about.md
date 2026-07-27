@@ -2,6 +2,7 @@
 layout: about
 title: about
 permalink: /
+description: "Meet Brooklyn founder and fractional CTO Chuck Blake, who builds AI systems and developer tools and co-founded LEA, where manual data entry was cut in half."
 subtitle: Fractional CTO for early-stage startups. I build AI systems that ship.
 
 profile:

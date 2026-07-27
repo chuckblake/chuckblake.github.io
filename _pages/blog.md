@@ -2,6 +2,7 @@
 layout: default
 permalink: /blog/
 title: blog
+description: "Explore Chuck Blake's essays on startups, technology, music, AI systems, and developer tools, written from a founder and fractional CTO's perspective."
 nav: true
 nav_order: 4
 pagination:

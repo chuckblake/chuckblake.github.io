@@ -2,7 +2,8 @@
 layout: page
 title: writing & talks
 permalink: /publications/
-description: Writing, talks, and coverage.
+description: "Practical ideas on AI, technology, and operations"
+meta_description: "Browse Chuck Blake's writing, talks, and coverage on AI systems, developer workflows, technology operations, and building open-source communities."
 nav: true
 nav_order: 3
 ---

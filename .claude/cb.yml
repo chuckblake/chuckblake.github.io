@@ -1,7 +1,7 @@
 # .claude/cb.yml — per-repo cb workflow config (committed; NO secrets here).
 # Machine-local values (e.g. LINEAR_API_KEY and CB_VAULT_ROOT) live in ~/.claude/cb.env
 # (global, gitignored). Vault-rooted defaults use `${vault}`, resolved from CB_VAULT_ROOT.
-project:   { key: CSB }
+project: { key: CSB }
 # Vault-hosted single-project markdown backend — issues live in Chuck-Vault's cb-dev tree
 # (browsable in Obsidian) so this repo and chuck-vault see the same backlog.
 backlog:
@@ -16,18 +16,18 @@ backlog:
         type: backlog-issue
         project: chuckblake.com
         tags: [backlog, development, chuckblake-com]
-worktree:  { tool: superset, base: main } # plain | rails | superset | none
-worklog:   { enabled: true, dest: "${vault}/worklogs" }
+worktree: { tool: superset, base: main } # plain | rails | superset | none
+worklog: { enabled: true, dest: "${vault}/worklogs" }
 # Per-run stage timing log (CBW-63): best-effort, fail-open JSONL — one file per issue/run at
 # `dest`, written OUTSIDE the repo, never committed. `cb:init` fills a portable per-project `dest`
 # below (CBW-70), so timing is collected out of the box. An empty `dest` (or `enabled: false`) is
 # still a silent no-op — and `lib/preflight` warns when a repo is enabled with an empty dest so the
 # gap is never silent. Filenames carry the project + issue, so several repos can share one dest dir.
 # Recommended pattern: `${vault}/cb-dev/<project>/logs`.
-timing:    { enabled: true, dest: "${vault}/cb-dev/chuckblake.com/logs" }
+timing: { enabled: true, dest: "${vault}/cb-dev/chuckblake.com/logs" }
 conventions: { enabled: false }
-ci:        { provider: github }                        # github | none
-hooks:     { branch_guard: true, worklog_stop: true, lfg_watchdog: true }
+ci: { provider: github } # github | none
+hooks: { branch_guard: true, worklog_stop: true, lfg_watchdog: true }
 
 # --- Multi-project Markdown backend (optional; e.g. a vault hosting several projects) ---
 # Replace the single-line `backlog:` above with a projects map. Each project gets its own

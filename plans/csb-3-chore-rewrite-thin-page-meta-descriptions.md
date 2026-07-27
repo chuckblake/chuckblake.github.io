@@ -27,11 +27,11 @@ Business contract lives in backlog issue **CSB-3** — this document covers only
 `_includes/metadata.liquid` drives three tags off a single expression,
 `{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}`:
 
-| Tag | Line | Gate |
-|---|---|---|
-| `<meta name="description">` | 42 | always |
-| `og:description` | 60 | `site.serve_og_meta` (currently `true`) |
-| `twitter:description` | 69 | `site.serve_og_meta` |
+| Tag                         | Line | Gate                                    |
+| --------------------------- | ---- | --------------------------------------- |
+| `<meta name="description">` | 42   | always                                  |
+| `og:description`            | 60   | `site.serve_og_meta` (currently `true`) |
+| `twitter:description`       | 69   | `site.serve_og_meta`                    |
 
 One frontmatter `description:` per page therefore satisfies all three. There is no separate Open Graph
 field to set.
@@ -40,17 +40,17 @@ field to set.
 
 `_layouts/page.liquid:14` renders `{{ page.description }}` as a **visible** `<p class="post-description">`
 directly beneath the page `<h1>`. So for pages using `layout: page`, the description is simultaneously
-the SEO snippet *and* on-page subheading copy. It must read as natural human subhead prose, not as an
+the SEO snippet _and_ on-page subheading copy. It must read as natural human subhead prose, not as an
 SEO string.
 
-| Page | Layout | Description visible on page? | Current value | Len |
-|---|---|---|---|---|
-| `_pages/about.md` | `about` | **No** — `_layouts/about.liquid` has its own hero copy | *(absent)* → falls back to `site.description` | — |
-| `_pages/blog.md` | `default` | **No** | *(absent)* → falls back to `site.description` | — |
-| `_pages/fractional-cto.md` | `page` | **Yes** | "Technical leadership for early-stage startups" | 45 |
-| `_pages/projects.md` | `page` | **Yes** | "Things I'm building" | 19 |
-| `_pages/publications.md` | `page` | **Yes** | "Writing, talks, and coverage." | 29 |
-| `_pages/music.md` | `page` | **Yes** | "Shows I've been to" | 18 |
+| Page                       | Layout    | Description visible on page?                           | Current value                                   | Len |
+| -------------------------- | --------- | ------------------------------------------------------ | ----------------------------------------------- | --- |
+| `_pages/about.md`          | `about`   | **No** — `_layouts/about.liquid` has its own hero copy | _(absent)_ → falls back to `site.description`   | —   |
+| `_pages/blog.md`           | `default` | **No**                                                 | _(absent)_ → falls back to `site.description`   | —   |
+| `_pages/fractional-cto.md` | `page`    | **Yes**                                                | "Technical leadership for early-stage startups" | 45  |
+| `_pages/projects.md`       | `page`    | **Yes**                                                | "Things I'm building"                           | 19  |
+| `_pages/publications.md`   | `page`    | **Yes**                                                | "Writing, talks, and coverage."                 | 29  |
+| `_pages/music.md`          | `page`    | **Yes**                                                | "Shows I've been to"                            | 18  |
 
 `_pages/404.md` already has a description and is out of scope.
 
@@ -100,11 +100,11 @@ No test suite exists. `bundle exec jekyll build` works locally (ruby 3.3.10, bun
 **Rewrite the vendored `_includes/metadata.liquid` JSON-LD block rather than working around it.**
 Three options were weighed:
 
-| Option | Verdict |
-|---|---|
+| Option                                                                                     | Verdict                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Leave `serve_schema_org: false`; add a `WebSite` node to `person_schema.liquid`'s `@graph` | Rejected — CSB-3 explicitly requires the config flag on, and this leaves the broken block one toggle away from being re-enabled by a future config edit |
-| New site-local override include, flag stays off | Rejected — same latent-landmine problem, plus a second file emitting overlapping types |
-| **Flip the flag and fix the block in place** | **Chosen** |
+| New site-local override include, flag stays off                                            | Rejected — same latent-landmine problem, plus a second file emitting overlapping types                                                                  |
+| **Flip the flag and fix the block in place**                                               | **Chosen**                                                                                                                                              |
 
 Editing vendored al-folio files is already established practice in this fork (`head.liquid` carries the
 homepage-only `person_schema` include; `about.liquid` is substantially rewritten). Fixing the block where
@@ -164,9 +164,11 @@ its job, not placeholder filler. See Open Questions.
 ## Files
 
 **Create**
+
 - `bin/verify-meta.rb` — build-output verification script
 
 **Modify**
+
 - `_includes/metadata.liquid` — **U2:** collapse the triplicated description expression (42, 60, 69) into one `{% assign %}` with `meta_description` → `description` → `site.description` fallback. **U3:** rewrite the JSON-LD block (229-246), delete the `sameaslinks` generator (81-227), fix the `else if` → `elsif` bug
 - `_config.yml` — `serve_schema_org: false` → `true`
 - `SEO.md` — correct the two sections that misdescribe what the flag emits (see Documentation Notes)
@@ -176,8 +178,10 @@ its job, not placeholder filler. See Open Questions.
 - `_pages/projects.md` — add `meta_description:`; tighten visible `description:`
 - `_pages/publications.md` — add `meta_description:`; tighten visible `description:`
 - `_pages/music.md` — add `meta_description:`; tighten visible `description:`
+- `.claude/cb.yml` — prettier formatting only; pre-existing violation that fails CI (see Decisions)
 
 **Test**
+
 - `bin/verify-meta.rb` — the gate itself; run against `_site/` after `bundle exec jekyll build`
 
 ---
@@ -192,10 +196,12 @@ cares about. Written first so U2 and U3 have an objective target and `/cb:done` 
 **Dependencies:** None.
 
 **Files:**
+
 - Create: `bin/verify-meta.rb`
 - Modify: `_config.yml` — add `plans/` to `exclude` (discovered during U1; see Decisions)
 
 **Approach:**
+
 - Ruby stdlib only (`json`, `set`) — no new gems, no `Gemfile` change. Ruby is already required to build.
 - Takes an optional `_site` root argument, defaulting to `_site`. Exits non-zero on any failure and prints
   every failure, not just the first — a one-shot run should show the full remaining gap.
@@ -211,6 +217,7 @@ site — a verification script that has never been seen to fail proves nothing.
 `update_scholar_citations.py`); match that shape — executable bit, shebang, no framework coupling.
 
 **Test scenarios:**
+
 - Happy path: against a correctly-built site, exits 0 and prints a per-page summary line.
 - Error path: a page whose description is 45 chars → fails naming the page, the actual length, and the
   120–160 bound.
@@ -242,6 +249,7 @@ due diligence.
 **Dependencies:** U1.
 
 **Files:**
+
 - Modify: `_includes/metadata.liquid` (description expression only), `_pages/about.md`, `_pages/blog.md`,
   `_pages/fractional-cto.md`, `_pages/projects.md`, `_pages/publications.md`, `_pages/music.md`
 - Test: `bin/verify-meta.rb`
@@ -252,13 +260,11 @@ First land the template change that makes the rest possible. In `_includes/metad
 triplicated fallback at lines 42, 60, and 69 with a single assignment near the top of the file:
 
 ```liquid
-{% assign page_meta_description = page.meta_description
-     | default: page.description
-     | default: site.description %}
+{% assign page_meta_description = page.meta_description | default: page.description | default: site.description %}
 ```
 
-*Directional — the exact filter chain is the implementer's call; `| default:` treats an empty string as
-present, so an explicit `{% if %}` chain may be safer.* Then reference `page_meta_description` in all
+_Directional — the exact filter chain is the implementer's call; `| default:` treats an empty string as
+present, so an explicit `{% if %}` chain may be safer._ Then reference `page_meta_description` in all
 three tags. Nothing else in the repo reads those lines, and `_layouts/page.liquid:14` keeps rendering
 `page.description` untouched.
 
@@ -275,14 +281,14 @@ Then write copy, split by whether the page renders the description visibly:
 Per-page angle for the **search string** — directional, not final copy; write to the content, and count
 characters against the 120–160 bound:
 
-| Page | Angle |
-|---|---|
-| `about.md` | Brooklyn founder / fractional CTO; AI systems and developer tools; names the LEA outcome as the credibility anchor |
-| `fractional-cto.md` | The engagement itself — what a founder gets, what problems it solves, without an executive hire |
-| `projects.md` | Shipped work as evidence: named products, actually in production |
-| `publications.md` | Writing, talks, and coverage; the *In General* newsletter; what the thinking is about |
-| `blog.md` | Essays on startups, technology, and AI engineering — matches `site.blog_description` in tone |
-| `music.md` | Live shows and the Corvoco electronic-music project; the honest personal-interest page, positioned as range rather than padded with keywords |
+| Page                | Angle                                                                                                                                        |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `about.md`          | Brooklyn founder / fractional CTO; AI systems and developer tools; names the LEA outcome as the credibility anchor                           |
+| `fractional-cto.md` | The engagement itself — what a founder gets, what problems it solves, without an executive hire                                              |
+| `projects.md`       | Shipped work as evidence: named products, actually in production                                                                             |
+| `publications.md`   | Writing, talks, and coverage; the _In General_ newsletter; what the thinking is about                                                        |
+| `blog.md`           | Essays on startups, technology, and AI engineering — matches `site.blog_description` in tone                                                 |
+| `music.md`          | Live shows and the Corvoco electronic-music project; the honest personal-interest page, positioned as range rather than padded with keywords |
 
 Do not touch `_posts/` (already good, per CSB-3) or `_projects/` (see Key Technical Decisions).
 
@@ -290,6 +296,7 @@ Do not touch `_posts/` (already good, per CSB-3) or `_projects/` (see Key Techni
 copy — concrete, specific, em-dash qualifier, no marketing padding.
 
 **Test scenarios:**
+
 - Happy path: all six pages present, unique, 120–160 chars — `bin/verify-meta.rb` length/uniqueness
   assertions pass.
 - Happy path: `og:description` and `twitter:description` mirror `<meta name="description">` on all six
@@ -322,10 +329,12 @@ JSON-LD node should consume the `page_meta_description` assignment U2 introduces
 the fallback a fourth time.
 
 **Files:**
+
 - Modify: `_config.yml`, `_includes/metadata.liquid`, `SEO.md`
 - Test: `bin/verify-meta.rb`
 
 **Approach:**
+
 - `_config.yml:70` → `serve_schema_org: true`. Update the trailing comment, which currently describes the
   old broken behavior.
 - Rewrite `_includes/metadata.liquid:229-246`. Target shape, directional:
@@ -354,6 +363,7 @@ Those are different claims and CSB-3 asks for both.
 on every interpolated value, `{% if %}`-guarded optional keys so no trailing comma is emitted.
 
 **Test scenarios:**
+
 - Happy path: every page's JSON-LD parses; every top-level node carries an `@id`.
 - Happy path: homepage emits `Person`, `ProfilePage`, and `WebSite` — three distinct `@id`s, no `@type`
   collision on a shared `@id`.
@@ -399,13 +409,13 @@ what the code now actually emits.
 
 ## Risks & Dependencies
 
-| Risk | Mitigation |
-|---|---|
-| Liquid syntax error in `metadata.liquid` breaks every page | U3 requires a full `bundle exec jekyll build` before the unit is done, not a spot check |
-| An apostrophe in new description copy produces invalid JSON-LD | Switch to `\| jsonify`; U3 carries an explicit edge-case scenario for it |
-| A 120–160 char string reads badly as a visible subhead on the four `layout: page` pages | Called out as the primary copy constraint in U2; visual check in the built site is an explicit scenario |
-| Dropping `sameAs` from the WebSite node weakens entity signals | It does not — the 9-entry Person `sameAs` is strictly richer than the 3 links being removed, and it is the array search engines should be reading |
-| Vendored-file edits complicate a future al-folio upstream merge | Accepted; the fork already carries vendored edits to `head.liquid` and `about.liquid`. The alternative (a parallel override include) is worse — it leaves a broken block one config toggle away from re-enabling |
+| Risk                                                                                    | Mitigation                                                                                                                                                                                                       |
+| --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Liquid syntax error in `metadata.liquid` breaks every page                              | U3 requires a full `bundle exec jekyll build` before the unit is done, not a spot check                                                                                                                          |
+| An apostrophe in new description copy produces invalid JSON-LD                          | Switch to `\| jsonify`; U3 carries an explicit edge-case scenario for it                                                                                                                                         |
+| A 120–160 char string reads badly as a visible subhead on the four `layout: page` pages | Called out as the primary copy constraint in U2; visual check in the built site is an explicit scenario                                                                                                          |
+| Dropping `sameAs` from the WebSite node weakens entity signals                          | It does not — the 9-entry Person `sameAs` is strictly richer than the 3 links being removed, and it is the array search engines should be reading                                                                |
+| Vendored-file edits complicate a future al-folio upstream merge                         | Accepted; the fork already carries vendored edits to `head.liquid` and `about.liquid`. The alternative (a parallel override include) is worse — it leaves a broken block one config toggle away from re-enabling |
 
 ---
 
@@ -415,8 +425,8 @@ what the code now actually emits.
 120–160 character rule (`SEO.md:355`) and of the instruction to flip this flag (`SEO.md:164-176`).
 
 It is also **wrong about the code**, which is worth recording because it is what makes this issue look
-like a one-line change. Its Schema.org section says of `serve_schema_org: true`: *"That's it! al-folio
-automatically marks up: Author info (Person schema with name, URL, photo)"* — the block does not emit a
+like a one-line change. Its Schema.org section says of `serve_schema_org: true`: _"That's it! al-folio
+automatically marks up: Author info (Person schema with name, URL, photo)"_ — the block does not emit a
 Person node at all. It emits a `WebSite` node that merely carries a person's name. That doc is very likely
 why CSB-3 describes the flag as complementing the Person schema at no cost.
 
@@ -493,6 +503,18 @@ folded scalar (`description: >`).
 Picked: normalize (collapse whitespace runs, trim) before length-checking, matching what a search
 engine displays. Left as-is, a 160-character description written with `>` folding would report 161
 and fail for a reason nothing in the output names.
+
+### Formatting `.claude/cb.yml` — pre-existing, and it fails CI — 2026-07-27
+
+`npx prettier . --check` (`.github/workflows/prettier.yml:26`, no `continue-on-error`, so it fails the
+job) flags `.claude/cb.yml`. The file is byte-identical to `main`, so this is pre-existing: CI's
+prettier job is already red on `main` and this PR would inherit that regardless of its own changes.
+
+Picked: run the AGENTS.md pre-commit step (`npx prettier . --write`) and let it format that file —
+6 lines, formatting only, no semantic change. That is the repo's own documented convention, and CI
+cannot go green without it.
+
+Not treated as scope creep, but it is the one file in this branch that CSB-3 did not ask for.
 
 ### Local builds need `nbconvert`; this is not a branch regression — 2026-07-27
 
