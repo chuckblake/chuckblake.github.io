@@ -431,6 +431,49 @@ dashboard, neither of which exists on a branch, so they cannot gate this PR.
 
 ---
 
+## Decisions
+
+### Card copy taken from `_pages/about.md`, not the fractional-cto description — 2026-07-27
+
+The plan named `_pages/fractional-cto.md`'s `description` ("Hands-on technical leadership for teams
+ready to ship") as the card's positioning line. Used `_pages/about.md`'s `subtitle` instead:
+"Fractional CTO for early-stage startups. I build AI systems that ship." Rejected the original
+because CSB-4 AC#1 asks specifically for _fractional-CTO positioning_, and the about subtitle states
+that in words while the fractional-cto description only implies it. Both are already-published site
+copy, so the no-unverified-claims constraint holds either way.
+
+### U2 implemented natively rather than through Codex — 2026-07-27
+
+U1 ran through the configured Codex engine (rc=0). U2 was done natively. Not a Codex failure and not
+a fallback — the unit requires render → look → adjust iteration on a visual artifact, and the CLI
+engine has no way to see its own output. The first render orphaned "ship." on a third line; that was
+only findable by looking at the image. U3/U4 are two-line config edits where an engine round-trip
+would cost more than it returns.
+
+### `text-wrap: balance` on the deck instead of a fixed `max-width` — 2026-07-27
+
+The initial `max-width: 15.5em` broke the positioning line three ways with a one-word last line.
+Rejected hand-tuning the max-width, which would silently re-break whenever the copy changes; the
+card is regenerable and the copy is expected to drift.
+
+### `package-lock.json` rename artifact reverted, not shipped — 2026-07-27
+
+`npm install` in this worktree rewrote the lockfile's `name` field from `chuckblake.github.io` to the
+worktree directory name (`csb-5-feature-add-privacy-friendly-analytics`) — npm derives it from the
+containing directory. Reverted. Anyone running `npm install` from a cb worktree will regenerate this;
+it must not be committed, as it renames the package for everyone.
+
+### Local `jekyll build` needs a `jupyter` binary this machine lacks — 2026-07-27
+
+`bundle exec jekyll build` aborts on `assets/jupyter/blog.ipynb` with `No such file or directory -
+jupyter`. Pre-existing and environmental, unrelated to this branch — the Docker image
+(`docker compose up --build`, the documented path) ships jupyter, and Docker was not running here.
+Verified the build by layering a config override that adds `assets/jupyter/` to `exclude:`; the build
+then succeeds and emits `index.html`. If a future local build fails this way, it is the missing
+binary, not the site.
+
+---
+
 ## Sources & References
 
 - Backlog issues: CSB-5 (primary), CSB-4 — grouped via `plans/csb-5-feature-add-privacy-friendly-analytics.group.json`
