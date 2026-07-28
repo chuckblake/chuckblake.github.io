@@ -522,6 +522,20 @@ Added the assertion that catches it: `bin/verify-meta.rb` now collects the `#web
 page and fails if any two differ, naming the differing keys. Negative-tested by perturbing one page's
 copy in a fixture.
 
+### End-tag regexes accept attribute junk (CodeQL `rb/bad-tag-filter`) — 2026-07-27
+
+CodeQL failed the PR with one high-severity alert on `bin/verify-meta.rb:21`: the `</script\s*>` and
+`</p\s*>` endings do not match a valid end tag carrying attribute-looking junk, e.g.
+`</script\t\n bar>`, which HTML permits and parsers ignore. The practical risk here is low — the
+script only reads this repo's own build output — but the parse bug is real: an unmatched end tag
+lets `(.*?)` run past the intended close and swallow the rest of the document.
+
+Picked: end both patterns with `\b[^>]*>` instead of `\s*>`. Verified the fix matches both the plain
+and junk-bearing forms and leaves the real site's result unchanged (still exit 0, same six pages).
+
+Not suppressed as a false positive: CI must be green, and "it only reads our own HTML" is an
+argument about exploitability, not about whether the regex is correct.
+
 ### Formatting `.claude/cb.yml` — pre-existing, and it fails CI — 2026-07-27
 
 `npx prettier . --check` (`.github/workflows/prettier.yml:26`, no `continue-on-error`, so it fails the

@@ -18,8 +18,12 @@ PERSON_NODE_ID = "https://chuckblake.com/#person"
 
 ATTRIBUTE_PATTERN = /([^\s=\/>]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))/m
 META_TAG_PATTERN = /<meta\b(?:[^>"']|"[^"]*"|'[^']*')*>/im
-SCRIPT_TAG_PATTERN = /<script\b((?:[^>"']|"[^"]*"|'[^']*')*)>(.*?)<\/script\s*>/im
-PARAGRAPH_TAG_PATTERN = /<p\b((?:[^>"']|"[^"]*"|'[^']*')*)>(.*?)<\/p\s*>/im
+# End tags accept anything up to `>`, not just optional whitespace. HTML permits attribute-looking
+# junk on a closing tag (`</script\t\n bar>` is a valid end tag the parser ignores), so a `\s*>`
+# ending silently fails to close the match and swallows the rest of the document. CodeQL flags the
+# narrow form as rb/bad-tag-filter.
+SCRIPT_TAG_PATTERN = /<script\b((?:[^>"']|"[^"]*"|'[^']*')*)>(.*?)<\/script\b[^>]*>/im
+PARAGRAPH_TAG_PATTERN = /<p\b((?:[^>"']|"[^"]*"|'[^']*')*)>(.*?)<\/p\b[^>]*>/im
 
 def attributes(tag)
   tag.scan(ATTRIBUTE_PATTERN).to_h do |name, double_quoted, single_quoted, unquoted|
