@@ -1,0 +1,116 @@
+<!doctype html>
+<!--
+  Source for assets/img/og-image.jpg — the sitewide Open Graph / Twitter preview card (CSB-4).
+
+  This file is NOT published: `tools/` is in _config.yml's `exclude:` list. It lives in the repo so
+  the card stays regenerable when the headshot or positioning copy changes.
+
+  Design tokens are copied from the site itself so the card matches by construction:
+    background   #fbfaf7   --global-bg-color        (_sass/_themes.scss)
+    text         #151617   --global-text-color
+    muted        #60666c   --global-text-color-light
+    accent       #116dff   --global-theme-color
+    headings     "Newsreader" 650, line-height .9   (_sass/_typography.scss)
+    kicker       "IBM Plex Mono" 600, uppercase, .08em  (_sass/_home.scss .home-kicker)
+    body         "Inter"                            (_sass/_layout.scss)
+  Fonts load from the same Google Fonts URL the site uses (_config.yml google_fonts).
+
+  Copy is reused verbatim from already-published site text — never invented:
+    name        _config.yml `title`
+    positioning _pages/about.md `subtitle`
+
+  Regenerate:
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless \
+      --screenshot=/tmp/og.png --window-size=1200,630 --hide-scrollbars \
+      --default-background-color=FFFFFF --force-device-scale-factor=2 \
+      tools/og-image/og-card.html
+    magick /tmp/og.png -resize 1200x630 -quality 82 -strip assets/img/og-image.jpg
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Open Graph card source</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,650&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+
+      body {
+        background: #fbfaf7;
+        color: #151617;
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.72fr);
+        align-items: center;
+        gap: 64px;
+        padding: 76px;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        /* Accent rule down the left edge — echoes the site's theme colour without shouting. */
+        border-left: 14px solid #116dff;
+      }
+
+      .kicker {
+        color: #116dff;
+        font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-family: "Newsreader", Georgia, serif;
+        font-weight: 650;
+        font-size: 116px;
+        line-height: 0.9;
+        letter-spacing: 0;
+        margin: 26px 0 30px;
+      }
+
+      .deck {
+        color: #151617;
+        font-size: 33px;
+        font-weight: 500;
+        line-height: 1.34;
+        /* Full column width: at 15.5em the second sentence broke three ways and orphaned "ship."
+           on its own line. Letting it fill the column sets it in two balanced lines. */
+        text-wrap: balance;
+      }
+
+      .portrait {
+        /* 918x1024 source, cropped to a portrait panel. object-position keeps the face centred. */
+        width: 100%;
+        height: 478px;
+        object-fit: cover;
+        object-position: 50% 22%;
+        border-radius: 18px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="copy">
+      <p class="kicker">chuckblake.com</p>
+      <h1>Chuck Blake</h1>
+      <p class="deck">Fractional CTO for early-stage startups. I build AI systems that ship.</p>
+    </div>
+    <img class="portrait" src="../../assets/img/prof_pic.jpg" alt="Chuck Blake" />
+  </body>
+</html>

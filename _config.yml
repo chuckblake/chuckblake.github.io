@@ -68,7 +68,7 @@ max_width: 1100px
 # see https://schema.org/docs/faq.html for more information
 serve_og_meta: true # Include Open Graph meta tags in the HTML head
 serve_schema_org: true # Emit @id-anchored WebSite and BlogPosting schema; Person/ProfilePage schema is handled below
-og_image: https://chuckblake.com/assets/img/prof_pic.jpg # The site-wide (default for all links) Open Graph preview image
+og_image: https://chuckblake.com/assets/img/og-image.jpg # The site-wide (default for all links) Open Graph preview image. MUST stay an absolute URL — metadata.liquid emits this value raw. Regenerate from tools/og-image/og-card.html.
 x_username: chuckblake # used for the twitter:site / twitter:creator card tags
 
 # -----------------------------------------------------------------------------
@@ -221,6 +221,7 @@ exclude:
   - purgecss.config.js
   - README.md
   - readme_preview/
+  - tools/ # regenerable build sources (e.g. the Open Graph card) — not site pages
   - vendor
 keep_files:
   - CNAME
