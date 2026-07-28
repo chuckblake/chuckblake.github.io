@@ -1,9 +1,22 @@
 # .claude/cb.yml — per-repo cb workflow config (committed; NO secrets here).
 # Machine-local values (e.g. LINEAR_API_KEY and CB_VAULT_ROOT) live in ~/.claude/cb.env
 # (global, gitignored). Vault-rooted defaults use `${vault}`, resolved from CB_VAULT_ROOT.
-project: { key: WEB }
-backlog: { backend: markdown, dir: "${vault}/cb-dev/chuckblake.com/backlog" } # central Chuck Vault backlog
-worktree: { tool: plain, base: main } # plain | rails | superset | none
+project: { key: CSB }
+# Vault-hosted single-project markdown backend — issues live in Chuck-Vault's cb-dev tree
+# (browsable in Obsidian) so this repo and chuck-vault see the same backlog.
+backlog:
+  backend: markdown
+  default_project: chuckblake.com
+  statuses: [todo, planning, in-progress, in-review, blocked, icebox, done, archived]
+  projects:
+    chuckblake.com:
+      key: CSB
+      dir: "${vault}/cb-dev/chuckblake.com/backlog"
+      frontmatter:
+        type: backlog-issue
+        project: chuckblake.com
+        tags: [backlog, development, chuckblake-com]
+worktree: { tool: superset, base: main } # plain | rails | superset | none
 worklog: { enabled: true, dest: "${vault}/worklogs" }
 # Per-run stage timing log (CBW-63): best-effort, fail-open JSONL — one file per issue/run at
 # `dest`, written OUTSIDE the repo, never committed. `cb:init` fills a portable per-project `dest`
@@ -44,13 +57,14 @@ hooks: { branch_guard: true, worklog_stop: true, lfg_watchdog: true }
 # plan:      { expected_model: '' }                        # cb:plan preflight (unset = defer to worktree.plan_agent preset)
 #            # value is a model id/display-name fragment (e.g. claude-opus-4-8, Opus 4.8) —
 #            # NOT a worktree.plan_agent preset name (different vocabulary, see worktree.tool above)
-# codex:     { mode: auto, implement_timeout: 1800, delegate_timeout: 120, review_timeout: 900 }
+# codex:     { mode: auto, implement_timeout: 1800, delegate_timeout: 120, review_timeout: 900, correction_cap: 2 }
 #            # mode: auto = use Codex when present and fall back gracefully | always = error loudly when
 #            # Codex is missing/fails | never = run natively. Guards are shape-specific: implementation
 #            # defaults to 1800s; read-many-emit-small delegation defaults to 120s; the cb:done code-review
 #            # gate (codex-review — a whole-branch-diff read) defaults to 900s. Per helper, precedence is its
 #            # shape key > legacy shared codex.timeout > built-in default. codex.timeout remains honored as a
 #            # shared override for existing configs. With auto + no Codex, behavior remains native.
+#            # correction_cap (default 2) bounds the Codex resume-correction loop; 0 disables it (fall back to native on first red).
 #            # delegate_timeout sizing: cb:done's PR dossier is the heaviest delegate consumer (it emits a
 #            # whole HTML document, not a short summary). Repos that want that delegation should raise this
 #            # to ~300; at the 120s default it will usually time out and fall back to native generation.
@@ -62,19 +76,21 @@ hooks: { branch_guard: true, worklog_stop: true, lfg_watchdog: true }
 #            # the recommendation above without raising the call sites with it.
 #            # review_timeout sizing is UNSETTLED: 900s was a 3x margin over a 331s measured review, but the
 #            # first real run still timed out with zero output. Treat 900 as provisional, not validated.
-# engines:   # CBW-89/CBW-90 — per-phase engine/model/effort matrix. Every field is optional. Precedence
+# engines:   # CBW-89/CBW-90/CBW-109 — per-phase engine/model/effort matrix. Every field is optional. Precedence
 #            # per phase (highest first): per-invocation token (e.g. work:codex) > this per-repo config >
 #            # personal global (~/.claude/cb.global.yml, same engines: schema, machine-wide + uncommitted) >
 #            # built-in default; codex.mode: never still wins over all (forces engine: claude). An
 #            # unavailable engine/model at RUNTIME falls back DOWN that chain with a requested-vs-actual
 #            # receipt; a typo'd engine/model is caught before the phase runs. Effort passes through to each
 #            # engine's native knob (Claude effort levels; Codex model_reasoning_effort) — no normalization.
-#            # CBW-90 — the BUILT-IN default is OPINIONATED (a DELIBERATE change from CBW-89's empty-model,
-#            # byte-for-byte default): omitting the whole block now routes plan→claude/fable/high,
-#            # work→codex/gpt-5.6-codex/high, review→claude/opus. Set this block (or the global file) to
-#            # override per phase; run-timing records which layer won (token|config|global-default|built-in-default).
+#            # CBW-90/CBW-109 — the BUILT-IN default is OPINIONATED: omitting the whole block routes
+#            # plan→claude/fable/high, work→codex/<CLI default>/high, review→claude/opus. Work deliberately
+#            # has no pinned model because model-id validity depends on the install's auth type; the Codex CLI
+#            # chooses an account-compatible default. Pin engines.work.model here (or in the global file) only
+#            # when you know the install supports it; use codex.mode: never for a full opt-out. Run-timing records
+#            # which layer won (token|config|global-default|built-in-default).
 #   plan:    { engine: claude, model: opus, effort: high }   # plan engine is claude-only for now
-#   work:    { engine: codex,  model: gpt-5.6-codex, effort: medium }
+#   work:    { engine: codex,  effort: medium }                # no model = CLI default; pin only if supported
 #   review:  { engine: codex,  required: false }             # required: true → halt if the engine is unavailable
 # design:    { ui_paths: [app/views, app/javascript, app/components, app/assets] }  # cb:design
 # reporting:

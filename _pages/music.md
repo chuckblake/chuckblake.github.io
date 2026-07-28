@@ -2,7 +2,8 @@
 layout: page
 title: music
 permalink: /music/
-description: Shows I've been to
+description: "A personal archive of live shows and electronic music"
+meta_description: "Browse Chuck Blake's live show history and concert photos, plus Corvoco, his electronic music project, for a personal view beyond technology and startups."
 nav: true
 nav_order: 5
 ---
