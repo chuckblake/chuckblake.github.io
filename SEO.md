@@ -166,33 +166,39 @@ Benefits:
 Enable in `_config.yml`:
 
 ```yaml
-serve_schema_org: true # Change from false to true
+serve_schema_org: true
 ```
 
-That's it! al-folio automatically marks up:
+With this setting enabled, `_includes/metadata.liquid` emits:
 
-- **Author info** (Person schema with name, URL, photo)
-- **Blog posts** (BlogPosting schema with date, title, description)
-- **Publications** (CreativeWork/ScholarlyArticle schema)
+- A **WebSite** node for standard pages, anchored to the site-wide `#website` identifier
+- A **BlogPosting** node for each blog post, linked to the site and author by their identifiers
+
+The homepage's **Person** and **ProfilePage** nodes are emitted separately by
+`_includes/person_schema.liquid` when `person_schema.enabled` is `true`.
 
 ### What Gets Marked Up
 
-**Homepage (Person):**
+**Homepage:**
 
-- Your name, photo, description
-- Links to your profiles (LinkedIn, GitHub, etc.)
+- A **WebSite** node at `https://your-domain.com/#website`
+- A **Person** node at `https://your-domain.com/#person`, with your profile links
+- A **ProfilePage** node at `https://your-domain.com/#profilepage`, linked to the Person
+- `_includes/person_schema.liquid` owns the Person and ProfilePage properties
 
-**Blog posts (BlogPosting):**
+**Other standard pages:**
 
-- Title, date, author, description
-- Content
-- Publication date and modified date
+- The same site-wide **WebSite** node, byte-identical on every page — one `@id` describes one
+  entity, so it carries the site-level `description`, not the page's
+- A publisher reference to the Person identifier without duplicating Person properties
 
-**Publications (ScholarlyArticle):**
+The page's own meta description is served by `<meta name="description">`, not by this node.
 
-- Title, authors, abstract
-- Publication date, venue
-- URL and PDF links
+**Blog posts:**
+
+- A page-specific **BlogPosting** node at the absolute post URL plus `#blogposting`
+- The post headline, description, URL, and main page reference
+- An author reference to `#person` and an `isPartOf` reference to `#website`
 
 ---
 

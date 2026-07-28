@@ -11,35 +11,35 @@ ninja.data = [{
     },
   },{id: "nav-fractional-cto",
           title: "fractional cto",
-          description: "Technical leadership for early-stage startups",
+          description: "Hands-on technical leadership for teams ready to ship",
           section: "Navigation",
           handler: () => {
             window.location.href = "/fractional-cto/";
           },
         },{id: "nav-projects",
           title: "projects",
-          description: "Things I&#39;m building",
+          description: "Products, tools, and experiments from current and past work",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
           },
         },{id: "nav-writing-amp-talks",
           title: "writing &amp; talks",
-          description: "Writing, talks, and coverage.",
+          description: "Practical ideas on AI, technology, and operations",
           section: "Navigation",
           handler: () => {
             window.location.href = "/publications/";
           },
         },{id: "nav-blog",
           title: "blog",
-          description: "",
+          description: "Explore Chuck Blake&#39;s essays on startups, technology, music, AI systems, and developer tools, written from a founder and fractional CTO&#39;s perspective.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/blog/";
           },
         },{id: "nav-music",
           title: "music",
-          description: "Shows I&#39;ve been to",
+          description: "A personal archive of live shows and electronic music",
           section: "Navigation",
           handler: () => {
             window.location.href = "/music/";
