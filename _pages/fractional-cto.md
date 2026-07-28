@@ -243,7 +243,7 @@ At LEA, I built the document intelligence platform that enterprise wealth manage
 <div class="cta-section">
 <h2>Let's Talk</h2>
 <p>Tell me what you're building and where you're stuck.</p>
-<p><a href="https://calendly.com/chuck-blake/30min" target="_blank" class="cta-button">Book a 30-minute intro call</a></p>
+<p><a href="https://calendly.com/chuck-blake/30min" target="_blank" rel="noopener noreferrer" class="cta-button">Book a 30-minute intro call</a></p>
 <p class="cta-note">30 minutes. No pitch — just figuring out if there's a fit.</p>
 <p class="cta-email">or email <a href="mailto:chuck.blake@gmail.com">chuck.blake@gmail.com</a></p>
 <p>Brooklyn, NY · Available for remote or on-site in NYC</p>
