@@ -30,7 +30,7 @@ The backlog issues own the acceptance criteria; this plan owns the engineering r
 The site had no measurement when CSB-5 was filed. That premise is now **stale**: commit `5243562`
 ("feat: add Fathom analytics tracking") added a hardcoded Fathom script to `_includes/head.liquid`,
 so pageview analytics are already live and already cookie-banner-free. What is still missing is the
-*conversion* half — nothing records that a visitor clicked through to Calendly, which is the single
+_conversion_ half — nothing records that a visitor clicked through to Calendly, which is the single
 event that makes the funnel a funnel rather than a traffic count.
 
 Separately, every link shared to LinkedIn, X, Slack, or iMessage renders `prof_pic.jpg`, a square
@@ -49,9 +49,9 @@ moments the site is being passed to a referral or a recruiter.
 <script src="https://cdn.usefathom.com/script.js" data-site="BGSBQDLW" defer></script>
 ```
 
-This is hardcoded, *not* wired through al-folio's `_config.yml` analytics flags — every
+This is hardcoded, _not_ wired through al-folio's `_config.yml` analytics flags — every
 `enable_*_analytics` key is `false` and every `*_analytics` ID cell is empty. Those empty
-`pirsch_analytics:` / `enable_pirsch_analytics:` cells are a trap: CSB-5's body *recommends* Pirsch,
+`pirsch_analytics:` / `enable_pirsch_analytics:` cells are a trap: CSB-5's body _recommends_ Pirsch,
 but that recommendation predates the Fathom install. Wiring Pirsch now would mean two trackers on
 every page.
 
@@ -75,7 +75,7 @@ event on top of the existing install, and leaves every `_config.yml` analytics c
 ### Deferred to Follow-Up Work
 
 - Distinguishing which page a Calendly click came from (home vs. fractional-cto) via separate event
-  names. Deliberately deferred: CSB-5 asks for *one* goal, and event names are the aggregation unit
+  names. Deliberately deferred: CSB-5 asks for _one_ goal, and event names are the aggregation unit
   in Fathom, so splitting them is a one-way door on the metric's history.
 
 ---
@@ -86,8 +86,8 @@ event on top of the existing install, and leaves every `_config.yml` analytics c
 
 - `_includes/head.liquid:16-18` — the existing Fathom script block. Any event code must run after it.
 - `_includes/head.liquid:11-14` — Content-Security-Policy meta tag. `script-src 'self' 'unsafe-inline'
-  https:` and `connect-src 'self' https:` already permit both the Fathom CDN and a site-owned script.
-  No CSP change is expected; it is listed as a surface to *verify*, not to edit.
+https:` and `connect-src 'self' https:` already permit both the Fathom CDN and a site-owned script.
+  No CSP change is expected; it is listed as a surface to _verify_, not to edit.
 - `_includes/scripts.liquid` — the repo's precedent for site-owned behavior JS, e.g.
   `<script defer src="{{ '/assets/js/newsletter.js' | relative_url | bust_file_cache }}">`. New JS
   follows this shape (`defer` + `relative_url` + `bust_file_cache`).
@@ -194,6 +194,7 @@ that same-tab navigation cannot swallow it.
 **Dependencies:** None.
 
 **Files:**
+
 - Create: `assets/js/analytics-events.js`
 - Modify: `_includes/scripts.liquid`
 - Modify: `_layouts/about.liquid`
@@ -201,6 +202,7 @@ that same-tab navigation cannot swallow it.
 - Verify (no edit expected): `_includes/head.liquid`
 
 **Approach:**
+
 - Attach one delegated `click` listener on `document`. Resolve the clicked element's nearest anchor
   with `closest('a[href]')`, resolve its `href` against `window.location.href`, and test the resulting
   hostname for `calendly.com` (suffix match, so subdomains count).
@@ -213,9 +215,11 @@ that same-tab navigation cannot swallow it.
   in `<head>` — so `fathom` is defined by the time a user can click anything.
 
 **Patterns to follow:**
+
 - `_includes/scripts.liquid`'s `newsletter.js` include — `defer`, `relative_url`, `bust_file_cache`.
 
 **Test scenarios:**
+
 - Happy path: click the About-page Calendly CTA on the local build → a `trackEvent` call is observed
   with exactly `Calendly CTA clicked`, and the link still opens Calendly.
 - Happy path: same for the fractional-cto page CTA → the same single event name (not a variant).
@@ -228,6 +232,7 @@ that same-tab navigation cannot swallow it.
   in the console and the link still navigates.
 
 **Verification:**
+
 - Both CTAs open Calendly in a new tab and the originating page stays open.
 - The event name observed is byte-identical across both CTAs.
 - Console is clean on a page load and on a CTA click, with and without `fathom` defined.
@@ -242,11 +247,13 @@ exactly 1200×630, from a source that can be re-rendered later.
 **Dependencies:** None.
 
 **Files:**
+
 - Create: `tools/og-image/og-card.html`
 - Create: `assets/img/og-image.jpg`
 - Modify: `_config.yml` (`exclude:` list only)
 
 **Approach:**
+
 - Author the card as a standalone HTML file with a viewport-exact 1200×630 root element: the headshot,
   `Chuck Blake`, and `Hands-on technical leadership for teams ready to ship`, on the site's palette
   (`#116dff`) with `Newsreader` for the name and `IBM Plex Mono` for the positioning line.
@@ -259,9 +266,11 @@ exactly 1200×630, from a source that can be re-rendered later.
   Follow the commented `plans/` entry as the precedent for annotating why a directory is excluded.
 
 **Patterns to follow:**
+
 - `_config.yml:203-224` `exclude:` list and its inline-comment style.
 
 **Test scenarios:**
+
 - Happy path: the exported file reports exactly `1200x630` dimensions.
 - Happy path: the exported file is under ~150 KB.
 - Edge case: text is legible at the ~500 px width that feed readers downscale previews to — the card
@@ -271,6 +280,7 @@ exactly 1200×630, from a source that can be re-rendered later.
   `/tools/og-image/`, proving the `exclude:` entry took effect.
 
 **Verification:**
+
 - The card is regenerable from the in-repo HTML without re-deriving copy or colors.
 - No claim appears on the card that is not already published on the site.
 
@@ -283,10 +293,12 @@ exactly 1200×630, from a source that can be re-rendered later.
 **Dependencies:** U2.
 
 **Files:**
+
 - Modify: `_config.yml` (`og_image:`)
 - Modify: `_includes/metadata.liquid` (`twitter:card`)
 
 **Approach:**
+
 - Repoint `og_image:` to the new asset, keeping it a fully-qualified `https://chuckblake.com/...` URL.
   `_includes/metadata.liquid` emits this value raw, with no `absolute_url` filter, so a relative path
   would silently produce a broken preview — the failure would only show up on a third-party scraper,
@@ -296,9 +308,11 @@ exactly 1200×630, from a source that can be re-rendered later.
   available and out of scope.
 
 **Patterns to follow:**
+
 - `_includes/metadata.liquid:69-71, 78-80` — the existing `page.og_image or site.og_image` branches.
 
 **Test scenarios:**
+
 - Happy path: in the built HTML for `/`, `og:image` is the new absolute URL.
 - Happy path: in the built HTML for `/`, `twitter:card` is `summary_large_image` and `twitter:image`
   is the new absolute URL.
@@ -309,6 +323,7 @@ exactly 1200×630, from a source that can be re-rendered later.
   the file actually lives where the config claims.
 
 **Verification:**
+
 - No page emits `prof_pic.jpg` as its `og:image` any more.
 - `og:image` and `twitter:image` agree.
 
@@ -321,9 +336,11 @@ exactly 1200×630, from a source that can be re-rendered later.
 **Dependencies:** U1, U2, U3.
 
 **Files:**
+
 - Modify: any files reformatted by prettier.
 
 **Approach:**
+
 - Run `npx prettier . --write` per AGENTS.md's pre-commit checklist. `.github/workflows/prettier.yml`
   and `prettier-html.yml` gate the PR, so an unformatted new `.js`, `.liquid`, `.md`, `.yml`, or
   `.html` file turns CI red on arrival.
@@ -332,6 +349,7 @@ exactly 1200×630, from a source that can be re-rendered later.
 - Rebuild with `docker compose up --build` and check the site end to end.
 
 **Test scenarios:**
+
 - Happy path: `npx prettier . --check` reports no issues.
 - Happy path: `docker compose up --build` completes without error.
 - Integration: on the running local site, both CTAs fire the event and the head tags carry the new
@@ -339,6 +357,7 @@ exactly 1200×630, from a source that can be re-rendered later.
 - Edge case: dark mode renders unchanged (no CSS was touched, so this is a regression check).
 
 **Verification:**
+
 - Prettier is clean, the build succeeds, and the working tree contains no unintended reformatting of
   files unrelated to this branch.
 
@@ -377,15 +396,15 @@ dashboard, neither of which exists on a branch, so they cannot gate this PR.
 
 ## Risks & Dependencies
 
-| Risk | Mitigation |
-|------|------------|
-| Tracking beacon lost to same-tab navigation | Both CTAs open in a new tab (U1), so the originating page stays alive |
-| Ad blocker blocks the Fathom CDN | `typeof fathom` guard — link still works, console stays clean |
-| `og_image` set to a relative path | Explicitly called out: `metadata.liquid` emits the raw value; local build cannot catch this, so it is a review checkpoint |
-| New image pushes past ~150 KB | JPEG with a quality-step-down loop and an explicit byte check in U2 |
-| Card source published as a site page | `tools/` added to Jekyll `exclude:`, verified by a build check in U2 |
-| Prettier CI red on arrival | Explicit `npx prettier . --write` unit (U4) before commit |
-| Wide card ships but X still renders small | `twitter:card` → `summary_large_image` in the same unit as the image repoint (U3) |
+| Risk                                        | Mitigation                                                                                                                |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Tracking beacon lost to same-tab navigation | Both CTAs open in a new tab (U1), so the originating page stays alive                                                     |
+| Ad blocker blocks the Fathom CDN            | `typeof fathom` guard — link still works, console stays clean                                                             |
+| `og_image` set to a relative path           | Explicitly called out: `metadata.liquid` emits the raw value; local build cannot catch this, so it is a review checkpoint |
+| New image pushes past ~150 KB               | JPEG with a quality-step-down loop and an explicit byte check in U2                                                       |
+| Card source published as a site page        | `tools/` added to Jekyll `exclude:`, verified by a build check in U2                                                      |
+| Prettier CI red on arrival                  | Explicit `npx prettier . --write` unit (U4) before commit                                                                 |
+| Wide card ships but X still renders small   | `twitter:card` → `summary_large_image` in the same unit as the image repoint (U3)                                         |
 
 ---
 
@@ -393,14 +412,14 @@ dashboard, neither of which exists on a branch, so they cannot gate this PR.
 
 ### Resolved During Planning
 
-- *Which analytics provider?* — Fathom. Already installed and live on `main`; a second provider would
+- _Which analytics provider?_ — Fathom. Already installed and live on `main`; a second provider would
   double-track. CSB-5's Pirsch recommendation predates the Fathom install.
-- *Does Chuck need to create the event in Fathom first?* — No. Fathom auto-creates events on first
+- _Does Chuck need to create the event in Fathom first?_ — No. Fathom auto-creates events on first
   fire, so CSB-5's stated "Chuck must create the analytics account" constraint does not gate this work.
-- *`trackGoal` or `trackEvent`?* — `trackEvent`; `trackGoal` is deprecated for new events.
-- *One event or one per CTA location?* — One. CSB-5's Scope says one goal, and event names are the
+- _`trackGoal` or `trackEvent`?_ — `trackEvent`; `trackGoal` is deprecated for new events.
+- _One event or one per CTA location?_ — One. CSB-5's Scope says one goal, and event names are the
   aggregation unit, so splitting later is a one-way door on metric history.
-- *Generative or HTML-rendered OG card?* — HTML-rendered, for exact typography and regenerability.
+- _Generative or HTML-rendered OG card?_ — HTML-rendered, for exact typography and regenerability.
 
 ### Deferred to Implementation
 
