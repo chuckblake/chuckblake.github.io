@@ -67,7 +67,7 @@ max_width: 1100px
 # Display links to the page with a preview object on social media.
 # see https://schema.org/docs/faq.html for more information
 serve_og_meta: true # Include Open Graph meta tags in the HTML head
-serve_schema_org: false # Generic WebSite schema; Person/ProfilePage schema is handled by person_schema below
+serve_schema_org: true # Emit @id-anchored WebSite and BlogPosting schema; Person/ProfilePage schema is handled below
 og_image: https://chuckblake.com/assets/img/prof_pic.jpg # The site-wide (default for all links) Open Graph preview image
 x_username: chuckblake # used for the twitter:site / twitter:creator card tags
 

@@ -163,26 +163,22 @@ its job, not placeholder filler. See Open Questions.
 
 ## Files
 
-**Create**
+One path per line, each with an explicit `Create:` / `Modify:` / `Test:` prefix — that is the shape
+`cb-lib/scope-check` parses (`DECLARATION_BULLET`), and cb-done halts on any changed file it cannot
+match here.
 
-- `bin/verify-meta.rb` — build-output verification script
-
-**Modify**
-
-- `_includes/metadata.liquid` — **U2:** collapse the triplicated description expression (42, 60, 69) into one `{% assign %}` with `meta_description` → `description` → `site.description` fallback. **U3:** rewrite the JSON-LD block (229-246), delete the `sameaslinks` generator (81-227), fix the `else if` → `elsif` bug
-- `_config.yml` — `serve_schema_org: false` → `true`
-- `SEO.md` — correct the two sections that misdescribe what the flag emits (see Documentation Notes)
-- `_pages/about.md` — add `description:` (meta-only; no visible render)
-- `_pages/blog.md` — add `description:` (meta-only; no visible render)
-- `_pages/fractional-cto.md` — add `meta_description:`; tighten visible `description:`
-- `_pages/projects.md` — add `meta_description:`; tighten visible `description:`
-- `_pages/publications.md` — add `meta_description:`; tighten visible `description:`
-- `_pages/music.md` — add `meta_description:`; tighten visible `description:`
-- `.claude/cb.yml` — prettier formatting only; pre-existing violation that fails CI (see Decisions)
-
-**Test**
-
-- `bin/verify-meta.rb` — the gate itself; run against `_site/` after `bundle exec jekyll build`
+- Create: `bin/verify-meta.rb` — build-output verification gate
+- Modify: `_includes/metadata.liquid` — U2 collapses the triplicated description expression into one `{% assign %}`; U3 rewrites the JSON-LD block, deletes the `sameaslinks` generator, fixes the `else if` bug
+- Modify: `_config.yml` — U1 excludes `plans/`; U3 sets `serve_schema_org: true`
+- Modify: `SEO.md` — correct the two sections that misdescribe what the flag emits (see Documentation Notes)
+- Modify: `_pages/about.md` — add `description:` (meta-only; no visible render)
+- Modify: `_pages/blog.md` — add `description:` (meta-only; no visible render)
+- Modify: `_pages/fractional-cto.md` — add `meta_description:`; tighten visible `description:`
+- Modify: `_pages/projects.md` — add `meta_description:`; tighten visible `description:`
+- Modify: `_pages/publications.md` — add `meta_description:`; tighten visible `description:`
+- Modify: `_pages/music.md` — add `meta_description:`; tighten visible `description:`
+- Modify: `.claude/cb.yml` — prettier formatting only; pre-existing violation that fails CI (see Decisions)
+- Test: `bin/verify-meta.rb` — run against `_site/` after `bundle exec jekyll build`
 
 ---
 
@@ -250,8 +246,14 @@ due diligence.
 
 **Files:**
 
-- Modify: `_includes/metadata.liquid` (description expression only), `_pages/about.md`, `_pages/blog.md`,
-  `_pages/fractional-cto.md`, `_pages/projects.md`, `_pages/publications.md`, `_pages/music.md`
+- Modify: `_includes/metadata.liquid` — description expression only
+- Modify: `_pages/about.md`
+- Modify: `_pages/blog.md`
+- Modify: `_pages/fractional-cto.md`
+- Modify: `_pages/projects.md`
+- Modify: `_pages/publications.md`
+- Modify: `_pages/music.md`
+- Modify: `.claude/cb.yml` — prettier only; pre-existing CI failure
 - Test: `bin/verify-meta.rb`
 
 **Approach:**
@@ -330,7 +332,9 @@ the fallback a fourth time.
 
 **Files:**
 
-- Modify: `_config.yml`, `_includes/metadata.liquid`, `SEO.md`
+- Modify: `_config.yml`
+- Modify: `_includes/metadata.liquid`
+- Modify: `SEO.md`
 - Test: `bin/verify-meta.rb`
 
 **Approach:**
@@ -503,6 +507,20 @@ folded scalar (`description: >`).
 Picked: normalize (collapse whitespace runs, trim) before length-checking, matching what a search
 engine displays. Left as-is, a 160-character description written with `>` folding would report 161
 and fail for a reason nothing in the output names.
+
+### The WebSite node carries `site.description`, not the page's — 2026-07-27
+
+First cut of U3 emitted `page_meta_description` on the `#website` node. That node is emitted on every
+page under one stable `@id`, so the same entity ended up asserting a different description depending
+on which page a consumer crawled — the subtler form of the exact defect this unit exists to remove.
+The per-page `@id`/`@type` check could not see it, because it only ever examines one page at a time.
+
+Picked: the WebSite node carries `site.description` and is byte-identical everywhere. Per-page copy is
+already served by `<meta name="description">`, which is what search snippets actually read.
+
+Added the assertion that catches it: `bin/verify-meta.rb` now collects the `#website` node from every
+page and fails if any two differ, naming the differing keys. Negative-tested by perturbing one page's
+copy in a fixture.
 
 ### Formatting `.claude/cb.yml` — pre-existing, and it fails CI — 2026-07-27
 

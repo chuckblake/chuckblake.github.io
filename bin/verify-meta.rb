@@ -9,6 +9,13 @@ LAYOUT_PAGE_PATHS = Set.new(["/fractional-cto/", "/projects/", "/publications/",
 DESCRIPTION_RANGE = (120..160)
 VISIBLE_DESCRIPTION_MAX_LENGTH = 70
 
+# Every page must carry the site-scoped WebSite node, at one stable @id. Repeating an identical @id
+# across pages is not duplication -- it is how JSON-LD consumers merge a graph into one entity. The
+# "no @id" and "@id declared with two @types" checks below cannot catch a node that is simply absent,
+# so this asserts presence explicitly.
+WEBSITE_NODE_ID = "https://chuckblake.com/#website"
+PERSON_NODE_ID = "https://chuckblake.com/#person"
+
 ATTRIBUTE_PATTERN = /([^\s=\/>]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))/m
 META_TAG_PATTERN = /<meta\b(?:[^>"']|"[^"]*"|'[^']*')*>/im
 SCRIPT_TAG_PATTERN = /<script\b((?:[^>"']|"[^"]*"|'[^']*')*)>(.*?)<\/script\s*>/im
@@ -108,7 +115,57 @@ def verify_json_ld(path, html, failures)
     failures << "#{path}: JSON-LD @id #{id.inspect} is declared with different @type values: #{details.join("; ")}"
   end
 
+  website_types = nodes_by_id[WEBSITE_NODE_ID].keys.flat_map(&:to_a)
+  if website_types.empty?
+    failures << "#{path}: no JSON-LD node with @id #{WEBSITE_NODE_ID.inspect}; every page must carry the site-scoped WebSite node"
+  elsif !website_types.include?("WebSite")
+    failures << "#{path}: @id #{WEBSITE_NODE_ID.inspect} is #{type_label(Set.new(website_types))}, expected WebSite"
+  end
+
+  # The homepage is the only page that defines the Person entity (person_schema.liquid is included
+  # there alone). sameAs belongs to that node and must not be restated on the WebSite node, which is
+  # precisely the duplicate-entity conflict this issue exists to prevent.
+  if path == "/" && !nodes_by_id.key?(PERSON_NODE_ID)
+    failures << "#{path}: no JSON-LD node with @id #{PERSON_NODE_ID.inspect}; the homepage must define the Person entity"
+  end
+
   node_count
+end
+
+def website_node(html)
+  html.scan(SCRIPT_TAG_PATTERN).each do |raw_attributes, body|
+    next unless attributes(raw_attributes)["type"]&.casecmp?("application/ld+json")
+
+    document = begin
+      JSON.parse(body)
+    rescue JSON::ParserError
+      next
+    end
+
+    node = json_ld_nodes(document).find { |n| n.is_a?(Hash) && n["@id"] == WEBSITE_NODE_ID }
+    return node if node
+  end
+
+  nil
+end
+
+def verify_website_sameas(path, html, failures)
+  html.scan(SCRIPT_TAG_PATTERN).each do |raw_attributes, body|
+    next unless attributes(raw_attributes)["type"]&.casecmp?("application/ld+json")
+
+    document = begin
+      JSON.parse(body)
+    rescue JSON::ParserError
+      next
+    end
+
+    json_ld_nodes(document).each do |node|
+      next unless node.is_a?(Hash) && node["@id"] == WEBSITE_NODE_ID
+      next unless node.key?("sameAs")
+
+      failures << "#{path}: the WebSite node carries sameAs; those links belong to the Person node at #{PERSON_NODE_ID.inspect}"
+    end
+  end
 end
 
 def verify_visible_descriptions(path, html, failures)
@@ -153,6 +210,7 @@ def verify_page(path, html)
   end
 
   json_ld_count = verify_json_ld(path, html, failures)
+  verify_website_sameas(path, html, failures)
   visible_lengths = LAYOUT_PAGE_PATHS.include?(path) ? verify_visible_descriptions(path, html, failures) : []
 
   description_summary = description.nil? ? "description missing" : "description #{description.length} chars"
@@ -190,6 +248,7 @@ end
 
 failures = []
 descriptions = Hash.new { |hash, description| hash[description] = [] }
+website_nodes = {}
 
 TARGET_PATHS.each do |path|
   relative_path = path == "/" ? "index.html" : File.join(path.delete_prefix("/"), "index.html")
@@ -210,6 +269,7 @@ TARGET_PATHS.each do |path|
   summary, description, page_failures = verify_page(path, html)
   puts summary
   descriptions[description] << path unless description.nil?
+  website_nodes[path] = website_node(html)
   failures.concat(page_failures)
 end
 
@@ -217,6 +277,22 @@ descriptions.each do |description, paths|
   next unless paths.length > 1
 
   failures << "#{paths.join(" and ")}: duplicate meta description #{description.inspect}"
+end
+
+# One @id denotes one entity. The WebSite node is emitted on every page under a single stable @id,
+# so its properties must be byte-identical everywhere -- otherwise the same entity asserts different
+# things about itself depending on which page a consumer crawled. The per-page @id/@type check above
+# cannot see this, because it only ever examines one page at a time.
+present = website_nodes.reject { |_, node| node.nil? }
+unless present.empty?
+  reference_path, reference_node = present.first
+  present.each do |path, node|
+    next if node == reference_node
+
+    differing = (node.keys | reference_node.keys).reject { |key| node[key] == reference_node[key] }
+    failures << "#{path}: WebSite node #{WEBSITE_NODE_ID.inspect} differs from #{reference_path} " \
+                "on #{differing.sort.join(", ")}; one @id must describe one entity identically on every page"
+  end
 end
 
 if failures.empty?
