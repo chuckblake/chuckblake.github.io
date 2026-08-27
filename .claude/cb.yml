@@ -7,7 +7,12 @@ project: { key: CSB }
 backlog:
   backend: markdown
   default_project: chuckblake.com
-  statuses: [todo, planning, in-progress, in-review, blocked, icebox, done, archived]
+  # LIVE, and it must stay in step with chuck-vault/.claude/cb.yml by hand. Authority
+  # resolution (lib/config.rb resolve_dir_authority) is consulted only by lib/backlog's
+  # single-project arm; a config with a `projects:` map takes the multi-project arm, which
+  # reads this key directly. Remove it and this repo silently falls back to the underscore
+  # defaults, writing `in_progress` where the Vault's vocabulary spells it `in-progress`.
+  statuses: [todo, shape, discussion, backlog, planning, in-progress, in-review, blocked, icebox, done, canceled, archived]
   projects:
     chuckblake.com:
       key: CSB
