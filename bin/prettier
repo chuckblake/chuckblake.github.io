@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# bin/prettier: Prettier from this repository's pinned toolchain (package.json and
+# package-lock.json: prettier and @shopify/prettier-plugin-liquid).
+#
+# The cb terminal runner's lint check (bin/prettier --check .), its autofix
+# (bin/prettier --write .) and CI all run it. The runner installs the locked packages
+# before its checks, but not before autofix, so a fresh worktree gets them here first.
+# It uses npm ci, which installs exactly the lockfile. npm install would rewrite
+# package-lock.json and rename the package after the worktree directory.
+set -euo pipefail
+
+root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+prettier="$root/node_modules/.bin/prettier"
+
+if [ ! -x "$prettier" ] || [ ! -d "$root/node_modules/@shopify/prettier-plugin-liquid" ]; then
+  npm ci --prefix "$root" --no-audit --no-fund --loglevel=error >&2
+fi
+
+exec "$prettier" "$@"

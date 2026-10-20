@@ -1,4 +1,4 @@
-# .claude/cb.yml — per-repo cb workflow config (committed; NO secrets here).
+# .cb/config.yml — per-repo cb workflow config (committed; NO secrets here).
 # Machine-local values (e.g. LINEAR_API_KEY and CB_VAULT_ROOT) live in ~/.claude/cb.env
 # (global, gitignored). Vault-rooted defaults use `${vault}`, resolved from CB_VAULT_ROOT.
 project: { key: CSB }
@@ -7,12 +7,12 @@ project: { key: CSB }
 backlog:
   backend: markdown
   default_project: chuckblake.com
-  # LIVE, and it must stay in step with chuck-vault/.claude/cb.yml by hand. Authority
-  # resolution (lib/config.rb resolve_dir_authority) is consulted only by lib/backlog's
-  # single-project arm; a config with a `projects:` map takes the multi-project arm, which
-  # reads this key directly. Remove it and this repo silently falls back to the underscore
-  # defaults, writing `in_progress` where the Vault's vocabulary spells it `in-progress`.
-  statuses: [todo, shape, discussion, backlog, planning, in-progress, in-review, blocked, icebox, done, canceled, archived]
+  # The Vault owns this vocabulary: lib/backlog and cb readiness read the chuckblake.com
+  # project in chuck-vault/.claude/cb.yml (its own statuses, else the Vault's shared list;
+  # CBW-330), and this list is only the fail-open fallback. Keep the two identical. The
+  # terminal runner parks halted runs in needs_attention and needs_input; todo stays first
+  # because it is the create-time default.
+  statuses: [todo, shape, planning, in-progress, in-review, blocked, needs_attention, needs_input, done, canceled, archived]
   projects:
     chuckblake.com:
       key: CSB
@@ -21,7 +21,7 @@ backlog:
         type: backlog-issue
         project: chuckblake.com
         tags: [backlog, development, chuckblake-com]
-worktree: { tool: superset, base: main } # plain | rails | superset | none
+worktree: { tool: tmux, base: main } # plain | rails | superset | tmux | none (Superset is not on the Linux runner host)
 worklog: { enabled: true, dest: "${vault}/worklogs" }
 # Per-run stage timing log (CBW-63): best-effort, fail-open JSONL — one file per issue/run at
 # `dest`, written OUTSIDE the repo, never committed. `cb:init` fills a portable per-project `dest`
@@ -110,3 +110,56 @@ hooks: { branch_guard: true, worklog_stop: true, lfg_watchdog: true }
 #     scope_page:               ''                         # weekly-prep source
 #     scope_url:                ''                         # weekly-prep source (optional)
 reporting: { notion: { enabled: false } }
+
+# --- Terminal runner (`cb start`, `cb next`, `cb status`) ---
+runner:
+  schema_version: 1
+  # Activation is a separate step: once this merges, `cb init-runner` runs the readiness
+  # audit's hard checks, bootstraps the claim authority and prepares `enabled: true` for its own PR.
+  enabled: false
+  base_branch: main
+  merge_method: squash
+  # A cold bin/site-check (93 responsive images, the notebook) takes about 16 s on ombee.
+  command_timeout: 600
+  authority:
+    repository_id: chuckblake-chuckblake.github.io
+    authority_id: 7b52acbd-6c3a-4c39-b27b-f71bd890a170
+    remote: origin
+  paths:
+    vault_dir: "~/.local/share/cb/runs/chuckblake.com"
+  gate_policy:
+    # 2026-10-03 operator decision: the light lane is the default everywhere. Only auth,
+    # payments, security, data and migrations issues take the full lane; an issue's
+    # frontmatter `lane: full` (or cb start --lane full) still forces it.
+    lanes:
+      default: light
+      full_areas: [auth, payments, security, data, migrations]
+    # A static site has no test framework for an independent test author to write into.
+    # The suite is the evidence: a production build, its meta tags and its internal links.
+    independent_tests: false
+    required_checks:
+      # Prettier from the pinned toolchain, over the whole tree, as prettier.yml checks it.
+      lint: [bin/prettier, --check, .]
+      # JEKYLL_ENV=production build, bin/verify-meta.rb, offline lychee over _site.
+      suite: [bin/site-check]
+    # CBW-606: Prettier fixes the writer's output before the lint check runs.
+    autofix:
+      prettier: [bin/prettier, --write, .]
+    reusable_checks: [lint, suite]
+    reuse_ignore_paths:
+      # _config.yml excludes plans/ and docs/ from the build, so they cannot change _site.
+      suite: ["plans/**", "docs/**"]
+      # Prettier formats none of these (.prettierignore lists plans/ and docs/).
+      lint: ["**/*.rb", "**/*.py", "plans/**", "docs/**"]
+    required_knowledge: []
+    remote_checks: ["CI result"]
+    ci_provider: github
+    ui_required: false
+    custom_gates: []
+  readiness:
+    projects:
+      - { name: chuckblake.com, stack: ruby, dir: "." }
+  # What a run leaves in its worktree, all regenerable: the build output and caches,
+  # node_modules from npm ci, and the uncommitted Gemfile.lock bin/site-check writes.
+  # This list replaces the runner's default, so it repeats node_modules.
+  disposable_ignored_paths: [_site, .jekyll-cache/, .jekyll-metadata, .sass-cache/, .tweet-cache/, node_modules, Gemfile.lock]

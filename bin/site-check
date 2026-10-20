@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# bin/site-check: the site's suite, as the cb terminal runner and CI run it.
+#
+# 1. Checks the build prerequisites and exits non-zero with one clear line when one is
+#    missing: ImageMagick (convert) for jekyll-imagemagick, Jupyter nbconvert for the
+#    notebook under assets/jupyter/, and lychee for the link check. It never installs a tool.
+# 2. Bundles the gems. Gemfile.lock is not committed (al-folio's convention), and a fresh
+#    worktree cannot resolve the git-sourced jekyll-terser without one, so this writes it
+#    from the gems already installed (bundle install --prefer-local).
+# 3. Builds the site as deploy.yml does (JEKYLL_ENV=production).
+# 4. Checks the built pages' meta descriptions and JSON-LD (bin/verify-meta.rb).
+# 5. Checks every internal link in the built HTML, offline (lychee).
+#
+# runner.gate_policy.required_checks.suite (.cb/config.yml) and the Site job in
+# .github/workflows/ci.yml both run exactly this.
+set -euo pipefail
+
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+
+missing=()
+command -v convert >/dev/null 2>&1 || missing+=("ImageMagick (convert)")
+jupyter nbconvert --version >/dev/null 2>&1 || missing+=("Jupyter nbconvert (jupyter nbconvert)")
+command -v lychee >/dev/null 2>&1 || missing+=("lychee")
+if [ "${#missing[@]}" -gt 0 ]; then
+  list="$(printf '%s, ' "${missing[@]}")"
+  echo "==> site-check: missing build prerequisite(s): ${list%, }. Install them and re-run; this script never installs tools." >&2
+  exit 1
+fi
+
+if ! bundle check >/dev/null 2>&1; then
+  bundle install --prefer-local --quiet
+fi
+
+JEKYLL_ENV=production bundle exec jekyll build
+ruby bin/verify-meta.rb _site
+
+# Known dead links on main, excluded until they are fixed: the blog page lists the al-folio
+# demo tags and category from _config.yml (display_tags, display_categories). No post carries
+# them, so jekyll-archives never builds those pages. Any other broken link fails.
+lychee --offline --no-progress --root-dir "$PWD/_site" \
+  --exclude '/_site/blog/tag/(formatting|images|links|math|code|blockquotes)/?$' \
+  --exclude '/_site/blog/category/external-services/?$' \
+  '_site/**/*.html'
