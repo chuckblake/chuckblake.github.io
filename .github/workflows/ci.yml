@@ -1,0 +1,131 @@
+name: CI
+
+# The pull request check the cb terminal runner waits on: runner.gate_policy.remote_checks in
+# .cb/config.yml is ["CI result"]. There are no path filters, so `CI result` reports on every
+# pull request. The checks run on GitHub-hosted runners (free for this public repository). Setting
+# the CI_RUNNER repository variable to a self-hosted runner's label moves them into `test (local)`
+# instead (CBW-613); pull requests from forks always stay on hosted runners. This workflow never
+# deploys: deploy.yml publishes the site when main changes.
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  site:
+    name: Site
+    if: ${{ !vars.CI_RUNNER || github.event.pull_request.head.repo.fork }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3.10"
+          bundler-cache: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install ImageMagick, Jupyter nbconvert and lychee
+        env:
+          LYCHEE_VERSION: "0.24.2"
+          LYCHEE_SHA256: 1f4e0ef7f6554a6ed33dd7ac144fb2e1bbed98598e7af973042fc5cd43951c9a
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q imagemagick
+          pip install --quiet nbconvert
+          archive="$RUNNER_TEMP/lychee.tar.gz"
+          curl -sSfL -o "$archive" "https://github.com/lycheeverse/lychee/releases/download/lychee-v${LYCHEE_VERSION}/lychee-x86_64-unknown-linux-gnu.tar.gz"
+          echo "${LYCHEE_SHA256}  ${archive}" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/bin"
+          tar -xzf "$archive" -C "$RUNNER_TEMP/bin" --strip-components=1 lychee-x86_64-unknown-linux-gnu/lychee
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
+      - name: Build the site, then check its meta tags and links
+        run: bin/site-check
+
+  prettier:
+    name: Prettier
+    if: ${{ !vars.CI_RUNNER || github.event.pull_request.head.repo.fork }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - name: Check formatting with the pinned toolchain
+        run: bin/prettier --check .
+
+  test-local:
+    name: test (local)
+    if: ${{ vars.CI_RUNNER && !github.event.pull_request.head.repo.fork }}
+    runs-on: ${{ vars.CI_RUNNER }}
+    timeout-minutes: 30
+    steps:
+      - name: Isolate the self-hosted job
+        run: |
+          ruby_bin="$HOME/.local/share/mise/installs/ruby/3.3.10/bin"
+          node_bin="$HOME/.local/share/mise/installs/node/26.7.0/bin"
+          installed_gems="$("$ruby_bin/ruby" -e 'print Gem.path.join(":")')"
+          suite_lock_helper="$HOME/.claude/skills/cb-lib/suite-lock"
+          mkdir -p "$RUNNER_TEMP/home" "$RUNNER_TEMP/gems"
+          {
+            echo "CB_SUITE_LOCK=$HOME/.local/state/cb/terminal/checks/chuckblake-chuckblake.github.io.suite.lock"
+            echo "CB_SUITE_LOCK_HELPER=$suite_lock_helper"
+            echo "HOME=$RUNNER_TEMP/home"
+            echo "XDG_CONFIG_HOME=$RUNNER_TEMP/home/.config"
+            echo "XDG_STATE_HOME=$RUNNER_TEMP/home/.local/state"
+            echo "XDG_DATA_HOME=$RUNNER_TEMP/home/.local/share"
+            echo "XDG_CACHE_HOME=$RUNNER_TEMP/home/.cache"
+            echo "GEM_HOME=$RUNNER_TEMP/gems"
+            echo "GEM_PATH=$RUNNER_TEMP/gems:$installed_gems"
+          } >> "$GITHUB_ENV"
+          # The host's Ruby and Node, and ~/.local/bin for lychee and jupyter (bin/site-check).
+          {
+            echo "$ruby_bin"
+            echo "$node_bin"
+            echo "$HOME/.local/bin"
+          } >> "$GITHUB_PATH"
+      - uses: actions/checkout@v4
+      - name: Lint and run the suite under the repository suite lock
+        run: |
+          mkdir -p "$(dirname "$CB_SUITE_LOCK")"
+          if [ ! -r "$CB_SUITE_LOCK_HELPER" ]; then
+            echo "::error::suite-lock helper is missing or unreadable: $CB_SUITE_LOCK_HELPER"
+            exit 74
+          fi
+          ruby "$CB_SUITE_LOCK_HELPER" run --lock "$CB_SUITE_LOCK" --job "test (local)" --repository "$GITHUB_REPOSITORY" -- sh -ec '
+            bin/prettier --check .
+            bin/site-check
+          '
+
+  ci-result:
+    name: CI result
+    if: always()
+    needs: [site, prettier, test-local]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Decide
+        env:
+          SITE: ${{ needs.site.result }}
+          PRETTIER: ${{ needs.prettier.result }}
+          LOCAL: ${{ needs.test-local.result }}
+        run: |
+          echo "Site: $SITE; Prettier: $PRETTIER; test (local): $LOCAL"
+          if [ "$LOCAL" = success ]; then exit 0; fi
+          if [ "$SITE" = success ] && [ "$PRETTIER" = success ]; then exit 0; fi
+          echo "::error::CI result: the checks did not pass"
+          exit 1

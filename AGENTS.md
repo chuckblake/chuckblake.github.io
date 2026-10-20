@@ -32,24 +32,26 @@ docker compose down
 
 ### Pre-Commit Checklist
 
-Before every commit, you **must** run these steps:
+Before every commit, you **must** run these steps from the repository root. They are the cb terminal runner's lint and
+suite checks (`.cb/config.yml`) and CI's (`.github/workflows/ci.yml`), so they work without Docker:
 
 1.  **Format Code:**
     ```bash
-    # (First time only)
-    npm install --save-dev prettier @shopify/prettier-plugin-liquid
-    # Format all files
-    npx prettier . --write
+    # Prettier from the pinned toolchain; the first run installs it with npm ci
+    bin/prettier --write .
     ```
-2.  **Build Locally & Verify:**
+2.  **Build & Check:**
 
     ```bash
-    # Rebuild the site
-    docker compose up --build
-
-    # Verify by visiting http://localhost:8080.
-    # Check navigation, pages, images, and dark mode.
+    # Production build, meta-tag check (bin/verify-meta.rb) and offline link check of _site
+    bin/site-check
     ```
+
+    `bin/site-check` needs Ruby with the bundled gems, ImageMagick, Jupyter nbconvert and lychee; it names any that is
+    missing. To look at the result, use the Docker dev server above and check navigation, pages, images, and dark mode.
+
+Do not run `npm install` to get Prettier: it rewrites `package.json` and `package-lock.json`. Do not start the Docker dev
+server in a cb runner worktree; it never exits.
 
 ## Critical Configuration
 

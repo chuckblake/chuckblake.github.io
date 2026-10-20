@@ -207,6 +207,7 @@ exclude:
   - Dockerfile
   - docker-compose.yml
   - docker-compose-slim.yml
+  - docs/ # cb runner knowledge (docs/learnings, docs/pitfalls): dev artifacts, excluded for the same reasons as plans/
   - FAQ.md
   - Gemfile
   - Gemfile.lock
