@@ -116,7 +116,7 @@ runner:
   schema_version: 1
   # Activation is a separate step: once this merges, `cb init-runner` runs the readiness
   # audit's hard checks, bootstraps the claim authority and prepares `enabled: true` for its own PR.
-  enabled: false
+  enabled: true
   base_branch: main
   merge_method: squash
   # A cold bin/site-check (93 responsive images, the notebook) takes about 16 s on ombee.
