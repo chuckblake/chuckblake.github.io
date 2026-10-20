@@ -34,10 +34,4 @@ fi
 JEKYLL_ENV=production bundle exec jekyll build
 ruby bin/verify-meta.rb _site
 
-# Known dead links on main, excluded until they are fixed: the blog page lists the al-folio
-# demo tags and category from _config.yml (display_tags, display_categories). No post carries
-# them, so jekyll-archives never builds those pages. Any other broken link fails.
-lychee --offline --no-progress --root-dir "$PWD/_site" \
-  --exclude '/_site/blog/tag/(formatting|images|links|math|code|blockquotes)/?$' \
-  --exclude '/_site/blog/category/external-services/?$' \
-  '_site/**/*.html'
+lychee --offline --no-progress --root-dir "$PWD/_site" '_site/**/*.html'
