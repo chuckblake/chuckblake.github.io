@@ -5,7 +5,7 @@ name: CI
 # pull request. The checks run on GitHub-hosted runners (free for this public repository). Setting
 # the CI_RUNNER repository variable to a self-hosted runner's label moves them into `test (local)`
 # instead (CBW-613); pull requests from forks always stay on hosted runners. This workflow never
-# deploys: deploy.yml publishes the site when main changes.
+# deploys: deploy.yml publishes the site when a v* release tag is pushed.
 
 on:
   pull_request:
