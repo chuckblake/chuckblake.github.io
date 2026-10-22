@@ -222,6 +222,7 @@ exclude:
   - purgecss.config.js
   - README.md
   - readme_preview/
+  - test/
   - tools/ # regenerable build sources (e.g. the Open Graph card) — not site pages
   - vendor
 keep_files:
