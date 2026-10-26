@@ -51,6 +51,8 @@ When configuring `_config.yml`, set `url` to `https://<your-github-username>.git
 
 ### Automatic Deployment
 
+> **This repository:** The operator cuts releases using the release button in Command Center. This site publishes when a `v*` release tag is pushed; a push to `main` does not publish it. The paragraph below describes the upstream al-folio default.
+
 Starting version [v0.3.5](https://github.com/alshedivat/al-folio/releases/tag/v0.3.5), **al-folio** will automatically re-deploy your webpage each time you push new changes to your repository! :sparkles:
 
 ### Local Development
@@ -153,6 +155,8 @@ To see the template running, open your browser and go to `http://localhost:4000`
 
 ## Deployment
 
+> **This repository:** Publishing follows `v*` release-tag pushes, with releases cut by the operator using the release button in Command Center. A push to `main` does not publish. The branch-push instructions below describe the upstream al-folio default.
+
 Deploying your website to [GitHub Pages](https://pages.github.com/) is the most popular option.
 Starting version [v0.3.5](https://github.com/alshedivat/al-folio/releases/tag/v0.3.5), **al-folio** will automatically re-deploy your webpage each time you push new changes to your repository **main branch**! :sparkles:
 
@@ -173,6 +177,8 @@ Starting version [v0.3.5](https://github.com/alshedivat/al-folio/releases/tag/v0
 
 ### Enabling automatic deployment
 
+> **This repository:** The steps below describe the upstream al-folio default. This site publishes on `v*` release-tag pushes, not pushes to `main`; see [Automatic Deployment](#automatic-deployment) for the operator's release flow.
+
 1. Click on **Actions** tab and **Enable GitHub Actions**; do not worry about creating any workflows as everything has already been set for you.
 2. Go to `Settings -> Actions -> General -> Workflow permissions`, and give `Read and write permissions` to GitHub Actions
 3. Make any other changes to your webpage, commit, and push to your main branch. This will automatically trigger the **Deploy** action.
@@ -184,6 +190,8 @@ If you keep your site on another branch, open `.github/workflows/deploy.yml` **o
 ### Manual deployment to GitHub Pages
 
 If you need to manually re-deploy your website to GitHub pages, go to Actions, click "Deploy" in the left sidebar, then "Run workflow."
+
+> **This repository:** To republish an existing release with the **Deploy site** workflow, select that release's tag under **Use workflow from** before choosing **Run workflow**.
 
 ### Deploy on [Netlify](https://www.netlify.com/)
 
