@@ -123,13 +123,15 @@ When making changes:
 
 ### GitHub Workflows (in `.github/workflows/`)
 
-- **deploy.yml** – Main deployment workflow (runs on push/PR to main/master)
+- **deploy.yml** – Publishes on `v*` release-tag pushes; also builds eligible pull requests to main/master without deploying
+  - The operator cuts releases using the release button in Command Center; a push to `main` does not publish
+  - Manual dispatch can republish an existing release by running the workflow from that release's tag
   - Sets up Ruby 3.3.5, Python 3.13
   - Installs imagemagick, nbconvert
   - Runs `bundle exec jekyll build` with JEKYLL_ENV=production
   - Runs purgecss for CSS optimization
-  - Commits built site to gh-pages branch
-  - **Triggers on:** Changes to site files, assets, config (NOT documentation files alone)
+  - Commits built site to gh-pages branch except on pull requests
+  - **Path filters:** Apply only to pull-request builds (see `deploy.yml` for included paths and exclusions); `v*` tag pushes publish regardless of changed paths
 - **prettier.yml** – Code formatting validation (mandatory)
   - Runs prettier on all files
   - **Fails PRs if code is not properly formatted**
