@@ -81,8 +81,8 @@ nav_order: 3
 <ul class="pub-list">
   <li>
     <a href="https://chuckblake.com/presentations/ai-in-2027/" target="_blank" rel="noopener noreferrer">AI in 2027: Your Next Job Is Managing AI Employees</a>
-    <div class="pub-summary">A developer's guide to choosing, briefing, bounding, evaluating, accepting, and operating delegated AI work, with human control and employer support.</div>
-    <div class="pub-meta">Developer workflows · Presentation · 2027 preparation</div>
+    <div class="pub-summary">Start using AI at your own pace, with small experiments, reviewable artifacts, and bounded delegation. Includes a sourced 2026 timeline.</div>
+    <div class="pub-meta">Developer workflows · Presentation · 2027 preparation · <a href="/presentations/ai-in-2027/resources/">Resources</a></div>
   </li>
   <li>
     <a href="https://chuckblake.com/presentations/glance-outcome-monitoring/" target="_blank">Glance: Outcome Monitoring for Automated Work</a>
