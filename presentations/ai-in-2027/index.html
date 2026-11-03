@@ -476,6 +476,19 @@
       .speaker-notes p {
         margin: 0;
       }
+      .image-slide {
+        padding: 20px clamp(22px, 3vw, 52px);
+      }
+      .image-slide .frame {
+        width: min(1600px, 100%);
+      }
+      .slide-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: calc(100dvh - 152px);
+        object-fit: contain;
+      }
       .prompt {
         margin: 0;
         border-left: 6px solid var(--brand);
@@ -538,6 +551,12 @@
         margin: 0;
       }
       @media print {
+        .image-slide {
+          padding: 0.45in 0.65in;
+        }
+        .slide-image {
+          max-height: 6.5in;
+        }
         .footer {
           display: none;
         }
@@ -575,8 +594,7 @@
         <div class="frame">
           <div class="kicker">AI in 2027</div>
           <h1 id="s1">Your next job is managing AI employees</h1>
-          <p class="one-liner">You may still write code. More of the work can become deciding what to ask for and checking what comes back.</p>
-          <p class="context">Start with one useful task. You do not need an autonomous team to begin.</p>
+          <p class="one-liner">More of the work is becoming deciding what to ask for and checking what comes back.</p>
           <p class="context">Chuck Blake // Developer workflows</p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
@@ -587,46 +605,21 @@
           </aside>
         </div>
       </section>
-      <section class="slide" data-slide="2" aria-labelledby="s2">
+      <section class="slide image-slide" data-slide="2" aria-labelledby="s2">
         <div class="frame">
-          <div class="kicker">Why prepare now?</div>
-          <h2 id="s2">The tools keep changing.</h2>
-          <div class="timeline-montage">
-            <article>
-              <time datetime="2026-01-29">2026-01-29</time>
-              <p>OpenClaw rebrand + release <a href="resources/#source-2">[2]</a></p>
-            </article>
-            <article>
-              <time datetime="2026-02-02">2026-02-02</time>
-              <p>Codex desktop app <a href="resources/#source-3">[3]</a></p>
-            </article>
-            <article>
-              <time datetime="2026-02-19">2026-02-19</time>
-              <p>Gemini 3.1 Pro preview <a href="resources/#source-7">[7]</a></p>
-            </article>
-            <article>
-              <time datetime="2026-04-17">2026-04-17</time>
-              <p>Claude Design preview <a href="resources/#source-10">[10]</a></p>
-            </article>
-            <article>
-              <time datetime="2026-08-11">2026-08-11</time>
-              <p>Grok Bot beta <a href="resources/#source-15">[15]</a></p>
-            </article>
-            <article>
-              <time datetime="2026-10-22">2026-10-22</time>
-              <p>Agent Skills → AAIF <a href="resources/#source-19">[19]</a></p>
-            </article>
-          </div>
-          <p class="context">
-            <a href="resources/#timeline">20 dated announcements from 2026, with primary sources.</a> This selection shows changes in what you can
-            try. It does not measure acceleration, reliability or productivity.
-          </p>
+          <h2 id="s2" class="sr-only">AI demand multiplied in 2026.</h2>
+          <img
+            class="slide-image"
+            src="assets/ai-demand-2026.png"
+            width="2214"
+            height="1254"
+            alt="AI demand multiplied in 2026. Growth since January 1, with each gridline representing a doubling: Anthropic revenue run-rate 7.2×, Google API tokens per minute 3.2×, and OpenAI revenue run-rate 2.5×. A timeline below marks selected 2026 tool releases. Sources listed in the supplied chart: CNBC, Bloomberg, The Information and Alphabet earnings calls."
+          />
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
-              Use two or three examples, not a roll call of model names. New interfaces matter as much as new models: desktop agents, visual artifacts
-              and reusable skills. The full timeline is optional reading. These are announcement dates; previews and staged rollouts are labeled. We
-              are not using a selected release count as a rate-of-progress metric.
+              Use the supplied chart to discuss demand. Revenue run-rate and API token volume are different measures; neither establishes reliability
+              or productivity. The image's figures and source labels are reproduced as supplied, not independently verified here.
             </p>
           </aside>
         </div>
@@ -634,19 +627,19 @@
       <section class="slide" data-slide="3" aria-labelledby="s3">
         <div class="frame">
           <div class="kicker">How to get started</div>
-          <h2 id="s3">Ask for a second pair of eyes.</h2>
+          <h2 id="s3">Pick something low-risk and non-destructive.</h2>
           <ul class="list">
             <li>Ask AI to review a draft, a plan or a piece of code. You decide which suggestions to use.</li>
-            <li>Talk through an idea. Ask it to challenge assumptions and suggest questions you missed.</li>
-            <li>Use a small example you can share. Keep confidential material out of unapproved tools.</li>
+            <li>Talk through an idea. Dictate with a tool like Wispr Flow, then ask AI to challenge your assumptions.</li>
+            <li>Explain an unfamiliar piece of code. Ask for a walkthrough, not a change.</li>
           </ul>
           <p class="one-liner">Move at a pace you can handle.</p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
-              Keep this conversational. A useful first task can be a review, not a code change. Ask for specific concerns and references to the
-              material you supplied. AI can miss a problem or invent one. Do not upload customer data or secrets to make the first experiment feel
-              more realistic.
+              Low cost means a low chance of something going wrong, not a low token bill. Start with read-only work: no edits, sends or deletes. Wispr
+              Flow is an example of a dictation tool, not the tool doing the reasoning. Ask for specific concerns and references to the material you
+              supplied. AI can miss a problem or invent one. Do not upload customer data or secrets to make the first experiment feel more realistic.
             </p>
           </aside>
         </div>
