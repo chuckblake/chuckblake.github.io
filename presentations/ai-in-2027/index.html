@@ -772,7 +772,7 @@
       </section>
       <section class="slide" data-slide="10" aria-labelledby="s10">
         <div class="frame">
-          <div class="kicker">Finish the beginner section</div>
+          <div class="kicker">Build a repeatable habit.</div>
           <h2 id="s10">Keep what works. Adjust what doesn’t.</h2>
           <div class="definition-grid">
             <article class="definition-card">
@@ -804,8 +804,33 @@
       </section>
       <section class="slide" data-slide="11" aria-labelledby="s11">
         <div class="frame">
-          <div class="kicker">Advanced // Delegation and management</div>
-          <h2 id="s11">What’s next?</h2>
+          <div class="kicker">An advanced progression, not a requirement</div>
+          <h2 id="s11">From helping you work to doing bounded work</h2>
+          <div class="definition-grid">
+            <article class="definition-card">
+              <h3>Bionic arms</h3>
+              <p>AI increases your individual capability. You do the work with AI helping you.</p>
+            </article>
+            <article class="definition-card">
+              <h3>Hired hands</h3>
+              <p>AI takes on a defined outcome. You review what comes back and keep responsibility.</p>
+            </article>
+          </div>
+          <p class="context">Both are useful. Delegation is an option; unattended automation is not a requirement.</p>
+          <p class="context">Let’s make that difference concrete with a hypothetical task.</p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              Define an agent in plain language: AI that can use tools and take several steps toward a goal. You can keep it beside you. Working
+              asynchronously is an option to earn through experience, not a graduation requirement.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide" data-slide="12" aria-labelledby="s12">
+        <div class="frame">
+          <div class="kicker">What’s next? // Delegation</div>
+          <h2 id="s12">Hand off the task. Keep responsibility.</h2>
           <div class="definition-grid loop">
             <article class="definition-card">
               <h3>Choose</h3>
@@ -832,7 +857,7 @@
               <p>Keep an owner for the outcome.</p>
             </article>
           </div>
-          <p class="context">Next: one delegated task, then practices from Matt Pocock’s skills and Poteto’s pstack. You still own the outcome.</p>
+          <p class="context">We’ll follow one task from choosing it to reviewing what comes back.</p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
@@ -842,42 +867,17 @@
           </aside>
         </div>
       </section>
-      <section class="slide" data-slide="12" aria-labelledby="s12">
-        <div class="frame">
-          <div class="kicker">An advanced progression, not a requirement</div>
-          <h2 id="s12">Bionic Arms → Hired Hands</h2>
-          <div class="definition-grid">
-            <article class="definition-card">
-              <h3>Bionic arms</h3>
-              <p>AI increases your individual capability. It can make you superhuman at a task, but offers limited delegation leverage.</p>
-            </article>
-            <article class="definition-card">
-              <h3>Hired hands</h3>
-              <p>Outsource bounded work to AI while retaining accountability. Assign an outcome; review what comes back.</p>
-            </article>
-          </div>
-          <p class="context">Both are useful. Delegation is an option; unattended automation is not a requirement.</p>
-          <aside class="speaker-notes" hidden>
-            <h3>Speaker notes</h3>
-            <p>
-              Define an agent in plain language: AI that can use tools and take several steps toward a goal. You can keep it beside you. Working
-              asynchronously is an option to earn through experience, not a graduation requirement.
-            </p>
-          </aside>
-        </div>
-      </section>
       <section class="slide" data-slide="13" aria-labelledby="s13">
         <div class="frame">
-          <div class="kicker">Choose // A worked example</div>
-          <h2 id="s13">Is this task worth delegating?</h2>
+          <div class="kicker">Invoice export example // Choose</div>
+          <h2 id="s13">Would you delegate an invoice export?</h2>
+          <p class="context">Hypothetical task: add a CSV download to an existing invoice screen.</p>
           <ul class="list">
             <li>Finish: an authorized user can download the filtered invoice list as a CSV.</li>
             <li>Evaluation criteria: correct rows, denied cross-customer access and safe CSV formatting.</li>
             <li>Review cost: inspect the diff, check a fixture export and try the download. Include corrections in the effort.</li>
           </ul>
-          <p class="context">
-            Carry this invoice-export task through the brief, boundaries, evaluation and acceptance. More generated code is not the goal.
-          </p>
+          <p class="context">Delegate only if you can judge the result and the review effort makes sense.</p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
@@ -889,7 +889,7 @@
       </section>
       <section class="slide" data-slide="14" aria-labelledby="s14">
         <div class="frame">
-          <div class="kicker">Brief</div>
+          <div class="kicker">Invoice export example // Brief</div>
           <h2 id="s14">Give the agent a brief it can work from.</h2>
           <div class="definition-grid">
             <article class="definition-card">
@@ -918,7 +918,7 @@
       </section>
       <section class="slide" data-slide="15" aria-labelledby="s15">
         <div class="frame">
-          <div class="kicker">Bound // The invoice export</div>
+          <div class="kicker">Invoice export example // Bound</div>
           <h2 id="s15">Give it only the access this task needs.</h2>
           <ul class="list">
             <li>Allow changes to the invoice export and its tests, using fixtures in a review branch.</li>
@@ -938,8 +938,8 @@
       </section>
       <section class="slide" data-slide="16" aria-labelledby="s16">
         <div class="frame">
-          <div class="kicker">Evaluate</div>
-          <h2 id="s16">Write the checks before you see the answer.</h2>
+          <div class="kicker">Invoice export example // Evaluate</div>
+          <h2 id="s16">Check the export against the brief.</h2>
           <ul class="list">
             <li>Does the sample contain the right filtered rows, including an empty result?</li>
             <li>Can a user access another customer’s invoices? Check the denial path.</li>
@@ -947,6 +947,7 @@
             <li>Try the download flow yourself. Read the artifact and the changes.</li>
           </ul>
           <p class="context">A second agent can help review. Agreement between agents is not proof.</p>
+          <p class="context">Agree these checks before work begins. Run them on what comes back.</p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
@@ -958,7 +959,7 @@
       </section>
       <section class="slide" data-slide="17" aria-labelledby="s17">
         <div class="frame">
-          <div class="kicker">Accept</div>
+          <div class="kicker">Invoice export example // Accept</div>
           <h2 id="s17">Accept, correct or stop.</h2>
           <div class="definition-grid">
             <article class="definition-card">
@@ -971,6 +972,7 @@
             </article>
           </div>
           <p class="one-liner">You do not need to type every line to be responsible for what ships.</p>
+          <p class="context">If accepted, name who owns the export and any issues found later.</p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
@@ -995,6 +997,9 @@
             </article>
           </div>
           <p class="context">These are examples you can read and adapt. You do not need to install either collection to begin.</p>
+          <p class="context">
+            These practices help you clarify, test, and review work like this example. Borrow one; you do not need the whole system.
+          </p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
