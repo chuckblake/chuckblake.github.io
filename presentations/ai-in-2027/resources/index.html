@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AI in 2027: resources and 2026 timeline | Chuck Blake</title>
+    <meta
+      name="description"
+      content="Starter prompts, reviewable artifacts, Matt Pocock and Poteto pstack practices, and a sourced timeline of 20 AI announcements in 2026."
+    />
+    <link rel="canonical" href="https://chuckblake.com/presentations/ai-in-2027/resources/" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      :root {
+        color-scheme: dark;
+        --bg: #0f1011;
+        --ink: #f4f4f5;
+        --muted: #b0b1b6;
+        --brand: #e7a33e;
+        --line: #303236;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.027) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.027) 1px, transparent 1px),
+          var(--bg);
+        background-size: 56px 56px;
+        color: var(--ink);
+        font:
+          19px/1.6 Inter,
+          ui-sans-serif,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+      main {
+        max-width: 1080px;
+        margin: auto;
+        padding: 56px 28px;
+      }
+      h1 {
+        font-size: clamp(38px, 5vw, 64px);
+        line-height: 1.08;
+        letter-spacing: -0.055em;
+      }
+      h2 {
+        font-size: 32px;
+        line-height: 1.2;
+        letter-spacing: -0.03em;
+      }
+      h3 {
+        font-size: 24px;
+        line-height: 1.3;
+        margin: 0;
+      }
+      p {
+        margin: 14px 0;
+      }
+      .kicker,
+      .category,
+      time {
+        font-family: SFMono-Regular, Consolas, monospace;
+        color: var(--brand);
+      }
+      .kicker {
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+      .category {
+        font-size: 14px;
+        margin: 0 0 5px;
+      }
+      .lead {
+        font-size: 24px;
+        max-width: 800px;
+      }
+      a {
+        color: var(--brand);
+        overflow-wrap: anywhere;
+        text-underline-offset: 4px;
+      }
+      a:hover {
+        color: white;
+      }
+      a:focus-visible {
+        outline: 3px solid var(--brand);
+        outline-offset: 4px;
+      }
+      nav {
+        display: flex;
+        gap: 12px 24px;
+        flex-wrap: wrap;
+        font-size: 16px;
+      }
+      section {
+        border-top: 1px solid var(--line);
+        margin-top: 42px;
+        padding-top: 20px;
+        scroll-margin-top: 20px;
+      }
+      li {
+        margin: 12px 0;
+      }
+      blockquote {
+        margin: 20px 0;
+        padding: 20px 24px;
+        border-left: 6px solid var(--brand);
+        background: #1c1d1f;
+        font-size: 23px;
+      }
+      .timeline {
+        list-style: none;
+        padding: 0;
+      }
+      .timeline > li {
+        display: grid;
+        grid-template-columns: 150px minmax(0, 1fr);
+        gap: 26px;
+        border-top: 1px solid var(--line);
+        padding: 24px 0;
+        margin: 0;
+      }
+      .timeline time {
+        font-size: 17px;
+      }
+      .timeline p:last-child {
+        font-size: 16px;
+      }
+      .sources {
+        padding-left: 32px;
+      }
+      .sources li {
+        padding-left: 8px;
+        scroll-margin-top: 24px;
+      }
+      .sources span {
+        font-size: 14px;
+        color: var(--muted);
+        overflow-wrap: anywhere;
+      }
+      footer {
+        margin-top: 40px;
+        font-size: 16px;
+      }
+      @media (max-width: 600px) {
+        main {
+          padding: 32px 22px;
+        }
+        .timeline > li {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+        h2 {
+          font-size: 28px;
+        }
+        body {
+          font-size: 18px;
+        }
+      }
+      @media print {
+        :root {
+          color-scheme: light;
+          --ink: #111827;
+          --muted: #414650;
+          --brand: #875512;
+          --line: #c7c9cd;
+        }
+        body {
+          background: white;
+          font-size: 12pt;
+        }
+        main {
+          padding: 0;
+        }
+        h1 {
+          font-size: 30pt;
+        }
+        h2 {
+          font-size: 22pt;
+        }
+        h3 {
+          font-size: 16pt;
+        }
+        nav {
+          display: none;
+        }
+        .timeline > li {
+          break-inside: avoid;
+        }
+        blockquote {
+          background: #faf4eb;
+          font-size: 15pt;
+        }
+        a {
+          color: var(--brand);
+        }
+        .sources span {
+          font-size: 10pt;
+        }
+        @page {
+          size: A4;
+          margin: 18mm;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="kicker">AI in 2027 // Chuck Blake</p>
+        <h1>Resources for your first experiments</h1>
+        <p class="lead">Start with a small task you can check. These links are optional reading, not a software shopping list.</p>
+        <nav aria-label="Resources navigation">
+          <a href="../">Audience deck</a><a href="../?notes=1">Speaker view</a><a href="#start">Start small</a
+          ><a href="#practices">Learnable practices</a><a href="#timeline">2026 timeline</a><a href="#sources">Sources</a>
+        </nav>
+      </header>
+      <section id="start">
+        <h2>Start small</h2>
+        <p>
+          Use an approved tool and material you are allowed to share. Do not paste secrets or customer data into an unapproved service. You can move
+          at a pace you can handle.
+        </p>
+        <ul>
+          <li>Review: "Read this draft. Identify the weakest argument and point to the sentence that needs work."</li>
+          <li>Think: "Ask me questions about this idea. Help me notice assumptions before suggesting a plan."</li>
+          <li>Understand: "Explain this code path. Link the files you inspected and separate facts from assumptions. Do not change files."</li>
+          <li>Explore: "Propose two architectures. Compare the trade-offs and list the decisions you need from me."</li>
+          <li>Change: "Refactor only this function. Preserve behavior, show the diff and stop if other files need changes."</li>
+          <li>Check: "Generate tests and docs for this small example. Tell me which checks you ran and which you could not run."</li>
+        </ul>
+        <p>For code changes, use test data and a review branch. For a document, work on a copy. You decide whether to accept the result.</p>
+      </section>
+      <section id="artifacts">
+        <h2>Ask for a reviewable artifact</h2>
+        <blockquote>
+          "Create a short walkthrough with the output, changed files or references, decisions and trade-offs, actual check results, uncertainty and
+          the next decision I need to make."
+        </blockquote>
+        <p>
+          Use an artifact you can open after the chat: a diagram, document, prototype, sample export or code diff. Ask for a decision summary and
+          observable evidence, rather than hidden reasoning. Open the references and check the result yourself.
+        </p>
+        <p>
+          <a href="#source-27">Claude’s Artifacts help guide [27]</a> explains creating, editing, sharing and exporting work beside a conversation.
+          Treat this as one example of the workflow, not a requirement to use Claude. Inspect sharing settings before publishing anything.
+        </p>
+      </section>
+      <section id="practices">
+        <h2>Learnable practices</h2>
+        <ul>
+          <li><a href="#source-24">Matt Pocock’s website [24]</a>: educator and engineer; links to his teaching and videos.</li>
+          <li>
+            <a href="#source-23">Matt Pocock’s skills repository [23]</a>: read the grilling and test-driven development examples. Try one practice
+            before installing a collection.
+          </li>
+          <li>
+            <a href="#source-25">Poteto’s pstack in cursor/plugins [25]</a>: Lauren Tan’s collection includes read-only investigation, prototyping and
+            bug-fix playbooks with runtime evidence. It also includes advanced workflows you do not need to adopt.
+          </li>
+        </ul>
+        <p>
+          A skill packages instructions and supporting material for an agent. Read third-party skills before installing them. Compatibility, tool
+          permissions and maintenance vary. Neither collection is a productivity benchmark; this talk makes no PR-count claims.
+        </p>
+      </section>
+      <section id="timeline">
+        <h2>2026: a dated selection</h2>
+        <p>
+          20 announcements, checked on November 3, 2026. Dates refer to the linked announcement, not universal availability. Previews, betas and
+          staged rollouts are labeled. This is a selected record of changing models, interfaces and practices. It is not a complete census, a ranking
+          of importance or a measure of acceleration. A count alone cannot establish that progress is speeding up.
+        </p>
+        <ol class="timeline">
+          <li id="openclaw">
+            <time datetime="2026-01-29">2026-01-29</time>
+            <div>
+              <p class="category">Open source</p>
+              <h3>OpenClaw name and release</h3>
+              <p>
+                The project announced its OpenClaw name and shipped channel, model and security updates. This was a rebrand, not the project&#x27;s
+                first release.
+              </p>
+              <p><a href="#source-2">Announcement [2]</a></p>
+            </div>
+          </li>
+          <li id="codex-app">
+            <time datetime="2026-02-02">2026-02-02</time>
+            <div>
+              <p class="category">Coding tools</p>
+              <h3>Codex app for macOS</h3>
+              <p>OpenAI introduced a desktop interface for working with multiple coding agents and reviewing their changes.</p>
+              <p><a href="#source-3">Announcement [3]</a></p>
+            </div>
+          </li>
+          <li id="gpt-5-3-codex">
+            <time datetime="2026-02-05">2026-02-05</time>
+            <div>
+              <p class="category">Models</p>
+              <h3>GPT-5.3-Codex</h3>
+              <p>OpenAI released a coding model for longer tasks involving research and tool use.</p>
+              <p><a href="#source-4">Announcement [4]</a></p>
+            </div>
+          </li>
+          <li id="opus-4-6">
+            <time datetime="2026-02-05">2026-02-05</time>
+            <div>
+              <p class="category">Models</p>
+              <h3>Claude Opus 4.6</h3>
+              <p>Anthropic released Opus 4.6 and introduced Claude Code agent teams in research preview.</p>
+              <p><a href="#source-5">Announcement [5]</a></p>
+            </div>
+          </li>
+          <li id="sonnet-4-6">
+            <time datetime="2026-02-17">2026-02-17</time>
+            <div>
+              <p class="category">Models</p>
+              <h3>Claude Sonnet 4.6</h3>
+              <p>Anthropic released Sonnet 4.6 with updates across coding, computer use and knowledge work.</p>
+              <p><a href="#source-6">Announcement [6]</a></p>
+            </div>
+          </li>
+          <li id="gemini-3-1">
+            <time datetime="2026-02-19">2026-02-19</time>
+            <div>
+              <p class="category">Models</p>
+              <h3>Gemini 3.1 Pro preview</h3>
+              <p>Google began rolling out Gemini 3.1 Pro across developer, enterprise and consumer products.</p>
+              <p><a href="#source-7">Announcement [7]</a></p>
+            </div>
+          </li>
+          <li id="gpt-5-4">
+            <time datetime="2026-03-05">2026-03-05</time>
+            <div>
+              <p class="category">Models</p>
+              <h3>GPT-5.4</h3>
+              <p>OpenAI released GPT-5.4 in ChatGPT, the API and Codex, combining reasoning, coding and computer-use capabilities.</p>
+              <p><a href="#source-8">Announcement [8]</a></p>
+            </div>
+          </li>
+          <li id="composer-2">
+            <time datetime="2026-03-19">2026-03-19</time>
+            <div>
+              <p class="category">Coding tools</p>
+              <h3>Composer 2</h3>
+              <p>Cursor released Composer 2, a model trained for coding tasks that can require hundreds of actions.</p>
+              <p><a href="#source-9">Announcement [9]</a></p>
+            </div>
+          </li>
+          <li id="codex-beyond">
+            <time datetime="2026-04-16">2026-04-16</time>
+            <div>
+              <p class="category">Agent tools</p>
+              <h3>Codex computer use and in-app browser</h3>
+              <p>
+                OpenAI announced background computer use, an in-app browser and richer file previews in Codex. Availability varied by platform and
+                region.
+              </p>
+              <p><a href="#source-21">Announcement [21]</a></p>
+            </div>
+          </li>
+          <li id="claude-design">
+            <time datetime="2026-04-17">2026-04-17</time>
+            <div>
+              <p class="category">Artifacts</p>
+              <h3>Claude Design research preview</h3>
+              <p>Anthropic launched a tool for creating and refining prototypes, slides and other visual work.</p>
+              <p><a href="#source-10">Announcement [10]</a></p>
+            </div>
+          </li>
+          <li id="gpt-5-5">
+            <time datetime="2026-04-23">2026-04-23</time>
+            <div>
+              <p class="category">Models</p>
+              <h3>GPT-5.5</h3>
+              <p>OpenAI began rolling out GPT-5.5 in ChatGPT and Codex; API availability followed on April 24.</p>
+              <p><a href="#source-11">Announcement [11]</a></p>
+            </div>
+          </li>
+          <li id="small-business">
+            <time datetime="2026-05-13">2026-05-13</time>
+            <div>
+              <p class="category">Agent tools</p>
+              <h3>Claude for Small Business</h3>
+              <p>Anthropic announced connectors and ready-to-run workflows inside Cowork, with approvals before sending, posting or paying.</p>
+              <p><a href="#source-22">Announcement [22]</a></p>
+            </div>
+          </li>
+          <li id="codex-workflows">
+            <time datetime="2026-06-02">2026-06-02</time>
+            <div>
+              <p class="category">Artifacts</p>
+              <h3>Codex role plugins, Sites and annotations</h3>
+              <p>OpenAI announced role-specific plugins and annotations, plus a preview of hosted sites for business and enterprise teams.</p>
+              <p><a href="#source-12">Announcement [12]</a></p>
+            </div>
+          </li>
+          <li id="claude-science">
+            <time datetime="2026-06-30">2026-06-30</time>
+            <div>
+              <p class="category">Artifacts</p>
+              <h3>Claude Science</h3>
+              <p>Anthropic launched a scientific workbench with integrated tools and auditable artifacts.</p>
+              <p><a href="#source-14">Announcement [14]</a></p>
+            </div>
+          </li>
+          <li id="grok-bot">
+            <time datetime="2026-08-11">2026-08-11</time>
+            <div>
+              <p class="category">Agent tools</p>
+              <h3>Grok Bot beta</h3>
+              <p>xAI launched always-on agents with their own cloud computer. The official product name is Grok Bot.</p>
+              <p><a href="#source-15">Announcement [15]</a></p>
+            </div>
+          </li>
+          <li id="gpt-6-astra">
+            <time datetime="2026-09-03">2026-09-03</time>
+            <div>
+              <p class="category">Models</p>
+              <h3>GPT-6 Astra</h3>
+              <p>
+                OpenAI announced GPT-6 Astra for coding, research, computer use and multi-step work. The date is recorded in its ChatGPT release
+                notes.
+              </p>
+              <p><a href="#source-16">Announcement [16]</a> · <a href="#source-28">Release-note date [28]</a></p>
+            </div>
+          </li>
+          <li id="opus-5-5">
+            <time datetime="2026-09-22">2026-09-22</time>
+            <div>
+              <p class="category">Models</p>
+              <h3>Claude Opus 5.5</h3>
+              <p>Anthropic introduced the first model in its Claude 5.5 family.</p>
+              <p><a href="#source-17">Announcement [17]</a></p>
+            </div>
+          </li>
+          <li id="sonnet-5-5">
+            <time datetime="2026-09-28">2026-09-28</time>
+            <div>
+              <p class="category">Models</p>
+              <h3>Claude Sonnet 5.5</h3>
+              <p>Anthropic introduced Sonnet 5.5 as a faster, lower-cost complement to Opus 5.5.</p>
+              <p><a href="#source-18">Announcement [18]</a></p>
+            </div>
+          </li>
+          <li id="agent-skills">
+            <time datetime="2026-10-22">2026-10-22</time>
+            <div>
+              <p class="category">Open standards</p>
+              <h3>Agent Skills donation to AAIF</h3>
+              <p>
+                Anthropic announced the donation of the Agent Skills standard to the Agentic AI Foundation. The open standard itself dates to December
+                2025.
+              </p>
+              <p><a href="#source-19">Announcement [19]</a></p>
+            </div>
+          </li>
+          <li id="gpt-6-1-terra">
+            <time datetime="2026-10-26">2026-10-26</time>
+            <div>
+              <p class="category">Models</p>
+              <h3>GPT-6.1 Terra</h3>
+              <p>
+                OpenAI announced GPT-6.1 Terra for visual reasoning, computer use and writing, with rollout in Work and Codex recorded in its release
+                notes.
+              </p>
+              <p><a href="#source-20">Announcement [20]</a> · <a href="#source-28">Release-note date [28]</a></p>
+            </div>
+          </li>
+        </ol>
+        <p>
+          OpenClaw’s own post is dated January 29; some coverage uses January 30. We use the primary post’s date and describe it as a rebrand and
+          release, not a new project launch. Agent Skills began as an open standard in December 2025; the October 2026 entry is the donation
+          announcement.
+        </p>
+      </section>
+      <section id="further">
+        <h2>Technical reading and unresolved examples</h2>
+        <p>
+          <a href="#source-26">cablate/claude-code-research [26]</a> is an independent reverse-engineering and architecture-analysis repository, not
+          an Anthropic release or an official open-source Claude Code distribution. It is optional technical reading, not a beginner setup step. We
+          have not assumed this was the unnamed repository in the feedback.
+        </p>
+        <p>
+          "Jeff" and the unnamed reverse-engineering repository are not specific enough to identify reliably from the feedback. We have not assigned
+          them launch dates or inserted them into the timeline. "Grokbot" is listed under the verified official name, Grok Bot.
+        </p>
+      </section>
+      <section id="presenting">
+        <h2>Audience and speaker versions</h2>
+        <p>
+          The <a href="../">plain deck URL</a> always starts with notes hidden. The <a href="../?notes=1">speaker link</a> turns them on; the Notes
+          button turns them off again. The setting is in the URL, not stored between visits. Notes are public content, not a private presenter
+          channel.
+        </p>
+        <p>
+          Print / PDF exports every slide without notes in audience view. Print + notes includes them in speaker view on taller pages. Turn notes off
+          before making an audience PDF. When JavaScript is off, all slides remain readable and speaker notes stay hidden.
+        </p>
+      </section>
+      <section id="sources">
+        <h2>Sources</h2>
+        <p>
+          Primary announcements and documentation support the timeline and product examples. GitHub repositories describe their authors’ practices;
+          they do not independently validate performance claims. Links were checked at publication, but third-party pages can change.
+        </p>
+        <ol class="sources">
+          <li id="source-2" value="2">
+            <a href="https://openclaw.ai/blog/introducing-openclaw">Introducing OpenClaw - OpenClaw Blog</a><br /><span
+              >https://openclaw.ai/blog/introducing-openclaw</span
+            >
+          </li>
+          <li id="source-3" value="3">
+            <a href="https://openai.com/index/introducing-the-codex-app">Introducing the Codex app | OpenAI</a><br /><span
+              >https://openai.com/index/introducing-the-codex-app</span
+            >
+          </li>
+          <li id="source-4" value="4">
+            <a href="https://openai.com/index/introducing-gpt-5-3-codex">Introducing GPT-5.3-Codex | OpenAI</a><br /><span
+              >https://openai.com/index/introducing-gpt-5-3-codex</span
+            >
+          </li>
+          <li id="source-5" value="5">
+            <a href="https://www.anthropic.com/news/claude-opus-4-6">Claude Opus 4.6 \ Anthropic</a><br /><span
+              >https://www.anthropic.com/news/claude-opus-4-6</span
+            >
+          </li>
+          <li id="source-6" value="6">
+            <a href="https://www.anthropic.com/news/claude-sonnet-4-6">Introducing Sonnet 4.6 \ Anthropic</a><br /><span
+              >https://www.anthropic.com/news/claude-sonnet-4-6</span
+            >
+          </li>
+          <li id="source-7" value="7">
+            <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro"
+              >Gemini 3.1 Pro: Announcing our latest Gemini AI model</a
+            ><br /><span>https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro</span>
+          </li>
+          <li id="source-8" value="8">
+            <a href="https://openai.com/index/introducing-gpt-5-4">Introducing GPT-5.4 | OpenAI</a><br /><span
+              >https://openai.com/index/introducing-gpt-5-4</span
+            >
+          </li>
+          <li id="source-9" value="9">
+            <a href="https://cursor.com/blog/composer-2">Introducing Composer 2 · Cursor</a><br /><span>https://cursor.com/blog/composer-2</span>
+          </li>
+          <li id="source-10" value="10">
+            <a href="https://www.anthropic.com/news/claude-design-anthropic-labs">Introducing Claude Design by Anthropic Labs \ Anthropic</a
+            ><br /><span>https://www.anthropic.com/news/claude-design-anthropic-labs</span>
+          </li>
+          <li id="source-11" value="11">
+            <a href="https://openai.com/index/introducing-gpt-5-5">Introducing GPT-5.5 | OpenAI</a><br /><span
+              >https://openai.com/index/introducing-gpt-5-5</span
+            >
+          </li>
+          <li id="source-12" value="12">
+            <a href="https://openai.com/index/codex-for-every-role-tool-workflow">Codex for every role, tool, and workflow | OpenAI</a><br /><span
+              >https://openai.com/index/codex-for-every-role-tool-workflow</span
+            >
+          </li>
+          <li id="source-14" value="14">
+            <a href="https://www.anthropic.com/news/claude-science-ai-workbench">Claude Science, an AI workbench for scientists \ Anthropic</a
+            ><br /><span>https://www.anthropic.com/news/claude-science-ai-workbench</span>
+          </li>
+          <li id="source-15" value="15">
+            <a href="https://x.ai/news/introducing-grok-bot">Introducing Grok Bot | SpaceXSI</a><br /><span
+              >https://x.ai/news/introducing-grok-bot</span
+            >
+          </li>
+          <li id="source-16" value="16">
+            <a href="https://openai.com/index/gpt-6-astra">GPT-6 Astra: A new generation of intelligence | OpenAI</a><br /><span
+              >https://openai.com/index/gpt-6-astra</span
+            >
+          </li>
+          <li id="source-17" value="17">
+            <a href="https://www.anthropic.com/news/claude-opus-5-5">Introducing Claude Opus 5.5 \ Anthropic</a><br /><span
+              >https://www.anthropic.com/news/claude-opus-5-5</span
+            >
+          </li>
+          <li id="source-18" value="18">
+            <a href="https://www.anthropic.com/news/claude-sonnet-5-5">Introducing Claude Sonnet 5.5 \ Anthropic</a><br /><span
+              >https://www.anthropic.com/news/claude-sonnet-5-5</span
+            >
+          </li>
+          <li id="source-19" value="19">
+            <a href="https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation"
+              >Donating Agent Skills to the Agentic AI Foundation \ Anthropic</a
+            ><br /><span>https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation</span>
+          </li>
+          <li id="source-20" value="20">
+            <a href="https://openai.com/index/introducing-gpt-6-1-terra">Introducing GPT-6.1 Terra | OpenAI</a><br /><span
+              >https://openai.com/index/introducing-gpt-6-1-terra</span
+            >
+          </li>
+          <li id="source-21" value="21">
+            <a href="https://openai.com/index/codex-for-almost-everything">Codex for (almost) everything | OpenAI</a><br /><span
+              >https://openai.com/index/codex-for-almost-everything</span
+            >
+          </li>
+          <li id="source-22" value="22">
+            <a href="https://www.anthropic.com/news/claude-for-small-business">Introducing Claude for Small Business \ Anthropic</a><br /><span
+              >https://www.anthropic.com/news/claude-for-small-business</span
+            >
+          </li>
+          <li id="source-23" value="23">
+            <a href="https://github.com/mattpocock/skills"
+              >GitHub - mattpocock/skills: Skills for Real Engineers. Straight from my .agents directory. · GitHub</a
+            ><br /><span>https://github.com/mattpocock/skills</span>
+          </li>
+          <li id="source-24" value="24"><a href="https://www.mattpocock.com">Matt Pocock</a><br /><span>https://www.mattpocock.com</span></li>
+          <li id="source-25" value="25">
+            <a href="https://github.com/cursor/plugins/tree/main/pstack">plugins/pstack at main · cursor/plugins · GitHub</a><br /><span
+              >https://github.com/cursor/plugins/tree/main/pstack</span
+            >
+          </li>
+          <li id="source-26" value="26">
+            <a href="https://github.com/cablate/claude-code-research"
+              >GitHub - cablate/claude-code-research: Independent research on Claude Code internals, Claude Agent SDK, and related tooling. ·
+              GitHub</a
+            ><br /><span>https://github.com/cablate/claude-code-research</span>
+          </li>
+          <li id="source-27" value="27">
+            <a href="https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them"
+              >What are artifacts and how do I use them? | Claude Help Center</a
+            ><br /><span>https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them</span>
+          </li>
+          <li id="source-28" value="28">
+            <a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">ChatGPT release notes | OpenAI Help Center</a><br /><span
+              >https://help.openai.com/en/articles/6825453-chatgpt-release-notes</span
+            >
+          </li>
+        </ol>
+      </section>
+      <footer><a href="../">Back to the presentation</a> · <a href="/publications/">Writing &amp; talks</a></footer>
+    </main>
+  </body>
+</html>
