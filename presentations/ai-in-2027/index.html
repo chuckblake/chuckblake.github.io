@@ -589,7 +589,7 @@
   </head>
   <body>
     <main class="deck" id="deck" aria-label="AI in 2027 presentation">
-      <noscript><p class="context">JavaScript is off. Scroll to read all 19 slides. Speaker notes remain hidden.</p></noscript>
+      <noscript><p class="context">JavaScript is off. Scroll to read all 20 slides. Speaker notes remain hidden.</p></noscript>
       <section class="slide active" data-slide="1" aria-labelledby="s1">
         <div class="frame">
           <div class="kicker">AI in 2027</div>
@@ -626,8 +626,24 @@
       </section>
       <section class="slide" data-slide="3" aria-labelledby="s3">
         <div class="frame">
+          <div class="kicker">A habit before a tool</div>
+          <h2 id="s3">Put AI between you and the work.</h2>
+          <p class="one-liner">Ask: “How could AI help with what I’m doing?”</p>
+          <p class="context">Question the manual work before accepting it as fixed.</p>
+          <p class="accountability">This means considering AI, not automatically using it or granting access.</p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              Make this a pause before starting, not a rule that every task needs AI. Sometimes the answer is that doing it yourself is simpler, or
+              that the data or access is inappropriate. The habit is to consider the option before defaulting to manual work.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide" data-slide="4" aria-labelledby="s4">
+        <div class="frame">
           <div class="kicker">How to get started</div>
-          <h2 id="s3">Pick something low-risk and non-destructive.</h2>
+          <h2 id="s4">Pick something low-risk and non-destructive.</h2>
           <ul class="list">
             <li>Ask AI to review a draft, a plan or a piece of code. You decide which suggestions to use.</li>
             <li>Talk through an idea. Dictate with a tool like Wispr Flow, then ask AI to challenge your assumptions.</li>
@@ -644,10 +660,10 @@
           </aside>
         </div>
       </section>
-      <section class="slide" data-slide="4" aria-labelledby="s4">
+      <section class="slide" data-slide="5" aria-labelledby="s5">
         <div class="frame">
           <div class="kicker">Explore without changing anything</div>
-          <h2 id="s4">Let AI help you understand the work.</h2>
+          <h2 id="s5">Let AI help you understand the work.</h2>
           <div class="definition-grid">
             <article class="definition-card">
               <h3>Unfamiliar code</h3>
@@ -668,10 +684,10 @@
           </aside>
         </div>
       </section>
-      <section class="slide" data-slide="5" aria-labelledby="s5">
+      <section class="slide" data-slide="6" aria-labelledby="s6">
         <div class="frame">
           <div class="kicker">A first small change</div>
-          <h2 id="s5">Choose something you can undo.</h2>
+          <h2 id="s6">Choose something you can undo.</h2>
           <ul class="list">
             <li>Refactor one bounded area while keeping its behavior the same.</li>
             <li>Generate tests for a small function, then check that a deliberately broken version fails.</li>
@@ -689,10 +705,10 @@
           </aside>
         </div>
       </section>
-      <section class="slide" data-slide="6" aria-labelledby="s6">
+      <section class="slide" data-slide="7" aria-labelledby="s7">
         <div class="frame">
           <div class="kicker">Artifacts</div>
-          <h2 id="s6">Ask for something you can inspect.</h2>
+          <h2 id="s7">Ask for something you can inspect.</h2>
           <div class="definition-grid">
             <article class="definition-card">
               <h3>The output</h3>
@@ -709,24 +725,6 @@
             <p>
               Use artifact in the broad sense: a durable output, not just one vendor feature. A confident explanation is not evidence that a test ran.
               Ask for the actual output and open the referenced files. A polished artifact can still be wrong.
-            </p>
-          </aside>
-        </div>
-      </section>
-      <section class="slide" data-slide="7" aria-labelledby="s7">
-        <div class="frame">
-          <div class="kicker">A reviewable handoff</div>
-          <h2 id="s7">Make the explanation part of the task.</h2>
-          <blockquote class="prompt">
-            "Leave a short walkthrough: what changed, where the files are, why you chose this approach, what you checked, and what I should review
-            next. Flag assumptions and anything you could not verify."
-          </blockquote>
-          <p class="context">For a CSV export: include a sample file, the test results and a note about empty results or unsupported inputs.</p>
-          <aside class="speaker-notes" hidden>
-            <h3>Speaker notes</h3>
-            <p>
-              This is a suggested prompt, not a quotation from a vendor. Do not ask for hidden chain-of-thought. Ask for a useful decision summary,
-              references and observable checks. A missing test result should read "not run," not "looks good."
             </p>
           </aside>
         </div>
@@ -756,32 +754,58 @@
       </section>
       <section class="slide" data-slide="9" aria-labelledby="s9">
         <div class="frame">
-          <div class="kicker">Two ways to work</div>
-          <h2 id="s9">A bionic arm still needs your attention.</h2>
-          <div class="definition-grid">
-            <article class="definition-card">
-              <h3>Work alongside AI</h3>
-              <p>You ask, inspect the answer and steer the next step. AI extends what you can do while you are there.</p>
-            </article>
-            <article class="definition-card">
-              <h3>Delegate a task</h3>
-              <p>You assign an outcome. An agent uses tools to work through steps, then returns evidence or asks for a decision.</p>
-            </article>
-          </div>
-          <p class="context">Both are useful. More independence needs clearer boundaries and a way to stop.</p>
+          <div class="kicker">A reviewable handoff</div>
+          <h2 id="s9">Leave a handoff someone can use.</h2>
+          <blockquote class="prompt">
+            “For this request-to-database diagram, link the file and the code it refers to. Explain the routing decisions, mark any path you could not
+            trace, and tell me which part needs my review.”
+          </blockquote>
+          <p class="context">The artifact is the diagram. The handoff tells the next person where to look and what remains unresolved.</p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
-              Define an agent in plain language: AI that can use tools and take several steps toward a goal. You can keep it beside you. Working
-              asynchronously is an option to earn through experience, not a graduation requirement.
+              This is a suggested prompt, not a quotation from a vendor. We have made and revised the artifact; now make it usable without replaying
+              the chat. Ask for a decision summary and references, not hidden chain-of-thought. A missing check should read “not run.”
             </p>
           </aside>
         </div>
       </section>
       <section class="slide" data-slide="10" aria-labelledby="s10">
         <div class="frame">
-          <div class="kicker">What the developer owns</div>
-          <h2 id="s10">Delegation gives you a management job.</h2>
+          <div class="kicker">Finish the beginner section</div>
+          <h2 id="s10">Keep what works. Adjust what doesn’t.</h2>
+          <div class="definition-grid">
+            <article class="definition-card">
+              <h3>First</h3>
+              <p>Ask for a review or explanation. Save what helped and what was wrong.</p>
+            </article>
+            <article class="definition-card">
+              <h3>Next</h3>
+              <p>Request a small artifact. Revise it together and check its references.</p>
+            </article>
+            <article class="definition-card">
+              <h3>Check</h3>
+              <p>Compare the result with the original task. Record errors and the time spent reviewing.</p>
+            </article>
+            <article class="definition-card">
+              <h3>Then</h3>
+              <p>Repeat, adjust or stop based on quality and your total effort.</p>
+            </article>
+          </div>
+          <p class="context">These habits are useful on their own. Next, we’ll look at handing off a whole task.</p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              There is no four-week deadline. Revisit a failed experiment when the tools change, but do not mistake novelty for value. Keep a small
+              record of the task, result, review effort and correction so the next trial has a baseline.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide" data-slide="11" aria-labelledby="s11">
+        <div class="frame">
+          <div class="kicker">Advanced // Delegation and management</div>
+          <h2 id="s11">What’s next?</h2>
           <div class="definition-grid loop">
             <article class="definition-card">
               <h3>Choose</h3>
@@ -808,7 +832,7 @@
               <p>Keep an owner for the outcome.</p>
             </article>
           </div>
-          <p class="context">Agents have no human accountability. You and your organization still do.</p>
+          <p class="context">Next: one delegated task, then practices from Matt Pocock’s skills and Poteto’s pstack. You still own the outcome.</p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
@@ -818,16 +842,42 @@
           </aside>
         </div>
       </section>
-      <section class="slide" data-slide="11" aria-labelledby="s11">
+      <section class="slide" data-slide="12" aria-labelledby="s12">
         <div class="frame">
-          <div class="kicker">Choose</div>
-          <h2 id="s11">Start where you can check the answer.</h2>
+          <div class="kicker">An advanced progression, not a requirement</div>
+          <h2 id="s12">Bionic Arms → Hired Hands</h2>
+          <div class="definition-grid">
+            <article class="definition-card">
+              <h3>Bionic arms</h3>
+              <p>AI increases your individual capability. It can make you superhuman at a task, but offers limited delegation leverage.</p>
+            </article>
+            <article class="definition-card">
+              <h3>Hired hands</h3>
+              <p>Outsource bounded work to AI while retaining accountability. Assign an outcome; review what comes back.</p>
+            </article>
+          </div>
+          <p class="context">Both are useful. Delegation is an option; unattended automation is not a requirement.</p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              Define an agent in plain language: AI that can use tools and take several steps toward a goal. You can keep it beside you. Working
+              asynchronously is an option to earn through experience, not a graduation requirement.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide" data-slide="13" aria-labelledby="s13">
+        <div class="frame">
+          <div class="kicker">Choose // A worked example</div>
+          <h2 id="s13">Is this task worth delegating?</h2>
           <ul class="list">
-            <li>Pick a clear finish and a result you know how to evaluate.</li>
-            <li>Prefer a small, reversible change over an open-ended rewrite.</li>
-            <li>Count review and corrections as part of the effort. More generated code is not the goal.</li>
+            <li>Finish: an authorized user can download the filtered invoice list as a CSV.</li>
+            <li>Evaluation criteria: correct rows, denied cross-customer access and safe CSV formatting.</li>
+            <li>Review cost: inspect the diff, check a fixture export and try the download. Include corrections in the effort.</li>
           </ul>
-          <p class="context">Example for the rest of the talk: add a CSV export to an invoice list, using test data and a review branch.</p>
+          <p class="context">
+            Carry this invoice-export task through the brief, boundaries, evaluation and acceptance. More generated code is not the goal.
+          </p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
@@ -837,10 +887,10 @@
           </aside>
         </div>
       </section>
-      <section class="slide" data-slide="12" aria-labelledby="s12">
+      <section class="slide" data-slide="14" aria-labelledby="s14">
         <div class="frame">
           <div class="kicker">Brief</div>
-          <h2 id="s12">Give the agent a brief it can work from.</h2>
+          <h2 id="s14">Give the agent a brief it can work from.</h2>
           <div class="definition-grid">
             <article class="definition-card">
               <h3>Outcome and context</h3>
@@ -866,30 +916,30 @@
           </aside>
         </div>
       </section>
-      <section class="slide" data-slide="13" aria-labelledby="s13">
+      <section class="slide" data-slide="15" aria-labelledby="s15">
         <div class="frame">
-          <div class="kicker">Boundaries and human control</div>
-          <h2 id="s13">Give it only the access this task needs.</h2>
+          <div class="kicker">Bound // The invoice export</div>
+          <h2 id="s15">Give it only the access this task needs.</h2>
           <ul class="list">
-            <li>Use a review branch and test data. Keep production credentials out.</li>
-            <li>Set a time or spend limit. Stop at the limit or when the task needs a new decision.</li>
-            <li>Require approval before publishing, spending money, deleting data or changing permissions.</li>
-            <li>Keep a practical way to pause the work and revoke access.</li>
+            <li>Allow changes to the invoice export and its tests, using fixtures in a review branch.</li>
+            <li>No production access, schema changes, new dependencies or publishing.</li>
+            <li>Agree a time or spend limit. Stop there, or ask when a product decision is missing.</li>
+            <li>Enforce the allowed tools and access. Keep a way to pause or revoke them.</li>
           </ul>
           <p class="context">A prompt describes the boundary. Tool permissions enforce it.</p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
-              The distinction between instructions and access controls matters even for beginners. Avoid implying that a prompt can guarantee safety.
-              A human approval should show the actual proposed action and its consequences. Granting an agent more access is a separate decision.
+              This is the operating boundary for the CSV task, not another starter-task checklist. A prompt cannot guarantee safety. A human approval
+              should show the actual proposed action and its consequences. Granting an agent more access is a separate decision.
             </p>
           </aside>
         </div>
       </section>
-      <section class="slide" data-slide="14" aria-labelledby="s14">
+      <section class="slide" data-slide="16" aria-labelledby="s16">
         <div class="frame">
           <div class="kicker">Evaluate</div>
-          <h2 id="s14">Write the checks before you see the answer.</h2>
+          <h2 id="s16">Write the checks before you see the answer.</h2>
           <ul class="list">
             <li>Does the sample contain the right filtered rows, including an empty result?</li>
             <li>Can a user access another customer’s invoices? Check the denial path.</li>
@@ -906,18 +956,18 @@
           </aside>
         </div>
       </section>
-      <section class="slide" data-slide="15" aria-labelledby="s15">
+      <section class="slide" data-slide="17" aria-labelledby="s17">
         <div class="frame">
           <div class="kicker">Accept</div>
-          <h2 id="s15">&quot;Done&quot; is a claim you have to check.</h2>
+          <h2 id="s17">Accept, correct or stop.</h2>
           <div class="definition-grid">
             <article class="definition-card">
               <h3>What AI returns</h3>
-              <p>The output, references, actual check results and a short account of risks or unverified behavior.</p>
+              <p>The CSV change, a fixture export, actual check results and any unsupported cases or blocked checks.</p>
             </article>
             <article class="definition-card">
               <h3>What you decide</h3>
-              <p>Inspect the change. Run your checks. Accept it, ask for a specific correction or stop the work.</p>
+              <p>Use the evaluation evidence to decide whether the export meets the brief. Accept it, request a specific correction or stop.</p>
             </article>
           </div>
           <p class="one-liner">You do not need to type every line to be responsible for what ships.</p>
@@ -930,10 +980,10 @@
           </aside>
         </div>
       </section>
-      <section class="slide" data-slide="16" aria-labelledby="s16">
+      <section class="slide" data-slide="18" aria-labelledby="s18">
         <div class="frame">
           <div class="kicker">Practices worth borrowing</div>
-          <h2 id="s16">Learn one practice before adopting a whole system.</h2>
+          <h2 id="s18">Learn one practice before adopting a whole system.</h2>
           <div class="definition-grid">
             <article class="definition-card">
               <h3>Matt Pocock / skills</h3>
@@ -955,10 +1005,10 @@
           </aside>
         </div>
       </section>
-      <section class="slide" data-slide="17" aria-labelledby="s17">
+      <section class="slide" data-slide="19" aria-labelledby="s19">
         <div class="frame">
           <div class="kicker">What employers need to provide</div>
-          <h2 id="s17">Make room for practice and review.</h2>
+          <h2 id="s19">Make room for practice and review.</h2>
           <ul class="list">
             <li>Provide approved tools, clear data rules and a safe place to experiment.</li>
             <li>Pair beginners with someone who can help check the work. Share failures as well as useful prompts.</li>
@@ -974,43 +1024,11 @@
           </aside>
         </div>
       </section>
-      <section class="slide" data-slide="18" aria-labelledby="s18">
-        <div class="frame">
-          <div class="kicker">A practice plan you can slow down</div>
-          <h2 id="s18">Try one useful workflow, then decide.</h2>
-          <div class="definition-grid">
-            <article class="definition-card">
-              <h3>First</h3>
-              <p>Ask for a review or explanation. Save what helped and what was wrong.</p>
-            </article>
-            <article class="definition-card">
-              <h3>Next</h3>
-              <p>Request a small artifact. Revise it together and check its references.</p>
-            </article>
-            <article class="definition-card">
-              <h3>When ready</h3>
-              <p>Delegate one reversible change with a clear boundary and a review checkpoint.</p>
-            </article>
-            <article class="definition-card">
-              <h3>Then</h3>
-              <p>Repeat, adjust or stop based on quality and your total effort.</p>
-            </article>
-          </div>
-          <p class="context">Stay at any step as long as you need. You can get useful work done without running AI unattended.</p>
-          <aside class="speaker-notes" hidden>
-            <h3>Speaker notes</h3>
-            <p>
-              There is no four-week deadline. Revisit a failed experiment when the tools change, but do not mistake novelty for value. Keep a small
-              record of the task, result, review effort and correction so the next trial has a baseline.
-            </p>
-          </aside>
-        </div>
-      </section>
-      <section class="slide" data-slide="19" aria-labelledby="s19">
+      <section class="slide" data-slide="20" aria-labelledby="s20">
         <div class="frame">
           <div class="kicker">Your next experiment</div>
-          <h2 id="s19">Which task would you try tomorrow?</h2>
-          <p class="one-liner">Pick something small enough to check. Ask for an artifact that explains its work.</p>
+          <h2 id="s20">Which task would you try tomorrow?</h2>
+          <p class="one-liner">Name the task, the output you want and how you will judge it.</p>
           <p class="context"><a href="resources/">Resources, starter prompts and the sourced 2026 timeline →</a></p>
           <p class="context">
             Audience view hides speaker notes. Use the Notes button or <a href="?notes=1">open the speaker view</a>. Notes are public, not private.
@@ -1019,8 +1037,9 @@
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
-              Close by asking for one low-risk experiment, not an overnight automation. Send the audience to the resources page. Speaker view uses
-              notes=1, keeps notes with each slide and includes them in its labeled printout. Turn Notes off or use the plain URL for an audience PDF.
+              Close by asking the audience to name one real task and its finish line, rather than repeating the practice plan. Send them to the
+              resources page. Speaker view uses notes=1, keeps notes with each slide and includes them in its labeled printout. Turn Notes off or use
+              the plain URL for an audience PDF.
             </p>
           </aside>
         </div>
