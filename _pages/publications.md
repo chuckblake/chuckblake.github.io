@@ -80,6 +80,11 @@ nav_order: 3
 
 <ul class="pub-list">
   <li>
+    <a href="https://chuckblake.com/presentations/ai-in-2027/" target="_blank" rel="noopener noreferrer">AI in 2027: Your Next Job Is Managing AI Employees</a>
+    <div class="pub-summary">A developer's guide to choosing, briefing, bounding, evaluating, accepting, and operating delegated AI work, with human control and employer support.</div>
+    <div class="pub-meta">Developer workflows · Presentation · 2027 preparation</div>
+  </li>
+  <li>
     <a href="https://chuckblake.com/presentations/glance-outcome-monitoring/" target="_blank">Glance: Outcome Monitoring for Automated Work</a>
     <div class="pub-summary">Five-minute live demo: Glance catches a missed business outcome, gives an AI agent the context to fix it, and records why the check returned green.</div>
     <div class="pub-meta">Glance · Presentation · July 2026</div>
