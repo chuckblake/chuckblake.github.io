@@ -493,9 +493,7 @@
         display: flex;
         gap: 16px;
       }
-      .worked-example .definition-card p {
-        font-size: clamp(19px, 1.8vw, 25px);
-      }
+
       @media (max-width: 760px) {
         .deck-tools {
           width: 100%;
@@ -538,9 +536,6 @@
           background: #f7f7f8;
           font-size: 28px;
         }
-        .worked-example .definition-card p {
-          font-size: 22px;
-        }
       }
     </style>
   </head>
@@ -570,18 +565,19 @@
           <div class="kicker">Tip 1 / 10</div>
           <h2 id="s2">Put AI between you and the work.</h2>
 
-          <p class="one-liner">Before you start, ask: "How could AI help with this?"</p>
+          <p class="one-liner">Question anything you do manually before assuming it has to stay manual.</p>
           <ul class="list">
-            <li>Ask for an explanation of unfamiliar code, or a review of a draft.</li>
-            <li>Choose a small task whose result you can judge.</li>
+            <li>Ask AI to explain unfamiliar code, draft a test or review a change.</li>
+            <li>Start with a small piece of work whose result you can judge.</li>
             <li>Do it yourself when the setup or review would cost more than the help.</li>
           </ul>
           <p class="accountability">Considering AI does not mean granting access. Keep private data and secrets out of the experiment.</p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
-              Make this a pause before starting, not a requirement to use AI for every task. Read-only work is a reasonable first step. Use approved
-              tools and test data. If the task needs sensitive access, resolve that separately rather than putting permission into a vague prompt.
+              Before you repeat a manual step, ask whether AI could help with it. That pause is the habit; you do not have to use AI every time. You
+              can ask it to explain a failing test before you start debugging. Use approved tools and test data. Resolve sensitive access separately
+              rather than putting permission into a vague prompt.
             </p>
           </aside>
         </div>
@@ -608,24 +604,24 @@
       <section class="slide" id="slide-4" data-slide="4" data-tip="3" aria-labelledby="s4">
         <div class="frame">
           <div class="kicker">Tip 3 / 10</div>
-          <h2 id="s4">Use a tool that can work with the project.</h2>
+          <h2 id="s4">Keep access narrow and reversible.</h2>
           <div class="definition-grid">
             <article class="definition-card">
-              <h3>Check the fit</h3>
-              <p>Can your approved tool read the relevant files, propose changes and run the checks this task needs? Verify its actual setup.</p>
+              <h3>Limit the work area</h3>
+              <p>Start in a review branch or local copy. Give AI only the files and tools this task needs.</p>
             </article>
             <article class="definition-card">
-              <h3>Keep access narrow</h3>
-              <p>Use a local copy or review branch. Allow only the files and commands the task needs; approve broader access separately.</p>
+              <h3>Keep a way to stop</h3>
+              <p>Know how to pause the run or revoke access. Inspect the result before you expand the scope.</p>
             </article>
           </div>
-          <p class="context">For a web artifact, ask for an editable file and a local preview you can open.</p>
+          <p class="accountability">Keep production access, publishing, deletes and unrelated dependency changes out of scope.</p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
-              This is a selection checklist, not a claim that every AI product has these capabilities. Check documentation, installed version, tool
-              permissions and the working directory. A prompt describes the boundary; permissions enforce it. Avoid choosing a product on an
-              unverified demo or a promise of superiority.
+              Check the working directory and actual tool permissions before starting. A branch helps you review a diff; it does not stop a shell from
+              reaching other files or production. Use permissions or isolation to enforce the boundary. Keep a clean copy, know how to stop the
+              process and revoke its access, and review the diff before allowing more work. Broader access needs a separate decision.
             </p>
           </aside>
         </div>
@@ -633,19 +629,20 @@
       <section class="slide" id="slide-5" data-slide="5" data-tip="4" aria-labelledby="s5">
         <div class="frame">
           <div class="kicker">Tip 4 / 10</div>
-          <h2 id="s5">Ask it to trace the code before changing it.</h2>
+          <h2 id="s5">Use AI to vet your ideas.</h2>
 
           <blockquote class="prompt">
-            "Trace this request from the entry point to storage. Point to the files and tests. Mark anything you cannot follow. Do not edit yet."
+            "Talk through this design with me before we write code. What are the trade-offs? Where could it fail? What simpler option should we
+            consider?"
           </blockquote>
-          <p class="context">Check the path against the code. Then agree where the change belongs.</p>
-          <p class="accountability">A plausible walkthrough can still describe a path the application never takes.</p>
+          <p class="context">Bring the constraints and push back on the answers. Check assumptions against the code and what your users need.</p>
+          <p class="accountability">Treat AI as a coding partner, not an authority. You make the design decision.</p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
-              Ask for file paths and relevant symbols, not hidden reasoning. Open the references and look for missing branches, permissions and
-              failure paths. If the tool cannot see a dependency or runtime setting, it should say so. For a post or deck, first trace the source
-              material and the site's publishing conventions.
+              Use the conversation to test an idea before you invest in implementation. Explain the design and ask AI to challenge it. Discuss failure
+              cases such as retries, missing data or a permission check in the wrong place. Ask which trade-offs depend on facts you have not checked.
+              A confident answer can still be wrong, so verify the assumptions and decide what to build yourself.
             </p>
           </aside>
         </div>
@@ -724,35 +721,22 @@
           </aside>
         </div>
       </section>
-      <section class="slide worked-example" id="slide-9" data-slide="9" aria-labelledby="s9">
+      <section class="slide" id="slide-9" data-slide="9" aria-labelledby="s9">
         <div class="frame">
-          <div class="kicker">Worked example // Communication artifact</div>
-          <h2 id="s9">Build a presentation or post for chuckblake.com.</h2>
-          <div class="definition-grid">
-            <article class="definition-card">
-              <h3>Set the brief</h3>
-              <p>Name the audience and what they should understand or do. Point to the source material and site conventions.</p>
-            </article>
-            <article class="definition-card">
-              <h3>Make the first artifact</h3>
-              <p>Ask for editable source and a local preview. Open it, inspect it and request targeted revisions.</p>
-            </article>
-            <article class="definition-card">
-              <h3>Check the draft</h3>
-              <p>Verify sources, links and layout. For a deck, test navigation and print. Have a person review the final version.</p>
-            </article>
-            <article class="definition-card">
-              <h3>Publish later</h3>
-              <p>Publish only after approval. Then check the live page and keep an owner for corrections.</p>
-            </article>
-          </div>
-          <p class="context">Illustrative workflow. A local preview is not a published page.</p>
+          <div class="kicker">Before you repeat the workflow</div>
+          <h2 id="s9">Count the review work.</h2>
+          <ul class="list">
+            <li>Record the task, the result and what you had to correct.</li>
+            <li>Count the time spent briefing, inspecting, revising and checking.</li>
+            <li>Keep the useful checks. Change or stop a workflow when its cost no longer makes sense.</li>
+          </ul>
+          <p class="context">A fast first draft can still leave you with more work. Judge quality and total effort before saving the procedure.</p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
-              This is a supporting example, not an eleventh tip. For a deck, keep speaker notes, deep links and the PDF in scope. For a post, check
-              the headline, quotations and site rendering. The agent should stop at the local preview unless publishing is explicitly authorized.
-              After a later release, open the live URL and repeat the checks that depend on deployment.
+              Pause here before moving from a checked result to a saved procedure. Keep the record small enough that you will use it. Review effort is
+              part of the cost, even when the first draft arrives quickly. Note which checks caught mistakes and which corrections you had to make.
+              Revisit that record when the tool or project changes rather than assuming the workflow still helps.
             </p>
           </aside>
         </div>
@@ -785,20 +769,20 @@
       <section class="slide" id="slide-11" data-slide="11" data-tip="9" aria-labelledby="s11">
         <div class="frame">
           <div class="kicker">Tip 9 / 10</div>
-          <h2 id="s11">Keep learning from the work.</h2>
+          <h2 id="s11">Ask for a plan before implementation.</h2>
+          <p class="context">Before AI changes code, ask it to lay out the work:</p>
           <ul class="list">
-            <li>Record the task, the result and what you had to correct.</li>
-            <li>Count the time spent briefing, inspecting, revising and checking.</li>
-            <li>Use failures to change the next attempt. Share the useful checks with your team.</li>
-            <li>Revisit a workflow when the tool or project changes. Stop using it if the cost no longer makes sense.</li>
+            <li>A plan with the affected files and what will change in each.</li>
+            <li>A test strategy, including the behavior that could break.</li>
+            <li>Risks and open questions that need an answer.</li>
           </ul>
-          <p class="context">Judge quality and total effort. Generated lines and busy agents do not tell you whether the work helped.</p>
+          <p class="one-liner">Set a checkpoint: review the plan together before any code changes.</p>
           <aside class="speaker-notes" hidden>
             <h3>Speaker notes</h3>
             <p>
-              Keep the record small enough that you will use it. Review effort is part of the cost, even when the first draft arrives quickly.
-              Maintain your own debugging and domain knowledge so you can challenge the result. Changing a tool or model is a reason to rerun the
-              checks, not assume the old result still holds.
+              Keep the plan proportional to the change. For a small fix, a few lines may be enough. Ask AI to name the files it expects to touch, how
+              it will test the result and what it still needs to learn. Tell it to stop for your review before editing. Resolve open questions and
+              narrow an overlarge change at that checkpoint. If implementation reveals a new risk, pause and revisit the plan.
             </p>
           </aside>
         </div>
