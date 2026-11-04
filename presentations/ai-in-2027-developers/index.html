@@ -1,0 +1,973 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI in 2027: Ten habits for developers | Chuck Blake</title>
+    <meta
+      name="description"
+      content="Ten practical habits for AI-assisted development: durable artifacts, targeted revisions, evidence and responsibility for what ships."
+    />
+    <link rel="canonical" href="https://chuckblake.com/presentations/ai-in-2027-developers/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="AI in 2027: Ten habits for developers" />
+    <meta property="og:description" content="Use AI on real work. Inspect the artifact, check the evidence and own the release." />
+    <meta property="og:url" content="https://chuckblake.com/presentations/ai-in-2027-developers/" />
+    <meta property="og:image" content="https://chuckblake.com/assets/img/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+    <style>
+      /* Standalone deck, following the Glance presentation's existing visual template. */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      :root {
+        --bg: #0f1011;
+        --raised: #17181a;
+        --overlay: #1c1d1f;
+        --ink: #f4f4f5;
+        --muted: #9b9ca0;
+        --line: #303236;
+        --brand: #e7a33e;
+        --brand-soft: rgba(231, 163, 62, 0.12);
+        --green: #4cb782;
+        --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--sans);
+      }
+      body {
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.027) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.027) 1px, transparent 1px),
+          var(--bg);
+        background-size:
+          56px 56px,
+          56px 56px,
+          auto;
+      }
+      .deck {
+        height: calc(100vh - 74px);
+        height: calc(100dvh - 74px);
+        overflow: auto;
+      }
+      .slide {
+        display: flex;
+        min-height: 100%;
+        padding: clamp(32px, 5vh, 70px) clamp(28px, 7vw, 108px);
+        align-items: center;
+        justify-content: center;
+      }
+      .js .slide {
+        display: none;
+      }
+      .js .slide.active {
+        display: flex;
+        animation: enter 180ms ease-out;
+      }
+      @keyframes enter {
+        from {
+          opacity: 0;
+          transform: translateY(4px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .frame {
+        width: min(1180px, 100%);
+        display: flex;
+        flex-direction: column;
+        gap: clamp(18px, 3vh, 30px);
+        min-width: 0;
+      }
+      .brand,
+      .context {
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: clamp(14px, 1.35vw, 19px);
+        line-height: 1.5;
+        margin: 0;
+      }
+      .kicker {
+        color: var(--brand);
+        font-family: var(--mono);
+        font-size: clamp(13px, 1.3vw, 18px);
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+      h1,
+      h2 {
+        max-width: 1120px;
+        margin: 0;
+        color: var(--ink);
+        font-weight: 850;
+        letter-spacing: -0.065em;
+        line-height: 1.02;
+        overflow-wrap: break-word;
+      }
+      h1 {
+        font-size: clamp(44px, 6.4vw, 88px);
+      }
+      h2 {
+        font-size: clamp(38px, 5.4vw, 72px);
+      }
+      .one-liner {
+        max-width: 1050px;
+        margin: 0;
+        border-left: 8px solid var(--brand);
+        background: linear-gradient(90deg, var(--brand-soft), rgba(231, 163, 62, 0.025));
+        padding: 20px 28px;
+        font-size: clamp(23px, 2.8vw, 38px);
+        font-weight: 720;
+        letter-spacing: -0.04em;
+        line-height: 1.18;
+      }
+      .definition-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+      .definition-card {
+        min-width: 0;
+        border: 1px solid var(--line);
+        border-top: 4px solid var(--brand);
+        border-radius: 6px;
+        background: rgba(23, 24, 26, 0.88);
+        padding: 24px 28px;
+      }
+      .definition-card h3 {
+        color: var(--brand);
+        margin: 0 0 16px;
+        font-family: var(--mono);
+        font-size: clamp(16px, 1.6vw, 21px);
+        line-height: 1.3;
+      }
+      .definition-card p {
+        margin: 0;
+        color: var(--ink);
+        font-size: clamp(20px, 2vw, 28px);
+        line-height: 1.3;
+        letter-spacing: -0.025em;
+      }
+      .list {
+        display: grid;
+        gap: 16px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .list li {
+        position: relative;
+        padding-left: 26px;
+        font-size: clamp(21px, 2.25vw, 30px);
+        line-height: 1.3;
+        letter-spacing: -0.025em;
+      }
+      .list li::before {
+        content: ">";
+        position: absolute;
+        left: 0;
+        color: var(--brand);
+        font-family: var(--mono);
+      }
+      .accountability {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--overlay);
+        padding: 16px 20px;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: clamp(15px, 1.5vw, 20px);
+        line-height: 1.45;
+      }
+      .accountability strong {
+        color: var(--ink);
+      }
+      .loop {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .loop .definition-card {
+        padding: 18px 22px;
+      }
+      .loop p {
+        font-size: clamp(19px, 1.8vw, 25px);
+      }
+      .source {
+        display: inline-block;
+        margin-top: 16px;
+        font-family: var(--mono);
+        font-size: 14px;
+      }
+      a {
+        color: var(--brand);
+        text-underline-offset: 4px;
+        overflow-wrap: anywhere;
+      }
+      a:hover {
+        color: var(--ink);
+      }
+      a:focus-visible,
+      button:focus-visible,
+      select:focus-visible {
+        outline: 3px solid var(--brand);
+        outline-offset: 4px;
+      }
+      .footer {
+        position: fixed;
+        z-index: 20;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 74px;
+        padding: 12px 24px;
+        border-top: 1px solid var(--line);
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        font-family: var(--mono);
+        font-size: 12px;
+      }
+      .footer a {
+        text-decoration: none;
+      }
+      .deck-tools {
+        display: none;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+      .js .deck-tools {
+        display: flex;
+      }
+      button,
+      select {
+        min-height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        background: var(--raised);
+        color: var(--ink);
+        font-family: var(--mono);
+        font-size: 13px;
+        padding: 8px 12px;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:hover {
+        border-color: var(--brand);
+      }
+      button:disabled {
+        opacity: 0.4;
+        cursor: default;
+      }
+      select {
+        width: 190px;
+        min-width: 0;
+      }
+      .counter {
+        color: var(--muted);
+        white-space: nowrap;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
+      @media (max-height: 760px) and (min-width: 761px) {
+        .slide {
+          padding: 26px 52px;
+        }
+        .frame {
+          gap: 16px;
+        }
+        h1 {
+          font-size: 64px;
+        }
+        h2 {
+          font-size: 54px;
+        }
+        .one-liner {
+          padding: 16px 22px;
+          font-size: 30px;
+        }
+        .definition-card {
+          padding: 18px 22px;
+        }
+        .list {
+          gap: 12px;
+        }
+        .list li {
+          font-size: 25px;
+        }
+      }
+      @media (max-width: 760px) {
+        .slide {
+          padding: 30px 22px;
+        }
+        .frame {
+          gap: 22px;
+        }
+        .definition-grid,
+        .loop {
+          grid-template-columns: 1fr;
+        }
+        .definition-card {
+          padding: 22px;
+        }
+        .one-liner {
+          padding: 18px 20px;
+        }
+        .footer {
+          padding: 10px 14px;
+          gap: 8px;
+        }
+        .deck-tools {
+          gap: 6px;
+        }
+        select {
+          width: 56px;
+          padding: 8px 4px;
+        }
+        button {
+          padding: 8px 10px;
+        }
+        .counter {
+          display: none;
+        }
+        .key-hint {
+          display: none;
+        }
+        #print-deck {
+          font-size: 11px;
+          padding: 8px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .js .slide.active {
+          animation: none;
+        }
+      }
+      @page {
+        size: 13.333in 7.5in;
+        margin: 0;
+      }
+      @media print {
+        :root {
+          --ink: #111827;
+          --muted: #414650;
+          --brand: #875512;
+          --line: #c7c9cd;
+          --brand-soft: #f4e8d5;
+          --overlay: #f3f4f6;
+        }
+        html,
+        body,
+        .deck {
+          width: auto;
+          height: auto;
+          overflow: visible;
+          background: white;
+          color: var(--ink);
+        }
+        .slide,
+        .js .slide,
+        .js .slide.active {
+          display: flex;
+          width: 13.333in;
+          height: 7.5in;
+          min-height: 0;
+          padding: 0.45in 0.65in;
+          break-after: page;
+          break-inside: avoid;
+          background: white;
+          animation: none;
+          transform: none;
+          opacity: 1;
+        }
+        .slide:last-child {
+          break-after: auto;
+        }
+        .frame {
+          width: 100%;
+          gap: 18px;
+        }
+        h1 {
+          font-size: 64px;
+        }
+        h2 {
+          font-size: 52px;
+        }
+        .one-liner {
+          font-size: 30px;
+          padding: 16px 22px;
+          background: #faf4eb;
+        }
+        .definition-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .loop {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        .definition-card {
+          background: #f7f7f8;
+          padding: 20px 24px;
+        }
+        .definition-card p,
+        .list li {
+          font-size: 24px;
+        }
+        .loop p {
+          font-size: 22px;
+        }
+        .definition-card h3 {
+          font-size: 18px;
+        }
+        .context,
+        .brand {
+          font-size: 17px;
+        }
+        .accountability {
+          font-size: 17px;
+        }
+        .footer,
+        noscript {
+          display: none;
+        }
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+      .speaker-notes {
+        border: 1px dashed var(--brand);
+        padding: 16px 20px;
+        background: var(--raised);
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.5;
+      }
+      .speaker-notes h3 {
+        color: var(--brand);
+        font: 700 14px var(--mono);
+        margin: 0 0 8px;
+      }
+      .speaker-notes p {
+        margin: 0;
+      }
+
+      .prompt {
+        margin: 0;
+        border-left: 6px solid var(--brand);
+        padding: 22px 28px;
+        background: var(--raised);
+        font-size: clamp(23px, 2.7vw, 36px);
+        line-height: 1.35;
+      }
+      .footer {
+        height: 112px;
+        flex-wrap: wrap;
+      }
+      .deck {
+        height: calc(100dvh - 112px);
+      }
+      .footer-links {
+        display: flex;
+        gap: 16px;
+      }
+      .worked-example .definition-card p {
+        font-size: clamp(19px, 1.8vw, 25px);
+      }
+      @media (max-width: 760px) {
+        .deck-tools {
+          width: 100%;
+          justify-content: space-between;
+        }
+        .footer {
+          gap: 6px;
+        }
+        .footer-links {
+          width: 100%;
+          justify-content: space-between;
+        }
+        .speaker-notes {
+          font-size: 16px;
+        }
+      }
+      @page speaker {
+        size: 13.333in 9.5in;
+        margin: 0;
+      }
+      @media print {
+        .deck {
+          height: auto;
+        }
+        .footer {
+          display: none;
+        }
+        .speaker-notes {
+          background: #faf4eb;
+          font-size: 17px;
+        }
+        .speaker-notes h3 {
+          font-size: 14px;
+        }
+        .show-notes .slide {
+          page: speaker;
+          height: 9.5in;
+        }
+        .prompt {
+          background: #f7f7f8;
+          font-size: 28px;
+        }
+        .worked-example .definition-card p {
+          font-size: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck" id="deck" aria-label="AI in 2027 developer presentation">
+      <noscript><p class="context">JavaScript is off. Scroll to read all 13 slides. Speaker notes remain hidden.</p></noscript>
+      <section class="slide active" id="slide-1" data-slide="1" aria-labelledby="s1">
+        <div class="frame">
+          <div class="kicker">AI in 2027 // Developer edition</div>
+          <h1 id="s1">Ten habits for working with AI.</h1>
+
+          <p class="one-liner">Use it on real work. Ask for something you can inspect.</p>
+          <p class="context">Code, presentations and posts all need someone who can judge the result.</p>
+          <p class="context">Chuck Blake // AI in 2027 // Developer edition</p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              Ask what people have tried and where the review got expensive. These are working habits, not a forecast of what every tool will do in
+              2027. The examples are illustrative prompts and workflows, not reports of completed projects. Start small enough that you can check the
+              work yourself.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide" id="slide-2" data-slide="2" data-tip="1" aria-labelledby="s2">
+        <div class="frame">
+          <div class="kicker">Tip 1 / 10</div>
+          <h2 id="s2">Put AI between you and the work.</h2>
+
+          <p class="one-liner">Before you start, ask: "How could AI help with this?"</p>
+          <ul class="list">
+            <li>Ask for an explanation of unfamiliar code, or a review of a draft.</li>
+            <li>Choose a small task whose result you can judge.</li>
+            <li>Do it yourself when the setup or review would cost more than the help.</li>
+          </ul>
+          <p class="accountability">Considering AI does not mean granting access. Keep private data and secrets out of the experiment.</p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              Make this a pause before starting, not a requirement to use AI for every task. Read-only work is a reasonable first step. Use approved
+              tools and test data. If the task needs sensitive access, resolve that separately rather than putting permission into a vague prompt.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide" id="slide-3" data-slide="3" data-tip="2" aria-labelledby="s3">
+        <div class="frame">
+          <div class="kicker">Tip 2 / 10</div>
+          <h2 id="s3">Define what finished looks like.</h2>
+
+          <p class="context">Illustrative brief for a small bug fix:</p>
+          <blockquote class="prompt">
+            "Fix the empty-state crash. Add a regression test. Return a diff and the check results. Leave the API and dependencies alone."
+          </blockquote>
+          <p class="context">Name the output, the checks and what must stay unchanged. Ask about missing decisions before work starts.</p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              A short brief can be enough. Agree how you will judge the change before the agent writes it. For a presentation, replace the regression
+              test with audience, outcome, source checks and a preview. Set a checkpoint if the task turns out to be larger than expected.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide" id="slide-4" data-slide="4" data-tip="3" aria-labelledby="s4">
+        <div class="frame">
+          <div class="kicker">Tip 3 / 10</div>
+          <h2 id="s4">Use a tool that can work with the project.</h2>
+          <div class="definition-grid">
+            <article class="definition-card">
+              <h3>Check the fit</h3>
+              <p>Can your approved tool read the relevant files, propose changes and run the checks this task needs? Verify its actual setup.</p>
+            </article>
+            <article class="definition-card">
+              <h3>Keep access narrow</h3>
+              <p>Use a local copy or review branch. Allow only the files and commands the task needs; approve broader access separately.</p>
+            </article>
+          </div>
+          <p class="context">For a web artifact, ask for an editable file and a local preview you can open.</p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              This is a selection checklist, not a claim that every AI product has these capabilities. Check documentation, installed version, tool
+              permissions and the working directory. A prompt describes the boundary; permissions enforce it. Avoid choosing a product on an
+              unverified demo or a promise of superiority.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide" id="slide-5" data-slide="5" data-tip="4" aria-labelledby="s5">
+        <div class="frame">
+          <div class="kicker">Tip 4 / 10</div>
+          <h2 id="s5">Ask it to trace the code before changing it.</h2>
+
+          <blockquote class="prompt">
+            "Trace this request from the entry point to storage. Point to the files and tests. Mark anything you cannot follow. Do not edit yet."
+          </blockquote>
+          <p class="context">Check the path against the code. Then agree where the change belongs.</p>
+          <p class="accountability">A plausible walkthrough can still describe a path the application never takes.</p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              Ask for file paths and relevant symbols, not hidden reasoning. Open the references and look for missing branches, permissions and
+              failure paths. If the tool cannot see a dependency or runtime setting, it should say so. For a post or deck, first trace the source
+              material and the site's publishing conventions.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide" id="slide-6" data-slide="6" data-tip="5" aria-labelledby="s6">
+        <div class="frame">
+          <div class="kicker">Tip 5 / 10</div>
+          <h2 id="s6">Ask for work you can open after the chat.</h2>
+
+          <p class="one-liner">Artifacts are durable outputs you can inspect, edit and hand off.</p>
+          <p class="context">Documents, diagrams, prototypes, diffs, sample files, presentations and posts.</p>
+          <div class="definition-grid">
+            <article class="definition-card">
+              <h3>The work</h3>
+              <p>Ask for the editable file, its location and a way to open or preview it.</p>
+            </article>
+            <article class="definition-card">
+              <h3>The handoff</h3>
+              <p>Ask for sources, decisions, checks that ran and anything still unresolved.</p>
+            </article>
+          </div>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              Artifact means a durable output, not one vendor's interface. A diff may be the right artifact for code; a source file and preview may be
+              right for a presentation. Open the file rather than relying on a screenshot or summary. The handoff should make sense to someone who did
+              not read the chat.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide" id="slide-7" data-slide="7" data-tip="6" aria-labelledby="s7">
+        <div class="frame">
+          <div class="kicker">Tip 6 / 10</div>
+          <h2 id="s7">Revise the part that needs work.</h2>
+
+          <p class="context">Illustrative revision request:</p>
+          <blockquote class="prompt">
+            "On the artifacts slide, define the term in plain English and add presentations and posts. Keep the other slides and navigation
+            unchanged."
+          </blockquote>
+          <p class="context">Name the file, section or behavior. Review the diff for changes outside that scope.</p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              Keep the artifact open beside the conversation. A specific correction is easier to check than asking for a better version of everything.
+              If the request reveals a larger problem, agree a new scope before rewriting. Run the relevant checks again on the revised artifact, not
+              only the first draft.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide" id="slide-8" data-slide="8" data-tip="7" aria-labelledby="s8">
+        <div class="frame">
+          <div class="kicker">Tip 7 / 10</div>
+          <h2 id="s8">Check the result with evidence.</h2>
+          <div class="definition-grid">
+            <article class="definition-card">
+              <h3>For code</h3>
+              <p>Inspect the diff. Run the relevant tests and try the behavior, including a failure case.</p>
+            </article>
+            <article class="definition-card">
+              <h3>For a presentation or post</h3>
+              <p>Open the sources and links. Read the actual draft. Check the rendered layout and any navigation.</p>
+            </article>
+          </div>
+          <p class="one-liner">Ask what actually ran, what passed and what nobody checked.</p>
+          <p class="context">A second agent can help review. Agreement between agents is not proof.</p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              Request actual command output, file references or browser receipts where appropriate. A green test can check the wrong behavior, so make
+              an independent check against the original brief. Mark blocked checks as not run. Screenshots can support a layout check but do not prove
+              a source says what the draft claims.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide worked-example" id="slide-9" data-slide="9" aria-labelledby="s9">
+        <div class="frame">
+          <div class="kicker">Worked example // Communication artifact</div>
+          <h2 id="s9">Build a presentation or post for chuckblake.com.</h2>
+          <div class="definition-grid">
+            <article class="definition-card">
+              <h3>Set the brief</h3>
+              <p>Name the audience and what they should understand or do. Point to the source material and site conventions.</p>
+            </article>
+            <article class="definition-card">
+              <h3>Make the first artifact</h3>
+              <p>Ask for editable source and a local preview. Open it, inspect it and request targeted revisions.</p>
+            </article>
+            <article class="definition-card">
+              <h3>Check the draft</h3>
+              <p>Verify sources, links and layout. For a deck, test navigation and print. Have a person review the final version.</p>
+            </article>
+            <article class="definition-card">
+              <h3>Publish later</h3>
+              <p>Publish only after approval. Then check the live page and keep an owner for corrections.</p>
+            </article>
+          </div>
+          <p class="context">Illustrative workflow. A local preview is not a published page.</p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              This is a supporting example, not an eleventh tip. For a deck, keep speaker notes, deep links and the PDF in scope. For a post, check
+              the headline, quotations and site rendering. The agent should stop at the local preview unless publishing is explicitly authorized.
+              After a later release, open the live URL and repeat the checks that depend on deployment.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide" id="slide-10" data-slide="10" data-tip="8" aria-labelledby="s10">
+        <div class="frame">
+          <div class="kicker">Tip 8 / 10</div>
+          <h2 id="s10">Save the procedures worth repeating.</h2>
+
+          <p class="one-liner">Turn a useful workflow into instructions you can read and change.</p>
+          <ul class="list">
+            <li>Write when to use it, the steps, required access and when to stop.</li>
+            <li>Include the checks that tell you whether it worked.</li>
+            <li>Read and adapt third-party instructions before letting them use tools.</li>
+          </ul>
+          <p class="context">
+            Optional examples: <a href="https://github.com/mattpocock/skills">Matt Pocock's skills</a> for clarifying a plan or test-driven work.
+            <a href="../ai-in-2027/resources/#source-23">Source [23]</a>
+          </p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              A saved procedure can be a Markdown file or checklist. You do not need a collection of skills to start. Pocock's repository is an
+              optional source to read and adapt, not an endorsement of every instruction or permission it requests. Check the current instructions
+              against your project and keep secrets out of saved examples.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide" id="slide-11" data-slide="11" data-tip="9" aria-labelledby="s11">
+        <div class="frame">
+          <div class="kicker">Tip 9 / 10</div>
+          <h2 id="s11">Keep learning from the work.</h2>
+          <ul class="list">
+            <li>Record the task, the result and what you had to correct.</li>
+            <li>Count the time spent briefing, inspecting, revising and checking.</li>
+            <li>Use failures to change the next attempt. Share the useful checks with your team.</li>
+            <li>Revisit a workflow when the tool or project changes. Stop using it if the cost no longer makes sense.</li>
+          </ul>
+          <p class="context">Judge quality and total effort. Generated lines and busy agents do not tell you whether the work helped.</p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              Keep the record small enough that you will use it. Review effort is part of the cost, even when the first draft arrives quickly.
+              Maintain your own debugging and domain knowledge so you can challenge the result. Changing a tool or model is a reason to rerun the
+              checks, not assume the old result still holds.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide" id="slide-12" data-slide="12" data-tip="10" aria-labelledby="s12">
+        <div class="frame">
+          <div class="kicker">Tip 10 / 10</div>
+          <h2 id="s12">Own the release.</h2>
+
+          <p class="one-liner">You decide what ships. You remain responsible for what happens afterward.</p>
+          <div class="definition-grid">
+            <article class="definition-card">
+              <h3>Before release</h3>
+              <p>Review the final code, presentation or post. Resolve blocked checks and get the required approval.</p>
+            </article>
+            <article class="definition-card">
+              <h3>After release</h3>
+              <p>Check the live result. Fix bugs, broken links or incorrect claims. Know who can roll back or correct it.</p>
+            </article>
+          </div>
+          <p class="context">Name the owner before publishing. An AI-written change still needs someone to answer for it.</p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              Keep accountability with a person and the organization. Code can break after a release; a deck can publish an unsupported claim; a post
+              can misquote a source. Decide who handles those problems. A local pass is not a live-site check. Publishing, production access and
+              rollback are separate permissions from making a draft.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="slide" id="slide-13" data-slide="13" aria-labelledby="s13">
+        <div class="frame">
+          <div class="kicker">Closing exercise</div>
+          <h2 id="s13">Try it on one real task.</h2>
+
+          <p class="one-liner">Choose a development task or a communication artifact you already need.</p>
+          <ul class="list">
+            <li>Write what finished looks like and what you will inspect.</li>
+            <li>Make an editable first artifact. Open it and request one specific revision.</li>
+            <li>Compare the result with the brief. Was the quality good enough, and was the total review effort worth it?</li>
+          </ul>
+          <p class="context">Audience view hides notes. Use Notes or <a href="?notes=1&amp;slide=13">open the speaker view</a>. Notes are public.</p>
+          <p class="context">
+            Chuck Blake // <a href="https://chuckblake.com/">chuckblake.com</a> // <a href="../ai-in-2027/resources/">Companion resources</a>
+          </p>
+          <aside class="speaker-notes" hidden>
+            <h3>Speaker notes</h3>
+            <p>
+              Give people a minute to choose a task and write a finish line. Ask how they will measure quality and total effort, including
+              corrections. They can accept, adjust or stop after the experiment. The linked companion resources belong to the original AI in 2027
+              talk. Use audience view for a clean PDF; speaker view includes these public notes.
+            </p>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <nav aria-label="Presentation navigation" class="footer">
+      <div class="footer-links">
+        <a href="/publications/">Writing &amp; talks</a><a href="../ai-in-2027/resources/">Companion resources</a
+        ><span id="view-label" role="status">Audience view</span>
+      </div>
+      <div class="deck-tools">
+        <button aria-label="Previous slide" id="nav-prev" type="button">←</button><label class="sr-only" for="slide-select">Go to slide</label
+        ><select id="slide-select"></select
+        ><button aria-label="Next slide" id="nav-next" type="button">→</button
+        ><span aria-live="polite" class="counter" id="counter" role="status"></span
+        ><button aria-pressed="false" id="notes-toggle" type="button">Notes off</button><button id="print-deck" type="button">Print / PDF</button>
+      </div>
+    </nav>
+    <script>
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const counter = document.getElementById("counter");
+      const selector = document.getElementById("slide-select");
+      const deck = document.getElementById("deck");
+      const previous = document.getElementById("nav-prev");
+      const next = document.getElementById("nav-next");
+      let current = 0;
+      slides.forEach((slide, index) => {
+        const option = document.createElement("option");
+        option.value = index;
+        option.textContent = `${index + 1}. ${slide.querySelector("h1, h2").textContent}`;
+        selector.appendChild(option);
+      });
+      function show(index, updateUrl = true) {
+        current = Math.max(0, Math.min(slides.length - 1, index));
+        slides.forEach((slide, slideIndex) => slide.classList.toggle("active", slideIndex === current));
+        counter.textContent = `${String(current + 1).padStart(2, "0")} / ${slides.length}`;
+        selector.value = current;
+        previous.disabled = current === 0;
+        next.disabled = current === slides.length - 1;
+        deck.scrollTop = 0;
+        if (updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("slide", current + 1);
+          window.history.replaceState(null, "", url);
+        }
+        // Keep keyboard focus out of a slide that has just been hidden.
+        if (document.activeElement.closest(".slide:not(.active)")) next.focus();
+      }
+      previous.addEventListener("click", () => show(current - 1));
+      next.addEventListener("click", () => show(current + 1));
+      selector.addEventListener("change", () => show(Number(selector.value)));
+      document.getElementById("print-deck").addEventListener("click", () => window.print());
+      document.addEventListener("keydown", (event) => {
+        if (event.altKey || event.ctrlKey || event.metaKey || event.target.closest("a, button, select, input, textarea, [contenteditable]")) return;
+        if (["ArrowRight", "PageDown", " "].includes(event.key)) {
+          event.preventDefault();
+          show(current + 1);
+        }
+        if (["ArrowLeft", "PageUp"].includes(event.key)) {
+          event.preventDefault();
+          show(current - 1);
+        }
+        if (event.key === "Home") {
+          event.preventDefault();
+          show(0);
+        }
+        if (event.key === "End") {
+          event.preventDefault();
+          show(slides.length - 1);
+        }
+      });
+      let start = null;
+      deck.addEventListener(
+        "touchstart",
+        (event) => {
+          start = event.touches.length === 1 ? { x: event.touches[0].clientX, y: event.touches[0].clientY } : null;
+        },
+        { passive: true }
+      );
+      deck.addEventListener(
+        "touchend",
+        (event) => {
+          if (!start) return;
+          const dx = event.changedTouches[0].clientX - start.x;
+          const dy = event.changedTouches[0].clientY - start.y;
+          if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) show(current + (dx < 0 ? 1 : -1));
+          start = null;
+        },
+        { passive: true }
+      );
+      deck.addEventListener(
+        "touchcancel",
+        () => {
+          start = null;
+        },
+        { passive: true }
+      );
+      const requested = Number(new URLSearchParams(window.location.search).get("slide"));
+      show(Number.isInteger(requested) && requested > 0 ? requested - 1 : 0, false);
+
+      const notesToggle = document.getElementById("notes-toggle");
+      function setNotes(visible) {
+        document.documentElement.classList.toggle("show-notes", visible);
+        document.querySelectorAll(".speaker-notes").forEach((note) => {
+          note.hidden = !visible;
+        });
+        notesToggle.setAttribute("aria-pressed", String(visible));
+        notesToggle.textContent = visible ? "Notes on" : "Notes off";
+        document.getElementById("view-label").textContent = visible ? "Speaker view (public notes)" : "Audience view";
+        document.getElementById("print-deck").textContent = visible ? "Print + notes" : "Print / PDF";
+        const url = new URL(window.location.href);
+        if (visible) url.searchParams.set("notes", "1");
+        else url.searchParams.delete("notes");
+        window.history.replaceState(null, "", url);
+      }
+      notesToggle.addEventListener("click", () => setNotes(notesToggle.getAttribute("aria-pressed") !== "true"));
+      setNotes(new URLSearchParams(window.location.search).get("notes") === "1");
+    </script>
+  </body>
+</html>
