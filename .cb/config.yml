@@ -12,7 +12,7 @@ backlog:
   # CBW-330), and this list is only the fail-open fallback. Keep the two identical. The
   # terminal runner parks halted runs in needs_attention and needs_input; todo stays first
   # because it is the create-time default.
-  statuses: [todo, shape, planning, in-progress, in-review, blocked, needs_attention, needs_input, done, canceled, archived]
+  statuses: [todo, shape, parked, planning, in-progress, in-review, blocked, needs_attention, needs_input, done, canceled, archived]
   projects:
     chuckblake.com:
       key: CSB
