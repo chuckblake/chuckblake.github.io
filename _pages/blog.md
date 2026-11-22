@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /blog/
+permalink: /blog/index.html # metadata.liquid tells this page from a post by this exact URL
 title: Blog
 description: "New writing now lives on Substack"
 meta_description: "Explore Chuck Blake's essays on startups, technology, music, AI systems, and developer tools, written from a founder and fractional CTO's perspective."
