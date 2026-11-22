@@ -9,40 +9,33 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-fractional-cto",
-          title: "fractional cto",
-          description: "Hands-on technical leadership for teams ready to ship",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/fractional-cto/";
-          },
-        },{id: "nav-projects",
-          title: "projects",
+  },{id: "nav-projects",
+          title: "Projects",
           description: "Products, tools, and experiments from current and past work",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
           },
         },{id: "nav-writing-amp-talks",
-          title: "writing &amp; talks",
+          title: "Writing &amp; talks",
           description: "Practical ideas on AI, technology, and operations",
           section: "Navigation",
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "nav-blog",
-          title: "blog",
-          description: "Explore Chuck Blake&#39;s essays on startups, technology, music, AI systems, and developer tools, written from a founder and fractional CTO&#39;s perspective.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/blog/";
-          },
         },{id: "nav-music",
-          title: "music",
+          title: "Music",
           description: "A personal archive of live shows and electronic music",
           section: "Navigation",
           handler: () => {
             window.location.href = "/music/";
+          },
+        },{id: "nav-fractional-cto",
+          title: "Fractional CTO",
+          description: "Hands-on technical leadership for teams ready to ship",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/fractional-cto/";
           },
         },{id: "post-trust-is-not-a-vibe",
         
