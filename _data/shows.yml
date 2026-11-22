@@ -1,0 +1,50 @@
+# Shows on /music/, newest first on the page whatever the order here.
+#   date:   YYYY-MM-DD (a date after the build day shows an "Upcoming" label)
+#   artist: who played
+#   venue:  optional
+#   photo:  optional, a file under assets/img/concerts/ (shows without one get a name tile)
+# To add a show see .claude/skills/add-show/SKILL.md
+
+- date: 2026-09-05
+  artist: "Peter Hook & The Light"
+  venue: Brooklyn Paramount
+- date: 2026-06-26
+  artist: "Human League, Soft Cell & Alison Moyet"
+  venue: Radio City Music Hall
+- date: 2026-05-30
+  artist: They Might Be Giants
+  venue: Brooklyn Steel
+  photo: assets/img/concerts/they-might-be-giants-2026.png
+- date: 2025-09-13
+  artist: New York Modular Society 6th Anniversary
+- date: 2025-08-01
+  artist: Yacht Rock Revue
+- date: 2024-10-22
+  artist: Air
+- date: 2024-10-08
+  artist: "Johnny Marr & James"
+- date: 2024-09-29
+  artist: Herbie Hancock
+- date: 2024-06-23
+  artist: Massane
+- date: 2024-06-04
+  artist: of Montreal
+- date: 2024-05-31
+  artist: Heavenly
+- date: 2024-05-17
+  artist: Echo and the Bunnymen
+  photo: assets/img/concerts/echo-bunnymen-2024.png
+- date: 2024-03-08
+  artist: Jonathan Richman
+  photo: assets/img/concerts/jonathan-richman-2024.png
+- date: 2024-01-18
+  artist: "The Charlatans UK & RIDE"
+  photo: assets/img/concerts/ride-2024.png
+- date: 2023-09-18
+  artist: of Montreal
+- date: 2022-10-07
+  artist: "of Montreal & Locate S1"
+- date: 2022-08-27
+  artist: Peter Hook
+- date: 2022-08-17
+  artist: Blondie

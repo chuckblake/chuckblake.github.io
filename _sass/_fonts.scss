@@ -1,0 +1,14 @@
+/*******************************************************************************
+ * Fonts
+ * Allo by Josh Puckett (https://allo.joshpuckett.me), SIL Open Font License 1.1.
+ * The license text is assets/fonts/Allo-OFL.txt. One variable file covers every
+ * weight from 100 to 900; roundness is the "ROND" axis (0 sharp, 50 default, 100 round).
+ ******************************************************************************/
+
+@font-face {
+  font-family: "Allo";
+  src: url("../fonts/AlloVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}

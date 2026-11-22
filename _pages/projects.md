@@ -1,66 +1,51 @@
 ---
 layout: page
-title: projects
+title: Projects
 permalink: /projects/
 description: "Products, tools, and experiments from current and past work"
 meta_description: "Explore Chuck Blake's current and past projects, including Arwen, Glance, GetMusic.fm, and IndieCrates, across developer tools and music."
 nav: true
-nav_order: 2
+nav_order: 1
 display_categories: [current, music, past]
-horizontal: false
+filters: [Current, AI, Music, Past]
 ---
 
-<!-- pages/projects.md -->
+<!-- One row per project, from _projects/. To add or change a project see .claude/skills/add-project/SKILL.md -->
 <div class="projects">
-{% if site.enable_project_categories and page.display_categories %}
-  <!-- Display categorized projects -->
-  {% for category in page.display_categories %}
-  <a id="{{ category }}" href=".#{{ category }}">
-    <h2 class="category">{{ category }}</h2>
-  </a>
-  {% assign categorized_projects = site.projects | where: "category", category %}
-  {% assign sorted_projects = categorized_projects | sort: "importance" %}
-  <!-- Generate cards for each project -->
-  {% if page.horizontal %}
-  <div class="container">
-    <div class="row row-cols-1 row-cols-md-2">
-    {% for project in sorted_projects %}
-      {% include projects_horizontal.liquid %}
-    {% endfor %}
-    </div>
-  </div>
-  {% else %}
-  <div class="row row-cols-1 row-cols-md-3">
-    {% for project in sorted_projects %}
-      {% include projects.liquid %}
+  <div class="row-filters" role="group" aria-label="Filter projects">
+    <button type="button" class="row-filter is-active" data-filter="all" aria-pressed="true">All</button>
+    {% for filter in page.filters %}
+      <button type="button" class="row-filter" data-filter="{{ filter | slugify }}" aria-pressed="false">{{ filter }}</button>
     {% endfor %}
   </div>
-  {% endif %}
-  {% endfor %}
-
-{% else %}
-
-<!-- Display projects without categories -->
-
-{% assign sorted_projects = site.projects | sort: "importance" %}
-
-  <!-- Generate cards for each project -->
-
-{% if page.horizontal %}
-
-  <div class="container">
-    <div class="row row-cols-1 row-cols-md-2">
-    {% for project in sorted_projects %}
-      {% include projects_horizontal.liquid %}
-    {% endfor %}
-    </div>
-  </div>
-  {% else %}
-  <div class="row row-cols-1 row-cols-md-3">
-    {% for project in sorted_projects %}
-      {% include projects.liquid %}
+  <div class="project-rows">
+    {% for category in page.display_categories %}
+      {% assign categorized_projects = site.projects | where: "category", category %}
+      {% assign sorted_projects = categorized_projects | sort: "importance" %}
+      {% for project in sorted_projects %}
+        {% include project_row.liquid %}
+      {% endfor %}
     {% endfor %}
   </div>
-  {% endif %}
-{% endif %}
 </div>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll(".row-filter");
+    var rows = document.querySelectorAll(".project-row");
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var filter = button.getAttribute("data-filter");
+        buttons.forEach(function (other) {
+          var active = other === button;
+          other.classList.toggle("is-active", active);
+          other.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        rows.forEach(function (row) {
+          var tags = row.getAttribute("data-tags").split(" ");
+          row.hidden = filter !== "all" && tags.indexOf(filter) === -1;
+        });
+      });
+    });
+  })();
+</script>

@@ -5,6 +5,7 @@ description: AI medical-bill review that helps patients stop overpaying
 img: assets/img/projects/arwen.jpg
 importance: 1
 category: current
+topics: [AI]
 ---
 
 [Arwen](https://arwensaves.com/) helps patients check US medical bills for errors, review insurance paperwork, and pay the correct amount with more confidence.

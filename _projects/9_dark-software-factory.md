@@ -6,6 +6,7 @@ meta_description: "How I built a dark software factory by hand: a runner that ta
 img: assets/img/projects/dark-software-factory/dashboard.png
 importance: 5
 category: current
+topics: [AI, Dev tools]
 published: false
 ---
 

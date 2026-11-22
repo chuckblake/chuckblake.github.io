@@ -5,6 +5,7 @@ description: Chill post-punk electronic music
 img: assets/img/projects/corvoco.jpg
 importance: 3
 category: music
+topics: [Music]
 ---
 
 [Corvoco](https://corvoco.bandcamp.com) is my electronic music project: chill post-punk textures, nostalgic melodies, and small handmade releases.
