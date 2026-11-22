@@ -108,3 +108,21 @@
   flex: 1 1 300px;
   opacity: 0.82;
 }
+
+/* The Fractional CTO page reuses the home page's deck, links and rows */
+.offer {
+  max-width: 760px;
+
+  .section-label {
+    margin-top: 3rem;
+  }
+}
+
+.offer-rows {
+  margin: 1.25rem 0 1.5rem;
+}
+
+.offer-note {
+  color: var(--global-text-color-light);
+  font-size: 0.9rem;
+}
