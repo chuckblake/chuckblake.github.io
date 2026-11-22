@@ -5,12 +5,22 @@
 #   photo:  optional, a file under assets/img/concerts/ (shows without one get a name tile)
 # To add a show see .claude/skills/add-show/SKILL.md
 
+- date: 2026-11-16
+  artist: Angine de Poitrine
+  venue: Brooklyn Steel
+  photo: assets/img/concerts/angine-de-poitrine-2026.jpg
 - date: 2026-09-05
   artist: "Peter Hook & The Light"
   venue: Brooklyn Paramount
+  photo: assets/img/concerts/peter-hook-2026.jpg
+- date: 2026-08-13
+  artist: Yacht Rock Revue
+  venue: The Rooftop at Pier 17
+  photo: assets/img/concerts/yacht-rock-revue-2026.jpg
 - date: 2026-06-26
   artist: "Human League, Soft Cell & Alison Moyet"
   venue: Radio City Music Hall
+  photo: assets/img/concerts/human-league-2026.jpg
 - date: 2026-05-30
   artist: They Might Be Giants
   venue: Brooklyn Steel
@@ -19,6 +29,7 @@
   artist: New York Modular Society 6th Anniversary
 - date: 2025-08-01
   artist: Yacht Rock Revue
+  venue: The Rooftop at Pier 17
 - date: 2024-10-22
   artist: Air
 - date: 2024-10-08
