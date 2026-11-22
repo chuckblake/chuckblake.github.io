@@ -18,54 +18,43 @@ nav_order: 4
     <a href="mailto:chuck.blake@gmail.com">Email me →</a>
   </p>
 
-  <h2 class="section-label">Start with a review</h2>
-  <p>
-    Most engagements start with a fixed-fee technical and product review, delivered one to two weeks after kickoff. It is built around the next
-    thing you have to commit to, such as a larger customer, a rollout, or a raise, and it answers four questions:
-  </p>
+  <h2 class="section-label">How I work</h2>
   <div class="offer-rows">
     <div class="home-row">
-      <span class="home-row__name">Scale</span>
-      <span class="home-row__desc">Can the system support what comes next, where will it hit limits first, and what will it cost to run?</span>
+      <span class="home-row__name">Start small</span>
+      <span class="home-row__desc">We begin with a short review of the product and the engineering behind it, built around the next thing you have to commit to.</span>
     </div>
     <div class="home-row">
-      <span class="home-row__name">Security</span>
-      <span class="home-row__desc">What can you tell buyers about how you protect, separate, and use their data?</span>
+      <span class="home-row__name">Write it down</span>
+      <span class="home-row__desc">You get a written assessment and a prioritized plan: what I found, the evidence behind it, and what still needs checking.</span>
     </div>
     <div class="home-row">
-      <span class="home-row__name">Process</span>
-      <span class="home-row__desc">Where would clearer requirements, code review, testing, or monitoring help? I trace a recent change from request to release.</span>
+      <span class="home-row__name">Decide together</span>
+      <span class="home-row__desc">We walk through it, choose the first actions, and see where ongoing help would be useful.</span>
     </div>
     <div class="home-row">
-      <span class="home-row__name">Roadmap</span>
-      <span class="home-row__desc">How should customer feedback decide what gets built? We work through one real request together.</span>
+      <span class="home-row__name">Keep going</span>
+      <span class="home-row__desc">From there I can advise, lead the team, or take on a specific project.</span>
     </div>
   </div>
-  <p>You get three things:</p>
-  <ul>
-    <li>A written assessment and a prioritized 30-day plan, with the evidence behind each finding and what still needs checking.</li>
-    <li>A one-page security and data-use brief you can edit and send to buyers.</li>
-    <li>A 45-minute readout where we walk through both and choose the first actions.</li>
-  </ul>
   <p>
-    I need read-only access to the code and a look at how you deploy, an architecture overview, recent operating numbers, and the current backlog.
-    Redacted exports or a screen share are fine.
+    The questions are usually some mix of these: whether the system can support what comes next, what you can tell buyers about security and data,
+    where the development process is slowing you down, and how customer feedback should shape what gets built.
   </p>
 
-  <h2 class="section-label">Ongoing work</h2>
-  <p>After a review, or when you already know what you need, there are three ways to keep working together.</p>
+  <h2 class="section-label">Ways to work together</h2>
   <div class="offer-rows">
     <div class="home-row">
       <span class="home-row__name">Advisory</span>
-      <span class="home-row__desc">A weekly call, async access, and architecture and hiring reviews. Fixed monthly fee.</span>
+      <span class="home-row__desc">A weekly call, async access, and architecture and hiring reviews.</span>
     </div>
     <div class="home-row">
       <span class="home-row__name">Fractional CTO</span>
-      <span class="home-row__desc">I own the roadmap, run the engineering team, and am accountable for delivery. Fixed monthly fee.</span>
+      <span class="home-row__desc">I own the roadmap, run the engineering team, and am accountable for delivery.</span>
     </div>
     <div class="home-row">
       <span class="home-row__name">Projects</span>
-      <span class="home-row__desc">Hands-on builds, technical due diligence, and rescue work, each scoped and quoted on its own at a fixed fee.</span>
+      <span class="home-row__desc">Hands-on builds, technical due diligence, and rescue work, each scoped on its own.</span>
     </div>
   </div>
 
