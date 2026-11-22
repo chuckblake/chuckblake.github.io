@@ -9,7 +9,14 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-projects",
+  },{id: "nav-fractional-cto",
+          title: "Fractional CTO",
+          description: "Hands-on technical leadership for teams ready to ship",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/fractional-cto/";
+          },
+        },{id: "nav-projects",
           title: "Projects",
           description: "Products, tools, and experiments from current and past work",
           section: "Navigation",
@@ -29,13 +36,6 @@ ninja.data = [{
           section: "Navigation",
           handler: () => {
             window.location.href = "/music/";
-          },
-        },{id: "nav-fractional-cto",
-          title: "Fractional CTO",
-          description: "Hands-on technical leadership for teams ready to ship",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/fractional-cto/";
           },
         },{id: "post-trust-is-not-a-vibe",
         
