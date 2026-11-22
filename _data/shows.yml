@@ -35,8 +35,6 @@
 - date: 2024-10-22
   artist: Air
   photo: assets/img/concerts/air-2024.jpg
-- date: 2024-10-08
-  artist: "Johnny Marr & James"
 - date: 2024-09-29
   artist: Herbie Hancock
   photo: assets/img/concerts/herbie-hancock-2024.jpg
@@ -67,3 +65,7 @@
 - date: 2022-08-17
   artist: Blondie
   photo: assets/img/concerts/blondie-2022.jpg
+- date: 2022-07-22
+  artist: Mitski
+  venue: Radio City Music Hall
+  photo: assets/img/concerts/mitski-2022.jpg
