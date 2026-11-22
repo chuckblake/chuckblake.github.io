@@ -1,0 +1,21 @@
+{% comment %} One project as a row on /projects/. Expects `project` (a _projects document). {% endcomment %}
+<a
+  class="project-row"
+  href="{% if project.redirect %}{{ project.redirect }}{% else %}{{ project.url | relative_url }}{% endif %}"
+  data-tags="{{ project.category | slugify }}{% for topic in project.topics %} {{ topic | slugify }}{% endfor %}"
+>
+  {% if project.img %}
+    <img class="project-row__thumb" src="{{ project.img | relative_url }}" alt="" width="128" height="80" loading="lazy">
+  {% else %}
+    <span class="project-row__thumb project-row__thumb--empty" aria-hidden="true">{{ project.title | slice: 0 }}</span>
+  {% endif %}
+  <span class="project-row__body">
+    <span class="project-row__name">{{ project.title }}</span>
+    <span class="project-row__desc">{{ project.description }}</span>
+  </span>
+  <span class="project-row__topics">{{ project.topics | join: ' · ' }}</span>
+  <span class="project-row__status">
+    {% if project.category == 'current' or project.category == 'past' %}{{ project.category | capitalize }}{% endif %}
+  </span>
+  <span class="project-row__arrow" aria-hidden="true">→</span>
+</a>

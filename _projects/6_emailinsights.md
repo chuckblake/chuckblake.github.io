@@ -5,6 +5,7 @@ description: Email marketing analytics SaaS — one of my first Rails products (
 img:
 importance: 2
 category: past
+topics: [SaaS]
 ---
 
 Email Insights was a SaaS tool for email marketers — a searchable database of marketing emails with analytics, benchmarks, and research tools to help teams understand what's working in their industry.

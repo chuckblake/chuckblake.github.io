@@ -5,6 +5,7 @@ description: Expectation monitoring for automated work — built in Rails, runni
 img: assets/img/projects/glance.jpg
 importance: 2
 category: current
+topics: [AI, Dev tools]
 ---
 
 [Glance](https://glnc.io) is an expectation monitoring platform for automated work and AI-run operations.

@@ -1,11 +1,11 @@
 ---
 layout: page
-title: fractional cto
+title: Fractional CTO
 permalink: /fractional-cto/
 description: "Hands-on technical leadership for teams ready to ship"
 meta_description: "Fractional CTO support for early-stage teams navigating AI integration, architecture, hiring, technical debt, and hands-on delivery without a full-time hire."
 nav: true
-nav_order: 1
+nav_order: 4
 _styles: |
   .service-block {
     margin-bottom: 2.5rem;

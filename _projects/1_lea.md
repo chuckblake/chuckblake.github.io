@@ -5,6 +5,7 @@ description: AI document intelligence for enterprise wealth management — CTO &
 img:
 importance: 1
 category: past
+topics: [AI]
 ---
 
 [LEA](https://getlea.io) is an AI-powered platform that helps wealth management firms extract structured data from complex financial documents. I was CTO and co-founder, and built the technology behind it.

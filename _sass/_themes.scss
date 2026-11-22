@@ -6,22 +6,22 @@
 
 :root {
   color-scheme: light;
-  --global-bg-color: #fbfaf7;
+  --global-bg-color: #ffffff;
   --global-code-bg-color: #{v.$code-bg-color-light};
-  --global-text-color: #151617;
-  --global-text-color-light: #60666c;
-  --global-theme-color: #116dff;
-  --global-hover-color: #0b55c7;
+  --global-text-color: #111111;
+  --global-text-color-light: #5b5b5b;
+  --global-theme-color: #1a4dff;
+  --global-hover-color: #0b2fb8;
   --global-hover-text-color: #{v.$white-color};
   --global-footer-bg-color: #151617;
   --global-footer-text-color: #d7d0c5;
   --global-footer-link-color: #fffaf0;
   --global-distill-app-color: #{v.$grey-color};
-  --global-divider-color: rgba(21, 22, 23, 0.12);
-  --global-card-bg-color: #fffefd;
+  --global-divider-color: #e4e4e4;
+  --global-card-bg-color: #ffffff;
   --global-highlight-color: #{v.$red-color-dark};
-  --global-surface-color: #f2f4ef;
-  --global-surface-color-strong: #e4eadf;
+  --global-surface-color: #f4f4f4;
+  --global-surface-color-strong: #ebebeb;
   --global-accent-color: #1f8a70;
   --global-warm-color: #f3ddbd;
   --global-back-to-top-bg-color: rgba(

@@ -53,6 +53,27 @@ suite checks (`.cb/config.yml`) and CI's (`.github/workflows/ci.yml`), so they w
 Do not run `npm install` to get Prettier: it rewrites `package.json` and `package-lock.json`. Do not start the Docker dev
 server in a cb runner worktree; it never exits.
 
+## Site Content: Where Things Live
+
+This site is Chuck Blake's personal site. The everyday content tasks have their own instructions:
+
+| Task                                     | Where                                                                 | Instructions                                                                 |
+| ---------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Add a show, or a photo for a show        | `_data/shows.yml`, `assets/img/concerts/`                             | [`.claude/skills/add-show/SKILL.md`](.claude/skills/add-show/SKILL.md)       |
+| Add or update a project                  | `_projects/`, `assets/img/projects/`                                  | [`.claude/skills/add-project/SKILL.md`](.claude/skills/add-project/SKILL.md) |
+| Change the home page                     | `_layouts/about.liquid`, `_sass/_home.scss`                           |                                                                              |
+| Change the menu                          | `nav` and `nav_order` in each page's front matter (`_pages/`)         |                                                                              |
+| Change colors or fonts                   | `_sass/_themes.scss`, `_sass/_fonts.scss`                             |                                                                              |
+| Change the project rows or the show grid | `_includes/project_row.liquid`, `_pages/music.md`, `_sass/_rows.scss` |                                                                              |
+
+The font is Allo (`assets/fonts/AlloVariable.woff2`, SIL Open Font License). The blog is off the menu because new writing goes
+to Substack; `/blog/` stays as a short page so old links and the two posts keep working.
+
+### Publishing
+
+A merge to `main` does not publish. The site deploys when a `v*` tag is pushed (`.github/workflows/deploy.yml`): after the pull
+request merges, tag the merge commit with the next version (`git tag v1.4.1 && git push origin v1.4.1`).
+
 ## Critical Configuration
 
 When modifying `_config.yml`, these **must be updated together**:

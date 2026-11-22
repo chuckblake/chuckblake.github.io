@@ -38,7 +38,7 @@ table {
 a,
 table.table a {
   color: var(--global-theme-color);
-  text-decoration-color: rgba(17, 109, 255, 0.28);
+  text-decoration-color: color-mix(in srgb, var(--global-theme-color) 30%, transparent);
   text-underline-offset: 0.18em;
 
   &:hover {
@@ -60,8 +60,9 @@ h3 {
 
 h1,
 .post-title {
-  font-family: "Newsreader", Georgia, serif;
-  font-weight: 650;
+  font-family: "Allo", "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 h2,
