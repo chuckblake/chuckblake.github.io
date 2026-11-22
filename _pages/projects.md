@@ -5,7 +5,7 @@ permalink: /projects/
 description: "Products, tools, and experiments from current and past work"
 meta_description: "Explore Chuck Blake's current and past projects, including Arwen, Glance, GetMusic.fm, and IndieCrates, across developer tools and music."
 nav: true
-nav_order: 1
+nav_order: 2
 display_categories: [current, music, past]
 filters: [Current, AI, Music, Past]
 ---

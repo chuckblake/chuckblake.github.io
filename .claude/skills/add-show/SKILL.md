@@ -27,5 +27,17 @@ The music page (`_pages/music.md`, served at `/music/`) builds its grid from `_d
    - Quote `artist` when it contains `&`, `:` or `#`.
    - Leave `venue` or `photo` out when there is none. A show without a photo gets a tile with the artist's name.
 
+   - For more than one photo, use `photos:` with a list in place of `photo:`. The page then shows arrows to flip through them, first one first. Name the files `<artist-slug>-<year>.jpg`, `<artist-slug>-<year>-2.jpg` and so on.
+
+     ```yaml
+     photos:
+       - assets/img/concerts/artist-name-2026.jpg
+       - assets/img/concerts/artist-name-2026-2.jpg
+     ```
+
+   - When Chuck sends a video, take one sharp, well-lit frame from it as the photo: `ffmpeg -ss <seconds> -i in.mov -frames:v 1 -q:v 2 -vf "scale=1600:-2" out.jpg`. The video's creation date is the show date.
+   - Phone photos that come through chat usually have their date stripped. Match them by what is visible (venue signs, a band name on a drum or screen) and by camera-roll order against dated shows, and tell Chuck which matches are inferred.
+   - Crop out audience members whose faces are clearly visible in the foreground.
+
 4. To add a photo to a show that is already listed, add the image file and the `photo:` line to its entry.
 5. Run the checks in `AGENTS.md` (`bin/prettier --write .`, then `bin/site-check`), open a pull request, and release as described under "Publishing" in `AGENTS.md`.
