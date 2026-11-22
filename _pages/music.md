@@ -10,15 +10,26 @@ nav_order: 3
 
 <!-- Shows come from _data/shows.yml. To add one see .claude/skills/add-show/SKILL.md -->
 <div class="music">
-  <a class="music-feature" href="https://corvoco.bandcamp.com">
-    <img class="music-feature__img" src="{{ 'assets/img/projects/corvoco.jpg' | relative_url }}" alt="" width="200" height="125" loading="eager">
-    <span class="music-feature__body">
-      <span class="section-label">My music</span>
-      <span class="music-feature__name">Corvoco</span>
-      <span class="music-feature__desc">Chill post-punk electronic music</span>
-    </span>
-    <span class="music-feature__cta">Listen on Bandcamp →</span>
-  </a>
+  <h2 class="section-label">My music</h2>
+  <div class="music-acts">
+    <div class="music-act">
+      <h3 class="music-act__name">Corvoco</h3>
+      <p class="music-act__desc">Chill post-punk electronic music</p>
+      <p class="music-act__links">
+        <a href="https://open.spotify.com/artist/3m2iFDte1hP9QY4bEOjMtR">Spotify →</a>
+        <a href="https://corvoco.bandcamp.com">Bandcamp →</a>
+      </p>
+      <iframe class="music-act__player" title="Corvoco on Spotify" src="https://open.spotify.com/embed/album/0uGXyXQfeknmW1LHdb07DZ" width="100%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <div class="music-act">
+      <h3 class="music-act__name">Garlands</h3>
+      <p class="music-act__desc">A band I played in</p>
+      <p class="music-act__links">
+        <a href="https://open.spotify.com/artist/3kNsb1sLtaGAWs91170G6c">Spotify →</a>
+      </p>
+      <iframe class="music-act__player" title="Garlands on Spotify" src="https://open.spotify.com/embed/album/08iEjEYnB6xY6US5BZ4EKW" width="100%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+  </div>
 
   <h2 class="section-label">Shows</h2>
   <div class="show-grid">
