@@ -5,7 +5,7 @@ permalink: /publications/
 description: "Practical ideas on AI, technology, and operations"
 meta_description: "Browse Chuck Blake's writing, talks, and coverage on AI systems, developer workflows, technology operations, and building open-source communities."
 nav: true
-nav_order: 2
+nav_order: 3
 ---
 
 <style>
