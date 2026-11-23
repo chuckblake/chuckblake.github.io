@@ -1,13 +1,12 @@
 ---
 layout: page
-title: Hand-building a Dark Software Factory
-description: A runner I built that takes shaped issues to merged, tested code
+title: Dark Software Factory
+description: Command Center and the runner I built to take shaped issues to merged, tested code
 meta_description: "How I built a dark software factory by hand: a runner that takes backlog issues from plan to merged code, and the dashboard that shows every run."
-img: assets/img/projects/dark-software-factory/dashboard.png
-importance: 5
+img: assets/img/projects/dark-software-factory/command-center.jpg
+importance: 1
 category: current
 topics: [AI, Dev tools]
-published: false
 ---
 
 A dark factory can run with the lights off, because nobody needs to be on the floor. I wanted to see how close one person could get to that with software.
@@ -21,6 +20,8 @@ The backlog is a folder of Markdown files in my Obsidian vault, one issue per fi
 A runner lives on a Linux box. Every five minutes a scheduler looks for issues I have flagged and starts runs, up to three at a time. A run takes one issue to a merged pull request without me watching.
 
 Command Center is the dashboard over all of it: the board, the queues, the live runs and the scores.
+
+{% include figure.liquid loading="eager" path="assets/img/projects/dark-software-factory/command-center.jpg" class="img-fluid rounded z-depth-1" zoomable=true alt="Command Center dashboard with counts of work shipped over the last 4 hours to 7 days, the day's spend, time and cost per merge, and a row for each project showing its issues from Shape to Done" caption="Command Center on an ordinary day: what shipped, what it cost, and where each project's issues stand." %}
 
 {% include figure.liquid path="assets/img/projects/dark-software-factory/system-overview.png" class="img-fluid rounded z-depth-1" zoomable=true alt="Diagram of the system: a laptop, a Linux box that runs the scheduler and the runs, the Obsidian vault that holds the backlog, and the cloud services for models and code hosting" caption="How the parts fit together. The vault holds the backlog, the Linux box runs the scheduler and the runs, and the model providers and GitHub do the rest." %}
 
