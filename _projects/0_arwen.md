@@ -4,15 +4,15 @@ title: Arwen
 description: AI medical-bill review that helps patients stop overpaying
 img: assets/img/projects/arwen.jpg
 importance: 1
-category: current
+category: past
 topics: [AI]
 ---
 
-[Arwen](https://arwensaves.com/) helps patients check US medical bills for errors, review insurance paperwork, and pay the correct amount with more confidence.
+I worked on [Arwen](https://arwensaves.com/), which helps patients check US medical bills for errors, review insurance paperwork, and pay the correct amount with more confidence.
 
-The product sits where AI, consumer healthcare, financial stress, and operational accuracy meet. The stakes are practical: people need plain-language help finding overcharges, understanding what changed, and knowing what to do next.
+The product sat where AI, consumer healthcare, financial stress, and operational accuracy meet. The stakes were practical: people needed plain-language help finding overcharges, understanding what changed, and knowing what to do next.
 
-**Current focus:**
+**What I worked on:**
 
 - AI-assisted bill review for patients and families
 - Workflows for insurance paperwork, disputes, and payment confidence

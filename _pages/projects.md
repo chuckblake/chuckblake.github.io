@@ -3,7 +3,7 @@ layout: page
 title: Projects
 permalink: /projects/
 description: "Products, tools, and experiments from current and past work"
-meta_description: "Explore Chuck Blake's current and past projects, including Arwen, Glance, GetMusic.fm, and IndieCrates, across developer tools and music."
+meta_description: "Explore Chuck Blake's current and past projects, including Glance, GetMusic.fm, IndieCrates, CP1919, and Rewatch Vault, across developer tools, music, and film."
 nav: true
 nav_order: 2
 display_categories: [current, music, past]
