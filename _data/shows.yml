@@ -60,6 +60,9 @@
 - date: 2023-09-18
   artist: of Montreal
   photo: assets/img/concerts/of-montreal-2023.jpg
+- date: 2023-07-07
+  artist: Yacht Rock Revue
+  venue: The Rooftop at Pier 17
 - date: 2022-10-07
   artist: "of Montreal & Locate S1"
   photos:
@@ -72,6 +75,9 @@
     - assets/img/concerts/new-order-2022.jpg
     - assets/img/concerts/new-order-2022-2.jpg
     - assets/img/concerts/new-order-2022-3.jpg
+- date: 2022-09-14
+  artist: Echo and the Bunnymen
+  venue: Terminal 5
 - date: 2022-08-27
   artist: Peter Hook
   photo: assets/img/concerts/peter-hook-2022.jpg
