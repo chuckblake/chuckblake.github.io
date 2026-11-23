@@ -64,6 +64,16 @@ ninja.data = [{
           description: "AI medical-bill review that helps patients stop overpaying",
           section: "Projects",handler: () => {
               window.location.href = "/projects/0_arwen/";
+            },},{id: "projects-cp1919",
+          title: 'CP1919',
+          description: "A fan archive of the Unknown Pleasures pulse-line image, everywhere it turns up",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/10_cp1919/";
+            },},{id: "projects-rewatch-vault",
+          title: 'Rewatch Vault',
+          description: "An independent archive of The Rewatchables podcast, searchable by movie, host, and category",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/11_rewatchvault/";
             },},{id: "projects-lea",
           title: 'LEA',
           description: "AI document intelligence for enterprise wealth management — CTO &amp; co-founder",
@@ -104,6 +114,11 @@ ninja.data = [{
           description: "Chill post-punk electronic music",
           section: "Projects",handler: () => {
               window.location.href = "/projects/8_corvoco/";
+            },},{id: "projects-dark-software-factory",
+          title: 'Dark Software Factory',
+          description: "Command Center and the runner I built to take shaped issues to merged, tested code",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/9_dark-software-factory/";
             },},{
         id: 'social-email',
         title: 'email',
